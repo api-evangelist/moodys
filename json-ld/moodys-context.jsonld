@@ -1,0 +1,213 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "moodys": "https://economy.com/ns/",
+    "schema": "https://schema.org/",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "dcterms": "http://purl.org/dc/terms/",
+    "qb": "http://purl.org/linked-data/cube#",
+    "sdmx": "http://purl.org/linked-data/sdmx/2009/measure#",
+
+    "TimeSeries": {
+      "@id": "moodys:TimeSeries",
+      "@context": {
+        "mnemonic": {
+          "@id": "schema:identifier",
+          "@type": "xsd:string",
+          "@comment": "The unique Data Buffet series mnemonic identifier, mapped to schema:identifier for universal resource identification."
+        },
+        "description": {
+          "@id": "dcterms:description",
+          "@type": "xsd:string",
+          "@comment": "Human-readable description of the time series, mapped to dcterms:description."
+        },
+        "frequency": {
+          "@id": "schema:frequency",
+          "@type": "xsd:string",
+          "@comment": "The temporal frequency of observations (Annual, Quarterly, Monthly, Weekly, Daily), mapped to schema:frequency."
+        },
+        "source": {
+          "@id": "dcterms:source",
+          "@type": "xsd:string",
+          "@comment": "The original data source or statistical agency, mapped to dcterms:source."
+        },
+        "geography": {
+          "@id": "schema:spatialCoverage",
+          "@type": "xsd:string",
+          "@comment": "The geographic area the series covers, mapped to schema:spatialCoverage for spatial context."
+        },
+        "geographyCode": {
+          "@id": "moodys:geographyCode",
+          "@type": "xsd:string",
+          "@comment": "Standardized geographic code (ISO 3166 or FIPS), specific to Moody's geographic classification."
+        },
+        "units": {
+          "@id": "schema:unitCode",
+          "@type": "xsd:string",
+          "@comment": "The unit of measurement for series values, mapped to schema:unitCode."
+        },
+        "category": {
+          "@id": "schema:category",
+          "@type": "xsd:string",
+          "@comment": "The broad economic or demographic category, mapped to schema:category."
+        },
+        "startDate": {
+          "@id": "schema:startDate",
+          "@type": "xsd:date",
+          "@comment": "The earliest observation date in the data range, mapped to schema:startDate."
+        },
+        "endDate": {
+          "@id": "schema:endDate",
+          "@type": "xsd:date",
+          "@comment": "The latest observation or forecast date, mapped to schema:endDate."
+        },
+        "lastUpdated": {
+          "@id": "dcterms:modified",
+          "@type": "xsd:dateTime",
+          "@comment": "When the series was last updated in the Data Buffet repository, mapped to dcterms:modified."
+        },
+        "isForecast": {
+          "@id": "moodys:isForecast",
+          "@type": "xsd:boolean",
+          "@comment": "Whether the series includes Moody's Analytics forecast data. Specific to Moody's model-generated projections."
+        },
+        "data": {
+          "@id": "moodys:observations",
+          "@container": "@list",
+          "@comment": "Ordered list of time series observations, using @list to preserve chronological ordering."
+        }
+      }
+    },
+
+    "Observation": {
+      "@id": "qb:Observation",
+      "@context": {
+        "date": {
+          "@id": "dcterms:date",
+          "@type": "xsd:date",
+          "@comment": "The observation date, mapped to dcterms:date. For coarser frequencies represents the period start date."
+        },
+        "value": {
+          "@id": "sdmx:obsValue",
+          "@type": "xsd:decimal",
+          "@comment": "The observed or forecast value, mapped to the SDMX observation value measure for statistical data interoperability."
+        },
+        "status": {
+          "@id": "moodys:observationStatus",
+          "@type": "xsd:string",
+          "@comment": "Whether the data point is History, Forecast, or Preliminary. Specific to Moody's data classification."
+        }
+      }
+    },
+
+    "Basket": {
+      "@id": "moodys:Basket",
+      "@context": {
+        "basketId": {
+          "@id": "@id",
+          "@comment": "Maps the basket identifier to JSON-LD @id, making each basket uniquely addressable as a linked data resource."
+        },
+        "name": {
+          "@id": "schema:name",
+          "@type": "xsd:string",
+          "@comment": "User-defined basket name, mapped to schema:name."
+        },
+        "description": {
+          "@id": "dcterms:description",
+          "@type": "xsd:string",
+          "@comment": "Optional description of the basket contents and purpose."
+        },
+        "series": {
+          "@id": "moodys:containsSeries",
+          "@container": "@set",
+          "@comment": "The set of series requests in the basket. Uses @set as ordering is not significant."
+        },
+        "createdAt": {
+          "@id": "dcterms:created",
+          "@type": "xsd:dateTime",
+          "@comment": "When the basket was created, mapped to dcterms:created."
+        },
+        "updatedAt": {
+          "@id": "dcterms:modified",
+          "@type": "xsd:dateTime",
+          "@comment": "When the basket was last modified, mapped to dcterms:modified."
+        }
+      }
+    },
+
+    "Order": {
+      "@id": "moodys:Order",
+      "@context": {
+        "orderId": {
+          "@id": "@id",
+          "@comment": "Maps the order identifier to JSON-LD @id, making each order uniquely addressable."
+        },
+        "basketId": {
+          "@id": "moodys:fromBasket",
+          "@type": "@id",
+          "@comment": "Reference to the basket from which the order was generated, linked as an @id for resource linking."
+        },
+        "status": {
+          "@id": "schema:eventStatus",
+          "@type": "xsd:string",
+          "@comment": "Current processing status of the order (Pending, Processing, Complete, Failed), mapped to schema:eventStatus."
+        },
+        "fileType": {
+          "@id": "schema:encodingFormat",
+          "@type": "xsd:string",
+          "@comment": "The output file format for the order, mapped to schema:encodingFormat."
+        },
+        "createdAt": {
+          "@id": "dcterms:created",
+          "@type": "xsd:dateTime",
+          "@comment": "When the order was created."
+        },
+        "completedAt": {
+          "@id": "moodys:completedAt",
+          "@type": "xsd:dateTime",
+          "@comment": "When order processing completed. Specific to Moody's order lifecycle."
+        },
+        "downloadUrl": {
+          "@id": "schema:contentUrl",
+          "@type": "@id",
+          "@comment": "URL to download the order output, mapped to schema:contentUrl."
+        }
+      }
+    },
+
+    "Vintage": {
+      "@id": "moodys:Vintage",
+      "@context": {
+        "vintageDate": {
+          "@id": "dcterms:issued",
+          "@type": "xsd:date",
+          "@comment": "The date this data vintage was published, mapped to dcterms:issued for publication date semantics."
+        },
+        "description": {
+          "@id": "dcterms:description",
+          "@type": "xsd:string",
+          "@comment": "Description of the vintage release context."
+        }
+      }
+    },
+
+    "SearchResult": {
+      "@id": "moodys:SearchResult",
+      "@context": {
+        "mnemonic": {
+          "@id": "schema:identifier",
+          "@type": "xsd:string"
+        },
+        "description": {
+          "@id": "dcterms:description",
+          "@type": "xsd:string"
+        },
+        "hasForecast": {
+          "@id": "moodys:hasForecast",
+          "@type": "xsd:boolean",
+          "@comment": "Whether the series includes Moody's Analytics forecast data."
+        }
+      }
+    }
+  }
+}
