@@ -11,10 +11,6 @@ apis:
       - Compliance
       - Anti-Money Laundering
     image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
-    baseURL: http://api.example.com
-    contact:
-      - FN: API Evangelist
-        email: kin@apievangelist.com
     humanURL: https://www.kompany.com/kycapi/discover
     properties:
       - url: https://www.kompany.com/kycapi/console-v2
@@ -378,7 +374,7 @@ common:
   - url: https://www.rms.com/developer-resources
     type: Resources
 created: '2024-09-25T00:00:00.000Z'
-modified: '2026-03-03'
+modified: '2026-03-16'
 position: Consuming
 description: >-
   Moody's provides a comprehensive suite of APIs spanning KYC compliance,
@@ -391,4 +387,4 @@ description: >-
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com
-specificationVersion: '0.18'
+specificationVersion: '0.19'
