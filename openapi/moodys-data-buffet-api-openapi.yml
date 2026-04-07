@@ -44,7 +44,7 @@ paths:
   /oauth2/token:
     post:
       operationId: getAccessToken
-      summary: Obtain an access token
+      summary: Moody's Obtain an access token
       description: >-
         Authenticates using OAuth2 client credentials and returns a bearer
         access token for subsequent API requests.
@@ -88,7 +88,7 @@ paths:
   /series:
     get:
       operationId: getSeries
-      summary: Retrieve a single time series
+      summary: Moody's Retrieve a single time series
       description: >-
         Returns data for a single economic, demographic, or financial time
         series identified by its mnemonic. Supports frequency conversion,
@@ -130,7 +130,7 @@ paths:
   /multi-series:
     post:
       operationId: getMultiSeries
-      summary: Retrieve multiple time series
+      summary: Moody's Retrieve multiple time series
       description: >-
         Returns data for up to 25 time series in a single request. Each
         series can have individual frequency, transformation, date range,
@@ -163,7 +163,7 @@ paths:
   /baskets:
     get:
       operationId: listBaskets
-      summary: List all baskets
+      summary: Moody's List all baskets
       description: >-
         Returns a list of all data baskets owned by the authenticated user.
         A basket is a saved collection of series requests that can be
@@ -183,7 +183,7 @@ paths:
           description: Unauthorized - invalid or expired token
     post:
       operationId: createBasket
-      summary: Create a new basket
+      summary: Moody's Create a new basket
       description: >-
         Creates a new data basket with a collection of series requests.
         Baskets can be saved and reused to generate orders for bulk data
@@ -215,7 +215,7 @@ paths:
   /baskets/{basketId}:
     get:
       operationId: getBasket
-      summary: Retrieve a specific basket
+      summary: Moody's Retrieve a specific basket
       description: >-
         Returns the details of a specific basket including its series
         requests and configuration.
@@ -236,7 +236,7 @@ paths:
           description: Basket not found
     put:
       operationId: updateBasket
-      summary: Update an existing basket
+      summary: Moody's Update an existing basket
       description: >-
         Updates the series requests and configuration of an existing basket.
       tags:
@@ -268,7 +268,7 @@ paths:
           description: Basket not found
     delete:
       operationId: deleteBasket
-      summary: Delete a basket
+      summary: Moody's Delete a basket
       description: >-
         Permanently deletes a basket and its associated series requests.
       tags:
@@ -286,7 +286,7 @@ paths:
   /orders:
     get:
       operationId: listOrders
-      summary: List all orders
+      summary: Moody's List all orders
       description: >-
         Returns a list of all data generation orders for the authenticated
         user. Orders are created from baskets and produce output files in
@@ -306,7 +306,7 @@ paths:
           description: Unauthorized - invalid or expired token
     post:
       operationId: createOrder
-      summary: Create a new order
+      summary: Moody's Create a new order
       description: >-
         Creates a new data generation order from a basket. The order will
         be processed asynchronously and produce output in the specified
@@ -338,7 +338,7 @@ paths:
   /orders/{orderId}:
     get:
       operationId: getOrder
-      summary: Retrieve a specific order
+      summary: Moody's Retrieve a specific order
       description: >-
         Returns the status and details of a specific order, including
         processing status and download URL when complete.
@@ -361,7 +361,7 @@ paths:
   /orders/{orderId}/download:
     get:
       operationId: downloadOrder
-      summary: Download order output
+      summary: Moody's Download order output
       description: >-
         Downloads the output file for a completed order. The file format
         is determined by the fileType specified when creating the order.
@@ -385,7 +385,7 @@ paths:
   /search:
     get:
       operationId: searchSeries
-      summary: Search for available series
+      summary: Moody's Search for available series
       description: >-
         Searches the Data Buffet repository for available series matching
         the specified criteria. Supports filtering by keyword, geography,
@@ -461,7 +461,7 @@ paths:
   /frequencies:
     get:
       operationId: listFrequencies
-      summary: List available data frequencies
+      summary: Moody's List available data frequencies
       description: >-
         Returns a list of all supported data frequencies (e.g., annual,
         quarterly, monthly, weekly, daily) that can be used for frequency
@@ -483,7 +483,7 @@ paths:
   /vintages:
     get:
       operationId: listVintages
-      summary: List available vintages for a series
+      summary: Moody's List available vintages for a series
       description: >-
         Returns a list of available data vintages (historical revisions)
         for a specific series. Vintages enable access to previous versions
@@ -511,7 +511,7 @@ paths:
   /filetypes:
     get:
       operationId: listFileTypes
-      summary: List supported output file types
+      summary: Moody's List supported output file types
       description: >-
         Returns a list of supported output file types for order data
         generation (e.g., CSV, Excel, XML, JSON).
@@ -532,7 +532,7 @@ paths:
   /health:
     get:
       operationId: checkHealth
-      summary: Check service health
+      summary: Moody's Check service health
       description: >-
         Returns the current health status of the Data Buffet API service.
       tags:

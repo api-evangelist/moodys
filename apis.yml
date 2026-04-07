@@ -216,7 +216,7 @@ apis:
       economic scenarios for capital planning and stress testing such as DFAST
       and EBA.
   - aid: moodys:climate-on-demand-api
-    name: Moody's Climate On Demand API
+    name: Moody's Climate on Demand API
     tags:
       - Climate Risk
       - Physical Risk
