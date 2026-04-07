@@ -24,19 +24,19 @@ servers:
     description: "Moody's Analytics Data Buffet production server"
 
 tags:
-  - name: Series
-    description: Operations for retrieving individual and multi-series time series data
   - name: Baskets
     description: Operations for creating and managing collections of series requests
-  - name: Orders
-    description: Operations for managing data generation orders from baskets
-  - name: Search
-    description: Operations for searching available datasets and series
-  - name: Reference
-    description: Operations for retrieving frequency, vintage, and file type metadata
   - name: Health
     description: Service health monitoring
 
+  - name: Orders
+    description: Operations for managing data generation orders from baskets
+  - name: Reference
+    description: Operations for retrieving frequency, vintage, and file type metadata
+  - name: Search
+    description: Operations for searching available datasets and series
+  - name: Series
+    description: Operations for retrieving individual and multi-series time series data
 security:
   - oauth2: []
 

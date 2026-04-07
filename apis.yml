@@ -4,18 +4,18 @@ apis:
   - aid: moodys:moodys
     name: Moody's KYC API
     tags:
-      - Entity Verification
-      - Screening
-      - Risk
-      - KYC
-      - Compliance
       - Anti-Money Laundering
+      - Compliance
+      - Entity Verification
+      - KYC
+      - Risk
+      - Screening
     image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
     humanURL: https://www.kompany.com/kycapi/discover
     properties:
       - url: https://www.kompany.com/kycapi/console-v2
         type: Documentation
-      - url: >-
+      - url: >2-
 
           https://www.kompany.com/kycapi/docs/resources/resources/customer-facing-documents/generate-a-client-from-openapi-definition
         type: OpenAPI
@@ -23,10 +23,10 @@ apis:
   - aid: moodys:data-buffet-api
     name: Moody's Data Buffet API
     tags:
-      - Economic Data
       - Demographics
-      - Time Series
+      - Economic Data
       - Forecasts
+      - Time Series
     image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
     baseURL: https://api.economy.com
     contact:
@@ -52,10 +52,10 @@ apis:
   - aid: moodys:scenario-studio-api
     name: Moody's Scenario Studio API
     tags:
+      - Economic Models
+      - Forecasting
       - Macroeconomic
       - Scenarios
-      - Forecasting
-      - Economic Models
     image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
     baseURL: https://api.economy.com
     contact:
@@ -75,9 +75,9 @@ apis:
     name: Moody's AutoCycle API
     tags:
       - Automotive
+      - Forecasts
       - Residual Value
       - Vehicle Pricing
-      - Forecasts
     image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
     baseURL: https://api.economy.com
     contact:
@@ -96,8 +96,8 @@ apis:
     tags:
       - Consumer Credit
       - Credit Loss
-      - Risk
       - Forecasts
+      - Risk
     image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
     baseURL: https://api.economy.com
     contact:
@@ -114,10 +114,10 @@ apis:
   - aid: moodys:municipal-api
     name: Moody's Municipal Probability of Default API
     tags:
-      - Municipal
-      - Probability of Default
       - Credit Risk
       - Forecasts
+      - Municipal
+      - Probability of Default
     image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
     baseURL: https://api.economy.com
     contact:
@@ -135,8 +135,8 @@ apis:
     name: Moody's EDF-X API
     tags:
       - Credit Risk
-      - Probability of Default
       - Expected Default Frequency
+      - Probability of Default
       - Risk Assessment
     image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
     baseURL: https://hub.moodysanalytics.com
@@ -155,8 +155,8 @@ apis:
   - aid: moodys:newsedge-api
     name: Moody's NewsEdge API
     tags:
-      - News
       - Media
+      - News
       - Real-Time Data
       - Social Media
     image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
@@ -176,10 +176,10 @@ apis:
   - aid: moodys:quiqspread-api
     name: Moody's QUIQSpread API
     tags:
-      - Financial Spreading
-      - Banking
-      - Financial Statements
       - Automation
+      - Banking
+      - Financial Spreading
+      - Financial Statements
     image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
     baseURL: https://hub.moodysanalytics.com
     contact:
@@ -197,10 +197,10 @@ apis:
   - aid: moodys:capital-risk-analyzer-api
     name: Moody's Capital Risk Analyzer API
     tags:
-      - Capital Planning
-      - Stress Testing
       - Banking
+      - Capital Planning
       - Risk
+      - Stress Testing
     image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
     baseURL: https://hub.moodysanalytics.com
     contact:
@@ -219,9 +219,9 @@ apis:
     name: Moody's Climate on Demand API
     tags:
       - Climate Risk
-      - Physical Risk
-      - Insurance
       - Environmental
+      - Insurance
+      - Physical Risk
     image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
     baseURL: https://developer.rms.com
     contact:
@@ -239,9 +239,9 @@ apis:
     name: Moody's Location Intelligence API
     tags:
       - Geospatial
-      - Risk Data
       - Insurance
       - Location
+      - Risk Data
     image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
     baseURL: https://developer.rms.com
     contact:
@@ -279,9 +279,9 @@ apis:
     name: Moody's Intelligent Risk Platform API
     tags:
       - Insurance
-      - Risk Management
       - Platform
       - Reinsurance
+      - Risk Management
     image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
     baseURL: https://developer.rms.com
     contact:
@@ -301,9 +301,9 @@ apis:
     name: Moody's Commercial Real Estate API
     tags:
       - Commercial Real Estate
-      - Property
-      - Location Score
       - CRE
+      - Location Score
+      - Property
     image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
     baseURL: https://hub.moodysanalytics.com
     contact:
@@ -319,16 +319,16 @@ apis:
       organization, including the Commercial Location Score API and MA CRE API.
 name: Moody's
 tags:
-  - Entity Verification
-  - Screening
-  - Risk
+  - Climate Risk
+  - Compliance
   - Credit Risk
   - Economic Data
-  - Insurance
-  - Climate Risk
+  - Entity Verification
   - Financial Analytics
+  - Insurance
   - KYC
-  - Compliance
+  - Risk
+  - Screening
 type: Contract
 image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
 access: 3rd-Party
@@ -345,7 +345,7 @@ common:
     type: News
   - url: https://www.kompany.com/kycapi/docs/guides/guides/get-started
     type: Guides
-  - url: >-
+  - url: >2-
 
       https://www.kompany.com/kycapi/docs/guides/guides/get-started/sandbox-overview
     type: Sandbox
