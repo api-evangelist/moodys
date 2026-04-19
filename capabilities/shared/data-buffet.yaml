@@ -1,0 +1,53 @@
+naftiko: "1.0.0-alpha1"
+info:
+  label: "Moody's Data Buffet API"
+  description: "Moody's Analytics Data Buffet API for economic, demographic, and financial time series data and forecasts."
+  tags: [Moody's, Economic Data, Forecasts, Analytics]
+  created: "2026-04-18"
+  modified: "2026-04-18"
+binds:
+  - namespace: env
+    keys:
+      MOODYS_OAUTH_TOKEN: MOODYS_OAUTH_TOKEN
+capability:
+  consumes:
+    - type: http
+      namespace: data-buffet
+      baseUri: https://api.economy.com/data/v1
+      description: "Data Buffet API for time series retrieval, basket management, and data search."
+      authentication:
+        type: bearer
+        token: "{{MOODYS_OAUTH_TOKEN}}"
+      resources:
+        - name: series
+          path: /series
+          description: "Time series operations"
+          operations:
+            - { name: get-series, method: GET, description: "Retrieve a single time series", outputRawFormat: json, outputParameters: [{ name: result, type: object, value: "$." }] }
+            - { name: get-multi-series, method: POST, description: "Retrieve multiple time series", outputRawFormat: json, outputParameters: [{ name: result, type: object, value: "$." }] }
+            - { name: search-series, method: GET, description: "Search for available series", outputRawFormat: json, outputParameters: [{ name: result, type: object, value: "$." }] }
+        - name: baskets
+          path: /baskets
+          description: "Basket management"
+          operations:
+            - { name: list-baskets, method: GET, description: "List all baskets", outputRawFormat: json, outputParameters: [{ name: result, type: object, value: "$." }] }
+            - { name: create-basket, method: POST, description: "Create a new basket", outputRawFormat: json, outputParameters: [{ name: result, type: object, value: "$." }] }
+            - { name: get-basket, method: GET, description: "Get basket details", outputRawFormat: json, outputParameters: [{ name: result, type: object, value: "$." }] }
+            - { name: update-basket, method: PUT, description: "Update a basket", outputRawFormat: json, outputParameters: [{ name: result, type: object, value: "$." }] }
+            - { name: delete-basket, method: DELETE, description: "Delete a basket", outputRawFormat: json, outputParameters: [{ name: result, type: object, value: "$." }] }
+        - name: orders
+          path: /orders
+          description: "Order management"
+          operations:
+            - { name: list-orders, method: GET, description: "List all orders", outputRawFormat: json, outputParameters: [{ name: result, type: object, value: "$." }] }
+            - { name: create-order, method: POST, description: "Create a new order", outputRawFormat: json, outputParameters: [{ name: result, type: object, value: "$." }] }
+            - { name: get-order, method: GET, description: "Get order details", outputRawFormat: json, outputParameters: [{ name: result, type: object, value: "$." }] }
+            - { name: download-order, method: GET, description: "Download order output", outputRawFormat: json, outputParameters: [{ name: result, type: object, value: "$." }] }
+        - name: reference
+          path: /
+          description: "Reference data"
+          operations:
+            - { name: list-frequencies, method: GET, description: "List available frequencies", outputRawFormat: json, outputParameters: [{ name: result, type: object, value: "$." }] }
+            - { name: list-vintages, method: GET, description: "List vintages for a series", outputRawFormat: json, outputParameters: [{ name: result, type: object, value: "$." }] }
+            - { name: list-file-types, method: GET, description: "List supported file types", outputRawFormat: json, outputParameters: [{ name: result, type: object, value: "$." }] }
+            - { name: check-health, method: GET, description: "Check service health", outputRawFormat: json, outputParameters: [{ name: result, type: object, value: "$." }] }

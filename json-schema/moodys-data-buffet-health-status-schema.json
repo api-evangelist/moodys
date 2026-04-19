@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "HealthStatus",
+  "type": "object",
+  "description": "Service health status information.",
+  "properties": {
+    "status": {
+      "type": "string",
+      "description": "Overall service health status."
+    },
+    "timestamp": {
+      "type": "string",
+      "description": "Timestamp of the health check."
+    },
+    "version": {
+      "type": "string",
+      "description": "Current API version."
+    }
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Observation",
+  "type": "object",
+  "description": "A single time series observation or forecast data point.",
+  "properties": {
+    "date": {
+      "type": "string",
+      "description": "The observation date in YYYY-MM-DD format. For frequencies coarser than daily, represents the period start date."
+    },
+    "value": {
+      "type": "['number', 'null']",
+      "description": "The observation value. Null indicates missing or unavailable data for this period."
+    },
+    "status": {
+      "type": "string",
+      "description": "Status indicator for the data point."
+    }
+  }
+}

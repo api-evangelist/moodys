@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Basket",
+  "type": "object",
+  "description": "A saved collection of series requests that can be executed as an order for bulk data retrieval.",
+  "properties": {
+    "basketId": {
+      "type": "string",
+      "description": "Unique identifier for the basket."
+    },
+    "name": {
+      "type": "string",
+      "description": "User-defined name for the basket."
+    },
+    "description": {
+      "type": "string",
+      "description": "Optional description of the basket contents and purpose."
+    },
+    "series": {
+      "type": "array",
+      "description": "The series requests contained in the basket."
+    },
+    "createdAt": {
+      "type": "string",
+      "description": "When the basket was created."
+    },
+    "updatedAt": {
+      "type": "string",
+      "description": "When the basket was last modified."
+    }
+  }
+}

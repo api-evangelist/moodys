@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-structure.org/draft/2020-12/schema",
+  "name": "Order",
+  "type": "object",
+  "properties": {
+    "orderId": {
+      "type": "string"
+    },
+    "basketId": {
+      "type": "string"
+    },
+    "status": {
+      "type": "string"
+    },
+    "fileType": {
+      "type": "string"
+    },
+    "createdAt": {
+      "type": "string"
+    },
+    "completedAt": {
+      "type": "string"
+    },
+    "downloadUrl": {
+      "type": "string"
+    },
+    "errorMessage": {
+      "type": "string"
+    }
+  }
+}

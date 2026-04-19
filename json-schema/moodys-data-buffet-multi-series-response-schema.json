@@ -1,0 +1,12 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "MultiSeriesResponse",
+  "type": "object",
+  "description": "Response containing multiple time series.",
+  "properties": {
+    "series": {
+      "type": "array",
+      "description": "Array of time series responses."
+    }
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "MultiSeriesRequest",
+  "type": "object",
+  "description": "Request body for retrieving multiple series simultaneously.",
+  "properties": {
+    "series": {
+      "type": "array",
+      "description": "Array of series requests. Maximum 25 series per request."
+    }
+  }
+}

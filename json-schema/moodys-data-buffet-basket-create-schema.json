@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "BasketCreate",
+  "type": "object",
+  "description": "Request body for creating or updating a basket.",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "User-defined name for the basket."
+    },
+    "description": {
+      "type": "string",
+      "description": "Optional description of the basket."
+    },
+    "series": {
+      "type": "array",
+      "description": "The series requests to include in the basket."
+    }
+  }
+}

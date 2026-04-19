@@ -342,21 +342,49 @@ common:
   - url: https://www.kompany.com/kycapi/console
     type: Console
   - url: https://www.kompany.com/kycapi/community/developer-news
-    type: News
+    type: Blog
   - url: https://www.kompany.com/kycapi/docs/guides/guides/get-started
-    type: Guides
-  - url: >2-
-
-      https://www.kompany.com/kycapi/docs/guides/guides/get-started/sandbox-overview
+    type: GettingStarted
+  - url: https://www.kompany.com/kycapi/docs/guides/guides/get-started/sandbox-overview
     type: Sandbox
   - url: https://www.kompany.com/kycapi/docs/guides/guides/use-cases
     type: UseCases
   - url: https://www.kompany.com/kycapi/docs/resources
     type: Resources
+  - type: Features
+    data:
+      - name: Economic Time Series Data
+        description: Access to international and subnational economic, demographic, and financial time series data and forecasts.
+      - name: Credit Risk Analytics
+        description: Probability of default calculations for 400 million companies globally through the EDF-X model.
+      - name: Climate Risk Modeling
+        description: Physical climate risk assessment leveraging the Intelligent Risk Platform for financial services.
+      - name: KYC Compliance
+        description: Know Your Customer verification, anti-money laundering screening, and entity verification capabilities.
+      - name: Scenario Analysis
+        description: Custom scenario generation using the Global Macroeconomic Model for stress testing and forecasting.
+  - type: UseCases
+    data:
+      - name: Credit Risk Assessment
+        description: Evaluate counterparty credit risk using EDF-X probability of default and loss given default models.
+      - name: Regulatory Stress Testing
+        description: Generate stress scenarios for DFAST, CCAR, and EBA regulatory compliance testing.
+      - name: Commercial Lending
+        description: Automate financial spreading and credit analysis workflows for commercial loan underwriting.
+      - name: Catastrophe Modeling
+        description: Model insurance portfolio risk exposure using catastrophe models and location intelligence.
+  - type: Integrations
+    data:
+      - name: Orbis Database
+        description: Integration with the Orbis database covering 400 million companies for credit risk analysis.
+      - name: Intelligent Risk Platform
+        description: Platform integration for catastrophe modeling, underwriting, and reinsurance workflows.
+      - name: News Sources
+        description: Integration with 24,000+ news sources for real-time media monitoring and sentiment analysis.
   - url: https://www.kompany.com/kycapi/connections
-    type: Connections
+    type: Integrations
   - url: https://kycapi-status.kompany.com/
-    type: Status
+    type: StatusPage
   - url: https://hub.moodysanalytics.com/
     type: Portal
   - url: https://hub.moodysanalytics.com/products
@@ -374,7 +402,7 @@ common:
   - url: https://www.rms.com/developer-resources
     type: Resources
 created: '2024-09-25T00:00:00.000Z'
-modified: '2026-03-16'
+modified: '2026-04-18'
 position: Consuming
 description: >-
   Moody's provides a comprehensive suite of APIs spanning KYC compliance,

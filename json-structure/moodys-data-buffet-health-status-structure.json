@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json-structure.org/draft/2020-12/schema",
+  "name": "HealthStatus",
+  "type": "object",
+  "properties": {
+    "status": {
+      "type": "string"
+    },
+    "timestamp": {
+      "type": "string"
+    },
+    "version": {
+      "type": "string"
+    }
+  }
+}

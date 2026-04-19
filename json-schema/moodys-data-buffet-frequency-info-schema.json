@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "FrequencyInfo",
+  "type": "object",
+  "description": "Metadata about a supported data frequency.",
+  "properties": {
+    "code": {
+      "type": "string",
+      "description": "Single-character frequency code used in API parameters."
+    },
+    "name": {
+      "type": "string",
+      "description": "Human-readable frequency name."
+    },
+    "description": {
+      "type": "string",
+      "description": "Description of the frequency and its typical use cases."
+    }
+  }
+}

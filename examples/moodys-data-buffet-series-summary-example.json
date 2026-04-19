@@ -1,0 +1,11 @@
+{
+  "mnemonic": "example_value",
+  "description": "A sample description.",
+  "frequency": "example_value",
+  "source": "example_value",
+  "geography": "example_value",
+  "category": "example_value",
+  "startDate": "example_value",
+  "endDate": "example_value",
+  "hasForecast": true
+}

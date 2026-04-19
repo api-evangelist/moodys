@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "FileType",
+  "type": "object",
+  "description": "Metadata about a supported output file type.",
+  "properties": {
+    "code": {
+      "type": "string",
+      "description": "File type code used in order creation."
+    },
+    "name": {
+      "type": "string",
+      "description": "Human-readable file type name."
+    },
+    "extension": {
+      "type": "string",
+      "description": "File extension (e.g., csv, xlsx, json, xml)."
+    },
+    "description": {
+      "type": "string",
+      "description": "Description of the file format."
+    }
+  }
+}

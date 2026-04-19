@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "OrderCreate",
+  "type": "object",
+  "description": "Request body for creating a new order.",
+  "properties": {
+    "basketId": {
+      "type": "string",
+      "description": "The basket to generate the order from."
+    },
+    "fileType": {
+      "type": "string",
+      "description": "The desired output file format. Use the /filetypes endpoint to retrieve supported formats."
+    }
+  }
+}

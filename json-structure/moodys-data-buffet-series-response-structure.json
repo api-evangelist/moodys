@@ -1,0 +1,46 @@
+{
+  "$schema": "https://json-structure.org/draft/2020-12/schema",
+  "name": "SeriesResponse",
+  "type": "object",
+  "properties": {
+    "mnemonic": {
+      "type": "string"
+    },
+    "description": {
+      "type": "string"
+    },
+    "frequency": {
+      "type": "string"
+    },
+    "source": {
+      "type": "string"
+    },
+    "geography": {
+      "type": "string"
+    },
+    "units": {
+      "type": "string"
+    },
+    "transformation": {
+      "type": "string"
+    },
+    "startDate": {
+      "type": "string"
+    },
+    "endDate": {
+      "type": "string"
+    },
+    "vintage": {
+      "type": "string"
+    },
+    "lastUpdated": {
+      "type": "string"
+    },
+    "isForecast": {
+      "type": "boolean"
+    },
+    "data": {
+      "type": "array"
+    }
+  }
+}

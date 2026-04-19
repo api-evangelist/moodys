@@ -1,0 +1,48 @@
+naftiko: "1.0.0-alpha1"
+info:
+  label: "Moody's Economic Data Analytics"
+  description: "Unified economic data analytics capability combining time series retrieval, basket management, order processing, and data search. Used by economists, risk analysts, and data scientists."
+  tags: [Moody's, Economic Data, Analytics, Forecasting]
+  created: "2026-04-18"
+  modified: "2026-04-18"
+binds:
+  - namespace: env
+    keys:
+      MOODYS_OAUTH_TOKEN: MOODYS_OAUTH_TOKEN
+capability:
+  consumes:
+    - import: data-buffet
+      location: ./shared/data-buffet.yaml
+  exposes:
+    - type: rest
+      port: 8080
+      namespace: economic-data-analytics-api
+      description: "Unified REST API for Moody's economic data analytics."
+      resources:
+        - path: /v1/series
+          name: series
+          description: "Time series data"
+          operations:
+            - { method: GET, name: get-series, description: "Retrieve a time series", call: "data-buffet.get-series", outputParameters: [{ type: object, mapping: "$." }] }
+    - type: mcp
+      port: 9090
+      namespace: economic-data-analytics-mcp
+      transport: http
+      description: "MCP server for AI-assisted economic data analytics."
+      tools:
+        - { name: get-series, description: "Retrieve a single time series by mnemonic", hints: { readOnly: true }, call: "data-buffet.get-series", outputParameters: [{ type: object, mapping: "$." }] }
+        - { name: get-multi-series, description: "Retrieve multiple time series", hints: { readOnly: true }, call: "data-buffet.get-multi-series", outputParameters: [{ type: object, mapping: "$." }] }
+        - { name: search-series, description: "Search for available series", hints: { readOnly: true, openWorld: true }, call: "data-buffet.search-series", outputParameters: [{ type: object, mapping: "$." }] }
+        - { name: list-baskets, description: "List all data baskets", hints: { readOnly: true }, call: "data-buffet.list-baskets", outputParameters: [{ type: object, mapping: "$." }] }
+        - { name: create-basket, description: "Create a new data basket", call: "data-buffet.create-basket", outputParameters: [{ type: object, mapping: "$." }] }
+        - { name: get-basket, description: "Get basket details", hints: { readOnly: true }, call: "data-buffet.get-basket", outputParameters: [{ type: object, mapping: "$." }] }
+        - { name: update-basket, description: "Update a basket", call: "data-buffet.update-basket", outputParameters: [{ type: object, mapping: "$." }] }
+        - { name: delete-basket, description: "Delete a basket", hints: { destructive: true }, call: "data-buffet.delete-basket", outputParameters: [{ type: object, mapping: "$." }] }
+        - { name: list-orders, description: "List all orders", hints: { readOnly: true }, call: "data-buffet.list-orders", outputParameters: [{ type: object, mapping: "$." }] }
+        - { name: create-order, description: "Create a new data order", call: "data-buffet.create-order", outputParameters: [{ type: object, mapping: "$." }] }
+        - { name: get-order, description: "Get order status and details", hints: { readOnly: true }, call: "data-buffet.get-order", outputParameters: [{ type: object, mapping: "$." }] }
+        - { name: download-order, description: "Download completed order output", hints: { readOnly: true }, call: "data-buffet.download-order", outputParameters: [{ type: object, mapping: "$." }] }
+        - { name: list-frequencies, description: "List available data frequencies", hints: { readOnly: true }, call: "data-buffet.list-frequencies", outputParameters: [{ type: object, mapping: "$." }] }
+        - { name: list-vintages, description: "List vintages for a series", hints: { readOnly: true }, call: "data-buffet.list-vintages", outputParameters: [{ type: object, mapping: "$." }] }
+        - { name: list-file-types, description: "List supported output file types", hints: { readOnly: true }, call: "data-buffet.list-file-types", outputParameters: [{ type: object, mapping: "$." }] }
+        - { name: check-health, description: "Check Data Buffet API health", hints: { readOnly: true }, call: "data-buffet.check-health", outputParameters: [{ type: object, mapping: "$." }] }

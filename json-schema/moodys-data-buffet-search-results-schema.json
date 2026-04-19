@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "SearchResults",
+  "type": "object",
+  "description": "Paginated search results for series queries.",
+  "properties": {
+    "totalCount": {
+      "type": "integer",
+      "description": "Total number of matching series across all pages."
+    },
+    "offset": {
+      "type": "integer",
+      "description": "The current pagination offset."
+    },
+    "limit": {
+      "type": "integer",
+      "description": "The maximum results per page."
+    },
+    "results": {
+      "type": "array",
+      "description": "Array of matching series metadata."
+    }
+  }
+}

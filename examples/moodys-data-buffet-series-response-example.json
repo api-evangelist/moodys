@@ -1,0 +1,15 @@
+{
+  "mnemonic": "example_value",
+  "description": "A sample description.",
+  "frequency": "example_value",
+  "source": "example_value",
+  "geography": "example_value",
+  "units": "example_value",
+  "transformation": "example_value",
+  "startDate": "example_value",
+  "endDate": "example_value",
+  "vintage": "example_value",
+  "lastUpdated": "example_value",
+  "isForecast": true,
+  "data": []
+}

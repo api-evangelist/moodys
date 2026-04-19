@@ -1,0 +1,40 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Order",
+  "type": "object",
+  "description": "A data generation order created from a basket. Orders are processed asynchronously and produce downloadable output files.",
+  "properties": {
+    "orderId": {
+      "type": "string",
+      "description": "Unique identifier for the order."
+    },
+    "basketId": {
+      "type": "string",
+      "description": "The basket from which the order was generated."
+    },
+    "status": {
+      "type": "string",
+      "description": "Current processing status of the order."
+    },
+    "fileType": {
+      "type": "string",
+      "description": "The output file format for the order."
+    },
+    "createdAt": {
+      "type": "string",
+      "description": "When the order was created."
+    },
+    "completedAt": {
+      "type": "string",
+      "description": "When the order processing completed."
+    },
+    "downloadUrl": {
+      "type": "string",
+      "description": "URL to download the order output. Available only when status is Complete."
+    },
+    "errorMessage": {
+      "type": "string",
+      "description": "Error description if the order failed. Present only when status is Failed."
+    }
+  }
+}

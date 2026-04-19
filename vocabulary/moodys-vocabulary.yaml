@@ -1,0 +1,13 @@
+name: moodys API Vocabulary
+provider: moodys
+created: '2026-04-18'
+modified: '2026-04-18'
+operations: 17
+schemas: 17
+tags:
+- Baskets
+- Health
+- Orders
+- Reference
+- Search
+- Series

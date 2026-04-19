@@ -1,0 +1,10 @@
+{
+  "orderId": "500123",
+  "basketId": "500123",
+  "status": "example_value",
+  "fileType": "example_value",
+  "createdAt": "example_value",
+  "completedAt": "example_value",
+  "downloadUrl": "https://www.example.com",
+  "errorMessage": "example_value"
+}

@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "AccessToken",
+  "type": "object",
+  "description": "OAuth2 access token response.",
+  "properties": {
+    "access_token": {
+      "type": "string",
+      "description": "The bearer access token for authenticating API requests."
+    },
+    "token_type": {
+      "type": "string",
+      "description": "The type of token issued. Always \"Bearer\"."
+    },
+    "expires_in": {
+      "type": "integer",
+      "description": "The number of seconds until the access token expires."
+    }
+  }
+}

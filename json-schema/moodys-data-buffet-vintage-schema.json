@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Vintage",
+  "type": "object",
+  "description": "Metadata about a data vintage representing a historical revision of a series.",
+  "properties": {
+    "vintageDate": {
+      "type": "string",
+      "description": "The date this vintage was published."
+    },
+    "description": {
+      "type": "string",
+      "description": "Description of the vintage release context."
+    }
+  }
+}
