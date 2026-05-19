@@ -1,0 +1,176 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Moody's Data Buffet API — Reference
+  description: 'Moody''s Data Buffet API — Reference. 4 operations. Lead operation: Moody''s List Supported Output File Types.
+    Self-contained Naftiko capability covering one Moodys business surface.'
+  tags:
+  - Moodys
+  - Reference
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    MOODYS_API_KEY: MOODYS_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: data-buffet-reference
+    baseUri: https://api.economy.com/data/v1
+    description: Moody's Data Buffet API — Reference business capability. Self-contained, no shared references.
+    resources:
+    - name: filetypes
+      path: /filetypes
+      operations:
+      - name: listfiletypes
+        method: GET
+        description: Moody's List Supported Output File Types
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: frequencies
+      path: /frequencies
+      operations:
+      - name: listfrequencies
+        method: GET
+        description: Moody's List Available Data Frequencies
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: oauth2-token
+      path: /oauth2/token
+      operations:
+      - name: getaccesstoken
+        method: POST
+        description: Moody's Obtain an Access Token
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: vintages
+      path: /vintages
+      operations:
+      - name: listvintages
+        method: GET
+        description: Moody's List Available Vintages for a Series
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    authentication:
+      type: bearer
+      token: '{{env.MOODYS_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: data-buffet-reference-rest
+    port: 8080
+    description: REST adapter for Moody's Data Buffet API — Reference. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/filetypes
+      name: filetypes
+      description: REST surface for filetypes.
+      operations:
+      - method: GET
+        name: listfiletypes
+        description: Moody's List Supported Output File Types
+        call: data-buffet-reference.listfiletypes
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/frequencies
+      name: frequencies
+      description: REST surface for frequencies.
+      operations:
+      - method: GET
+        name: listfrequencies
+        description: Moody's List Available Data Frequencies
+        call: data-buffet-reference.listfrequencies
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/oauth2/token
+      name: oauth2-token
+      description: REST surface for oauth2-token.
+      operations:
+      - method: POST
+        name: getaccesstoken
+        description: Moody's Obtain an Access Token
+        call: data-buffet-reference.getaccesstoken
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/vintages
+      name: vintages
+      description: REST surface for vintages.
+      operations:
+      - method: GET
+        name: listvintages
+        description: Moody's List Available Vintages for a Series
+        call: data-buffet-reference.listvintages
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: data-buffet-reference-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Moody's Data Buffet API — Reference. One tool per consumed operation, routed inline through
+      this capability's consumes block.
+    tools:
+    - name: moody-s-list-supported-output-file
+      description: Moody's List Supported Output File Types
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: data-buffet-reference.listfiletypes
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: moody-s-list-available-data-frequencies
+      description: Moody's List Available Data Frequencies
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: data-buffet-reference.listfrequencies
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: moody-s-obtain-access-token
+      description: Moody's Obtain an Access Token
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: data-buffet-reference.getaccesstoken
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: moody-s-list-available-vintages-series
+      description: Moody's List Available Vintages for a Series
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: data-buffet-reference.listvintages
+      outputParameters:
+      - type: object
+        mapping: $.

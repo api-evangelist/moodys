@@ -1,0 +1,169 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Moody's Data Buffet API — Orders
+  description: 'Moody''s Data Buffet API — Orders. 4 operations. Lead operation: Moody''s List All Orders. Self-contained
+    Naftiko capability covering one Moodys business surface.'
+  tags:
+  - Moodys
+  - Orders
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    MOODYS_API_KEY: MOODYS_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: data-buffet-orders
+    baseUri: https://api.economy.com/data/v1
+    description: Moody's Data Buffet API — Orders business capability. Self-contained, no shared references.
+    resources:
+    - name: orders
+      path: /orders
+      operations:
+      - name: listorders
+        method: GET
+        description: Moody's List All Orders
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: createorder
+        method: POST
+        description: Moody's Create a New Order
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: orders-orderId
+      path: /orders/{orderId}
+      operations:
+      - name: getorder
+        method: GET
+        description: Moody's Retrieve a Specific Order
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: orders-orderId-download
+      path: /orders/{orderId}/download
+      operations:
+      - name: downloadorder
+        method: GET
+        description: Moody's Download Order Output
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    authentication:
+      type: bearer
+      token: '{{env.MOODYS_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: data-buffet-orders-rest
+    port: 8080
+    description: REST adapter for Moody's Data Buffet API — Orders. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/orders
+      name: orders
+      description: REST surface for orders.
+      operations:
+      - method: GET
+        name: listorders
+        description: Moody's List All Orders
+        call: data-buffet-orders.listorders
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: createorder
+        description: Moody's Create a New Order
+        call: data-buffet-orders.createorder
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/orders/{orderid}
+      name: orders-orderid
+      description: REST surface for orders-orderId.
+      operations:
+      - method: GET
+        name: getorder
+        description: Moody's Retrieve a Specific Order
+        call: data-buffet-orders.getorder
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/orders/{orderid}/download
+      name: orders-orderid-download
+      description: REST surface for orders-orderId-download.
+      operations:
+      - method: GET
+        name: downloadorder
+        description: Moody's Download Order Output
+        call: data-buffet-orders.downloadorder
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: data-buffet-orders-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Moody's Data Buffet API — Orders. One tool per consumed operation, routed inline through
+      this capability's consumes block.
+    tools:
+    - name: moody-s-list-all-orders
+      description: Moody's List All Orders
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: data-buffet-orders.listorders
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: moody-s-create-new-order
+      description: Moody's Create a New Order
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: data-buffet-orders.createorder
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: moody-s-retrieve-specific-order
+      description: Moody's Retrieve a Specific Order
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: data-buffet-orders.getorder
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: moody-s-download-order-output
+      description: Moody's Download Order Output
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: data-buffet-orders.downloadorder
+      outputParameters:
+      - type: object
+        mapping: $.
