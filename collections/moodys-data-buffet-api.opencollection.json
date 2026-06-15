@@ -1,0 +1,413 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Moody's Data Buffet API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "oauth2",
+      "flow": "client_credentials",
+      "accessTokenUrl": "https://api.economy.com/data/v1/oauth2/token",
+      "credentials": {
+        "clientId": "{{clientId}}",
+        "clientSecret": "{{clientSecret}}"
+      }
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Reference",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Moody's Obtain an Access Token",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.economy.com/data/v1/oauth2/token",
+            "body": {
+              "type": "form-urlencoded",
+              "data": [
+                {
+                  "name": "grant_type",
+                  "value": ""
+                },
+                {
+                  "name": "client_id",
+                  "value": ""
+                },
+                {
+                  "name": "client_secret",
+                  "value": ""
+                }
+              ]
+            }
+          },
+          "docs": "Authenticates using OAuth2 client credentials and returns a bearer access token for subsequent API requests."
+        },
+        {
+          "info": {
+            "name": "Moody's List Available Data Frequencies",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.economy.com/data/v1/frequencies"
+          },
+          "docs": "Returns a list of all supported data frequencies (e.g., annual, quarterly, monthly, weekly, daily) that can be used for frequency conversion when retrieving series."
+        },
+        {
+          "info": {
+            "name": "Moody's List Available Vintages for a Series",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.economy.com/data/v1/vintages",
+            "params": [
+              {
+                "name": "mnemonic",
+                "value": "",
+                "type": "query",
+                "description": "The unique series mnemonic identifier. Mnemonics follow the Data Buffet naming convention, e.g., FGDP_US for US GDP or EMPLPAY.IUSA for US total nonfarm payrolls."
+              }
+            ]
+          },
+          "docs": "Returns a list of available data vintages (historical revisions) for a specific series. Vintages enable access to previous versions of data as originally published."
+        },
+        {
+          "info": {
+            "name": "Moody's List Supported Output File Types",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.economy.com/data/v1/filetypes"
+          },
+          "docs": "Returns a list of supported output file types for order data generation (e.g., CSV, Excel, XML, JSON)."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Series",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Moody's Retrieve a Single Time Series",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.economy.com/data/v1/series",
+            "params": [
+              {
+                "name": "mnemonic",
+                "value": "",
+                "type": "query",
+                "description": "The unique series mnemonic identifier. Mnemonics follow the Data Buffet naming convention, e.g., FGDP_US for US GDP or EMPLPAY.IUSA for US total nonfarm payrolls."
+              },
+              {
+                "name": "freq",
+                "value": "",
+                "type": "query",
+                "description": "The desired output frequency for the series. When specified, frequency conversion is applied. For example, converting quarterly GDP to annual."
+              },
+              {
+                "name": "trans",
+                "value": "",
+                "type": "query",
+                "description": "The mathematical transformation to apply to the series values. Supports common economic transformations."
+              },
+              {
+                "name": "startDate",
+                "value": "",
+                "type": "query",
+                "description": "The start date for the data range in YYYY-MM-DD format. If omitted, returns data from the beginning of the series."
+              },
+              {
+                "name": "endDate",
+                "value": "",
+                "type": "query",
+                "description": "The end date for the data range in YYYY-MM-DD format. If omitted, returns data through the latest available observation or forecast."
+              },
+              {
+                "name": "vintage",
+                "value": "",
+                "type": "query",
+                "description": "The vintage date for accessing historical data revisions in YYYY-MM-DD format. If omitted, returns the latest vintage."
+              }
+            ]
+          },
+          "docs": "Returns data for a single economic, demographic, or financial time series identified by its mnemonic. Supports frequency conversion, mathematical transformations, date range filtering, and vintage selection."
+        },
+        {
+          "info": {
+            "name": "Moody's Retrieve Multiple Time Series",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.economy.com/data/v1/multi-series",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Returns data for up to 25 time series in a single request. Each series can have individual frequency, transformation, date range, and vintage parameters. Useful for efficiently fetching related economic indicators together."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Baskets",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Moody's List All Baskets",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.economy.com/data/v1/baskets"
+          },
+          "docs": "Returns a list of all data baskets owned by the authenticated user. A basket is a saved collection of series requests that can be executed as an order."
+        },
+        {
+          "info": {
+            "name": "Moody's Create a New Basket",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.economy.com/data/v1/baskets",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new data basket with a collection of series requests. Baskets can be saved and reused to generate orders for bulk data retrieval."
+        },
+        {
+          "info": {
+            "name": "Moody's Retrieve a Specific Basket",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.economy.com/data/v1/baskets/:basketId",
+            "params": [
+              {
+                "name": "basketId",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the basket."
+              }
+            ]
+          },
+          "docs": "Returns the details of a specific basket including its series requests and configuration."
+        },
+        {
+          "info": {
+            "name": "Moody's Update an Existing Basket",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.economy.com/data/v1/baskets/:basketId",
+            "params": [
+              {
+                "name": "basketId",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the basket."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates the series requests and configuration of an existing basket."
+        },
+        {
+          "info": {
+            "name": "Moody's Delete a Basket",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.economy.com/data/v1/baskets/:basketId",
+            "params": [
+              {
+                "name": "basketId",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the basket."
+              }
+            ]
+          },
+          "docs": "Permanently deletes a basket and its associated series requests."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Orders",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Moody's List All Orders",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.economy.com/data/v1/orders"
+          },
+          "docs": "Returns a list of all data generation orders for the authenticated user. Orders are created from baskets and produce output files in the requested format."
+        },
+        {
+          "info": {
+            "name": "Moody's Create a New Order",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.economy.com/data/v1/orders",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new data generation order from a basket. The order will be processed asynchronously and produce output in the specified file format."
+        },
+        {
+          "info": {
+            "name": "Moody's Retrieve a Specific Order",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.economy.com/data/v1/orders/:orderId",
+            "params": [
+              {
+                "name": "orderId",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the order."
+              }
+            ]
+          },
+          "docs": "Returns the status and details of a specific order, including processing status and download URL when complete."
+        },
+        {
+          "info": {
+            "name": "Moody's Download Order Output",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.economy.com/data/v1/orders/:orderId/download",
+            "params": [
+              {
+                "name": "orderId",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the order."
+              }
+            ]
+          },
+          "docs": "Downloads the output file for a completed order. The file format is determined by the fileType specified when creating the order."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Search",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Moody's Search for Available Series",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.economy.com/data/v1/search",
+            "params": [
+              {
+                "name": "query",
+                "value": "",
+                "type": "query",
+                "description": "Search query string to match against series names, descriptions, mnemonics, and metadata."
+              },
+              {
+                "name": "geography",
+                "value": "",
+                "type": "query",
+                "description": "Filter results by geographic area code (e.g., US for United States, GB for United Kingdom, CN for China)."
+              },
+              {
+                "name": "source",
+                "value": "",
+                "type": "query",
+                "description": "Filter results by data source identifier (e.g., BLS, BEA, IMF, Eurostat)."
+              },
+              {
+                "name": "category",
+                "value": "",
+                "type": "query",
+                "description": "Filter results by data category (e.g., GDP, Employment, Inflation, Housing)."
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "The number of results to skip for pagination."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "The maximum number of results to return per page."
+              }
+            ]
+          },
+          "docs": "Searches the Data Buffet repository for available series matching the specified criteria. Supports filtering by keyword, geography, source, and category."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Health",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Moody's Check Service Health",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.economy.com/data/v1/health"
+          },
+          "docs": "Returns the current health status of the Data Buffet API service."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
