@@ -1,0 +1,17 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/moodys-data-buffet-api-openapi.yml
+docs: https://github.com/moodysanalytics/databuffet-api-codesamples/blob/master/dataBuffet-api-userguide.md
+note: Moody's APIs do not use OAuth scopes — the Data Buffet API user guide (https://github.com/moodysanalytics/databuffet-api-codesamples/blob/master/dataBuffet-api-userguide.md)
+  documents an OAuth2 client_credentials flow with access/encryption keys and no scope
+  parameter, and permissions across Moody's products are tied to account entitlements
+  and roles rather than scopes.
+schemes:
+- name: oauth2
+  source: openapi/moodys-data-buffet-api-openapi.yml
+  flows:
+  - flow: clientCredentials
+    tokenUrl: https://api.economy.com/data/v1/oauth2/token
+  description: OAuth2 client credentials flow for authenticating API requests. Obtain client_id
+    and client_secret from your Moody's Analytics account.
+scopes: []
