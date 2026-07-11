@@ -1,0 +1,33 @@
+generated: '2026-07-11'
+method: probed
+source: live DNS/TLS/HTTP probes of apis.yml + OpenAPI hosts
+hosts:
+- host: www.kompany.com
+  https: true
+  tls_version: TLSv1.3
+  cert_expires: Oct 28 23:59:59 2026 GMT
+  hsts: false
+- host: hub.moodysanalytics.com
+  https: true
+  tls_version: TLSv1.3
+  cert_expires: Oct 31 23:59:59 2026 GMT
+  hsts: true
+  hsts_max_age: 31536000
+- host: developer.rms.com
+  https: true
+  tls_version: TLSv1.3
+  cert_expires: Oct  3 13:57:38 2026 GMT
+  hsts: null
+domains:
+- domain: kompany.com
+  dnssec: true
+  caa: []
+  spf: true
+  dmarc: true
+  dmarc_policy: reject
+- domain: moodysanalytics.com
+  dnssec: true
+  caa: []
+  spf: true
+  dmarc: true
+  dmarc_policy: reject
