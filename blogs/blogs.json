@@ -3,10 +3,12 @@
   "feeds": [
     {
       "source": "https://www.kompany.com/kycapi/community/developer-news",
+      "feed_url": "https://www.kompany.com/kycapi/community/developer-news",
+      "title": "",
       "saved": 0,
-      "error": "403 via fetch; raw HTML is JS shell with no dated post content"
+      "method": "none"
     }
   ],
   "post_count": 0,
-  "fetched": "2026-06-27T12:55:03Z"
+  "fetched": "2026-07-11T11:50:51Z"
 }
