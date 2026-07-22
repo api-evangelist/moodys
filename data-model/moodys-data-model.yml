@@ -1,0 +1,47 @@
+generated: '2026-06-20'
+method: derived
+source: derived from openapi/ Data Buffet specs and json-schema/ component schemas ($ref links + id-reference fields)
+entities:
+- name: Series
+  description: A single economic/demographic/financial time series identified by mnemonic; carries frequency, transformation,
+    and observation data
+  id_field: mnemonic
+- name: Observation
+  description: A dated value within a series
+- name: Basket
+  description: A saved collection of series mnemonics for batch retrieval
+  id_field: basketId
+- name: Order
+  description: An asynchronous execution of a basket that produces a downloadable output file
+  id_field: orderId
+- name: Vintage
+  description: A historical version/release of the dataset used for point-in-time retrieval
+- name: Frequency
+  description: Supported reporting frequencies for series conversion
+- name: FileType
+  description: Supported output file formats for basket orders
+relationships:
+- from: Basket
+  to: Series
+  type: has_many
+  via: series mnemonics in basket contents
+- from: Series
+  to: Observation
+  type: has_many
+  via: data array in SeriesResponse
+- from: Order
+  to: Basket
+  type: belongs_to
+  via: basketId
+- from: Order
+  to: FileType
+  type: has_one
+  via: fileType
+- from: Series
+  to: Vintage
+  type: belongs_to
+  via: vintage parameter
+- from: Series
+  to: Frequency
+  type: has_one
+  via: freq parameter

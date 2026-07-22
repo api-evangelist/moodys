@@ -1,0 +1,359 @@
+openapi: 3.1.0
+info:
+  title: Moody's Data Buffet Baskets Series API
+  version: 1.0.0
+  description: The Moody's Analytics Data Buffet API provides programmatic access to international and subnational economic, demographic, and financial time series data and forecasts. It enables retrieval of individual series or baskets of data, supports frequency conversion, mathematical transformations, date range filtering, and vintage/versioning selection. Code samples are available in C#, Java, Python, and R.
+  contact:
+    name: Moody's Analytics
+    url: https://www.economy.com/products/tools/data-buffet
+  license:
+    name: Moody's Analytics Terms of Use
+    url: https://www.moodys.com/web/en/us/about/legal/terms-of-use.html
+servers:
+- url: https://api.economy.com/data/v1
+  description: Moody's Analytics Data Buffet production server
+security:
+- oauth2: []
+tags:
+- name: Series
+  description: Operations for retrieving individual and multi-series time series data
+paths:
+  /series:
+    get:
+      operationId: getSeries
+      summary: Moody's Retrieve a Single Time Series
+      description: Returns data for a single economic, demographic, or financial time series identified by its mnemonic. Supports frequency conversion, mathematical transformations, date range filtering, and vintage selection.
+      tags:
+      - Series
+      parameters:
+      - $ref: '#/components/parameters/mnemonic'
+      - $ref: '#/components/parameters/freq'
+      - $ref: '#/components/parameters/trans'
+      - $ref: '#/components/parameters/startDate'
+      - $ref: '#/components/parameters/endDate'
+      - $ref: '#/components/parameters/vintage'
+      responses:
+        '200':
+          description: Successfully retrieved time series data
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SeriesResponse'
+        '400':
+          description: Invalid parameters
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Unauthorized - invalid or expired token
+        '404':
+          description: Series mnemonic not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '429':
+          description: Rate limit exceeded
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /multi-series:
+    post:
+      operationId: getMultiSeries
+      summary: Moody's Retrieve Multiple Time Series
+      description: Returns data for up to 25 time series in a single request. Each series can have individual frequency, transformation, date range, and vintage parameters. Useful for efficiently fetching related economic indicators together.
+      tags:
+      - Series
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MultiSeriesRequest'
+      responses:
+        '200':
+          description: Successfully retrieved multiple time series
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MultiSeriesResponse'
+        '400':
+          description: Invalid request or exceeded 25 series limit
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Unauthorized - invalid or expired token
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+components:
+  schemas:
+    Error:
+      type: object
+      description: Standard error response.
+      required:
+      - code
+      - message
+      properties:
+        code:
+          type: string
+          description: Machine-readable error code.
+          example: example_value
+        message:
+          type: string
+          description: Human-readable error message.
+          example: example_value
+        details:
+          type: string
+          description: Additional details about the error.
+          example: example_value
+    Observation:
+      type: object
+      description: A single time series observation or forecast data point.
+      required:
+      - date
+      - value
+      properties:
+        date:
+          type: string
+          format: date
+          description: The observation date in YYYY-MM-DD format. For frequencies coarser than daily, represents the period start date.
+          example: '2026-01-15'
+        value:
+          type:
+          - number
+          - 'null'
+          description: The observation value. Null indicates missing or unavailable data for this period.
+          example: example_value
+        status:
+          type: string
+          description: Status indicator for the data point.
+          enum:
+          - History
+          - Forecast
+          - Preliminary
+          example: History
+    MultiSeriesResponse:
+      type: object
+      description: Response containing multiple time series.
+      required:
+      - series
+      properties:
+        series:
+          type: array
+          description: Array of time series responses.
+          items:
+            $ref: '#/components/schemas/SeriesResponse'
+          example: []
+    MultiSeriesRequest:
+      type: object
+      description: Request body for retrieving multiple series simultaneously.
+      required:
+      - series
+      properties:
+        series:
+          type: array
+          description: Array of series requests. Maximum 25 series per request.
+          maxItems: 25
+          items:
+            $ref: '#/components/schemas/SeriesRequest'
+          example: []
+    SeriesResponse:
+      type: object
+      description: Response containing a single time series with metadata and observations.
+      required:
+      - mnemonic
+      - description
+      - frequency
+      - data
+      properties:
+        mnemonic:
+          type: string
+          description: The unique series mnemonic identifier.
+          example: example_value
+        description:
+          type: string
+          description: Human-readable description of the series.
+          example: A sample description.
+        frequency:
+          type: string
+          description: The frequency of the returned data.
+          enum:
+          - Annual
+          - Quarterly
+          - Monthly
+          - Weekly
+          - Daily
+          example: Annual
+        source:
+          type: string
+          description: The original data source (e.g., BLS, BEA, IMF).
+          example: example_value
+        geography:
+          type: string
+          description: The geographic area the series covers.
+          example: example_value
+        units:
+          type: string
+          description: The unit of measurement for the series values (e.g., Billions of Chained 2017 Dollars, Thousands of Persons, Index).
+          example: example_value
+        transformation:
+          type: string
+          description: The transformation applied to the data, if any.
+          example: example_value
+        startDate:
+          type: string
+          format: date
+          description: The start date of the returned data range.
+          example: '2026-01-15'
+        endDate:
+          type: string
+          format: date
+          description: The end date of the returned data range.
+          example: '2026-01-15'
+        vintage:
+          type: string
+          format: date
+          description: The vintage date of the returned data.
+          example: '2026-01-15'
+        lastUpdated:
+          type: string
+          format: date-time
+          description: When the series was last updated in the repository.
+          example: '2026-01-15T10:30:00Z'
+        isForecast:
+          type: boolean
+          description: Whether the series contains forecast data from Moody's Analytics models.
+          example: true
+        data:
+          type: array
+          description: Array of date-value pairs representing the time series observations and/or forecasts.
+          items:
+            $ref: '#/components/schemas/Observation'
+          example: []
+    SeriesRequest:
+      type: object
+      description: A single series request within a multi-series call.
+      required:
+      - mnemonic
+      properties:
+        mnemonic:
+          type: string
+          description: The unique series mnemonic identifier.
+          example: example_value
+        freq:
+          type: string
+          description: Desired output frequency.
+          enum:
+          - A
+          - Q
+          - M
+          - W
+          - D
+          example: A
+        trans:
+          type: string
+          description: Mathematical transformation to apply.
+          enum:
+          - Level
+          - SimpleDifference
+          - PercentChange
+          - AnnualizedGrowth
+          - YearOverYearPercentChange
+          - CompoundAnnualGrowthRate
+          example: Level
+        startDate:
+          type: string
+          format: date
+          description: Start date for the data range.
+          example: '2026-01-15'
+        endDate:
+          type: string
+          format: date
+          description: End date for the data range.
+          example: '2026-01-15'
+        vintage:
+          type: string
+          format: date
+          description: Vintage date for historical data revisions.
+          example: '2026-01-15'
+  parameters:
+    mnemonic:
+      name: mnemonic
+      in: query
+      description: The unique series mnemonic identifier. Mnemonics follow the Data Buffet naming convention, e.g., FGDP_US for US GDP or EMPLPAY.IUSA for US total nonfarm payrolls.
+      required: true
+      schema:
+        type: string
+      examples:
+        usGdp:
+          summary: US Gross Domestic Product
+          value: FGDP_US
+        usPayrolls:
+          summary: US Total Nonfarm Payrolls
+          value: EMPLPAY.IUSA
+    vintage:
+      name: vintage
+      in: query
+      description: The vintage date for accessing historical data revisions in YYYY-MM-DD format. If omitted, returns the latest vintage.
+      required: false
+      schema:
+        type: string
+        format: date
+    endDate:
+      name: endDate
+      in: query
+      description: The end date for the data range in YYYY-MM-DD format. If omitted, returns data through the latest available observation or forecast.
+      required: false
+      schema:
+        type: string
+        format: date
+    freq:
+      name: freq
+      in: query
+      description: The desired output frequency for the series. When specified, frequency conversion is applied. For example, converting quarterly GDP to annual.
+      required: false
+      schema:
+        type: string
+        enum:
+        - A
+        - Q
+        - M
+        - W
+        - D
+    trans:
+      name: trans
+      in: query
+      description: The mathematical transformation to apply to the series values. Supports common economic transformations.
+      required: false
+      schema:
+        type: string
+        enum:
+        - Level
+        - SimpleDifference
+        - PercentChange
+        - AnnualizedGrowth
+        - YearOverYearPercentChange
+        - CompoundAnnualGrowthRate
+    startDate:
+      name: startDate
+      in: query
+      description: The start date for the data range in YYYY-MM-DD format. If omitted, returns data from the beginning of the series.
+      required: false
+      schema:
+        type: string
+        format: date
+  securitySchemes:
+    oauth2:
+      type: oauth2
+      description: OAuth2 client credentials flow for authenticating API requests. Obtain client_id and client_secret from your Moody's Analytics account.
+      flows:
+        clientCredentials:
+          tokenUrl: https://api.economy.com/data/v1/oauth2/token
+          scopes: {}
+externalDocs:
+  description: Moody's Data Buffet API Documentation
+  url: https://api.economy.com/data/v1/swagger

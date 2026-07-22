@@ -1,6 +1,11 @@
-generated: '2026-07-11'
+generated: '2026-06-20'
 method: derived
-source: openapi/moodys-data-buffet-api-openapi.yml
+source: >-
+  openapi/moodys-data-buffet-api-openapi.yml plus the Swagger 2.0 definitions
+  harvested live from api.economy.com this round
+  (openapi/moodys-scenario-studio-api-swagger.json,
+  openapi/moodys-autocycle-api-swagger.json,
+  openapi/moodys-municipal-api-swagger.json)
 summary:
   types:
   - oauth2
@@ -17,3 +22,35 @@ schemes:
     and client_secret from your Moody's Analytics account.
   sources:
   - openapi/moodys-data-buffet-api-openapi.yml
+- name: oauth2
+  type: oauth2
+  flows:
+  - flow: clientCredentials
+    tokenUrl: https://api.economy.com/scenario-studio/v2/oauth2/token
+    scopes: 0
+  description: OAuth2 Client Credentials (Scenario Studio API).
+  sources:
+  - openapi/moodys-scenario-studio-api-swagger.json
+- name: oauth2
+  type: oauth2
+  flows:
+  - flow: clientCredentials
+    tokenUrl: https://api.economy.com/autocycle/v1/oauth2/token
+    scopes: 0
+  description: OAuth2 Client Credentials (AutoCycle API).
+  sources:
+  - openapi/moodys-autocycle-api-swagger.json
+- name: oauth2
+  type: oauth2
+  flows:
+  - flow: clientCredentials
+    tokenUrl: https://api.economy.com/muni/v1/oauth2/token
+    scopes: 0
+  description: OAuth2 Client Credentials (Muni Loss Forecast API).
+  sources:
+  - openapi/moodys-municipal-api-swagger.json
+notes: >-
+  Every Moody's Analytics economy.com product API exposes its own OAuth2
+  client-credentials token endpoint under its base path; tokens are sent as
+  Bearer tokens. No scopes are defined in any flow — entitlements are
+  account-based.

@@ -1,0 +1,20 @@
+overlay: 1.0.0
+info:
+  title: API Evangelist enhancements for Moody's Data Buffet Baskets Orders API
+  version: 1.0.0
+extends: openapi/moodys-orders-api-openapi.yml
+actions:
+- target: $.info
+  update:
+    x-apievangelist:
+      provider: moodys
+      reviewed: '2026-06-20'
+      artifacts:
+        authentication: authentication/moodys-authentication.yml
+        errors: errors/moodys-problem-types.yml
+        conventions: conventions/moodys-conventions.yml
+        rate-limits: rate-limits/moodys-rate-limits.yml
+        lifecycle: lifecycle/moodys-lifecycle.yml
+- target: $.info
+  update:
+    x-status-page: https://kycapi-status.kompany.com/

@@ -1,0 +1,24 @@
+{
+  "provider": "moodys",
+  "sources": [
+    "moodys-baskets-api-openapi.yml",
+    "moodys-health-api-openapi.yml",
+    "moodys-orders-api-openapi.yml",
+    "moodys-reference-api-openapi.yml",
+    "moodys-search-api-openapi.yml",
+    "moodys-series-api-openapi.yml"
+  ],
+  "outputs": [
+    "moodys-baskets-api-openapi.yml",
+    "moodys-health-api-openapi.yml",
+    "moodys-orders-api-openapi.yml",
+    "moodys-reference-api-openapi.yml",
+    "moodys-search-api-openapi.yml",
+    "moodys-series-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}

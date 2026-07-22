@@ -14,4 +14,22 @@ schemes:
     tokenUrl: https://api.economy.com/data/v1/oauth2/token
   description: OAuth2 client credentials flow for authenticating API requests. Obtain client_id
     and client_secret from your Moody's Analytics account.
+- name: oauth2
+  source: openapi/moodys-scenario-studio-api-swagger.json
+  flows:
+  - flow: clientCredentials
+    tokenUrl: https://api.economy.com/scenario-studio/v2/oauth2/token
+  description: OAuth2 Client Credentials (Scenario Studio API) — empty scopes map.
+- name: oauth2
+  source: openapi/moodys-autocycle-api-swagger.json
+  flows:
+  - flow: clientCredentials
+    tokenUrl: https://api.economy.com/autocycle/v1/oauth2/token
+  description: OAuth2 Client Credentials (AutoCycle API) — empty scopes map.
+- name: oauth2
+  source: openapi/moodys-municipal-api-swagger.json
+  flows:
+  - flow: clientCredentials
+    tokenUrl: https://api.economy.com/muni/v1/oauth2/token
+  description: OAuth2 Client Credentials (Muni Loss Forecast API) — empty scopes map.
 scopes: []

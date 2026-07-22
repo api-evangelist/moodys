@@ -1,0 +1,41 @@
+generated: '2026-06-20'
+method: derived
+source: derived from openapi/ specs plus authentication/, errors/, lifecycle/, rate-limits/ artifacts; Moody's publishes
+  no single cross-product API conventions page
+description: Cross-cutting request/response semantics of Moody's Analytics APIs (Data Buffet, Scenario Studio, AutoCycle,
+  Muni Loss Forecast on api.economy.com) as expressed in their Swagger/OpenAPI definitions.
+base_url: https://api.economy.com
+api_style: REST over HTTPS, JSON responses
+authentication:
+  scheme: OAuth2 client-credentials; each product exposes its own token endpoint under its base path (e.g. /data/v1/oauth2/token,
+    /scenario-studio/v2/oauth2/token); access tokens are sent as Bearer tokens
+  detail: authentication/moodys-authentication.yml
+idempotency:
+  supported: false
+  notes: No Idempotency-Key mechanism documented or declared in any spec; GET retrieval operations are inherently
+    idempotent
+pagination:
+  style: none documented
+  notes: Data Buffet returns complete series/basket payloads; Scenario Studio list endpoints accept POST /search
+    bodies with counts via /search/count
+versioning:
+  scheme: uri-path
+  current:
+    data-buffet: v1
+    scenario-studio: v2
+    autocycle: v1
+    muni: v1
+  detail: lifecycle/moodys-lifecycle.yml
+error_envelope:
+  shape: custom Error object with code and message
+  detail: errors/moodys-problem-types.yml
+rate_limits:
+  signaling: 429 with Retry-After header; limits negotiated per contract, no public defaults
+  detail: rate-limits/moodys-rate-limits.yml
+request_tracing:
+  supported: null
+  notes: no request-id header documented
+field_expansion:
+  supported: false
+metadata:
+  supported: false

@@ -1,0 +1,28 @@
+generated: '2026-06-20'
+method: searched
+source: >-
+  Live status-page probe (https://kycapi-status.kompany.com/ HTTP 200) plus
+  versioning derived from openapi/ base paths. No published deprecation policy,
+  Sunset/Deprecation header support (RFC 8594), or public SLA was found on
+  developer.rms.com, hub.moodysanalytics.com, economy.com, or the kompany KYC docs.
+versioning:
+  scheme: uri-path
+  current:
+    data-buffet: v1
+    scenario-studio: v2
+    autocycle: v1
+    muni: v1
+    kompany-kyc: v2 (docs section "Working with v2 endpoints"; v1 documented as "Working with old APIs")
+  notes: >-
+    Each economy.com product API versions independently in its base path
+    (e.g. /data/v1, /scenario-studio/v2). The kompany KYC API runs v2 endpoints
+    alongside documented legacy v1 endpoints.
+deprecation:
+  policy_url: null
+  sunset_header: false
+  notes: No public deprecation policy found; legacy kompany endpoints remain documented under "Working with old APIs".
+sla:
+  url: null
+  notes: No public SLA; Moody's API access is contracted per enterprise agreement.
+status_page: https://kycapi-status.kompany.com/
+deprecated_operations: []

@@ -1,0 +1,54 @@
+generated: '2026-06-20'
+method: derived
+source: derived from 4xx/5xx responses across openapi/*.yml and openapi/*-swagger.json; kompany KYC API error-message
+  reference at https://www.kompany.com/kycapi/docs/guides/guides/working-with-endpoints/error-messages (content
+  is client-rendered; not harvestable)
+format: custom
+envelope: Data Buffet errors return an Error object with code and message fields (see json-schema/moodys-data-buffet-error-schema.json);
+  no application/problem+json (RFC 9457) usage found in any spec
+problems:
+- status: 400
+  title: Invalid basket definition
+  source_operation: openapi/moodys-baskets-api-openapi.yml#createBasket
+- status: 400
+  title: Invalid grant type or missing credentials
+  source_operation: openapi/moodys-reference-api-openapi.yml#getAccessToken
+- status: 400
+  title: Invalid mnemonic
+  source_operation: openapi/moodys-reference-api-openapi.yml#listVintages
+- status: 400
+  title: Invalid order request
+  source_operation: openapi/moodys-orders-api-openapi.yml#createOrder
+- status: 400
+  title: Invalid parameters
+  source_operation: openapi/moodys-series-api-openapi.yml#getSeries
+- status: 400
+  title: Invalid request or exceeded 25 series limit
+  source_operation: openapi/moodys-series-api-openapi.yml#getMultiSeries
+- status: 400
+  title: Invalid search parameters
+  source_operation: openapi/moodys-search-api-openapi.yml#searchSeries
+- status: 401
+  title: Invalid client credentials
+  source_operation: openapi/moodys-reference-api-openapi.yml#getAccessToken
+- status: 401
+  title: Unauthorized - invalid or expired token
+  source_operation: openapi/moodys-baskets-api-openapi.yml#listBaskets
+- status: 404
+  title: Basket not found
+  source_operation: openapi/moodys-baskets-api-openapi.yml#getBasket
+- status: 404
+  title: Order not found
+  source_operation: openapi/moodys-orders-api-openapi.yml#getOrder
+- status: 404
+  title: Order not found or not yet complete
+  source_operation: openapi/moodys-orders-api-openapi.yml#downloadOrder
+- status: 404
+  title: Series mnemonic not found
+  source_operation: openapi/moodys-reference-api-openapi.yml#listVintages
+- status: 429
+  title: Rate limit exceeded
+  source_operation: openapi/moodys-series-api-openapi.yml#getSeries
+- status: 503
+  title: Service is unavailable
+  source_operation: openapi/moodys-health-api-openapi.yml#checkHealth

@@ -1,0 +1,221 @@
+openapi: 3.1.0
+info:
+  title: Moody's Data Buffet Baskets Orders API
+  version: 1.0.0
+  description: The Moody's Analytics Data Buffet API provides programmatic access to international and subnational economic, demographic, and financial time series data and forecasts. It enables retrieval of individual series or baskets of data, supports frequency conversion, mathematical transformations, date range filtering, and vintage/versioning selection. Code samples are available in C#, Java, Python, and R.
+  contact:
+    name: Moody's Analytics
+    url: https://www.economy.com/products/tools/data-buffet
+  license:
+    name: Moody's Analytics Terms of Use
+    url: https://www.moodys.com/web/en/us/about/legal/terms-of-use.html
+servers:
+- url: https://api.economy.com/data/v1
+  description: Moody's Analytics Data Buffet production server
+security:
+- oauth2: []
+tags:
+- name: Orders
+  description: Operations for managing data generation orders from baskets
+paths:
+  /orders:
+    get:
+      operationId: listOrders
+      summary: Moody's List All Orders
+      description: Returns a list of all data generation orders for the authenticated user. Orders are created from baskets and produce output files in the requested format.
+      tags:
+      - Orders
+      responses:
+        '200':
+          description: Successfully retrieved order list
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Order'
+        '401':
+          description: Unauthorized - invalid or expired token
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+    post:
+      operationId: createOrder
+      summary: Moody's Create a New Order
+      description: Creates a new data generation order from a basket. The order will be processed asynchronously and produce output in the specified file format.
+      tags:
+      - Orders
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/OrderCreate'
+      responses:
+        '201':
+          description: Successfully created order
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Order'
+        '400':
+          description: Invalid order request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Unauthorized - invalid or expired token
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /orders/{orderId}:
+    get:
+      operationId: getOrder
+      summary: Moody's Retrieve a Specific Order
+      description: Returns the status and details of a specific order, including processing status and download URL when complete.
+      tags:
+      - Orders
+      parameters:
+      - $ref: '#/components/parameters/orderId'
+      responses:
+        '200':
+          description: Successfully retrieved order
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Order'
+        '401':
+          description: Unauthorized - invalid or expired token
+        '404':
+          description: Order not found
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /orders/{orderId}/download:
+    get:
+      operationId: downloadOrder
+      summary: Moody's Download Order Output
+      description: Downloads the output file for a completed order. The file format is determined by the fileType specified when creating the order.
+      tags:
+      - Orders
+      parameters:
+      - $ref: '#/components/parameters/orderId'
+      responses:
+        '200':
+          description: Successfully downloaded order output
+          content:
+            application/octet-stream:
+              schema:
+                type: string
+                format: binary
+        '401':
+          description: Unauthorized - invalid or expired token
+        '404':
+          description: Order not found or not yet complete
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+components:
+  parameters:
+    orderId:
+      name: orderId
+      in: path
+      description: The unique identifier of the order.
+      required: true
+      schema:
+        type: string
+  schemas:
+    Order:
+      type: object
+      description: A data generation order created from a basket. Orders are processed asynchronously and produce downloadable output files.
+      required:
+      - orderId
+      - basketId
+      - status
+      properties:
+        orderId:
+          type: string
+          description: Unique identifier for the order.
+          example: '500123'
+        basketId:
+          type: string
+          description: The basket from which the order was generated.
+          example: '500123'
+        status:
+          type: string
+          description: Current processing status of the order.
+          enum:
+          - Pending
+          - Processing
+          - Complete
+          - Failed
+          example: Pending
+        fileType:
+          type: string
+          description: The output file format for the order.
+          example: example_value
+        createdAt:
+          type: string
+          format: date-time
+          description: When the order was created.
+          example: '2026-01-15T10:30:00Z'
+        completedAt:
+          type: string
+          format: date-time
+          description: When the order processing completed.
+          example: '2026-01-15T10:30:00Z'
+        downloadUrl:
+          type: string
+          format: uri
+          description: URL to download the order output. Available only when status is Complete.
+          example: https://www.example.com
+        errorMessage:
+          type: string
+          description: Error description if the order failed. Present only when status is Failed.
+          example: example_value
+    Error:
+      type: object
+      description: Standard error response.
+      required:
+      - code
+      - message
+      properties:
+        code:
+          type: string
+          description: Machine-readable error code.
+          example: example_value
+        message:
+          type: string
+          description: Human-readable error message.
+          example: example_value
+        details:
+          type: string
+          description: Additional details about the error.
+          example: example_value
+    OrderCreate:
+      type: object
+      description: Request body for creating a new order.
+      required:
+      - basketId
+      - fileType
+      properties:
+        basketId:
+          type: string
+          description: The basket to generate the order from.
+          example: '500123'
+        fileType:
+          type: string
+          description: The desired output file format. Use the /filetypes endpoint to retrieve supported formats.
+          example: example_value
+  securitySchemes:
+    oauth2:
+      type: oauth2
+      description: OAuth2 client credentials flow for authenticating API requests. Obtain client_id and client_secret from your Moody's Analytics account.
+      flows:
+        clientCredentials:
+          tokenUrl: https://api.economy.com/data/v1/oauth2/token
+          scopes: {}
+externalDocs:
+  description: Moody's Data Buffet API Documentation
+  url: https://api.economy.com/data/v1/swagger

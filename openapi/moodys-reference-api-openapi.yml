@@ -1,0 +1,252 @@
+openapi: 3.1.0
+info:
+  title: Moody's Data Buffet Baskets Reference API
+  version: 1.0.0
+  description: The Moody's Analytics Data Buffet API provides programmatic access to international and subnational economic, demographic, and financial time series data and forecasts. It enables retrieval of individual series or baskets of data, supports frequency conversion, mathematical transformations, date range filtering, and vintage/versioning selection. Code samples are available in C#, Java, Python, and R.
+  contact:
+    name: Moody's Analytics
+    url: https://www.economy.com/products/tools/data-buffet
+  license:
+    name: Moody's Analytics Terms of Use
+    url: https://www.moodys.com/web/en/us/about/legal/terms-of-use.html
+servers:
+- url: https://api.economy.com/data/v1
+  description: Moody's Analytics Data Buffet production server
+security:
+- oauth2: []
+tags:
+- name: Reference
+  description: Operations for retrieving frequency, vintage, and file type metadata
+paths:
+  /oauth2/token:
+    post:
+      operationId: getAccessToken
+      summary: Moody's Obtain an Access Token
+      description: Authenticates using OAuth2 client credentials and returns a bearer access token for subsequent API requests.
+      tags:
+      - Reference
+      security: []
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              required:
+              - grant_type
+              - client_id
+              - client_secret
+              properties:
+                grant_type:
+                  type: string
+                  enum:
+                  - client_credentials
+                  description: The OAuth2 grant type. Must be client_credentials.
+                client_id:
+                  type: string
+                  description: The API client ID issued by Moody's Analytics.
+                client_secret:
+                  type: string
+                  description: The API client secret issued by Moody's Analytics.
+      responses:
+        '200':
+          description: Successfully obtained access token
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AccessToken'
+        '400':
+          description: Invalid grant type or missing credentials
+        '401':
+          description: Invalid client credentials
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /frequencies:
+    get:
+      operationId: listFrequencies
+      summary: Moody's List Available Data Frequencies
+      description: Returns a list of all supported data frequencies (e.g., annual, quarterly, monthly, weekly, daily) that can be used for frequency conversion when retrieving series.
+      tags:
+      - Reference
+      responses:
+        '200':
+          description: Successfully retrieved frequency list
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/FrequencyInfo'
+        '401':
+          description: Unauthorized - invalid or expired token
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /vintages:
+    get:
+      operationId: listVintages
+      summary: Moody's List Available Vintages for a Series
+      description: Returns a list of available data vintages (historical revisions) for a specific series. Vintages enable access to previous versions of data as originally published.
+      tags:
+      - Reference
+      parameters:
+      - $ref: '#/components/parameters/mnemonic'
+      responses:
+        '200':
+          description: Successfully retrieved vintage list
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Vintage'
+        '400':
+          description: Invalid mnemonic
+        '401':
+          description: Unauthorized - invalid or expired token
+        '404':
+          description: Series mnemonic not found
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /filetypes:
+    get:
+      operationId: listFileTypes
+      summary: Moody's List Supported Output File Types
+      description: Returns a list of supported output file types for order data generation (e.g., CSV, Excel, XML, JSON).
+      tags:
+      - Reference
+      responses:
+        '200':
+          description: Successfully retrieved file type list
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/FileType'
+        '401':
+          description: Unauthorized - invalid or expired token
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+components:
+  schemas:
+    FrequencyInfo:
+      type: object
+      description: Metadata about a supported data frequency.
+      required:
+      - code
+      - name
+      properties:
+        code:
+          type: string
+          description: Single-character frequency code used in API parameters.
+          enum:
+          - A
+          - Q
+          - M
+          - W
+          - D
+          example: A
+        name:
+          type: string
+          description: Human-readable frequency name.
+          enum:
+          - Annual
+          - Quarterly
+          - Monthly
+          - Weekly
+          - Daily
+          example: Annual
+        description:
+          type: string
+          description: Description of the frequency and its typical use cases.
+          example: A sample description.
+    Vintage:
+      type: object
+      description: Metadata about a data vintage representing a historical revision of a series.
+      required:
+      - vintageDate
+      properties:
+        vintageDate:
+          type: string
+          format: date
+          description: The date this vintage was published.
+          example: '2026-01-15'
+        description:
+          type: string
+          description: Description of the vintage release context.
+          example: A sample description.
+    FileType:
+      type: object
+      description: Metadata about a supported output file type.
+      required:
+      - code
+      - name
+      properties:
+        code:
+          type: string
+          description: File type code used in order creation.
+          example: example_value
+        name:
+          type: string
+          description: Human-readable file type name.
+          example: Example Title
+        extension:
+          type: string
+          description: File extension (e.g., csv, xlsx, json, xml).
+          example: example_value
+        description:
+          type: string
+          description: Description of the file format.
+          example: A sample description.
+    AccessToken:
+      type: object
+      description: OAuth2 access token response.
+      required:
+      - access_token
+      - token_type
+      - expires_in
+      properties:
+        access_token:
+          type: string
+          description: The bearer access token for authenticating API requests.
+          example: example_value
+        token_type:
+          type: string
+          description: The type of token issued. Always "Bearer".
+          enum:
+          - Bearer
+          example: Bearer
+        expires_in:
+          type: integer
+          description: The number of seconds until the access token expires.
+          example: 10
+  parameters:
+    mnemonic:
+      name: mnemonic
+      in: query
+      description: The unique series mnemonic identifier. Mnemonics follow the Data Buffet naming convention, e.g., FGDP_US for US GDP or EMPLPAY.IUSA for US total nonfarm payrolls.
+      required: true
+      schema:
+        type: string
+      examples:
+        usGdp:
+          summary: US Gross Domestic Product
+          value: FGDP_US
+        usPayrolls:
+          summary: US Total Nonfarm Payrolls
+          value: EMPLPAY.IUSA
+  securitySchemes:
+    oauth2:
+      type: oauth2
+      description: OAuth2 client credentials flow for authenticating API requests. Obtain client_id and client_secret from your Moody's Analytics account.
+      flows:
+        clientCredentials:
+          tokenUrl: https://api.economy.com/data/v1/oauth2/token
+          scopes: {}
+externalDocs:
+  description: Moody's Data Buffet API Documentation
+  url: https://api.economy.com/data/v1/swagger

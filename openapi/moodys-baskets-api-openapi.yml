@@ -1,0 +1,289 @@
+openapi: 3.1.0
+info:
+  title: Moody's Data Buffet Baskets API
+  version: 1.0.0
+  description: The Moody's Analytics Data Buffet API provides programmatic access to international and subnational economic, demographic, and financial time series data and forecasts. It enables retrieval of individual series or baskets of data, supports frequency conversion, mathematical transformations, date range filtering, and vintage/versioning selection. Code samples are available in C#, Java, Python, and R.
+  contact:
+    name: Moody's Analytics
+    url: https://www.economy.com/products/tools/data-buffet
+  license:
+    name: Moody's Analytics Terms of Use
+    url: https://www.moodys.com/web/en/us/about/legal/terms-of-use.html
+servers:
+- url: https://api.economy.com/data/v1
+  description: Moody's Analytics Data Buffet production server
+security:
+- oauth2: []
+tags:
+- name: Baskets
+  description: Operations for creating and managing collections of series requests
+paths:
+  /baskets:
+    get:
+      operationId: listBaskets
+      summary: Moody's List All Baskets
+      description: Returns a list of all data baskets owned by the authenticated user. A basket is a saved collection of series requests that can be executed as an order.
+      tags:
+      - Baskets
+      responses:
+        '200':
+          description: Successfully retrieved basket list
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Basket'
+        '401':
+          description: Unauthorized - invalid or expired token
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+    post:
+      operationId: createBasket
+      summary: Moody's Create a New Basket
+      description: Creates a new data basket with a collection of series requests. Baskets can be saved and reused to generate orders for bulk data retrieval.
+      tags:
+      - Baskets
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BasketCreate'
+      responses:
+        '201':
+          description: Successfully created basket
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Basket'
+        '400':
+          description: Invalid basket definition
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Unauthorized - invalid or expired token
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /baskets/{basketId}:
+    get:
+      operationId: getBasket
+      summary: Moody's Retrieve a Specific Basket
+      description: Returns the details of a specific basket including its series requests and configuration.
+      tags:
+      - Baskets
+      parameters:
+      - $ref: '#/components/parameters/basketId'
+      responses:
+        '200':
+          description: Successfully retrieved basket
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Basket'
+        '401':
+          description: Unauthorized - invalid or expired token
+        '404':
+          description: Basket not found
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+    put:
+      operationId: updateBasket
+      summary: Moody's Update an Existing Basket
+      description: Updates the series requests and configuration of an existing basket.
+      tags:
+      - Baskets
+      parameters:
+      - $ref: '#/components/parameters/basketId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BasketCreate'
+      responses:
+        '200':
+          description: Successfully updated basket
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Basket'
+        '400':
+          description: Invalid basket definition
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Unauthorized - invalid or expired token
+        '404':
+          description: Basket not found
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+    delete:
+      operationId: deleteBasket
+      summary: Moody's Delete a Basket
+      description: Permanently deletes a basket and its associated series requests.
+      tags:
+      - Baskets
+      parameters:
+      - $ref: '#/components/parameters/basketId'
+      responses:
+        '204':
+          description: Successfully deleted basket
+        '401':
+          description: Unauthorized - invalid or expired token
+        '404':
+          description: Basket not found
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+components:
+  schemas:
+    BasketCreate:
+      type: object
+      description: Request body for creating or updating a basket.
+      required:
+      - name
+      - series
+      properties:
+        name:
+          type: string
+          description: User-defined name for the basket.
+          example: Example Title
+        description:
+          type: string
+          description: Optional description of the basket.
+          example: A sample description.
+        series:
+          type: array
+          description: The series requests to include in the basket.
+          items:
+            $ref: '#/components/schemas/SeriesRequest'
+          example: []
+    Basket:
+      type: object
+      description: A saved collection of series requests that can be executed as an order for bulk data retrieval.
+      required:
+      - basketId
+      - name
+      - series
+      properties:
+        basketId:
+          type: string
+          description: Unique identifier for the basket.
+          example: '500123'
+        name:
+          type: string
+          description: User-defined name for the basket.
+          example: Example Title
+        description:
+          type: string
+          description: Optional description of the basket contents and purpose.
+          example: A sample description.
+        series:
+          type: array
+          description: The series requests contained in the basket.
+          items:
+            $ref: '#/components/schemas/SeriesRequest'
+          example: []
+        createdAt:
+          type: string
+          format: date-time
+          description: When the basket was created.
+          example: '2026-01-15T10:30:00Z'
+        updatedAt:
+          type: string
+          format: date-time
+          description: When the basket was last modified.
+          example: '2026-01-15T10:30:00Z'
+    Error:
+      type: object
+      description: Standard error response.
+      required:
+      - code
+      - message
+      properties:
+        code:
+          type: string
+          description: Machine-readable error code.
+          example: example_value
+        message:
+          type: string
+          description: Human-readable error message.
+          example: example_value
+        details:
+          type: string
+          description: Additional details about the error.
+          example: example_value
+    SeriesRequest:
+      type: object
+      description: A single series request within a multi-series call.
+      required:
+      - mnemonic
+      properties:
+        mnemonic:
+          type: string
+          description: The unique series mnemonic identifier.
+          example: example_value
+        freq:
+          type: string
+          description: Desired output frequency.
+          enum:
+          - A
+          - Q
+          - M
+          - W
+          - D
+          example: A
+        trans:
+          type: string
+          description: Mathematical transformation to apply.
+          enum:
+          - Level
+          - SimpleDifference
+          - PercentChange
+          - AnnualizedGrowth
+          - YearOverYearPercentChange
+          - CompoundAnnualGrowthRate
+          example: Level
+        startDate:
+          type: string
+          format: date
+          description: Start date for the data range.
+          example: '2026-01-15'
+        endDate:
+          type: string
+          format: date
+          description: End date for the data range.
+          example: '2026-01-15'
+        vintage:
+          type: string
+          format: date
+          description: Vintage date for historical data revisions.
+          example: '2026-01-15'
+  parameters:
+    basketId:
+      name: basketId
+      in: path
+      description: The unique identifier of the basket.
+      required: true
+      schema:
+        type: string
+  securitySchemes:
+    oauth2:
+      type: oauth2
+      description: OAuth2 client credentials flow for authenticating API requests. Obtain client_id and client_secret from your Moody's Analytics account.
+      flows:
+        clientCredentials:
+          tokenUrl: https://api.economy.com/data/v1/oauth2/token
+          scopes: {}
+externalDocs:
+  description: Moody's Data Buffet API Documentation
+  url: https://api.economy.com/data/v1/swagger

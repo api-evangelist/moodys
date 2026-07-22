@@ -1,0 +1,265 @@
+generated: '2026-06-20'
+method: derived
+status: candidate
+source: derived from OpenAPI/Swagger operations in openapi/ (no official Moody's MCP server found on npm, the official
+  MCP registry, or Moody's docs as of this round)
+server:
+  name: moodys
+  transport: http
+tools:
+- name: list_baskets
+  description: Moody's List All Baskets
+  source_operation: openapi/moodys-baskets-api-openapi.yml#listBaskets
+- name: create_basket
+  description: Moody's Create a New Basket
+  source_operation: openapi/moodys-baskets-api-openapi.yml#createBasket
+- name: get_basket
+  description: Moody's Retrieve a Specific Basket
+  source_operation: openapi/moodys-baskets-api-openapi.yml#getBasket
+- name: update_basket
+  description: Moody's Update an Existing Basket
+  source_operation: openapi/moodys-baskets-api-openapi.yml#updateBasket
+- name: delete_basket
+  description: Moody's Delete a Basket
+  source_operation: openapi/moodys-baskets-api-openapi.yml#deleteBasket
+- name: check_health
+  description: Moody's Check Service Health
+  source_operation: openapi/moodys-health-api-openapi.yml#checkHealth
+- name: list_orders
+  description: Moody's List All Orders
+  source_operation: openapi/moodys-orders-api-openapi.yml#listOrders
+- name: create_order
+  description: Moody's Create a New Order
+  source_operation: openapi/moodys-orders-api-openapi.yml#createOrder
+- name: get_order
+  description: Moody's Retrieve a Specific Order
+  source_operation: openapi/moodys-orders-api-openapi.yml#getOrder
+- name: download_order
+  description: Moody's Download Order Output
+  source_operation: openapi/moodys-orders-api-openapi.yml#downloadOrder
+- name: get_access_token
+  description: Moody's Obtain an Access Token
+  source_operation: openapi/moodys-reference-api-openapi.yml#getAccessToken
+- name: list_frequencies
+  description: Moody's List Available Data Frequencies
+  source_operation: openapi/moodys-reference-api-openapi.yml#listFrequencies
+- name: list_vintages
+  description: Moody's List Available Vintages for a Series
+  source_operation: openapi/moodys-reference-api-openapi.yml#listVintages
+- name: list_file_types
+  description: Moody's List Supported Output File Types
+  source_operation: openapi/moodys-reference-api-openapi.yml#listFileTypes
+- name: search_series
+  description: Moody's Search for Available Series
+  source_operation: openapi/moodys-search-api-openapi.yml#searchSeries
+- name: get_series
+  description: Moody's Retrieve a Single Time Series
+  source_operation: openapi/moodys-series-api-openapi.yml#getSeries
+- name: get_multi_series
+  description: Moody's Retrieve Multiple Time Series
+  source_operation: openapi/moodys-series-api-openapi.yml#getMultiSeries
+- name: forecast_forecast_batch
+  description: The forecast endpoint that takes in an array of model inputs and returns the forecast
+  source_operation: openapi/moodys-autocycle-api-swagger.json#Forecast_ForecastBatch
+- name: health_check_health_check
+  description: ''
+  source_operation: openapi/moodys-autocycle-api-swagger.json#HealthCheck_HealthCheck
+- name: vin_vin_lookup
+  description: The vins endpoint takes in make, model, model year and model version of vehicle and performs a vin
+    look up
+  source_operation: openapi/moodys-autocycle-api-swagger.json#Vin_VinLookup
+- name: forecast_look_up_forecast
+  description: To Lookup forecast based on input list
+  source_operation: openapi/moodys-municipal-api-swagger.json#Forecast_LookUpForecast
+- name: health_check_health_check
+  description: ''
+  source_operation: openapi/moodys-municipal-api-swagger.json#HealthCheck_HealthCheck
+- name: audit_audit_project_async
+  description: Gets the records for a search query.
+  source_operation: openapi/moodys-scenario-studio-api-swagger.json#Audit_AuditProjectAsync
+- name: audit_audit_size_async
+  description: Gets the record count for a search query.
+  source_operation: openapi/moodys-scenario-studio-api-swagger.json#Audit_AuditSizeAsync
+- name: universe_scenarios_list_async
+  description: Get the list of base/moody's scenarios.
+  source_operation: openapi/moodys-scenario-studio-api-swagger.json#Universe_ScenariosListAsync
+- name: universe_get_scenario_async
+  description: Gets base/moody's scenario detail.
+  source_operation: openapi/moodys-scenario-studio-api-swagger.json#Universe_GetScenarioAsync
+- name: universe_scenario_details_async
+  description: Gets the full details on a base scenario.
+  source_operation: openapi/moodys-scenario-studio-api-swagger.json#Universe_ScenarioDetailsAsync
+- name: universe_search_base_scenarios_list_async
+  description: Search base scenarios.
+  source_operation: openapi/moodys-scenario-studio-api-swagger.json#Universe_SearchBaseScenariosListAsync
+- name: universe_search_base_scenarios_list_count_async
+  description: Search base scenarios.
+  source_operation: openapi/moodys-scenario-studio-api-swagger.json#Universe_SearchBaseScenariosListCountAsync
+- name: universe_clients_list_async
+  description: Gets the list of permissionable clients (in the context of the person making the request).
+  source_operation: openapi/moodys-scenario-studio-api-swagger.json#Universe_ClientsListAsync
+- name: health_get
+  description: Gets the health of the service.
+  source_operation: openapi/moodys-scenario-studio-api-swagger.json#Health_Get
+- name: project_get_list_async
+  description: Gets the list of projects the user has access to.
+  source_operation: openapi/moodys-scenario-studio-api-swagger.json#Project_GetListAsync
+- name: project_get_project_async
+  description: Gets information about a specific project.
+  source_operation: openapi/moodys-scenario-studio-api-swagger.json#Project_GetProjectAsync
+- name: project_delete_async
+  description: Deletes a project.
+  source_operation: openapi/moodys-scenario-studio-api-swagger.json#Project_DeleteAsync
+- name: project_build_async
+  description: Starts the build process for a project.
+  source_operation: openapi/moodys-scenario-studio-api-swagger.json#Project_BuildAsync
+- name: project_get_checkpoints_async
+  description: Gets the list of checkpoints for a scenario.
+  source_operation: openapi/moodys-scenario-studio-api-swagger.json#Project_GetCheckpointsAsync
+- name: project_upsert_contributors_async
+  description: Adds contributors to a project.
+  source_operation: openapi/moodys-scenario-studio-api-swagger.json#Project_UpsertContributorsAsync
+- name: data_series_get_bulk_series_data_async
+  description: Gets multiple series and/or expressions.
+  source_operation: openapi/moodys-scenario-studio-api-swagger.json#DataSeries_GetBulkSeriesDataAsync
+- name: data_series_get_bulk_series_data_post_async
+  description: Gets multiple series and/or expressions.
+  source_operation: openapi/moodys-scenario-studio-api-swagger.json#DataSeries_GetBulkSeriesDataPostAsync
+- name: project_geo_list_async
+  description: Gets the list of geographies for a project.
+  source_operation: openapi/moodys-scenario-studio-api-swagger.json#Project_GeoListAsync
+- name: order_get_order_async
+  description: Gets information on any single order.
+  source_operation: openapi/moodys-scenario-studio-api-swagger.json#Order_GetOrderAsync
+- name: order_get_project_build_order_async
+  description: Checks the project build status.
+  source_operation: openapi/moodys-scenario-studio-api-swagger.json#Order_GetProjectBuildOrderAsync
+- name: project_get_scenarios_async
+  description: Gets the scenarios within a project.
+  source_operation: openapi/moodys-scenario-studio-api-swagger.json#Project_GetScenariosAsync
+- name: scenario_get_async
+  description: Gets information about a specific scenario.
+  source_operation: openapi/moodys-scenario-studio-api-swagger.json#Scenario_GetAsync
+- name: scenario_edit_options_async
+  description: Update the scenario options.
+  source_operation: openapi/moodys-scenario-studio-api-swagger.json#Scenario_EditOptionsAsync
+- name: series_get_series_async
+  description: Gets information about a specific series.
+  source_operation: openapi/moodys-scenario-studio-api-swagger.json#Series_GetSeriesAsync
+- name: series_create_checkpoint_async
+  description: Creates new checkpoint
+  source_operation: openapi/moodys-scenario-studio-api-swagger.json#Series_CreateCheckpointAsync
+- name: scenario_restore_checkpoint
+  description: Restore checkpoint's series to a scenario
+  source_operation: openapi/moodys-scenario-studio-api-swagger.json#Scenario_RestoreCheckpoint
+- name: data_series_save_local_series_data_async
+  description: Saves local series data.
+  source_operation: openapi/moodys-scenario-studio-api-swagger.json#DataSeries_SaveLocalSeriesDataAsync
+- name: data_series_clear_local_add_factors_async
+  description: Clears add factors on series in which you have claimed.
+  source_operation: openapi/moodys-scenario-studio-api-swagger.json#DataSeries_ClearLocalAddFactorsAsync
+- name: interpolation_get_interpolation_async
+  description: Runs an interpolation calculation (annual to quarterly)
+  source_operation: openapi/moodys-scenario-studio-api-swagger.json#Interpolation_GetInterpolationAsync
+- name: series_edit_equation
+  description: Edits the equation of a series.
+  source_operation: openapi/moodys-scenario-studio-api-swagger.json#Series_EditEquation
+- name: series_change_last_historical
+  description: Changes the last historical end point for a series.
+  source_operation: openapi/moodys-scenario-studio-api-swagger.json#Series_ChangeLastHistorical
+- name: series_get_sharedown_info_async
+  description: Gets sharedown information for a series.
+  source_operation: openapi/moodys-scenario-studio-api-swagger.json#Series_GetSharedownInfoAsync
+- name: series_checkout_sharedown_async
+  description: Checks out all variables within a sharedown chain, and starts the sharedown calculation.
+  source_operation: openapi/moodys-scenario-studio-api-swagger.json#Series_CheckoutSharedownAsync
+- name: series_check_in
+  description: "Releases a series/unlocks a series without writing data to central.\r"
+  source_operation: openapi/moodys-scenario-studio-api-swagger.json#Series_CheckIn
+- name: series_check_out
+  description: Claim/check out series.
+  source_operation: openapi/moodys-scenario-studio-api-swagger.json#Series_CheckOut
+- name: series_commit
+  description: Push to central/commit a series- writes local data to central.
+  source_operation: openapi/moodys-scenario-studio-api-swagger.json#Series_Commit
+- name: series_edit_custom_series
+  description: Edits a custom series.
+  source_operation: openapi/moodys-scenario-studio-api-swagger.json#Series_EditCustomSeries
+- name: series_create_custom_series
+  description: Creates new custom series.
+  source_operation: openapi/moodys-scenario-studio-api-swagger.json#Series_CreateCustomSeries
+- name: series_delete_custom_series
+  description: Deletes custom series.
+  source_operation: openapi/moodys-scenario-studio-api-swagger.json#Series_DeleteCustomSeries
+- name: series_endogenize_bulk
+  description: Sets series' state to endogenous.
+  source_operation: openapi/moodys-scenario-studio-api-swagger.json#Series_EndogenizeBulk
+- name: series_exogenize_bulk
+  description: Sets series' state to exogenous.
+  source_operation: openapi/moodys-scenario-studio-api-swagger.json#Series_ExogenizeBulk
+- name: series_exogenize_through_bulk
+  description: Sets series to be partially exogenized.
+  source_operation: openapi/moodys-scenario-studio-api-swagger.json#Series_ExogenizeThroughBulk
+- name: series_get_series_async
+  description: Gets series info for a list of series/expressions.
+  source_operation: openapi/moodys-scenario-studio-api-swagger.json#Series_GetSeriesAsync
+- name: series_reendogenize
+  description: Starts an add factor solve for one or more series.
+  source_operation: openapi/moodys-scenario-studio-api-swagger.json#Series_Reendogenize
+- name: scenario_solve_central_async
+  description: Performs a central solve on a scenario.
+  source_operation: openapi/moodys-scenario-studio-api-swagger.json#Scenario_SolveCentralAsync
+- name: scenario_solve_local_async
+  description: Performs a local solve on a scenario.
+  source_operation: openapi/moodys-scenario-studio-api-swagger.json#Scenario_SolveLocalAsync
+- name: scenario_create_transfer_order_async
+  description: Imports data from another scenario.
+  source_operation: openapi/moodys-scenario-studio-api-swagger.json#Scenario_CreateTransferOrderAsync
+- name: series_get_spec_variable_async
+  description: Gets all meta information for a series.
+  source_operation: openapi/moodys-scenario-studio-api-swagger.json#Series_GetSpecVariableAsync
+- name: project_remove_scenario_async
+  description: Removes a scenario from a project.
+  source_operation: openapi/moodys-scenario-studio-api-swagger.json#Project_RemoveScenarioAsync
+- name: project_clone_scenario_async
+  description: Creates a copy of a scenario and adds it to a project.
+  source_operation: openapi/moodys-scenario-studio-api-swagger.json#Project_CloneScenarioAsync
+- name: project_copy_scenario_async
+  description: Adds an existing scenario to a project
+  source_operation: openapi/moodys-scenario-studio-api-swagger.json#Project_CopyScenarioAsync
+- name: scenario_reendogenize_async
+  description: Performs an add-factor solve.
+  source_operation: openapi/moodys-scenario-studio-api-swagger.json#Scenario_ReendogenizeAsync
+- name: series_search_get_count_async
+  description: Gets the record count for a search query.
+  source_operation: openapi/moodys-scenario-studio-api-swagger.json#SeriesSearch_GetCountAsync
+- name: series_search_get_results_async
+  description: Gets the records for a search query.
+  source_operation: openapi/moodys-scenario-studio-api-swagger.json#SeriesSearch_GetResultsAsync
+- name: project_get_series_async
+  description: Gets the list of all series within a project.
+  source_operation: openapi/moodys-scenario-studio-api-swagger.json#Project_GetSeriesAsync
+- name: project_get_checked_out_series_async
+  description: Gets the list of series checked out by the current user.
+  source_operation: openapi/moodys-scenario-studio-api-swagger.json#Project_GetCheckedOutSeriesAsync
+- name: project_get_exogenized_series_async
+  description: Gets the list of the exogenized series in a project.
+  source_operation: openapi/moodys-scenario-studio-api-swagger.json#Project_GetExogenizedSeriesAsync
+- name: project_save_settings_async
+  description: Updates the project settings.
+  source_operation: openapi/moodys-scenario-studio-api-swagger.json#Project_SaveSettingsAsync
+- name: project_create_async
+  description: Creates a new project.
+  source_operation: openapi/moodys-scenario-studio-api-swagger.json#Project_CreateAsync
+- name: universe_search_project_scenarios_list_async
+  description: Search client scenarios.
+  source_operation: openapi/moodys-scenario-studio-api-swagger.json#Universe_SearchProjectScenariosListAsync
+- name: universe_search_project_scenarios_list_count_async
+  description: Search client scenarios.
+  source_operation: openapi/moodys-scenario-studio-api-swagger.json#Universe_SearchProjectScenariosListCountAsync
+- name: project_search_projects_async
+  description: Gets the search records when searching for projects.
+  source_operation: openapi/moodys-scenario-studio-api-swagger.json#Project_SearchProjectsAsync
+- name: project_search_count_async
+  description: Gets the search count when searching for projects.
+  source_operation: openapi/moodys-scenario-studio-api-swagger.json#Project_SearchCountAsync

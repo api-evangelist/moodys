@@ -12,6 +12,7 @@ apis:
       - Screening
     image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
     humanURL: https://www.kompany.com/kycapi/discover
+    baseURL: https://api.kompany.com
     properties:
       - url: https://www.kompany.com/kycapi/console-v2
         type: Documentation
@@ -19,7 +20,9 @@ apis:
 
           https://www.kompany.com/kycapi/docs/resources/resources/customer-facing-documents/generate-a-client-from-openapi-definition
         type: OpenAPI
-    description: "With evolving regulatory pressures and bad actors becoming increasingly adept at concealing themselves, the need for deep understanding of business partners, customers, and other third parties is more critical than ever to mitigate reputational damage and risk exposure. Moody\x19 s KYC technology, data, and analytical capabilities provide industry-leading customer solutions for Know Your Customer, anti-money laundering, compliance, and counter-party risk."
+      - url: https://www.kompany.com/kycapi/docs/guides/guides/working-with-endpoints/working-with-webhooks
+        type: Webhooks
+    description: "With evolving regulatory pressures and bad actors becoming increasingly adept at concealing themselves, the need for deep understanding of business partners, customers, and other third parties is more critical than ever to mitigate reputational damage and risk exposure. Moody's KYC technology, data, and analytical capabilities provide industry-leading customer solutions for Know Your Customer, anti-money laundering, compliance, and counter-party risk."
   - aid: moodys:data-buffet-api
     name: Moody's Data Buffet API
     tags:
@@ -35,11 +38,35 @@ apis:
     humanURL: https://www.economy.com/products/tools/data-buffet
     properties:
       - url: https://api.economy.com/data/v1/swagger
-        type: Documentation
+        type: APIReference
       - url: https://github.com/moodysanalytics/databuffet-api-codesamples
         type: GitHubOrganization
-      - url: openapi/moodys-data-buffet-api-openapi.yml
+      - url: openapi/moodys-series-api-openapi.yml
         type: OpenAPI
+      - url: openapi/moodys-baskets-api-openapi.yml
+        type: OpenAPI
+      - url: openapi/moodys-orders-api-openapi.yml
+        type: OpenAPI
+      - url: openapi/moodys-search-api-openapi.yml
+        type: OpenAPI
+      - url: openapi/moodys-reference-api-openapi.yml
+        type: OpenAPI
+      - url: openapi/moodys-health-api-openapi.yml
+        type: OpenAPI
+      - url: overlays/moodys-series-api-overlay.yaml
+        type: Overlay
+      - url: overlays/moodys-baskets-api-overlay.yaml
+        type: Overlay
+      - url: overlays/moodys-orders-api-overlay.yaml
+        type: Overlay
+      - url: overlays/moodys-search-api-overlay.yaml
+        type: Overlay
+      - url: overlays/moodys-reference-api-overlay.yaml
+        type: Overlay
+      - url: overlays/moodys-health-api-overlay.yaml
+        type: Overlay
+      - url: collections/moodys-data-buffet-api.postman_collection.json
+        type: Postman
       - url: json-schema/moodys-time-series-schema.json
         type: JSONSchema
       - url: json-ld/moodys-context.jsonld
@@ -63,9 +90,13 @@ apis:
     humanURL: https://hub.moodysanalytics.com/products
     properties:
       - url: https://api.economy.com/scenario-studio/v2/swagger
-        type: Documentation
+        type: APIReference
       - url: https://github.com/moodysanalytics/scenario-studio-api-codesamples
         type: GitHubOrganization
+      - url: openapi/moodys-scenario-studio-api-swagger.json
+        type: OpenAPI
+      - url: overlays/moodys-scenario-studio-api-overlay.yaml
+        type: Overlay
     description: >-
       Scenario Studio delivers Moody's Analytics Global Macroeconomic Model that emphasizes stability, forecast accuracy
       and consistency. The API retrieves custom scenarios generated in the Scenario Studio platform.
@@ -84,7 +115,11 @@ apis:
     humanURL: https://hub.moodysanalytics.com/products
     properties:
       - url: https://api.economy.com/autocycle/v1/swagger
-        type: Documentation
+        type: APIReference
+      - url: openapi/moodys-autocycle-api-swagger.json
+        type: OpenAPI
+      - url: overlays/moodys-autocycle-api-overlay.yaml
+        type: Overlay
     description: >-
       Retrieves forecasts of vehicle prices from AutoCycle models. AutoCycle is a software solution to forecast car
       prices, incorporating economic data and scenarios from Moody's Analytics.
@@ -122,7 +157,11 @@ apis:
     humanURL: https://hub.moodysanalytics.com/products
     properties:
       - url: https://api.economy.com/muni/v1/swagger
-        type: Documentation
+        type: APIReference
+      - url: openapi/moodys-municipal-api-swagger.json
+        type: OpenAPI
+      - url: overlays/moodys-municipal-api-overlay.yaml
+        type: Overlay
     description: >-
       Retrieves probability of default and loss rates for the municipal market under baseline and stress scenarios.
       Enables scoring of municipal credit risk using Moody's Analytics models.
@@ -312,7 +351,7 @@ tags:
   - Risk
   - Screening
 kind: contract
-image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/moodys.png
 access: 3rd-Party
 common:
   - type: AgenticAccess
@@ -323,6 +362,38 @@ common:
     url: authentication/moodys-authentication.yml
   - type: OAuthScopes
     url: scopes/moodys-scopes.yml
+  - type: Packages
+    url: packages/moodys-packages.yml
+  - type: SDKs
+    url: packages/moodys-packages.yml
+  - type: CLI
+    url: cli/moodys-cli.yml
+  - type: WellKnown
+    url: well-known/moodys-well-known.yml
+  - type: MCPServer
+    url: mcp/moodys-mcp.yml
+  - type: LLMsTxt
+    url: llms/moodys-llms.txt
+  - type: Conformance
+    url: conformance/moodys-conformance.yml
+  - type: ErrorCatalog
+    url: errors/moodys-problem-types.yml
+  - type: Lifecycle
+    url: lifecycle/moodys-lifecycle.yml
+  - type: Conventions
+    url: conventions/moodys-conventions.yml
+  - type: DataModel
+    url: data-model/moodys-data-model.yml
+  - type: Sandbox
+    url: sandbox/moodys-sandbox.yml
+  - type: AgentSkill
+    url: skills/_index.yml
+  - type: Webhooks
+    url: https://www.kompany.com/kycapi/docs/guides/guides/working-with-endpoints/working-with-webhooks
+  - type: TermsOfService
+    url: https://www.moodys.com/termsofuseinfo.aspx
+  - type: PrivacyPolicy
+    url: https://www.moodys.com/privatepolicy.aspx
   - url: https://www.kompany.com/
     type: Portal
   - url: https://www.kompany.com/kycapi/dashboard/plans
@@ -388,7 +459,7 @@ common:
   - url: https://www.rms.com/developer-resources
     type: Resources
 created: '2024-09-25T00:00:00.000Z'
-modified: '2026-05-19'
+modified: '2026-06-20'
 position: Consuming
 description: >-
   Moody's provides a comprehensive suite of APIs spanning KYC compliance, economic data and forecasting, credit risk

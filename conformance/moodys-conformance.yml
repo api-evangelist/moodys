@@ -1,0 +1,40 @@
+generated: '2026-06-20'
+method: derived
+source: 'derived from securityDefinitions/securitySchemes, response shapes, and tags across openapi/; no published
+  compliance/certification program found (trust-center probe: none)'
+standards:
+- id: oauth2
+  conforms: true
+  evidence: All Moody's Analytics economy.com APIs (Data Buffet, Scenario Studio, AutoCycle, Muni) declare OAuth2
+    client-credentials securityDefinitions with per-product token endpoints (e.g. https://api.economy.com/data/v1/oauth2/token)
+- id: oidc
+  conforms: false
+  evidence: no openIdConnect security scheme and no /.well-known/openid-configuration on any API host (probed 404)
+- id: rfc9457-problem-details
+  conforms: false
+  evidence: error responses use a custom Error {code,message} envelope, not application/problem+json
+- id: json:api
+  conforms: false
+  evidence: plain JSON payloads; no JSON:API media type
+- id: fhir
+  conforms: false
+  evidence: not a healthcare API; no FHIR resource shapes
+- id: fapi
+  conforms: false
+  evidence: no FAPI profile claims in specs or docs
+- id: scim
+  conforms: false
+  evidence: no SCIM paths
+- id: odata
+  conforms: false
+  evidence: no OData conventions
+- id: psd2
+  conforms: false
+  evidence: not a PSD2/open-banking surface
+- id: pagination
+  conforms: false
+  evidence: no cursor/offset pagination parameters found in the Data Buffet, AutoCycle, or Muni specs; Scenario
+    Studio search endpoints accept POST search bodies
+- id: idempotency
+  conforms: false
+  evidence: no Idempotency-Key (or equivalent) header parameter in any spec

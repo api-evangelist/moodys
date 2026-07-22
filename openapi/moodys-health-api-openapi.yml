@@ -1,0 +1,76 @@
+openapi: 3.1.0
+info:
+  title: Moody's Data Buffet Baskets Health API
+  version: 1.0.0
+  description: The Moody's Analytics Data Buffet API provides programmatic access to international and subnational economic, demographic, and financial time series data and forecasts. It enables retrieval of individual series or baskets of data, supports frequency conversion, mathematical transformations, date range filtering, and vintage/versioning selection. Code samples are available in C#, Java, Python, and R.
+  contact:
+    name: Moody's Analytics
+    url: https://www.economy.com/products/tools/data-buffet
+  license:
+    name: Moody's Analytics Terms of Use
+    url: https://www.moodys.com/web/en/us/about/legal/terms-of-use.html
+servers:
+- url: https://api.economy.com/data/v1
+  description: Moody's Analytics Data Buffet production server
+security:
+- oauth2: []
+tags:
+- name: Health
+  description: Service health monitoring
+paths:
+  /health:
+    get:
+      operationId: checkHealth
+      summary: Moody's Check Service Health
+      description: Returns the current health status of the Data Buffet API service.
+      tags:
+      - Health
+      security: []
+      responses:
+        '200':
+          description: Service is healthy
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HealthStatus'
+        '503':
+          description: Service is unavailable
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+components:
+  schemas:
+    HealthStatus:
+      type: object
+      description: Service health status information.
+      required:
+      - status
+      properties:
+        status:
+          type: string
+          description: Overall service health status.
+          enum:
+          - Healthy
+          - Degraded
+          - Unavailable
+          example: Healthy
+        timestamp:
+          type: string
+          format: date-time
+          description: Timestamp of the health check.
+          example: '2026-01-15T10:30:00Z'
+        version:
+          type: string
+          description: Current API version.
+          example: example_value
+  securitySchemes:
+    oauth2:
+      type: oauth2
+      description: OAuth2 client credentials flow for authenticating API requests. Obtain client_id and client_secret from your Moody's Analytics account.
+      flows:
+        clientCredentials:
+          tokenUrl: https://api.economy.com/data/v1/oauth2/token
+          scopes: {}
+externalDocs:
+  description: Moody's Data Buffet API Documentation
+  url: https://api.economy.com/data/v1/swagger

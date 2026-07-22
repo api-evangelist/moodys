@@ -1,0 +1,21 @@
+generated: '2026-06-20'
+method: generated
+source: >-
+  Packaged Agent Skills generated from Moody's Data Buffet OpenAPI (per-tag
+  specs in ../openapi/). Every step is grounded in an operationId verified
+  verbatim in the referenced spec; cross-cutting rules cite ../conventions/,
+  ../errors/, ../authentication/ and ../rate-limits/. No provider-published
+  skills or AGENTS.md were found on Moody's surfaces.
+skills:
+  - file: moodys-retrieve-time-series.md
+    name: Retrieve Moody's economic time series
+    api: openapi/moodys-series-api-openapi.yml
+    operations: [getAccessToken, getSeries, getMultiSeries]
+  - file: moodys-basket-order-download.md
+    name: Run a Data Buffet basket and download the output
+    api: openapi/moodys-baskets-api-openapi.yml
+    operations: [getAccessToken, listBaskets, createBasket, createOrder, getOrder, downloadOrder]
+  - file: moodys-discover-series.md
+    name: Discover Data Buffet series and metadata
+    api: openapi/moodys-search-api-openapi.yml
+    operations: [getAccessToken, searchSeries, listFrequencies, listVintages, listFileTypes, checkHealth]

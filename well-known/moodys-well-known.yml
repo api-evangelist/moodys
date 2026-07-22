@@ -1,0 +1,59 @@
+generated: '2026-06-20'
+method: searched
+source: live probes of /.well-known/ on every apis.yml + OpenAPI servers host, 2026-06-20
+note: >-
+  No real /.well-known/ discovery documents were found on any Moody's host.
+  www.economy.com and www.moodys.com return HTTP 200 HTML application shells for
+  every /.well-known/ path (soft-404s — recorded below as html-shell), and
+  developer.rms.com serves its ReadMe docs shell for security.txt and
+  ai-plugin.json. No raw documents were saved because none exist.
+hosts:
+  - host: https://api.economy.com
+    documents:
+      - {path: /.well-known/security.txt, status: 404}
+      - {path: /.well-known/openid-configuration, status: 404}
+      - {path: /.well-known/oauth-authorization-server, status: 404}
+      - {path: /.well-known/api-catalog, status: 404}
+      - {path: /.well-known/ai-plugin.json, status: 404}
+  - host: https://www.economy.com
+    documents:
+      - {path: /.well-known/security.txt, status: 200, body: html-shell}
+      - {path: /.well-known/openid-configuration, status: 200, body: html-shell}
+      - {path: /.well-known/oauth-authorization-server, status: 200, body: html-shell}
+      - {path: /.well-known/api-catalog, status: 200, body: html-shell}
+      - {path: /.well-known/ai-plugin.json, status: 200, body: html-shell}
+  - host: https://hub.moodysanalytics.com
+    documents:
+      - {path: /.well-known/security.txt, status: 404}
+      - {path: /.well-known/openid-configuration, status: 404}
+      - {path: /.well-known/oauth-authorization-server, status: 404}
+      - {path: /.well-known/api-catalog, status: 404}
+      - {path: /.well-known/ai-plugin.json, status: 404}
+  - host: https://developer.rms.com
+    documents:
+      - {path: /.well-known/security.txt, status: 200, body: html-shell}
+      - {path: /.well-known/openid-configuration, status: 404}
+      - {path: /.well-known/oauth-authorization-server, status: 404}
+      - {path: /.well-known/api-catalog, status: 404}
+      - {path: /.well-known/ai-plugin.json, status: 200, body: html-shell}
+  - host: https://www.kompany.com
+    documents:
+      - {path: /.well-known/security.txt, status: 404}
+      - {path: /.well-known/openid-configuration, status: 404}
+      - {path: /.well-known/oauth-authorization-server, status: 404}
+      - {path: /.well-known/api-catalog, status: 404}
+      - {path: /.well-known/ai-plugin.json, status: 404}
+  - host: https://developer.moodys.com
+    documents:
+      - {path: /.well-known/security.txt, status: unreachable}
+      - {path: /.well-known/openid-configuration, status: unreachable}
+      - {path: /.well-known/oauth-authorization-server, status: unreachable}
+      - {path: /.well-known/api-catalog, status: unreachable}
+      - {path: /.well-known/ai-plugin.json, status: unreachable}
+  - host: https://www.moodys.com
+    documents:
+      - {path: /.well-known/security.txt, status: 200, body: html-shell}
+      - {path: /.well-known/openid-configuration, status: 200, body: html-shell}
+      - {path: /.well-known/oauth-authorization-server, status: 200, body: html-shell}
+      - {path: /.well-known/api-catalog, status: 200, body: html-shell}
+      - {path: /.well-known/ai-plugin.json, status: 200, body: html-shell}

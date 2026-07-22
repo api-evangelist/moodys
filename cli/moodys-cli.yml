@@ -1,0 +1,44 @@
+generated: '2026-06-20'
+method: searched
+source: https://github.com/moodysanalytics/apic
+name: APIC — Moody's Analytics API Command-Line Interface
+description: >-
+  First-party Python CLI for Moody's Analytics APIs. The current version supports
+  the ImpairmentStudio API (CECL/IFRS 9 impairment analysis): importing portfolio
+  data, running analyses, and downloading results, with job polling built in.
+install:
+  - method: git
+    command: git clone https://github.com/moodysanalytics/apic
+    notes: Python script; invoked as `python apic <service> <command>`. Not published to PyPI.
+configuration:
+  command: python apic is configure
+  credentials_file: ~/.ma/apic (Unix/macOS) or C:\Users\[USERNAME]\.ma\apic (Windows)
+  environment_variables: [MA_APIC_LOGIN, MA_APIC_PASSWORD]
+  precedence: command-line options > environment variables > configuration file
+  proxy: HTTP_PROXY / HTTPS_PROXY environment variables
+commands:
+  - group: general
+    commands:
+      - name: help
+        description: Appended to any command to display help (e.g. `python apic is help`).
+  - group: impairmentstudio (is)
+    commands:
+      - name: configure
+        description: Prompts for user login and password and writes the credential file.
+      - name: import
+        description: >-
+          Imports a zip of ImpairmentStudio input data files.
+          Options: --input-zip, --output-path, --job-name, --overwrite.
+      - name: run-analysis
+        description: >-
+          Runs an ImpairmentStudio analysis by id and optionally downloads the results zip.
+          Options: --analysis-id, --output-path, --no-wait.
+global_options:
+  - flag: --debug
+    description: Enable debug logging (e.g. prints job status while polling).
+  - flag: --login / --password
+    description: Override configured credentials for a single command.
+  - flag: --test-connect
+    description: Test connections to API servers that support a ping endpoint.
+  - flag: --version
+    description: Display the CLI version.

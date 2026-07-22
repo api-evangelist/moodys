@@ -1,0 +1,45 @@
+generated: '2026-06-20'
+method: searched
+source: >-
+  Searched npm (registry.npmjs.org search), PyPI, and the moodysanalytics GitHub org.
+  No first-party Moody's packages are published to npm, PyPI, Maven Central, NuGet,
+  pkg.go.dev, RubyGems, Packagist, or crates.io — npm "moodys" hits are all
+  third-party wrappers, and pypi "databuffet" is an unrelated DS3Lab project.
+  Moody's ships its first-party client code on GitHub instead.
+registry_hits: none
+packages:
+  - language: python
+    registry: github
+    name: apic
+    url: https://github.com/moodysanalytics/apic
+    install: git clone https://github.com/moodysanalytics/apic
+    official: true
+    kind: api-client-cli
+    notes: >-
+      APIC — first-party Python API client / command-line interface for Moody's
+      Analytics APIs (currently ImpairmentStudio). Command surface captured in
+      cli/moodys-cli.yml.
+  - language: multi (C#, Java, Python, R)
+    registry: github
+    name: databuffet-api-codesamples
+    url: https://github.com/moodysanalytics/databuffet-api-codesamples
+    install: git clone https://github.com/moodysanalytics/databuffet-api-codesamples
+    official: true
+    kind: code-samples
+    notes: First-party Data Buffet API client sample code for C#, R, Python, and Java, plus the API user guide.
+  - language: multi (R, Python)
+    registry: github
+    name: scenario-studio-api-codesamples
+    url: https://github.com/moodysanalytics/scenario-studio-api-codesamples
+    install: git clone https://github.com/moodysanalytics/scenario-studio-api-codesamples
+    official: true
+    kind: code-samples
+    notes: First-party Scenario Studio API sample code for R and Python.
+  - language: typescript
+    registry: github
+    name: MoodysAnalytics-PassFort-CustomCheckFramework
+    url: https://github.com/moodysanalytics/MoodysAnalytics-PassFort-CustomCheckFramework
+    install: git clone https://github.com/moodysanalytics/MoodysAnalytics-PassFort-CustomCheckFramework
+    official: true
+    kind: integration-framework
+    notes: Starter framework for integrating custom data providers into Moody's PassFort (KYC) platform.

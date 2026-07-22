@@ -1,0 +1,21 @@
+generated: '2026-06-20'
+method: searched
+source: https://www.kompany.com/kycapi/docs/guides/guides/get-started/sandbox-overview
+description: >-
+  Moody's kompany KYC API publishes a sandbox environment with a dedicated
+  "Sandbox overview" guide in its Get started docs (live, HTTP 200) and a
+  developer console (console-v2) for trying calls. The docs body is fully
+  client-rendered JavaScript, so the sandbox's specific test identifiers and
+  key modes could not be harvested this round — only what is verifiable is
+  recorded here; no test values are invented.
+environments:
+  - name: sandbox
+    docs: https://www.kompany.com/kycapi/docs/guides/guides/get-started/sandbox-overview
+    console: https://www.kompany.com/kycapi/console-v2
+    notes: KYC API sandbox documented alongside "How to start" and "Tech overview" onboarding guides.
+test_values: []
+limitations:
+  - >-
+    The Moody's Analytics economy.com APIs (Data Buffet, Scenario Studio,
+    AutoCycle, Muni) document no separate sandbox — access is provisioned per
+    contract against the production hosts.
