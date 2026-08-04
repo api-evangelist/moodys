@@ -1,0 +1,738 @@
+{
+  "info": {
+    "_postman_id": "98a22669-a7f8-4ce5-a998-aedcd68b0951",
+    "name": "Moody's Data Buffet Baskets Reference API",
+    "description": "The Moody's Analytics Data Buffet API provides programmatic access to international and subnational economic, demographic, and financial time series data and forecasts. It enables retrieval of individual series or baskets of data, supports frequency conversion, mathematical transformations, date range filtering, and vintage/versioning selection. Code samples are available in C#, Java, Python, and R.\n\nContact Support:\n Name: Moody's Analytics",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T02:15:28.000Z",
+    "updatedAt": "2026-07-28T02:15:28.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-98a22669-a7f8-4ce5-a998-aedcd68b0951"
+  },
+  "item": [
+    {
+      "name": "oauth2",
+      "item": [
+        {
+          "name": "token",
+          "item": [
+            {
+              "name": "Moody's Obtain an Access Token",
+              "id": "036140fa-941e-4aed-be4f-68510518c4af",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/x-www-form-urlencoded"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "description": "(Required) The OAuth2 grant type. Must be client_credentials.",
+                      "key": "grant_type",
+                      "value": "client_credentials"
+                    },
+                    {
+                      "description": "(Required) The API client ID issued by Moody's Analytics.",
+                      "key": "client_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) The API client secret issued by Moody's Analytics.",
+                      "key": "client_secret",
+                      "value": "<string>"
+                    }
+                  ]
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/oauth2/token",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "oauth2",
+                    "token"
+                  ]
+                },
+                "description": "Authenticates using OAuth2 client credentials and returns a bearer access token for subsequent API requests."
+              },
+              "response": [
+                {
+                  "id": "fdcf9345-a93e-4de5-a981-c3759f9b893b",
+                  "name": "Successfully obtained access token",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/x-www-form-urlencoded"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "urlencoded",
+                      "urlencoded": [
+                        {
+                          "description": "(Required) The OAuth2 grant type. Must be client_credentials.",
+                          "key": "grant_type",
+                          "value": "client_credentials"
+                        },
+                        {
+                          "description": "(Required) The API client ID issued by Moody's Analytics.",
+                          "key": "client_id",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "(Required) The API client secret issued by Moody's Analytics.",
+                          "key": "client_secret",
+                          "value": "<string>"
+                        }
+                      ]
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/oauth2/token",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "oauth2",
+                        "token"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"access_token\": \"<string>\",\n  \"token_type\": \"Bearer\",\n  \"expires_in\": \"<integer>\"\n}",
+                  "createdAt": "2026-07-28T02:15:28.000Z",
+                  "updatedAt": "2026-07-28T02:15:28.000Z",
+                  "uid": "35240-fdcf9345-a93e-4de5-a981-c3759f9b893b"
+                },
+                {
+                  "id": "a2815fee-c8f0-46cc-880b-c43167cae12f",
+                  "name": "Invalid grant type or missing credentials",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/x-www-form-urlencoded"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "urlencoded",
+                      "urlencoded": [
+                        {
+                          "description": "(Required) The OAuth2 grant type. Must be client_credentials.",
+                          "key": "grant_type",
+                          "value": "client_credentials"
+                        },
+                        {
+                          "description": "(Required) The API client ID issued by Moody's Analytics.",
+                          "key": "client_id",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "(Required) The API client secret issued by Moody's Analytics.",
+                          "key": "client_secret",
+                          "value": "<string>"
+                        }
+                      ]
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/oauth2/token",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "oauth2",
+                        "token"
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T02:15:28.000Z",
+                  "updatedAt": "2026-07-28T02:15:28.000Z",
+                  "uid": "35240-a2815fee-c8f0-46cc-880b-c43167cae12f"
+                },
+                {
+                  "id": "46e3a346-8e49-4637-9b01-455d096288d5",
+                  "name": "Invalid client credentials",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/x-www-form-urlencoded"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "urlencoded",
+                      "urlencoded": [
+                        {
+                          "description": "(Required) The OAuth2 grant type. Must be client_credentials.",
+                          "key": "grant_type",
+                          "value": "client_credentials"
+                        },
+                        {
+                          "description": "(Required) The API client ID issued by Moody's Analytics.",
+                          "key": "client_id",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "(Required) The API client secret issued by Moody's Analytics.",
+                          "key": "client_secret",
+                          "value": "<string>"
+                        }
+                      ]
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/oauth2/token",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "oauth2",
+                        "token"
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T02:15:28.000Z",
+                  "updatedAt": "2026-07-28T02:15:28.000Z",
+                  "uid": "35240-46e3a346-8e49-4637-9b01-455d096288d5"
+                }
+              ],
+              "createdAt": "2026-07-28T02:15:28.000Z",
+              "updatedAt": "2026-07-28T02:15:28.000Z",
+              "uid": "35240-036140fa-941e-4aed-be4f-68510518c4af"
+            }
+          ],
+          "id": "b24b7f43-ea18-4dc0-a251-fe1661775bba",
+          "createdAt": "2026-07-28T02:15:28.000Z",
+          "updatedAt": "2026-07-28T02:15:28.000Z",
+          "uid": "35240-b24b7f43-ea18-4dc0-a251-fe1661775bba"
+        }
+      ],
+      "id": "fb5f483e-71ce-4857-9a61-a3bf5ed02d9c",
+      "createdAt": "2026-07-28T02:15:28.000Z",
+      "updatedAt": "2026-07-28T02:15:28.000Z",
+      "uid": "35240-fb5f483e-71ce-4857-9a61-a3bf5ed02d9c"
+    },
+    {
+      "name": "frequencies",
+      "item": [
+        {
+          "name": "Moody's List Available Data Frequencies",
+          "id": "3b1523d1-4c93-4f87-b743-526003a434f1",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/frequencies",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "frequencies"
+              ]
+            },
+            "description": "Returns a list of all supported data frequencies (e.g., annual, quarterly, monthly, weekly, daily) that can be used for frequency conversion when retrieving series."
+          },
+          "response": [
+            {
+              "id": "e8c1fc6f-25c1-477d-88d8-70c65632d2d0",
+              "name": "Successfully retrieved frequency list",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/frequencies",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "frequencies"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "[\n  {\n    \"code\": \"M\",\n    \"name\": \"Daily\",\n    \"description\": \"<string>\"\n  },\n  {\n    \"code\": \"D\",\n    \"name\": \"Monthly\",\n    \"description\": \"<string>\"\n  }\n]",
+              "createdAt": "2026-07-28T02:15:28.000Z",
+              "updatedAt": "2026-07-28T02:15:28.000Z",
+              "uid": "35240-e8c1fc6f-25c1-477d-88d8-70c65632d2d0"
+            },
+            {
+              "id": "d83903c2-4471-4e77-acc3-b2ce8af23a2c",
+              "name": "Unauthorized - invalid or expired token",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/frequencies",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "frequencies"
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-07-28T02:15:28.000Z",
+              "updatedAt": "2026-07-28T02:15:28.000Z",
+              "uid": "35240-d83903c2-4471-4e77-acc3-b2ce8af23a2c"
+            }
+          ],
+          "createdAt": "2026-07-28T02:15:28.000Z",
+          "updatedAt": "2026-07-28T02:15:28.000Z",
+          "uid": "35240-3b1523d1-4c93-4f87-b743-526003a434f1"
+        }
+      ],
+      "id": "6ac4b1bc-7df6-406d-b773-2151c2c7b32a",
+      "createdAt": "2026-07-28T02:15:28.000Z",
+      "updatedAt": "2026-07-28T02:15:28.000Z",
+      "uid": "35240-6ac4b1bc-7df6-406d-b773-2151c2c7b32a"
+    },
+    {
+      "name": "vintages",
+      "item": [
+        {
+          "name": "Moody's List Available Vintages for a Series",
+          "id": "e75ad209-055f-4539-ab15-ae0711878958",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/vintages?mnemonic=<string>",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "vintages"
+              ],
+              "query": [
+                {
+                  "description": "(Required) The unique series mnemonic identifier. Mnemonics follow the Data Buffet naming convention, e.g., FGDP_US for US GDP or EMPLPAY.IUSA for US total nonfarm payrolls.",
+                  "key": "mnemonic",
+                  "value": "<string>"
+                }
+              ]
+            },
+            "description": "Returns a list of available data vintages (historical revisions) for a specific series. Vintages enable access to previous versions of data as originally published."
+          },
+          "response": [
+            {
+              "id": "dc923624-7251-4643-b601-b5d483174d3a",
+              "name": "Successfully retrieved vintage list",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/vintages?mnemonic=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "vintages"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) The unique series mnemonic identifier. Mnemonics follow the Data Buffet naming convention, e.g., FGDP_US for US GDP or EMPLPAY.IUSA for US total nonfarm payrolls.",
+                      "key": "mnemonic",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "[\n  {\n    \"vintageDate\": \"<date>\",\n    \"description\": \"<string>\"\n  },\n  {\n    \"vintageDate\": \"<date>\",\n    \"description\": \"<string>\"\n  }\n]",
+              "createdAt": "2026-07-28T02:15:28.000Z",
+              "updatedAt": "2026-07-28T02:15:28.000Z",
+              "uid": "35240-dc923624-7251-4643-b601-b5d483174d3a"
+            },
+            {
+              "id": "83ade366-0ca1-435d-9adb-0a1e6467d844",
+              "name": "Invalid mnemonic",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/vintages?mnemonic=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "vintages"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) The unique series mnemonic identifier. Mnemonics follow the Data Buffet naming convention, e.g., FGDP_US for US GDP or EMPLPAY.IUSA for US total nonfarm payrolls.",
+                      "key": "mnemonic",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-07-28T02:15:28.000Z",
+              "updatedAt": "2026-07-28T02:15:28.000Z",
+              "uid": "35240-83ade366-0ca1-435d-9adb-0a1e6467d844"
+            },
+            {
+              "id": "ab1bf4bf-50c4-4298-b80d-c9efe90b9538",
+              "name": "Unauthorized - invalid or expired token",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/vintages?mnemonic=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "vintages"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) The unique series mnemonic identifier. Mnemonics follow the Data Buffet naming convention, e.g., FGDP_US for US GDP or EMPLPAY.IUSA for US total nonfarm payrolls.",
+                      "key": "mnemonic",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-07-28T02:15:28.000Z",
+              "updatedAt": "2026-07-28T02:15:28.000Z",
+              "uid": "35240-ab1bf4bf-50c4-4298-b80d-c9efe90b9538"
+            },
+            {
+              "id": "8c616cfb-3cce-42e0-b12e-0910c6587b68",
+              "name": "Series mnemonic not found",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/vintages?mnemonic=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "vintages"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) The unique series mnemonic identifier. Mnemonics follow the Data Buffet naming convention, e.g., FGDP_US for US GDP or EMPLPAY.IUSA for US total nonfarm payrolls.",
+                      "key": "mnemonic",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-07-28T02:15:28.000Z",
+              "updatedAt": "2026-07-28T02:15:28.000Z",
+              "uid": "35240-8c616cfb-3cce-42e0-b12e-0910c6587b68"
+            }
+          ],
+          "createdAt": "2026-07-28T02:15:28.000Z",
+          "updatedAt": "2026-07-28T02:15:28.000Z",
+          "uid": "35240-e75ad209-055f-4539-ab15-ae0711878958"
+        }
+      ],
+      "id": "dcc23cbf-7f20-4fa3-849a-a8cf7722f585",
+      "createdAt": "2026-07-28T02:15:28.000Z",
+      "updatedAt": "2026-07-28T02:15:28.000Z",
+      "uid": "35240-dcc23cbf-7f20-4fa3-849a-a8cf7722f585"
+    },
+    {
+      "name": "filetypes",
+      "item": [
+        {
+          "name": "Moody's List Supported Output File Types",
+          "id": "67b9e171-b3b4-416b-8ad9-db4aa28ac70f",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/filetypes",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "filetypes"
+              ]
+            },
+            "description": "Returns a list of supported output file types for order data generation (e.g., CSV, Excel, XML, JSON)."
+          },
+          "response": [
+            {
+              "id": "1aa62b24-6401-4f32-93ec-61dfa0568dea",
+              "name": "Successfully retrieved file type list",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/filetypes",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "filetypes"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "[\n  {\n    \"code\": \"<string>\",\n    \"name\": \"<string>\",\n    \"extension\": \"<string>\",\n    \"description\": \"<string>\"\n  },\n  {\n    \"code\": \"<string>\",\n    \"name\": \"<string>\",\n    \"extension\": \"<string>\",\n    \"description\": \"<string>\"\n  }\n]",
+              "createdAt": "2026-07-28T02:15:28.000Z",
+              "updatedAt": "2026-07-28T02:15:28.000Z",
+              "uid": "35240-1aa62b24-6401-4f32-93ec-61dfa0568dea"
+            },
+            {
+              "id": "29742453-2d3f-435a-beda-9120509d6514",
+              "name": "Unauthorized - invalid or expired token",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/filetypes",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "filetypes"
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-07-28T02:15:28.000Z",
+              "updatedAt": "2026-07-28T02:15:28.000Z",
+              "uid": "35240-29742453-2d3f-435a-beda-9120509d6514"
+            }
+          ],
+          "createdAt": "2026-07-28T02:15:28.000Z",
+          "updatedAt": "2026-07-28T02:15:28.000Z",
+          "uid": "35240-67b9e171-b3b4-416b-8ad9-db4aa28ac70f"
+        }
+      ],
+      "id": "2633c7b6-52c7-4803-b2d4-9852fbe45f98",
+      "createdAt": "2026-07-28T02:15:28.000Z",
+      "updatedAt": "2026-07-28T02:15:28.000Z",
+      "uid": "35240-2633c7b6-52c7-4803-b2d4-9852fbe45f98"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "accessTokenUrl",
+        "value": "https://api.economy.com/data/v1/oauth2/token",
+        "type": "string"
+      },
+      {
+        "key": "grant_type",
+        "value": "client_credentials",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.economy.com/data/v1"
+    }
+  ]
+}

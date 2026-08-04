@@ -1,0 +1,320 @@
+{
+  "info": {
+    "_postman_id": "8fdb75b0-2c38-4b1a-bf80-fe91c5ac998a",
+    "name": "Moody's Data Buffet Baskets Search API",
+    "description": "The Moody's Analytics Data Buffet API provides programmatic access to international and subnational economic, demographic, and financial time series data and forecasts. It enables retrieval of individual series or baskets of data, supports frequency conversion, mathematical transformations, date range filtering, and vintage/versioning selection. Code samples are available in C#, Java, Python, and R.\n\nContact Support:\n Name: Moody's Analytics",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T02:15:25.000Z",
+    "updatedAt": "2026-07-28T02:15:26.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-8fdb75b0-2c38-4b1a-bf80-fe91c5ac998a"
+  },
+  "item": [
+    {
+      "name": "search",
+      "item": [
+        {
+          "name": "Moody's Search for Available Series",
+          "id": "83243c38-4328-4717-92ca-b2fc71f18a60",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/search?query=<string>&geography=<string>&source=<string>&category=<string>&offset=0&limit=25",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "search"
+              ],
+              "query": [
+                {
+                  "description": "(Required) Search query string to match against series names, descriptions, mnemonics, and metadata.",
+                  "key": "query",
+                  "value": "<string>"
+                },
+                {
+                  "description": "Filter results by geographic area code (e.g., US for United States, GB for United Kingdom, CN for China).",
+                  "key": "geography",
+                  "value": "<string>"
+                },
+                {
+                  "description": "Filter results by data source identifier (e.g., BLS, BEA, IMF, Eurostat).",
+                  "key": "source",
+                  "value": "<string>"
+                },
+                {
+                  "description": "Filter results by data category (e.g., GDP, Employment, Inflation, Housing).",
+                  "key": "category",
+                  "value": "<string>"
+                },
+                {
+                  "description": "The number of results to skip for pagination.",
+                  "key": "offset",
+                  "value": "0"
+                },
+                {
+                  "description": "The maximum number of results to return per page.",
+                  "key": "limit",
+                  "value": "25"
+                }
+              ]
+            },
+            "description": "Searches the Data Buffet repository for available series matching the specified criteria. Supports filtering by keyword, geography, source, and category."
+          },
+          "response": [
+            {
+              "id": "2f50b31b-ea78-45c0-af53-8b68e528751b",
+              "name": "Successfully retrieved search results",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/search?query=<string>&geography=<string>&source=<string>&category=<string>&offset=0&limit=25",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "search"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) Search query string to match against series names, descriptions, mnemonics, and metadata.",
+                      "key": "query",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Filter results by geographic area code (e.g., US for United States, GB for United Kingdom, CN for China).",
+                      "key": "geography",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Filter results by data source identifier (e.g., BLS, BEA, IMF, Eurostat).",
+                      "key": "source",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Filter results by data category (e.g., GDP, Employment, Inflation, Housing).",
+                      "key": "category",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The number of results to skip for pagination.",
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "description": "The maximum number of results to return per page.",
+                      "key": "limit",
+                      "value": "25"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"totalCount\": \"<integer>\",\n  \"results\": [\n    {\n      \"mnemonic\": \"<string>\",\n      \"description\": \"<string>\",\n      \"frequency\": \"<string>\",\n      \"source\": \"<string>\",\n      \"geography\": \"<string>\",\n      \"category\": \"<string>\",\n      \"startDate\": \"<date>\",\n      \"endDate\": \"<date>\",\n      \"hasForecast\": \"<boolean>\"\n    },\n    {\n      \"mnemonic\": \"<string>\",\n      \"description\": \"<string>\",\n      \"frequency\": \"<string>\",\n      \"source\": \"<string>\",\n      \"geography\": \"<string>\",\n      \"category\": \"<string>\",\n      \"startDate\": \"<date>\",\n      \"endDate\": \"<date>\",\n      \"hasForecast\": \"<boolean>\"\n    }\n  ],\n  \"offset\": \"<integer>\",\n  \"limit\": \"<integer>\"\n}",
+              "createdAt": "2026-07-28T02:15:26.000Z",
+              "updatedAt": "2026-07-28T02:15:26.000Z",
+              "uid": "35240-2f50b31b-ea78-45c0-af53-8b68e528751b"
+            },
+            {
+              "id": "ad544061-89ef-47dc-bad3-04e52d7c816c",
+              "name": "Invalid search parameters",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/search?query=<string>&geography=<string>&source=<string>&category=<string>&offset=0&limit=25",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "search"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) Search query string to match against series names, descriptions, mnemonics, and metadata.",
+                      "key": "query",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Filter results by geographic area code (e.g., US for United States, GB for United Kingdom, CN for China).",
+                      "key": "geography",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Filter results by data source identifier (e.g., BLS, BEA, IMF, Eurostat).",
+                      "key": "source",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Filter results by data category (e.g., GDP, Employment, Inflation, Housing).",
+                      "key": "category",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The number of results to skip for pagination.",
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "description": "The maximum number of results to return per page.",
+                      "key": "limit",
+                      "value": "25"
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"code\": \"<string>\",\n  \"message\": \"<string>\",\n  \"details\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T02:15:26.000Z",
+              "updatedAt": "2026-07-28T02:15:26.000Z",
+              "uid": "35240-ad544061-89ef-47dc-bad3-04e52d7c816c"
+            },
+            {
+              "id": "f672389c-95a4-4938-b1c9-c6f674a7c1fc",
+              "name": "Unauthorized - invalid or expired token",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/search?query=<string>&geography=<string>&source=<string>&category=<string>&offset=0&limit=25",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "search"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) Search query string to match against series names, descriptions, mnemonics, and metadata.",
+                      "key": "query",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Filter results by geographic area code (e.g., US for United States, GB for United Kingdom, CN for China).",
+                      "key": "geography",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Filter results by data source identifier (e.g., BLS, BEA, IMF, Eurostat).",
+                      "key": "source",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Filter results by data category (e.g., GDP, Employment, Inflation, Housing).",
+                      "key": "category",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The number of results to skip for pagination.",
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "description": "The maximum number of results to return per page.",
+                      "key": "limit",
+                      "value": "25"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-07-28T02:15:26.000Z",
+              "updatedAt": "2026-07-28T02:15:26.000Z",
+              "uid": "35240-f672389c-95a4-4938-b1c9-c6f674a7c1fc"
+            }
+          ],
+          "createdAt": "2026-07-28T02:15:26.000Z",
+          "updatedAt": "2026-07-28T02:15:26.000Z",
+          "uid": "35240-83243c38-4328-4717-92ca-b2fc71f18a60"
+        }
+      ],
+      "id": "54496b47-ac91-45c9-8e69-5302d4df7145",
+      "createdAt": "2026-07-28T02:15:26.000Z",
+      "updatedAt": "2026-07-28T02:15:26.000Z",
+      "uid": "35240-54496b47-ac91-45c9-8e69-5302d4df7145"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "accessTokenUrl",
+        "value": "https://api.economy.com/data/v1/oauth2/token",
+        "type": "string"
+      },
+      {
+        "key": "grant_type",
+        "value": "client_credentials",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.economy.com/data/v1"
+    }
+  ]
+}

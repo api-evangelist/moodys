@@ -1,0 +1,150 @@
+{
+  "info": {
+    "_postman_id": "d8717061-4e40-4815-9cef-8c6e0982afb8",
+    "name": "Moody's Data Buffet Baskets Health API",
+    "description": "The Moody's Analytics Data Buffet API provides programmatic access to international and subnational economic, demographic, and financial time series data and forecasts. It enables retrieval of individual series or baskets of data, supports frequency conversion, mathematical transformations, date range filtering, and vintage/versioning selection. Code samples are available in C#, Java, Python, and R.\n\nContact Support:\n Name: Moody's Analytics",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T02:15:29.000Z",
+    "updatedAt": "2026-07-28T02:15:29.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-d8717061-4e40-4815-9cef-8c6e0982afb8"
+  },
+  "item": [
+    {
+      "name": "health",
+      "item": [
+        {
+          "name": "Moody's Check Service Health",
+          "id": "fc21b73f-8f4e-403e-a3dc-8b341f1df6d4",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/health",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "health"
+              ]
+            },
+            "description": "Returns the current health status of the Data Buffet API service."
+          },
+          "response": [
+            {
+              "id": "9e8ac71f-b25f-4079-870a-5945f6210907",
+              "name": "Service is healthy",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/health",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "health"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"status\": \"Degraded\",\n  \"timestamp\": \"<dateTime>\",\n  \"version\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T02:15:29.000Z",
+              "updatedAt": "2026-07-28T02:15:29.000Z",
+              "uid": "35240-9e8ac71f-b25f-4079-870a-5945f6210907"
+            },
+            {
+              "id": "acfe933c-153e-4e6c-80f6-49bcad295127",
+              "name": "Service is unavailable",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/health",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "health"
+                  ]
+                }
+              },
+              "status": "Service Unavailable",
+              "code": 503,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-07-28T02:15:29.000Z",
+              "updatedAt": "2026-07-28T02:15:29.000Z",
+              "uid": "35240-acfe933c-153e-4e6c-80f6-49bcad295127"
+            }
+          ],
+          "createdAt": "2026-07-28T02:15:29.000Z",
+          "updatedAt": "2026-07-28T02:15:29.000Z",
+          "uid": "35240-fc21b73f-8f4e-403e-a3dc-8b341f1df6d4"
+        }
+      ],
+      "id": "8b3fb263-a774-48a7-a4c2-5c28bad04c2c",
+      "createdAt": "2026-07-28T02:15:29.000Z",
+      "updatedAt": "2026-07-28T02:15:29.000Z",
+      "uid": "35240-8b3fb263-a774-48a7-a4c2-5c28bad04c2c"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "accessTokenUrl",
+        "value": "https://api.economy.com/data/v1/oauth2/token",
+        "type": "string"
+      },
+      {
+        "key": "grant_type",
+        "value": "client_credentials",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.economy.com/data/v1"
+    }
+  ]
+}
