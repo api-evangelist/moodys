@@ -1,8 +1,8 @@
 generated: '2026-06-20'
 method: derived
 status: candidate
-source: derived from OpenAPI/Swagger operations in openapi/ (no official Moody's MCP server found on npm, the official
-  MCP registry, or Moody's docs as of this round)
+source: derived from OpenAPI/Swagger operations in openapi/ (no official Moody's MCP server found on npm,
+  the official MCP registry, or Moody's docs as of this round)
 server:
   name: moodys
   transport: http
@@ -65,8 +65,8 @@ tools:
   description: ''
   source_operation: openapi/moodys-autocycle-api-swagger.json#HealthCheck_HealthCheck
 - name: vin_vin_lookup
-  description: The vins endpoint takes in make, model, model year and model version of vehicle and performs a vin
-    look up
+  description: The vins endpoint takes in make, model, model year and model version of vehicle and performs
+    a vin look up
   source_operation: openapi/moodys-autocycle-api-swagger.json#Vin_VinLookup
 - name: forecast_look_up_forecast
   description: To Lookup forecast based on input list
@@ -263,3 +263,9 @@ tools:
 - name: project_search_count_async
   description: Gets the search count when searching for projects.
   source_operation: openapi/moodys-scenario-studio-api-swagger.json#Project_SearchCountAsync
+deployment:
+  mode: none
+  verified: derived
+  tools: 85
+  checked: '2026-08-12'
+  source: catalog MCP census

@@ -1,0 +1,40 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Moody's Data Buffet Baskets Health API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "oauth2",
+      "flow": "client_credentials",
+      "accessTokenUrl": "https://api.economy.com/data/v1/oauth2/token",
+      "credentials": {
+        "clientId": "{{clientId}}",
+        "clientSecret": "{{clientSecret}}"
+      }
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Health",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Moody's Check Service Health",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.economy.com/data/v1/health"
+          },
+          "docs": "Returns the current health status of the Data Buffet API service."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

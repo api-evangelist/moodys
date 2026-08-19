@@ -1,0 +1,1022 @@
+{
+  "item": [
+    {
+      "id": "b155a8d2-5721-4287-b9fc-883c61e51fe3",
+      "name": "Baskets",
+      "description": {
+        "content": "Operations for creating and managing collections of series requests",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "5613acf6-b816-4974-9c2e-b74c5fb250f5",
+          "name": "Moody's List All Baskets",
+          "request": {
+            "name": "Moody's List All Baskets",
+            "description": {
+              "content": "Returns a list of all data baskets owned by the authenticated user. A basket is a saved collection of series requests that can be executed as an order.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "baskets"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "63560348-483b-47c9-a4ca-0c8fd86e57e3",
+              "name": "Successfully retrieved basket list",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "baskets"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"basketId\": \"500123\",\n    \"name\": \"Example Title\",\n    \"series\": [],\n    \"description\": \"A sample description.\",\n    \"createdAt\": \"2026-01-15T10:30:00Z\",\n    \"updatedAt\": \"2026-01-15T10:30:00Z\"\n  },\n  {\n    \"basketId\": \"500123\",\n    \"name\": \"Example Title\",\n    \"series\": [],\n    \"description\": \"A sample description.\",\n    \"createdAt\": \"2026-01-15T10:30:00Z\",\n    \"updatedAt\": \"2026-01-15T10:30:00Z\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a6b63a97-24a8-4af2-be8c-ea9ad378f148",
+              "name": "Unauthorized - invalid or expired token",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "baskets"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "09868780-cb92-437f-9ee1-d28b3c6f43f1",
+          "name": "Moody's Create a New Basket",
+          "request": {
+            "name": "Moody's Create a New Basket",
+            "description": {
+              "content": "Creates a new data basket with a collection of series requests. Baskets can be saved and reused to generate orders for bulk data retrieval.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "baskets"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"series\": [\n    {\n      \"mnemonic\": \"<string>\",\n      \"freq\": \"<string>\",\n      \"trans\": \"<string>\",\n      \"startDate\": \"<date>\",\n      \"endDate\": \"<date>\",\n      \"vintage\": \"<date>\"\n    },\n    {\n      \"mnemonic\": \"<string>\",\n      \"freq\": \"<string>\",\n      \"trans\": \"<string>\",\n      \"startDate\": \"<date>\",\n      \"endDate\": \"<date>\",\n      \"vintage\": \"<date>\"\n    }\n  ],\n  \"description\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "25e342ac-e104-42d2-b0ab-8900d5ef0f3b",
+              "name": "Successfully created basket",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "baskets"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"Example Title\",\n  \"series\": [],\n  \"description\": \"A sample description.\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"basketId\": \"500123\",\n  \"name\": \"Example Title\",\n  \"series\": [],\n  \"description\": \"A sample description.\",\n  \"createdAt\": \"2026-01-15T10:30:00Z\",\n  \"updatedAt\": \"2026-01-15T10:30:00Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "da6b16c2-e1a7-483f-bb37-98e08dbe40bc",
+              "name": "Invalid basket definition",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "baskets"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"Example Title\",\n  \"series\": [],\n  \"description\": \"A sample description.\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"example_value\",\n  \"message\": \"example_value\",\n  \"details\": \"example_value\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "fbc996bd-96dd-4224-8b30-7fbd687121c3",
+              "name": "Unauthorized - invalid or expired token",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "baskets"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"Example Title\",\n  \"series\": [],\n  \"description\": \"A sample description.\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "153a3e21-468d-4d15-9cbb-5a5637ba2977",
+          "name": "Moody's Retrieve a Specific Basket",
+          "request": {
+            "name": "Moody's Retrieve a Specific Basket",
+            "description": {
+              "content": "Returns the details of a specific basket including its series requests and configuration.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "baskets",
+                ":basketId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "basketId",
+                  "description": "(Required) The unique identifier of the basket."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "994c9679-776c-4091-b969-0173c61ebd16",
+              "name": "Successfully retrieved basket",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "baskets",
+                    ":basketId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "basketId",
+                      "description": "(Required) The unique identifier of the basket."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"basketId\": \"500123\",\n  \"name\": \"Example Title\",\n  \"series\": [],\n  \"description\": \"A sample description.\",\n  \"createdAt\": \"2026-01-15T10:30:00Z\",\n  \"updatedAt\": \"2026-01-15T10:30:00Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "2e2e6476-62c0-430d-a78c-3c741504d345",
+              "name": "Unauthorized - invalid or expired token",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "baskets",
+                    ":basketId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "basketId",
+                      "description": "(Required) The unique identifier of the basket."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "e03dc0f8-1a53-4245-899d-60ca423f922a",
+              "name": "Basket not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "baskets",
+                    ":basketId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "basketId",
+                      "description": "(Required) The unique identifier of the basket."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "acf3d77d-8be2-45a1-84b7-6a2721fa90bf",
+          "name": "Moody's Update an Existing Basket",
+          "request": {
+            "name": "Moody's Update an Existing Basket",
+            "description": {
+              "content": "Updates the series requests and configuration of an existing basket.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "baskets",
+                ":basketId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "basketId",
+                  "description": "(Required) The unique identifier of the basket."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"series\": [\n    {\n      \"mnemonic\": \"<string>\",\n      \"freq\": \"<string>\",\n      \"trans\": \"<string>\",\n      \"startDate\": \"<date>\",\n      \"endDate\": \"<date>\",\n      \"vintage\": \"<date>\"\n    },\n    {\n      \"mnemonic\": \"<string>\",\n      \"freq\": \"<string>\",\n      \"trans\": \"<string>\",\n      \"startDate\": \"<date>\",\n      \"endDate\": \"<date>\",\n      \"vintage\": \"<date>\"\n    }\n  ],\n  \"description\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "11ead5ad-e8c9-43ea-88e1-ffef88f176f9",
+              "name": "Successfully updated basket",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "baskets",
+                    ":basketId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "basketId",
+                      "description": "(Required) The unique identifier of the basket."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"Example Title\",\n  \"series\": [],\n  \"description\": \"A sample description.\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"basketId\": \"500123\",\n  \"name\": \"Example Title\",\n  \"series\": [],\n  \"description\": \"A sample description.\",\n  \"createdAt\": \"2026-01-15T10:30:00Z\",\n  \"updatedAt\": \"2026-01-15T10:30:00Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e958966c-e6a1-4683-90ab-50114f9ec1e0",
+              "name": "Invalid basket definition",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "baskets",
+                    ":basketId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "basketId",
+                      "description": "(Required) The unique identifier of the basket."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"Example Title\",\n  \"series\": [],\n  \"description\": \"A sample description.\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"example_value\",\n  \"message\": \"example_value\",\n  \"details\": \"example_value\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "14711b0b-8d57-4305-8b65-b98c3c4ec214",
+              "name": "Unauthorized - invalid or expired token",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "baskets",
+                    ":basketId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "basketId",
+                      "description": "(Required) The unique identifier of the basket."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"Example Title\",\n  \"series\": [],\n  \"description\": \"A sample description.\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "87735c41-0f80-4682-87bf-eb9cf1933552",
+              "name": "Basket not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "baskets",
+                    ":basketId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "basketId",
+                      "description": "(Required) The unique identifier of the basket."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"Example Title\",\n  \"series\": [],\n  \"description\": \"A sample description.\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "78318267-aaae-4dfc-8225-158d8294a2ca",
+          "name": "Moody's Delete a Basket",
+          "request": {
+            "name": "Moody's Delete a Basket",
+            "description": {
+              "content": "Permanently deletes a basket and its associated series requests.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "baskets",
+                ":basketId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "basketId",
+                  "description": "(Required) The unique identifier of the basket."
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "ef3218c2-f176-4903-a7d2-f3024948fca6",
+              "name": "Successfully deleted basket",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "baskets",
+                    ":basketId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "basketId",
+                      "description": "(Required) The unique identifier of the basket."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "cac416c6-44e6-4625-9b8b-a7df1b5797b7",
+              "name": "Unauthorized - invalid or expired token",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "baskets",
+                    ":basketId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "basketId",
+                      "description": "(Required) The unique identifier of the basket."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "b0e3610f-51da-47ce-b8db-a793d73d8148",
+              "name": "Basket not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "baskets",
+                    ":basketId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "basketId",
+                      "description": "(Required) The unique identifier of the basket."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.economy.com/data/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "accessTokenUrl",
+        "value": "https://api.economy.com/data/v1/oauth2/token"
+      },
+      {
+        "key": "grant_type",
+        "value": "client_credentials"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "a49c5c4f-f86b-4139-8324-efe67b3970b2",
+    "name": "Moody's Data Buffet Baskets API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Moody's Analytics Data Buffet API provides programmatic access to international and subnational economic, demographic, and financial time series data and forecasts. It enables retrieval of individual series or baskets of data, supports frequency conversion, mathematical transformations, date range filtering, and vintage/versioning selection. Code samples are available in C#, Java, Python, and R.\n\nContact Support:\n Name: Moody's Analytics",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,98 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Moody's Data Buffet Baskets Reference API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "oauth2",
+      "flow": "client_credentials",
+      "accessTokenUrl": "https://api.economy.com/data/v1/oauth2/token",
+      "credentials": {
+        "clientId": "{{clientId}}",
+        "clientSecret": "{{clientSecret}}"
+      }
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Reference",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Moody's Obtain an Access Token",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.economy.com/data/v1/oauth2/token",
+            "body": {
+              "type": "form-urlencoded",
+              "data": [
+                {
+                  "name": "grant_type",
+                  "value": ""
+                },
+                {
+                  "name": "client_id",
+                  "value": ""
+                },
+                {
+                  "name": "client_secret",
+                  "value": ""
+                }
+              ]
+            }
+          },
+          "docs": "Authenticates using OAuth2 client credentials and returns a bearer access token for subsequent API requests."
+        },
+        {
+          "info": {
+            "name": "Moody's List Available Data Frequencies",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.economy.com/data/v1/frequencies"
+          },
+          "docs": "Returns a list of all supported data frequencies (e.g., annual, quarterly, monthly, weekly, daily) that can be used for frequency conversion when retrieving series."
+        },
+        {
+          "info": {
+            "name": "Moody's List Available Vintages for a Series",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.economy.com/data/v1/vintages",
+            "params": [
+              {
+                "name": "mnemonic",
+                "value": "",
+                "type": "query",
+                "description": "The unique series mnemonic identifier. Mnemonics follow the Data Buffet naming convention, e.g., FGDP_US for US GDP or EMPLPAY.IUSA for US total nonfarm payrolls."
+              }
+            ]
+          },
+          "docs": "Returns a list of available data vintages (historical revisions) for a specific series. Vintages enable access to previous versions of data as originally published."
+        },
+        {
+          "info": {
+            "name": "Moody's List Supported Output File Types",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.economy.com/data/v1/filetypes"
+          },
+          "docs": "Returns a list of supported output file types for order data generation (e.g., CSV, Excel, XML, JSON)."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

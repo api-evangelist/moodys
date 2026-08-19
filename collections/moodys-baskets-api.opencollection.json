@@ -1,0 +1,116 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Moody's Data Buffet Baskets API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "oauth2",
+      "flow": "client_credentials",
+      "accessTokenUrl": "https://api.economy.com/data/v1/oauth2/token",
+      "credentials": {
+        "clientId": "{{clientId}}",
+        "clientSecret": "{{clientSecret}}"
+      }
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Baskets",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Moody's List All Baskets",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.economy.com/data/v1/baskets"
+          },
+          "docs": "Returns a list of all data baskets owned by the authenticated user. A basket is a saved collection of series requests that can be executed as an order."
+        },
+        {
+          "info": {
+            "name": "Moody's Create a New Basket",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.economy.com/data/v1/baskets",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new data basket with a collection of series requests. Baskets can be saved and reused to generate orders for bulk data retrieval."
+        },
+        {
+          "info": {
+            "name": "Moody's Retrieve a Specific Basket",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.economy.com/data/v1/baskets/:basketId",
+            "params": [
+              {
+                "name": "basketId",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the basket."
+              }
+            ]
+          },
+          "docs": "Returns the details of a specific basket including its series requests and configuration."
+        },
+        {
+          "info": {
+            "name": "Moody's Update an Existing Basket",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.economy.com/data/v1/baskets/:basketId",
+            "params": [
+              {
+                "name": "basketId",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the basket."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates the series requests and configuration of an existing basket."
+        },
+        {
+          "info": {
+            "name": "Moody's Delete a Basket",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.economy.com/data/v1/baskets/:basketId",
+            "params": [
+              {
+                "name": "basketId",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the basket."
+              }
+            ]
+          },
+          "docs": "Permanently deletes a basket and its associated series requests."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

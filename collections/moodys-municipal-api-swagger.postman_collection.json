@@ -1,0 +1,497 @@
+{
+  "item": [
+    {
+      "id": "9d51987d-ad7b-466c-a288-1069f40cc744",
+      "name": "Forecast",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "95d4fe42-9b90-44f3-97c9-74da30226aa6",
+          "name": "To Lookup forecast based on input list",
+          "request": {
+            "name": "To Lookup forecast based on input list",
+            "description": {},
+            "url": {
+              "path": [
+                "loss-forecast",
+                ":scenario"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "lgd",
+                  "value": "<double>"
+                },
+                {
+                  "disabled": false,
+                  "key": "vintage",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "revision",
+                  "value": "<string>"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "scenario",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://api.economy.com/muni/v1/oauth2/token"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "client_credentials"
+                }
+              ]
+            },
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "disabled": false,
+                  "key": "cusip",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "rating",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "vintage",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "pd",
+                  "value": "<double>"
+                },
+                {
+                  "disabled": false,
+                  "key": "orgIds",
+                  "value": "[\"<string>\",\"<string>\"]"
+                },
+                {
+                  "disabled": false,
+                  "key": "state",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "sector",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "lgd",
+                  "value": "<double>"
+                },
+                {
+                  "disabled": false,
+                  "key": "sectors",
+                  "value": "[\"<string>\",\"<string>\"]"
+                },
+                {
+                  "disabled": false,
+                  "key": "maturityDate",
+                  "value": "<dateTime>"
+                },
+                {
+                  "disabled": false,
+                  "key": "error",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "cusip",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "rating",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "vintage",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "pd",
+                  "value": "<double>"
+                },
+                {
+                  "disabled": false,
+                  "key": "orgIds",
+                  "value": "[\"<string>\",\"<string>\"]"
+                },
+                {
+                  "disabled": false,
+                  "key": "state",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "sector",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "lgd",
+                  "value": "<double>"
+                },
+                {
+                  "disabled": false,
+                  "key": "sectors",
+                  "value": "[\"<string>\",\"<string>\"]"
+                },
+                {
+                  "disabled": false,
+                  "key": "maturityDate",
+                  "value": "<dateTime>"
+                },
+                {
+                  "disabled": false,
+                  "key": "error",
+                  "value": "<string>"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "5e51b501-4725-4034-805a-d2e4587933dc",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "loss-forecast",
+                    ":scenario"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "lgd",
+                      "value": "<double>"
+                    },
+                    {
+                      "key": "vintage",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "revision",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "scenario",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "key": "cusip",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "rating",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "vintage",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "pd",
+                      "value": "<double>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "orgIds",
+                      "value": "[\"<string>\",\"<string>\"]"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "state",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "sector",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "lgd",
+                      "value": "<double>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "sectors",
+                      "value": "[\"<string>\",\"<string>\"]"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "maturityDate",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "error",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "cusip",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "rating",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "vintage",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "pd",
+                      "value": "<double>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "orgIds",
+                      "value": "[\"<string>\",\"<string>\"]"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "state",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "sector",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "lgd",
+                      "value": "<double>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "sectors",
+                      "value": "[\"<string>\",\"<string>\"]"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "maturityDate",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "error",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "be8e99d4-6115-4735-907a-c90432d552ff",
+      "name": "HealthCheck",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "d536e8ef-f6f9-41c5-8c9b-f62ce3e13d7b",
+          "name": "Health Check Health Check",
+          "request": {
+            "name": "Health Check Health Check",
+            "description": {},
+            "url": {
+              "path": [
+                "health"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://api.economy.com/muni/v1/oauth2/token"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "client_credentials"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "830e5dfa-be4b-47d6-a16c-a13261e5d6ad",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "health"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.economy.com/muni/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "a3cbcae2-a7ad-45cb-9b38-754e03724a5d",
+    "name": "Moody's Analytics Muni Loss Forecast API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "API access to Moody's Analytics Muni Loss Forecast",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,162 @@
+{
+  "item": [
+    {
+      "id": "889be3ac-2c96-4e9d-bf4d-5d1b9d821899",
+      "name": "Health",
+      "description": {
+        "content": "Service health monitoring",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "a6b36132-3bd3-4a1e-97d7-c635e705a4cf",
+          "name": "Moody's Check Service Health",
+          "request": {
+            "name": "Moody's Check Service Health",
+            "description": {
+              "content": "Returns the current health status of the Data Buffet API service.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "health"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "29bacaaa-8065-4043-baf7-ec913883843b",
+              "name": "Service is healthy",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "health"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"Healthy\",\n  \"timestamp\": \"2026-01-15T10:30:00Z\",\n  \"version\": \"example_value\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d249c681-6d4c-433d-9879-a38a4ab56f84",
+              "name": "Service is unavailable",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "health"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Service Unavailable",
+              "code": 503,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.economy.com/data/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "accessTokenUrl",
+        "value": "https://api.economy.com/data/v1/oauth2/token"
+      },
+      {
+        "key": "grant_type",
+        "value": "client_credentials"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "f08fd672-43ae-4cc3-913a-5020133d624c",
+    "name": "Moody's Data Buffet Baskets Health API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Moody's Analytics Data Buffet API provides programmatic access to international and subnational economic, demographic, and financial time series data and forecasts. It enables retrieval of individual series or baskets of data, supports frequency conversion, mathematical transformations, date range filtering, and vintage/versioning selection. Code samples are available in C#, Java, Python, and R.\n\nContact Support:\n Name: Moody's Analytics",
+      "type": "text/plain"
+    }
+  }
+}

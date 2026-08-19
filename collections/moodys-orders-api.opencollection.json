@@ -1,0 +1,93 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Moody's Data Buffet Baskets Orders API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "oauth2",
+      "flow": "client_credentials",
+      "accessTokenUrl": "https://api.economy.com/data/v1/oauth2/token",
+      "credentials": {
+        "clientId": "{{clientId}}",
+        "clientSecret": "{{clientSecret}}"
+      }
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Orders",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Moody's List All Orders",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.economy.com/data/v1/orders"
+          },
+          "docs": "Returns a list of all data generation orders for the authenticated user. Orders are created from baskets and produce output files in the requested format."
+        },
+        {
+          "info": {
+            "name": "Moody's Create a New Order",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.economy.com/data/v1/orders",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new data generation order from a basket. The order will be processed asynchronously and produce output in the specified file format."
+        },
+        {
+          "info": {
+            "name": "Moody's Retrieve a Specific Order",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.economy.com/data/v1/orders/:orderId",
+            "params": [
+              {
+                "name": "orderId",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the order."
+              }
+            ]
+          },
+          "docs": "Returns the status and details of a specific order, including processing status and download URL when complete."
+        },
+        {
+          "info": {
+            "name": "Moody's Download Order Output",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.economy.com/data/v1/orders/:orderId/download",
+            "params": [
+              {
+                "name": "orderId",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the order."
+              }
+            ]
+          },
+          "docs": "Downloads the output file for a completed order. The file format is determined by the fileType specified when creating the order."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

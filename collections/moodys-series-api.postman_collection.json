@@ -1,0 +1,646 @@
+{
+  "item": [
+    {
+      "id": "703589aa-2888-458d-a2fc-ee0b6f4ce0a3",
+      "name": "Series",
+      "description": {
+        "content": "Operations for retrieving individual and multi-series time series data",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "236d18d5-4a48-4898-bb8b-14caddbd6147",
+          "name": "Moody's Retrieve a Single Time Series",
+          "request": {
+            "name": "Moody's Retrieve a Single Time Series",
+            "description": {
+              "content": "Returns data for a single economic, demographic, or financial time series identified by its mnemonic. Supports frequency conversion, mathematical transformations, date range filtering, and vintage selection.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "series"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "mnemonic",
+                  "value": "<string>",
+                  "description": "(Required) The unique series mnemonic identifier. Mnemonics follow the Data Buffet naming convention, e.g., FGDP_US for US GDP or EMPLPAY.IUSA for US total nonfarm payrolls."
+                },
+                {
+                  "disabled": false,
+                  "key": "freq",
+                  "value": "<string>",
+                  "description": "The desired output frequency for the series. When specified, frequency conversion is applied. For example, converting quarterly GDP to annual."
+                },
+                {
+                  "disabled": false,
+                  "key": "trans",
+                  "value": "<string>",
+                  "description": "The mathematical transformation to apply to the series values. Supports common economic transformations."
+                },
+                {
+                  "disabled": false,
+                  "key": "startDate",
+                  "value": "<date>",
+                  "description": "The start date for the data range in YYYY-MM-DD format. If omitted, returns data from the beginning of the series."
+                },
+                {
+                  "disabled": false,
+                  "key": "endDate",
+                  "value": "<date>",
+                  "description": "The end date for the data range in YYYY-MM-DD format. If omitted, returns data through the latest available observation or forecast."
+                },
+                {
+                  "disabled": false,
+                  "key": "vintage",
+                  "value": "<date>",
+                  "description": "The vintage date for accessing historical data revisions in YYYY-MM-DD format. If omitted, returns the latest vintage."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "814aa527-4b1a-4cd1-89a6-40e9d7b86098",
+              "name": "Successfully retrieved time series data",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "series"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "mnemonic",
+                      "value": "FGDP_US"
+                    },
+                    {
+                      "key": "freq",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "trans",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "startDate",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "endDate",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "vintage",
+                      "value": "<date>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"mnemonic\": \"example_value\",\n  \"description\": \"A sample description.\",\n  \"frequency\": \"Annual\",\n  \"data\": [],\n  \"source\": \"example_value\",\n  \"geography\": \"example_value\",\n  \"units\": \"example_value\",\n  \"transformation\": \"example_value\",\n  \"startDate\": \"2026-01-15\",\n  \"endDate\": \"2026-01-15\",\n  \"vintage\": \"2026-01-15\",\n  \"lastUpdated\": \"2026-01-15T10:30:00Z\",\n  \"isForecast\": true\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "27a1c5fa-57c6-4b83-9b8a-ab48644d3da2",
+              "name": "Invalid parameters",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "series"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "mnemonic",
+                      "value": "FGDP_US"
+                    },
+                    {
+                      "key": "freq",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "trans",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "startDate",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "endDate",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "vintage",
+                      "value": "<date>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"example_value\",\n  \"message\": \"example_value\",\n  \"details\": \"example_value\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8579d6f3-35a1-4dd2-967e-4e1832e10c48",
+              "name": "Unauthorized - invalid or expired token",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "series"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "mnemonic",
+                      "value": "FGDP_US"
+                    },
+                    {
+                      "key": "freq",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "trans",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "startDate",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "endDate",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "vintage",
+                      "value": "<date>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "d54d3f98-2efc-417e-aed3-d91c28b5a5f1",
+              "name": "Series mnemonic not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "series"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "mnemonic",
+                      "value": "FGDP_US"
+                    },
+                    {
+                      "key": "freq",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "trans",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "startDate",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "endDate",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "vintage",
+                      "value": "<date>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"example_value\",\n  \"message\": \"example_value\",\n  \"details\": \"example_value\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "1f6e0c76-bcd3-45ee-94a1-8798b2937695",
+              "name": "Rate limit exceeded",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "series"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "mnemonic",
+                      "value": "FGDP_US"
+                    },
+                    {
+                      "key": "freq",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "trans",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "startDate",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "endDate",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "vintage",
+                      "value": "<date>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "db347ef3-5651-442d-b50b-f47ef2861b11",
+          "name": "Moody's Retrieve Multiple Time Series",
+          "request": {
+            "name": "Moody's Retrieve Multiple Time Series",
+            "description": {
+              "content": "Returns data for up to 25 time series in a single request. Each series can have individual frequency, transformation, date range, and vintage parameters. Useful for efficiently fetching related economic indicators together.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "multi-series"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"series\": [\n    {\n      \"mnemonic\": \"<string>\",\n      \"freq\": \"<string>\",\n      \"trans\": \"<string>\",\n      \"startDate\": \"<date>\",\n      \"endDate\": \"<date>\",\n      \"vintage\": \"<date>\"\n    },\n    {\n      \"mnemonic\": \"<string>\",\n      \"freq\": \"<string>\",\n      \"trans\": \"<string>\",\n      \"startDate\": \"<date>\",\n      \"endDate\": \"<date>\",\n      \"vintage\": \"<date>\"\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "5fe60d77-a5e2-42d8-b378-a32e85c8cb51",
+              "name": "Successfully retrieved multiple time series",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "multi-series"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"series\": []\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"series\": []\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "04ee8bda-06a7-48cf-a8a5-276bbb4240bc",
+              "name": "Invalid request or exceeded 25 series limit",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "multi-series"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"series\": []\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"example_value\",\n  \"message\": \"example_value\",\n  \"details\": \"example_value\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d4e661ae-91c8-4daa-afae-fbd92e02895f",
+              "name": "Unauthorized - invalid or expired token",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "multi-series"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"series\": []\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.economy.com/data/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "accessTokenUrl",
+        "value": "https://api.economy.com/data/v1/oauth2/token"
+      },
+      {
+        "key": "grant_type",
+        "value": "client_credentials"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "36127324-c9d5-4be9-a47f-be4b4e9c7373",
+    "name": "Moody's Data Buffet Baskets Series API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Moody's Analytics Data Buffet API provides programmatic access to international and subnational economic, demographic, and financial time series data and forecasts. It enables retrieval of individual series or baskets of data, supports frequency conversion, mathematical transformations, date range filtering, and vintage/versioning selection. Code samples are available in C#, Java, Python, and R.\n\nContact Support:\n Name: Moody's Analytics",
+      "type": "text/plain"
+    }
+  }
+}

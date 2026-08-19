@@ -1,0 +1,100 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Moody's Analytics AutoCycle API",
+    "version": "v1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Forecast",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "The forecast endpoint that takes in an array of model inputs and returns the forecast",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/forecast",
+            "params": [
+              {
+                "name": "modelVersion",
+                "value": "",
+                "type": "query",
+                "description": "The monthly model version using vYYYYMM format"
+              }
+            ]
+          },
+          "docs": "The forecast endpoint that takes in an array of model inputs and returns the forecast"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "HealthCheck",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "HealthCheck_HealthCheck",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/health"
+          }
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Vin",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "The vins endpoint takes in make, model, model year and model version of vehicle and performs a vin look up",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/vins",
+            "params": [
+              {
+                "name": "vehicleMake",
+                "value": "",
+                "type": "query",
+                "description": "Make of the vehicle"
+              },
+              {
+                "name": "vehicleModel",
+                "value": "",
+                "type": "query",
+                "description": "Model of the vehicle\r\n           Vehicle model is a partial match with the model of vehicle \r\n           \tE.g.input(vehicleMake = 'BMW', vehicleModel = 'X3')\r\n           \t\t ouput(vehicleMake= 'BMW', vehicleModel = 'X3 series')"
+              },
+              {
+                "name": "vehicleModelYear",
+                "value": "",
+                "type": "query",
+                "description": "Model Year of the vehicle"
+              },
+              {
+                "name": "modelVersion",
+                "value": "",
+                "type": "query",
+                "description": "Model Version is the version of the statistical/economic model, which is published every month\r\n              The monthly model version using vYYYYMM format"
+              }
+            ]
+          },
+          "docs": "The vins endpoint takes in make, model, model year and model version of vehicle and performs a vin look up"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

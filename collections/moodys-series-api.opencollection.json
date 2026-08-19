@@ -1,0 +1,93 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Moody's Data Buffet Baskets Series API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "oauth2",
+      "flow": "client_credentials",
+      "accessTokenUrl": "https://api.economy.com/data/v1/oauth2/token",
+      "credentials": {
+        "clientId": "{{clientId}}",
+        "clientSecret": "{{clientSecret}}"
+      }
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Series",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Moody's Retrieve a Single Time Series",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.economy.com/data/v1/series",
+            "params": [
+              {
+                "name": "mnemonic",
+                "value": "",
+                "type": "query",
+                "description": "The unique series mnemonic identifier. Mnemonics follow the Data Buffet naming convention, e.g., FGDP_US for US GDP or EMPLPAY.IUSA for US total nonfarm payrolls."
+              },
+              {
+                "name": "freq",
+                "value": "",
+                "type": "query",
+                "description": "The desired output frequency for the series. When specified, frequency conversion is applied. For example, converting quarterly GDP to annual."
+              },
+              {
+                "name": "trans",
+                "value": "",
+                "type": "query",
+                "description": "The mathematical transformation to apply to the series values. Supports common economic transformations."
+              },
+              {
+                "name": "startDate",
+                "value": "",
+                "type": "query",
+                "description": "The start date for the data range in YYYY-MM-DD format. If omitted, returns data from the beginning of the series."
+              },
+              {
+                "name": "endDate",
+                "value": "",
+                "type": "query",
+                "description": "The end date for the data range in YYYY-MM-DD format. If omitted, returns data through the latest available observation or forecast."
+              },
+              {
+                "name": "vintage",
+                "value": "",
+                "type": "query",
+                "description": "The vintage date for accessing historical data revisions in YYYY-MM-DD format. If omitted, returns the latest vintage."
+              }
+            ]
+          },
+          "docs": "Returns data for a single economic, demographic, or financial time series identified by its mnemonic. Supports frequency conversion, mathematical transformations, date range filtering, and vintage selection."
+        },
+        {
+          "info": {
+            "name": "Moody's Retrieve Multiple Time Series",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.economy.com/data/v1/multi-series",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Returns data for up to 25 time series in a single request. Each series can have individual frequency, transformation, date range, and vintage parameters. Useful for efficiently fetching related economic indicators together."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

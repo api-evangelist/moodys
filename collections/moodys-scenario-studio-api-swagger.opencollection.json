@@ -1,0 +1,1805 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Scenario Studio Api",
+    "version": "v2"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Audit",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Gets the records for a search query.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/audit/project/:projectId",
+            "params": [
+              {
+                "name": "projectId",
+                "value": "",
+                "type": "path",
+                "description": "The project ID."
+              },
+              {
+                "name": "skip",
+                "value": "",
+                "type": "query",
+                "description": "The record count to skip."
+              },
+              {
+                "name": "take",
+                "value": "",
+                "type": "query",
+                "description": "The record count to return."
+              },
+              {
+                "name": "options.fromDate",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "options.toDate",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "options.search",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "options.actions",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "options.solveType",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "options.sort",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "options.scenarios",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "options.variableIds",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "options.solveLog",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "options.mine",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "options.offset",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "options.offsetType",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Gets the records for a search query."
+        },
+        {
+          "info": {
+            "name": "Gets the record count for a search query.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/audit/project/:projectId/count",
+            "params": [
+              {
+                "name": "projectId",
+                "value": "",
+                "type": "path",
+                "description": "The Project ID."
+              },
+              {
+                "name": "options.fromDate",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "options.toDate",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "options.search",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "options.actions",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "options.solveType",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "options.sort",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "options.scenarios",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "options.variableIds",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "options.solveLog",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "options.mine",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "options.offset",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "options.offsetType",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Gets the record count for a search query."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Universe",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get the list of base/moody's scenarios.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/base-scenario"
+          },
+          "docs": "Get the list of base/moody's scenarios."
+        },
+        {
+          "info": {
+            "name": "Gets base/moody's scenario detail.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/base-scenario/:scenarioId",
+            "params": [
+              {
+                "name": "scenarioId",
+                "value": "",
+                "type": "path",
+                "description": "The base scenario Id."
+              }
+            ]
+          },
+          "docs": "Gets base/moody's scenario detail."
+        },
+        {
+          "info": {
+            "name": "Gets the full details on a base scenario.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/base-scenario/:scenarioId/details",
+            "params": [
+              {
+                "name": "scenarioId",
+                "value": "",
+                "type": "path",
+                "description": "The Id of the base scenario."
+              }
+            ]
+          },
+          "docs": "Gets the full details on a base scenario."
+        },
+        {
+          "info": {
+            "name": "Search base scenarios.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/base-scenario/search",
+            "params": [
+              {
+                "name": "skip",
+                "value": "",
+                "type": "query",
+                "description": "Number of records to skip."
+              },
+              {
+                "name": "take",
+                "value": "",
+                "type": "query",
+                "description": "Number of records to return."
+              }
+            ]
+          },
+          "docs": "Search base scenarios."
+        },
+        {
+          "info": {
+            "name": "Search base scenarios.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/base-scenario/search/count"
+          },
+          "docs": "Search base scenarios."
+        },
+        {
+          "info": {
+            "name": "Gets the list of permissionable clients (in the context of the person making the request).",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/group/client"
+          },
+          "docs": "Gets the list of permissionable clients (in the context of the person making the request)."
+        },
+        {
+          "info": {
+            "name": "Search client scenarios.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/project/scenario/search",
+            "params": [
+              {
+                "name": "skip",
+                "value": "",
+                "type": "query",
+                "description": "Number of records to skip."
+              },
+              {
+                "name": "take",
+                "value": "",
+                "type": "query",
+                "description": "Number of records to return."
+              }
+            ]
+          },
+          "docs": "Search client scenarios."
+        },
+        {
+          "info": {
+            "name": "Search client scenarios.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/project/scenario/search/count"
+          },
+          "docs": "Search client scenarios."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Health",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Gets the health of the service.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/health"
+          },
+          "docs": "Gets the health of the service."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Project",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Gets the list of projects the user has access to.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/project"
+          },
+          "docs": "Gets the list of projects the user has access to."
+        },
+        {
+          "info": {
+            "name": "Gets information about a specific project.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/project/:projectId",
+            "params": [
+              {
+                "name": "projectId",
+                "value": "",
+                "type": "path",
+                "description": "The Id of the project."
+              }
+            ]
+          },
+          "docs": "Gets information about a specific project."
+        },
+        {
+          "info": {
+            "name": "Deletes a project.",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/project/:projectId",
+            "params": [
+              {
+                "name": "projectId",
+                "value": "",
+                "type": "path",
+                "description": "The project Id."
+              }
+            ]
+          },
+          "docs": "Deletes a project."
+        },
+        {
+          "info": {
+            "name": "Starts the build process for a project.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/project/:projectId/build",
+            "params": [
+              {
+                "name": "projectId",
+                "value": "",
+                "type": "path",
+                "description": "The project Id."
+              }
+            ]
+          },
+          "docs": "Starts the build process for a project."
+        },
+        {
+          "info": {
+            "name": "Gets the list of checkpoints for a scenario.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/project/:projectId/checkpoint/:scenarioId",
+            "params": [
+              {
+                "name": "projectId",
+                "value": "",
+                "type": "path",
+                "description": "The project Id in which the scenario belongs to."
+              },
+              {
+                "name": "scenarioId",
+                "value": "",
+                "type": "path",
+                "description": "The Id of the scenario."
+              }
+            ]
+          },
+          "docs": "Gets the list of checkpoints for a scenario."
+        },
+        {
+          "info": {
+            "name": "Adds contributors to a project.",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "{{baseUrl}}/project/:projectId/contributor/:role",
+            "params": [
+              {
+                "name": "projectId",
+                "value": "",
+                "type": "path",
+                "description": "The project Id"
+              },
+              {
+                "name": "role",
+                "value": "",
+                "type": "path",
+                "description": "The contributor role. \r\nInactive = 0,\r\nAdmin = 1,\r\nEditor = 2,\r\nObserver = 3"
+              }
+            ]
+          },
+          "docs": "Adds contributors to a project."
+        },
+        {
+          "info": {
+            "name": "Gets the list of geographies for a project.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/project/:projectId/geos",
+            "params": [
+              {
+                "name": "projectId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Gets the list of geographies for a project."
+        },
+        {
+          "info": {
+            "name": "Gets the scenarios within a project.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/project/:projectId/scenario",
+            "params": [
+              {
+                "name": "projectId",
+                "value": "",
+                "type": "path",
+                "description": "The Id of the project."
+              }
+            ]
+          },
+          "docs": "Gets the scenarios within a project."
+        },
+        {
+          "info": {
+            "name": "Removes a scenario from a project.",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/project/:projectId/scenario/alias/:alias",
+            "params": [
+              {
+                "name": "projectId",
+                "value": "",
+                "type": "path",
+                "description": "The project Id."
+              },
+              {
+                "name": "alias",
+                "value": "",
+                "type": "path",
+                "description": "The scenario alias."
+              }
+            ]
+          },
+          "docs": "Removes a scenario from a project."
+        },
+        {
+          "info": {
+            "name": "Creates a copy of a scenario and adds it to a project.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/project/:projectId/scenario/clone",
+            "params": [
+              {
+                "name": "projectId",
+                "value": "",
+                "type": "path",
+                "description": "The Id of the project."
+              }
+            ]
+          },
+          "docs": "Creates a copy of a scenario and adds it to a project."
+        },
+        {
+          "info": {
+            "name": "Adds an existing scenario to a project",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/project/:projectId/scenario/copy",
+            "params": [
+              {
+                "name": "projectId",
+                "value": "",
+                "type": "path",
+                "description": "The project Id in which the scenario will be added to."
+              }
+            ]
+          },
+          "docs": "Adds an existing scenario to a project"
+        },
+        {
+          "info": {
+            "name": "Gets the list of all series within a project.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/project/:projectId/series",
+            "params": [
+              {
+                "name": "projectId",
+                "value": "",
+                "type": "path",
+                "description": "The Id of the project."
+              }
+            ]
+          },
+          "docs": "Gets the list of all series within a project."
+        },
+        {
+          "info": {
+            "name": "Gets the list of series checked out by the current user.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/project/:projectId/series/checked-out",
+            "params": [
+              {
+                "name": "projectId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "access",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Gets the list of series checked out by the current user."
+        },
+        {
+          "info": {
+            "name": "Gets the list of the exogenized series in a project.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/project/:projectId/series/exogenized",
+            "params": [
+              {
+                "name": "projectId",
+                "value": "",
+                "type": "path",
+                "description": "The Id of the project."
+              }
+            ]
+          },
+          "docs": "Gets the list of the exogenized series in a project."
+        },
+        {
+          "info": {
+            "name": "Updates the project settings.",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "{{baseUrl}}/project/:projectId/settings",
+            "params": [
+              {
+                "name": "projectId",
+                "value": "",
+                "type": "path",
+                "description": "The project Id."
+              }
+            ]
+          },
+          "docs": "Updates the project settings."
+        },
+        {
+          "info": {
+            "name": "Creates a new project.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/project/create"
+          },
+          "docs": "Creates a new project."
+        },
+        {
+          "info": {
+            "name": "Gets the search records when searching for projects.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/project/search",
+            "params": [
+              {
+                "name": "skip",
+                "value": "",
+                "type": "query",
+                "description": "Number of records to skip."
+              },
+              {
+                "name": "take",
+                "value": "",
+                "type": "query",
+                "description": "Number of records to return."
+              },
+              {
+                "name": "options.terms",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "options.tags",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "options.roles",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "options.sortBy",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "options.matchAllTerms",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "options.starred",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "options.active",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "options.archived",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "options.assistant",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Gets the search records when searching for projects."
+        },
+        {
+          "info": {
+            "name": "Gets the search count when searching for projects.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/project/search/count",
+            "params": [
+              {
+                "name": "options.terms",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "options.tags",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "options.roles",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "options.sortBy",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "options.matchAllTerms",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "options.starred",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "options.active",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "options.archived",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "options.assistant",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Gets the search count when searching for projects."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "DataSeries",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Gets multiple series and/or expressions.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/project/:projectId/data-series",
+            "params": [
+              {
+                "name": "projectId",
+                "value": "",
+                "type": "path",
+                "description": "The Id of the project."
+              },
+              {
+                "name": "expressions",
+                "value": "",
+                "type": "query",
+                "description": "A semicolon delimited list of series and/or expression.\r\nSeries should be formatted as [location].[scenario-alias].[variable id].\r\nExamples:\r\nl.bl.fet_us --&gt; local data for the bl scenario\r\nc.bl.fet_us --&gt; central data for the bl scenario\r\nbl.fet_us --&gt; central data for the bl scenario\r\nl.bl.fet_us;c.bl.fet_us;l.bl.fet_us-c.bl.fet_us --&gt; local bl data, central bl data, expression containing both central and local data"
+              },
+              {
+                "name": "frequency",
+                "value": "",
+                "type": "query",
+                "description": "The frequency of the data (defaults to quarterly)."
+              },
+              {
+                "name": "transformation",
+                "value": "",
+                "type": "query",
+                "description": "Optional enumeration for transforming the series data. \r\n0 = None,\r\n1 = Year Over Year %\r\n2 = Simple Difference\r\n3 = Annualized Growth\r\n4 = % Change\r\n8 = Year Over Year Difference"
+              },
+              {
+                "name": "conversionMethod",
+                "value": "",
+                "type": "query",
+                "description": "Overrides the conversion method being used during the frequency conversion."
+              },
+              {
+                "name": "start",
+                "value": "",
+                "type": "query",
+                "description": "The integer start date."
+              },
+              {
+                "name": "end",
+                "value": "",
+                "type": "query",
+                "description": "The integer end date."
+              }
+            ]
+          },
+          "docs": "Gets multiple series and/or expressions."
+        },
+        {
+          "info": {
+            "name": "Gets multiple series and/or expressions.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/project/:projectId/data-series",
+            "params": [
+              {
+                "name": "projectId",
+                "value": "",
+                "type": "path",
+                "description": "The Id of the project."
+              },
+              {
+                "name": "frequency",
+                "value": "",
+                "type": "query",
+                "description": "The frequency of the data (defaults to quarterly)."
+              },
+              {
+                "name": "transformation",
+                "value": "",
+                "type": "query",
+                "description": "Optional enumeration for transforming the series data. \r\n0 = None,\r\n1 = Year Over Year %\r\n2 = Simple Difference\r\n3 = Annualized Growth\r\n4 = % Change\r\n8 = Year Over Year Difference"
+              },
+              {
+                "name": "conversionMethod",
+                "value": "",
+                "type": "query",
+                "description": "Overrides the conversion method being used during the frequency conversion."
+              },
+              {
+                "name": "conversionTechnique",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "start",
+                "value": "",
+                "type": "query",
+                "description": "The integer start date."
+              },
+              {
+                "name": "end",
+                "value": "",
+                "type": "query",
+                "description": "The integer end date."
+              }
+            ]
+          },
+          "docs": "Gets multiple series and/or expressions."
+        },
+        {
+          "info": {
+            "name": "Saves local series data.",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "{{baseUrl}}/project/:projectId/scenario/:scenarioId/data-series/:variableId/data/local",
+            "params": [
+              {
+                "name": "scenarioId",
+                "value": "",
+                "type": "path",
+                "description": "The scenario Id."
+              },
+              {
+                "name": "variableId",
+                "value": "",
+                "type": "path",
+                "description": "The variable Id."
+              },
+              {
+                "name": "projectId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Saves local series data."
+        },
+        {
+          "info": {
+            "name": "Clears add factors on series in which you have claimed.",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "{{baseUrl}}/project/:projectId/scenario/:scenarioId/data-series/add-factor/local",
+            "params": [
+              {
+                "name": "projectId",
+                "value": "",
+                "type": "path",
+                "description": "The project Id."
+              },
+              {
+                "name": "scenarioId",
+                "value": "",
+                "type": "path",
+                "description": "The scenario Id."
+              }
+            ]
+          },
+          "docs": "Clears add factors on series in which you have claimed."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Order",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Gets information on any single order.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/project/:projectId/order/:orderId",
+            "params": [
+              {
+                "name": "orderId",
+                "value": "",
+                "type": "path",
+                "description": "The order id"
+              },
+              {
+                "name": "parentOnly",
+                "value": "",
+                "type": "query",
+                "description": "when false to checks child orders; else only checks the passed in order."
+              },
+              {
+                "name": "projectId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Gets information on any single order."
+        },
+        {
+          "info": {
+            "name": "Checks the project build status.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/project/:projectId/order/:orderId/build",
+            "params": [
+              {
+                "name": "orderId",
+                "value": "",
+                "type": "path",
+                "description": "The build order Id."
+              },
+              {
+                "name": "projectId",
+                "value": "",
+                "type": "path",
+                "description": "The project Id."
+              }
+            ]
+          },
+          "docs": "Checks the project build status."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Scenario",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Gets information about a specific scenario.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/project/:projectId/scenario/:scenarioId",
+            "params": [
+              {
+                "name": "projectId",
+                "value": "",
+                "type": "path",
+                "description": "The Id of the project."
+              },
+              {
+                "name": "scenarioId",
+                "value": "",
+                "type": "path",
+                "description": "The Id of the scenario."
+              }
+            ]
+          },
+          "docs": "Gets information about a specific scenario."
+        },
+        {
+          "info": {
+            "name": "Update the scenario options.",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "{{baseUrl}}/project/:projectId/scenario/:scenarioId",
+            "params": [
+              {
+                "name": "projectId",
+                "value": "",
+                "type": "path",
+                "description": "The project Id of the scenario."
+              },
+              {
+                "name": "scenarioId",
+                "value": "",
+                "type": "path",
+                "description": "The scenario to update."
+              }
+            ]
+          },
+          "docs": "Update the scenario options."
+        },
+        {
+          "info": {
+            "name": "Creates new checkpoint",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/project/:projectId/scenario/:scenarioId/checkpoint",
+            "params": [
+              {
+                "name": "scenarioId",
+                "value": "",
+                "type": "path",
+                "description": "The Scenario Id."
+              },
+              {
+                "name": "projectId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Creates new checkpoint"
+        },
+        {
+          "info": {
+            "name": "Restore checkpoint's series to a scenario",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "{{baseUrl}}/project/:projectId/scenario/:scenarioId/checkpoint/:checkpointId",
+            "params": [
+              {
+                "name": "scenarioId",
+                "value": "",
+                "type": "path",
+                "description": "The Scenario Id."
+              },
+              {
+                "name": "checkpointId",
+                "value": "",
+                "type": "path",
+                "description": "The checkpoint Id."
+              },
+              {
+                "name": "projectId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Restore checkpoint's series to a scenario"
+        },
+        {
+          "info": {
+            "name": "Performs a central solve on a scenario.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/project/:projectId/scenario/:scenarioId/solve/central",
+            "params": [
+              {
+                "name": "scenarioId",
+                "value": "",
+                "type": "path",
+                "description": "The Id of the scenario to solve."
+              },
+              {
+                "name": "projectId",
+                "value": "",
+                "type": "path",
+                "description": "The Id of the project which contains the scenario being solved."
+              }
+            ]
+          },
+          "docs": "Performs a central solve on a scenario."
+        },
+        {
+          "info": {
+            "name": "Performs a local solve on a scenario.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/project/:projectId/scenario/:scenarioId/solve/local",
+            "params": [
+              {
+                "name": "scenarioId",
+                "value": "",
+                "type": "path",
+                "description": "The Id of the scenario to solve."
+              },
+              {
+                "name": "projectId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Performs a local solve on a scenario."
+        },
+        {
+          "info": {
+            "name": "Imports data from another scenario.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/project/:projectId/scenario/:scenarioId/transfer-series/order",
+            "params": [
+              {
+                "name": "projectId",
+                "value": "",
+                "type": "path",
+                "description": "The project Id to to be written to."
+              },
+              {
+                "name": "scenarioId",
+                "value": "",
+                "type": "path",
+                "description": "The scenario Id to be written to."
+              }
+            ]
+          },
+          "docs": "Imports data from another scenario."
+        },
+        {
+          "info": {
+            "name": "Performs an add-factor solve.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/project/:projectId/scenario/reendogenize",
+            "params": [
+              {
+                "name": "projectId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Performs an add-factor solve."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Series",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Gets information about a specific series.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/project/:projectId/scenario/:scenarioId/:variableId",
+            "params": [
+              {
+                "name": "projectId",
+                "value": "",
+                "type": "path",
+                "description": "The Id of the project."
+              },
+              {
+                "name": "scenarioId",
+                "value": "",
+                "type": "path",
+                "description": "The Id of the scenario."
+              },
+              {
+                "name": "variableId",
+                "value": "",
+                "type": "path",
+                "description": "The Id of the variable."
+              }
+            ]
+          },
+          "docs": "Gets information about a specific series."
+        },
+        {
+          "info": {
+            "name": "Edits the equation of a series.",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "{{baseUrl}}/project/:projectId/scenario/:scenarioId/series/:variableId/equation",
+            "params": [
+              {
+                "name": "projectId",
+                "value": "",
+                "type": "path",
+                "description": "The Id of the project."
+              },
+              {
+                "name": "scenarioId",
+                "value": "",
+                "type": "path",
+                "description": "The Id of the scenario."
+              },
+              {
+                "name": "variableId",
+                "value": "",
+                "type": "path",
+                "description": "The Id of the variable."
+              }
+            ]
+          },
+          "docs": "Edits the equation of a series."
+        },
+        {
+          "info": {
+            "name": "Changes the last historical end point for a series.",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "{{baseUrl}}/project/:projectId/scenario/:scenarioId/series/:variableId/historical/:lastHistorical",
+            "params": [
+              {
+                "name": "projectId",
+                "value": "",
+                "type": "path",
+                "description": "The Id of the project."
+              },
+              {
+                "name": "scenarioId",
+                "value": "",
+                "type": "path",
+                "description": "The Id of the scenario."
+              },
+              {
+                "name": "variableId",
+                "value": "",
+                "type": "path",
+                "description": "The Id of the variable."
+              },
+              {
+                "name": "lastHistorical",
+                "value": "",
+                "type": "path",
+                "description": "The new last historical point."
+              }
+            ]
+          },
+          "docs": "Changes the last historical end point for a series."
+        },
+        {
+          "info": {
+            "name": "Gets sharedown information for a series.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/project/:projectId/scenario/:scenarioId/series/:variableId/sharedown",
+            "params": [
+              {
+                "name": "scenarioId",
+                "value": "",
+                "type": "path",
+                "description": "The Id of the scenario."
+              },
+              {
+                "name": "variableId",
+                "value": "",
+                "type": "path",
+                "description": "The Id of the series."
+              },
+              {
+                "name": "projectId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Gets sharedown information for a series."
+        },
+        {
+          "info": {
+            "name": "Checks out all variables within a sharedown chain, and starts the sharedown calculation.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/project/:projectId/scenario/:scenarioId/series/:variableId/sharedown",
+            "params": [
+              {
+                "name": "projectId",
+                "value": "",
+                "type": "path",
+                "description": "The project Id."
+              },
+              {
+                "name": "scenarioId",
+                "value": "",
+                "type": "path",
+                "description": "The scenario Id."
+              },
+              {
+                "name": "variableId",
+                "value": "",
+                "type": "path",
+                "description": "The variable to sharedown."
+              }
+            ]
+          },
+          "docs": "Checks out all variables within a sharedown chain, and starts the sharedown calculation."
+        },
+        {
+          "info": {
+            "name": "Releases a series/unlocks a series without writing data to central.\r\nIf releasing a custom series that has never been pushed to central,\r\nthe custom series is deleted.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/project/:projectId/scenario/:scenarioId/series/checkin",
+            "params": [
+              {
+                "name": "projectId",
+                "value": "",
+                "type": "path",
+                "description": "The Id of the project."
+              },
+              {
+                "name": "scenarioId",
+                "value": "",
+                "type": "path",
+                "description": "The Id of the scenario."
+              }
+            ]
+          },
+          "docs": "Releases a series/unlocks a series without writing data to central.\r\nIf releasing a custom series that has never been pushed to central,\r\nthe custom series is deleted."
+        },
+        {
+          "info": {
+            "name": "Claim/check out series.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/project/:projectId/scenario/:scenarioId/series/checkout",
+            "params": [
+              {
+                "name": "projectId",
+                "value": "",
+                "type": "path",
+                "description": "The Id of the project."
+              },
+              {
+                "name": "scenarioId",
+                "value": "",
+                "type": "path",
+                "description": "The Id of the scenario."
+              },
+              {
+                "name": "exogenize",
+                "value": "",
+                "type": "query",
+                "description": "When true, sets series to be exogenous; else series default to the current central state."
+              }
+            ]
+          },
+          "docs": "Claim/check out series."
+        },
+        {
+          "info": {
+            "name": "Push to central/commit a series- writes local data to central.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/project/:projectId/scenario/:scenarioId/series/commit",
+            "params": [
+              {
+                "name": "projectId",
+                "value": "",
+                "type": "path",
+                "description": "The Id of the project."
+              },
+              {
+                "name": "scenarioId",
+                "value": "",
+                "type": "path",
+                "description": "The Id of the scenario."
+              }
+            ]
+          },
+          "docs": "Push to central/commit a series- writes local data to central."
+        },
+        {
+          "info": {
+            "name": "Creates new custom series.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/project/:projectId/scenario/:scenarioId/series/custom",
+            "params": [
+              {
+                "name": "projectId",
+                "value": "",
+                "type": "path",
+                "description": "The Id of the project."
+              },
+              {
+                "name": "scenarioId",
+                "value": "",
+                "type": "path",
+                "description": "The Id of the scenario."
+              },
+              {
+                "name": "skipDependencyCheck",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Creates new custom series."
+        },
+        {
+          "info": {
+            "name": "Edits a custom series.",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "{{baseUrl}}/project/:projectId/scenario/:scenarioId/series/custom",
+            "params": [
+              {
+                "name": "projectId",
+                "value": "",
+                "type": "path",
+                "description": "The Id of the project."
+              },
+              {
+                "name": "scenarioId",
+                "value": "",
+                "type": "path",
+                "description": "The Id of the scenario."
+              }
+            ]
+          },
+          "docs": "Edits a custom series."
+        },
+        {
+          "info": {
+            "name": "Deletes custom series.",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/project/:projectId/scenario/:scenarioId/series/custom",
+            "params": [
+              {
+                "name": "projectId",
+                "value": "",
+                "type": "path",
+                "description": "The Id of the project."
+              },
+              {
+                "name": "scenarioId",
+                "value": "",
+                "type": "path",
+                "description": "The Id of the scenario."
+              }
+            ]
+          },
+          "docs": "Deletes custom series."
+        },
+        {
+          "info": {
+            "name": "Sets series' state to endogenous.",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "{{baseUrl}}/project/:projectId/scenario/:scenarioId/series/endogenizeBulk",
+            "params": [
+              {
+                "name": "projectId",
+                "value": "",
+                "type": "path",
+                "description": "The Id of the project."
+              },
+              {
+                "name": "scenarioId",
+                "value": "",
+                "type": "path",
+                "description": "The Id of the scenario."
+              }
+            ]
+          },
+          "docs": "Sets series' state to endogenous."
+        },
+        {
+          "info": {
+            "name": "Sets series' state to exogenous.",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "{{baseUrl}}/project/:projectId/scenario/:scenarioId/series/exogenize",
+            "params": [
+              {
+                "name": "projectId",
+                "value": "",
+                "type": "path",
+                "description": "The Id of the project."
+              },
+              {
+                "name": "scenarioId",
+                "value": "",
+                "type": "path",
+                "description": "The Id of the scenario."
+              }
+            ]
+          },
+          "docs": "Sets series' state to exogenous."
+        },
+        {
+          "info": {
+            "name": "Sets series to be partially exogenized.",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "{{baseUrl}}/project/:projectId/scenario/:scenarioId/series/exogenize-through",
+            "params": [
+              {
+                "name": "projectId",
+                "value": "",
+                "type": "path",
+                "description": "The Id of the project."
+              },
+              {
+                "name": "scenarioId",
+                "value": "",
+                "type": "path",
+                "description": "The Id of the scenario."
+              }
+            ]
+          },
+          "docs": "Sets series to be partially exogenized."
+        },
+        {
+          "info": {
+            "name": "Gets series info for a list of series/expressions.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/project/:projectId/scenario/:scenarioId/series/info",
+            "params": [
+              {
+                "name": "projectId",
+                "value": "",
+                "type": "path",
+                "description": "The Id of the project."
+              },
+              {
+                "name": "scenarioId",
+                "value": "",
+                "type": "path",
+                "description": "The Id of the scenario."
+              }
+            ]
+          },
+          "docs": "Gets series info for a list of series/expressions."
+        },
+        {
+          "info": {
+            "name": "Starts an add factor solve for one or more series.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/project/:projectId/scenario/:scenarioId/series/reendogenize",
+            "params": [
+              {
+                "name": "scenarioId",
+                "value": "",
+                "type": "path",
+                "description": "The Id of the scenario."
+              },
+              {
+                "name": "projectId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Starts an add factor solve for one or more series."
+        },
+        {
+          "info": {
+            "name": "Gets all meta information for a series.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/project/:projectId/scenario/:scenarioId/variable/:variableId",
+            "params": [
+              {
+                "name": "projectId",
+                "value": "",
+                "type": "path",
+                "description": "The Id of the project."
+              },
+              {
+                "name": "scenarioId",
+                "value": "",
+                "type": "path",
+                "description": "The Id of the scenario."
+              },
+              {
+                "name": "variableId",
+                "value": "",
+                "type": "path",
+                "description": "The Id of the series."
+              }
+            ]
+          },
+          "docs": "Gets all meta information for a series."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Interpolation",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Runs an interpolation calculation (annual to quarterly)",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/project/:projectId/scenario/:scenarioId/data-series/interpolation",
+            "params": [
+              {
+                "name": "scenarioId",
+                "value": "",
+                "type": "path",
+                "description": "The Id of the scenario."
+              },
+              {
+                "name": "projectId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Runs an interpolation calculation (annual to quarterly)"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "SeriesSearch",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Gets the record count for a search query.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/project/:projectId/search/count",
+            "params": [
+              {
+                "name": "projectId",
+                "value": "",
+                "type": "path",
+                "description": "The Id of the project."
+              }
+            ]
+          },
+          "docs": "Gets the record count for a search query."
+        },
+        {
+          "info": {
+            "name": "Gets the records for a search query.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/project/:projectId/search/results",
+            "params": [
+              {
+                "name": "projectId",
+                "value": "",
+                "type": "path",
+                "description": "The Id of the project."
+              },
+              {
+                "name": "skip",
+                "value": "",
+                "type": "query",
+                "description": "The record count to skip."
+              },
+              {
+                "name": "take",
+                "value": "",
+                "type": "query",
+                "description": "The record cound to return."
+              }
+            ]
+          },
+          "docs": "Gets the records for a search query."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

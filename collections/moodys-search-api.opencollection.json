@@ -1,0 +1,78 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Moody's Data Buffet Baskets Search API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "oauth2",
+      "flow": "client_credentials",
+      "accessTokenUrl": "https://api.economy.com/data/v1/oauth2/token",
+      "credentials": {
+        "clientId": "{{clientId}}",
+        "clientSecret": "{{clientSecret}}"
+      }
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Search",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Moody's Search for Available Series",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.economy.com/data/v1/search",
+            "params": [
+              {
+                "name": "query",
+                "value": "",
+                "type": "query",
+                "description": "Search query string to match against series names, descriptions, mnemonics, and metadata."
+              },
+              {
+                "name": "geography",
+                "value": "",
+                "type": "query",
+                "description": "Filter results by geographic area code (e.g., US for United States, GB for United Kingdom, CN for China)."
+              },
+              {
+                "name": "source",
+                "value": "",
+                "type": "query",
+                "description": "Filter results by data source identifier (e.g., BLS, BEA, IMF, Eurostat)."
+              },
+              {
+                "name": "category",
+                "value": "",
+                "type": "query",
+                "description": "Filter results by data category (e.g., GDP, Employment, Inflation, Housing)."
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "The number of results to skip for pagination."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "The maximum number of results to return per page."
+              }
+            ]
+          },
+          "docs": "Searches the Data Buffet repository for available series matching the specified criteria. Supports filtering by keyword, geography, source, and category."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,462 @@
+{
+  "item": [
+    {
+      "id": "09deec99-a007-4fef-bd91-343938adb5df",
+      "name": "Forecast",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "a1d62707-1405-4bb7-ba63-af502d78d577",
+          "name": "The forecast endpoint that takes in an array of model inputs and returns the forecast",
+          "request": {
+            "name": "The forecast endpoint that takes in an array of model inputs and returns the forecast",
+            "description": {},
+            "url": {
+              "path": [
+                "forecast"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "modelVersion",
+                  "value": "<string>",
+                  "description": "The monthly model version using vYYYYMM format"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://api.economy.com/autocycle/v1/oauth2/token"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "client_credentials"
+                }
+              ]
+            },
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "disabled": false,
+                  "key": "0",
+                  "value": "<"
+                },
+                {
+                  "disabled": false,
+                  "key": "1",
+                  "value": "o"
+                },
+                {
+                  "disabled": false,
+                  "key": "2",
+                  "value": "b"
+                },
+                {
+                  "disabled": false,
+                  "key": "3",
+                  "value": "j"
+                },
+                {
+                  "disabled": false,
+                  "key": "4",
+                  "value": "e"
+                },
+                {
+                  "disabled": false,
+                  "key": "5",
+                  "value": "c"
+                },
+                {
+                  "disabled": false,
+                  "key": "6",
+                  "value": "t"
+                },
+                {
+                  "disabled": false,
+                  "key": "7",
+                  "value": ">"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "11e355f0-1b00-4065-aaf9-b58d4d99fbe9",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "forecast"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "modelVersion",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "key": "0",
+                      "value": "<"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "1",
+                      "value": "o"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "2",
+                      "value": "b"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "3",
+                      "value": "j"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "4",
+                      "value": "e"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "5",
+                      "value": "c"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "6",
+                      "value": "t"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "7",
+                      "value": ">"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "2590b664-0960-4915-9f48-8f645fc676ea",
+      "name": "HealthCheck",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "b2f09097-874d-4c31-b419-d90a0f69fabf",
+          "name": "Health Check Health Check",
+          "request": {
+            "name": "Health Check Health Check",
+            "description": {},
+            "url": {
+              "path": [
+                "health"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://api.economy.com/autocycle/v1/oauth2/token"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "client_credentials"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "991ed81b-3bbd-4d75-a93c-8b202907930e",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "health"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "3ad47d6d-e553-43e1-bdf8-b13ccab9ff8c",
+      "name": "Vin",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "1b067807-65da-4f70-8e04-ba3afa6b55f9",
+          "name": "The vins endpoint takes in make, model, model year and model version of vehicle and performs a vin look up",
+          "request": {
+            "name": "The vins endpoint takes in make, model, model year and model version of vehicle and performs a vin look up",
+            "description": {},
+            "url": {
+              "path": [
+                "vins"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "vehicleMake",
+                  "value": "<string>",
+                  "description": "Make of the vehicle"
+                },
+                {
+                  "disabled": false,
+                  "key": "vehicleModel",
+                  "value": "<string>",
+                  "description": "Model of the vehicle\r\n           Vehicle model is a partial match with the model of vehicle \r\n           \tE.g.input(vehicleMake = 'BMW', vehicleModel = 'X3')\r\n           \t\t ouput(vehicleMake= 'BMW', vehicleModel = 'X3 series')"
+                },
+                {
+                  "disabled": false,
+                  "key": "vehicleModelYear",
+                  "value": "<integer>",
+                  "description": "Model Year of the vehicle"
+                },
+                {
+                  "disabled": false,
+                  "key": "modelVersion",
+                  "value": "<string>",
+                  "description": "Model Version is the version of the statistical/economic model, which is published every month\r\n              The monthly model version using vYYYYMM format"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://api.economy.com/autocycle/v1/oauth2/token"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "client_credentials"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "f882a0c2-a338-4d25-9aa4-36482a121268",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vins"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "vehicleMake",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "vehicleModel",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "vehicleModelYear",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "modelVersion",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.economy.com/autocycle/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "ae2360a0-6f4e-48b2-af75-e9f04a0ba5b9",
+    "name": "Moody's Analytics AutoCycle API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "API access to Moody's Analytics AutoCycle Forecast",
+      "type": "text/plain"
+    }
+  }
+}
