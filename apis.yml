@@ -6,6 +6,11 @@ apis:
   tags:
   - Demographics
   - Economic Data
+  - Forecast
+  - Time Series
+  tags_raw:
+  - Demographics
+  - Economic Data
   - Forecasts
   - Time Series
   image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
@@ -56,6 +61,11 @@ apis:
 - aid: moodys:eccl-api
   name: Moody's Consumer Credit Loss Forecasts API
   tags:
+  - Consumer Credit
+  - Credit Loss
+  - Forecast
+  - Risk
+  tags_raw:
   - Consumer Credit
   - Credit Loss
   - Forecasts
@@ -234,6 +244,11 @@ apis:
 - aid: moodys:newsedge-api
   name: Moody's NewsEdge API
   tags:
+  - Media
+  - News
+  - Real-Time Data
+  - Social-Media
+  tags_raw:
   - Media
   - News
   - Real-Time Data
