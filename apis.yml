@@ -266,30 +266,116 @@ apis:
     Bring together real-time news sources, and the best of the business web and social media to empower
     decision makers. The NewsEdge API provides access to Moody's 24,000+ news sources for integration
     into custom applications.
-- aid: moodys:moodys-autocycle-api-swagger
-  name: Moody's Analytics AutoCycle API
-  description: Moody's Analytics AutoCycle API from Moody's — 3 path(s) described in OpenAPI.
+- aid: moodys:moodys-audit-api
+  name: Moody's Audit API
+  description: The Audit API from Moody's — 2 operation(s) for audit.
   humanURL: https://www.economy.com/products/tools/data-buffet
   baseURL: https://api.economy.com
+  tags:
+  - Audit
   properties:
   - type: OpenAPI
-    url: openapi/moodys-autocycle-api-swagger.json
-- aid: moodys:moodys-municipal-api-swagger
-  name: Moody's Analytics Muni Loss Forecast API
-  description: Moody's Analytics Muni Loss Forecast API from Moody's — 2 path(s) described in OpenAPI.
+    url: openapi/moodys-audit-api-openapi.yml
+- aid: moodys:moodys-dataseries-api
+  name: Moody's Data Series API
+  description: The DataSeries API from Moody's — 3 operation(s) for dataseries.
   humanURL: https://www.economy.com/products/tools/data-buffet
   baseURL: https://api.economy.com
+  tags:
+  - DataSeries
   properties:
   - type: OpenAPI
-    url: openapi/moodys-municipal-api-swagger.json
-- aid: moodys:moodys-scenario-studio-api-swagger
-  name: Moody's Scenario Studio Api
-  description: Moody's Scenario Studio Api from Moody's — 57 path(s) described in OpenAPI.
+    url: openapi/moodys-dataseries-api-openapi.yml
+- aid: moodys:moodys-forecast-api
+  name: Moody's Forecast API
+  description: The Forecast API from Moody's — 2 operation(s) for forecast.
   humanURL: https://www.economy.com/products/tools/data-buffet
   baseURL: https://api.economy.com
+  tags:
+  - Forecast
   properties:
   - type: OpenAPI
-    url: openapi/moodys-scenario-studio-api-swagger.json
+    url: openapi/moodys-forecast-api-openapi.yml
+- aid: moodys:moodys-healthcheck-api
+  name: Moody's Health Check API
+  description: The HealthCheck API from Moody's — 1 operation(s) for healthcheck.
+  humanURL: https://www.economy.com/products/tools/data-buffet
+  baseURL: https://api.economy.com
+  tags:
+  - HealthCheck
+  properties:
+  - type: OpenAPI
+    url: openapi/moodys-healthcheck-api-openapi.yml
+- aid: moodys:moodys-interpolation-api
+  name: Moody's Interpolation API
+  description: The Interpolation API from Moody's — 1 operation(s) for interpolation.
+  humanURL: https://www.economy.com/products/tools/data-buffet
+  baseURL: https://api.economy.com
+  tags:
+  - Interpolation
+  properties:
+  - type: OpenAPI
+    url: openapi/moodys-interpolation-api-openapi.yml
+- aid: moodys:moodys-order-api
+  name: Moody's Order API
+  description: The Order API from Moody's — 2 operation(s) for order.
+  humanURL: https://www.economy.com/products/tools/data-buffet
+  baseURL: https://api.economy.com
+  tags:
+  - Order
+  properties:
+  - type: OpenAPI
+    url: openapi/moodys-order-api-openapi.yml
+- aid: moodys:moodys-project-api
+  name: Moody's Project API
+  description: The Project API from Moody's — 17 operation(s) for project.
+  humanURL: https://www.economy.com/products/tools/data-buffet
+  baseURL: https://api.economy.com
+  tags:
+  - Project
+  properties:
+  - type: OpenAPI
+    url: openapi/moodys-project-api-openapi.yml
+- aid: moodys:moodys-scenario-api
+  name: Moody's Scenario API
+  description: The Scenario API from Moody's — 7 operation(s) for scenario.
+  humanURL: https://www.economy.com/products/tools/data-buffet
+  baseURL: https://api.economy.com
+  tags:
+  - Scenario
+  properties:
+  - type: OpenAPI
+    url: openapi/moodys-scenario-api-openapi.yml
+- aid: moodys:moodys-seriessearch-api
+  name: Moody's Series Search API
+  description: The SeriesSearch API from Moody's — 2 operation(s) for seriessearch.
+  humanURL: https://www.economy.com/products/tools/data-buffet
+  baseURL: https://api.economy.com
+  tags:
+  - SeriesSearch
+  properties:
+  - type: OpenAPI
+    url: openapi/moodys-seriessearch-api-openapi.yml
+- aid: moodys:moodys-universe-api
+  name: Moody's Universe API
+  description: The Universe API from Moody's — 8 operation(s) for universe.
+  humanURL: https://www.economy.com/products/tools/data-buffet
+  baseURL: https://api.economy.com
+  tags:
+  - Universe
+  properties:
+  - type: OpenAPI
+    url: openapi/moodys-universe-api-openapi.yml
+- aid: moodys:moodys-vin-api
+  name: Moody's Vin API
+  description: The Vin API from Moody's — 1 operation(s) for vin.
+  humanURL: https://www.economy.com/products/tools/data-buffet
+  baseURL: https://api.economy.com
+  tags:
+  - Vin
+  properties:
+  - type: OpenAPI
+    url: openapi/moodys-vin-api-openapi.yml
 name: Moody's
 tags:
   - Climate Risk
