@@ -1,0 +1,47 @@
+openapi: 3.2.0
+info:
+  title: Moodys Health Check API
+  version: v1
+  description: 'Operations tagged HealthCheck across 3 of this provider''s published API definitions: moodys-autocycle-api-swagger.json, moodys-data-buffet-api-swagger.json, moodys-municipal-api-swagger.json. Each path carries the servers of the definition it was published in.'
+servers:
+- url: https://api.economy.com/autocycle/v1
+- url: https://api.economy.com/data/v1
+- url: https://api.economy.com/muni/v1
+tags:
+- name: HealthCheck
+paths:
+  /health:
+    get:
+      tags:
+      - HealthCheck
+      operationId: HealthCheck_HealthCheck
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+            text/json:
+              schema:
+                type: object
+            text/xml:
+              schema:
+                type: object
+      security:
+      - oauth2: []
+    servers:
+    - url: https://api.economy.com/autocycle/v1
+components:
+  securitySchemes:
+    oauth2:
+      type: oauth2
+      flows:
+        clientCredentials:
+          scopes: {}
+          tokenUrl: https://api.economy.com/autocycle/v1/oauth2/token
+      description: OAuth2 Client Credentials
+x-refined-from:
+- moodys-autocycle-api-swagger.json
+- moodys-data-buffet-api-swagger.json
+- moodys-municipal-api-swagger.json

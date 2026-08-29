@@ -1,0 +1,232 @@
+openapi: 3.2.0
+info:
+  version: v1
+  title: Moody's Analytics Data Buffet Multi Series API
+  description: API access to Moody's Analytics repository of international and subnational economic and demographic time series data.
+  license:
+    name: More Info
+    url: https://github.com/moodysanalytics/databuffet-api-codesamples
+servers:
+- url: https://api.economy.com/data/v1
+tags:
+- name: MultiSeries
+paths:
+  /multi-series:
+    get:
+      tags:
+      - MultiSeries
+      summary: Return array of series data formatted in JSON.
+      description: "Maximum of 25 series per request can be retrived using multi-series endpoint. \nIf dates are specified then a date range is required."
+      operationId: MultiSeries_Get
+      parameters:
+      - name: m
+        in: query
+        description: Semi colon delimeted list of data series codes (mnemonics)
+        required: true
+        schema:
+          type: string
+      - name: freq
+        in: query
+        description: Converts the data series to another frequency.
+        required: false
+        schema:
+          type: integer
+          format: int32
+          enum:
+          - 0
+          - 16
+          - 49
+          - 50
+          - 50
+          - 65
+          - 65
+          - 66
+          - 66
+          - 67
+          - 67
+          - 68
+          - 68
+          - 69
+          - 69
+          - 70
+          - 70
+          - 71
+          - 71
+          - 80
+          - 97
+          - 98
+          - 99
+          - 100
+          - 101
+          - 102
+          - 103
+          - 104
+          - 105
+          - 106
+          - 107
+          - 108
+          - 109
+          - 110
+          - 112
+          - 128
+          - 128
+          - 155
+          - 156
+          - 170
+          - 171
+          - 172
+          - 172
+          - 183
+          - 184
+          - 185
+          - 186
+          - 187
+          - 188
+          - 188
+          - 193
+          - 194
+          - 195
+          - 196
+          - 197
+          - 198
+          - 199
+          - 200
+          - 201
+          - 202
+          - 203
+          - 204
+          - 204
+      - name: trans
+        in: query
+        description: Performs a mathematical transformation on the data.
+        required: false
+        schema:
+          type: integer
+          format: int32
+          enum:
+          - 0
+          - 1
+          - 2
+          - 3
+          - 4
+          - 8
+          - -1
+      - name: conv
+        in: query
+        description: Conversion technique to use when performing frequency conversion.
+        required: false
+        schema:
+          type: integer
+          format: int32
+          enum:
+          - 0
+          - 1
+          - 2
+          - 3
+      - name: startDate
+        in: query
+        description: Start of data series. YYYY-MM-DD format.
+        required: false
+        schema:
+          type: string
+      - name: endDate
+        in: query
+        description: End of data series. YYYY-MM-DD format.
+        required: false
+        schema:
+          type: string
+      - name: vintage
+        in: query
+        description: Vintage of data series. YYYYMM or YYYYQ# or YYYY format.
+        required: false
+        schema:
+          type: string
+      - name: vintageVersion
+        in: query
+        description: Vintage Version data series. Integer 1, 2, 3, etc.
+        required: false
+        schema:
+          type: integer
+          format: int32
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponse_IEnumerable_Series'
+      security:
+      - oauth2: []
+components:
+  schemas:
+    SeriesData:
+      description: Series Data point
+      type: object
+      properties:
+        date:
+          description: DateTime string
+          type: string
+        value:
+          format: double
+          description: Series Value
+          type: number
+    ApiResponse_IEnumerable_Series:
+      type: object
+      properties:
+        error:
+          type: string
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/Series'
+    Series:
+      description: ''
+      type: object
+      properties:
+        appliedFreq:
+          format: int32
+          description: ''
+          type: integer
+        appliedTransformation:
+          format: int32
+          description: ''
+          type: integer
+        databank:
+          description: ''
+          type: string
+        description:
+          description: ''
+          type: string
+        error:
+          description: ''
+          type: string
+        freqCode:
+          description: ''
+          type: string
+        geoTitle:
+          description: Geography Title
+          type: string
+        mnemonic:
+          description: ''
+          type: string
+        observedAttribute:
+          description: ''
+          type: string
+        source:
+          description: ''
+          type: string
+        lastHistory:
+          type: string
+        data:
+          description: ''
+          type: array
+          items:
+            $ref: '#/components/schemas/SeriesData'
+  securitySchemes:
+    oauth2:
+      type: oauth2
+      flows:
+        clientCredentials:
+          scopes: {}
+          tokenUrl: https://api.economy.com/data/v1/oauth2/token
+      description: OAuth2 Client Credentials

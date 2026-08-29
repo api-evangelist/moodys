@@ -1,0 +1,1018 @@
+openapi: 3.2.0
+info:
+  version: v2
+  title: Scenario Studio Project API
+  description: API access to Moody's Analytics Scenario Studio.
+servers:
+- url: https://api.economy.com/scenario-studio/v2
+tags:
+- name: Project
+paths:
+  /project:
+    get:
+      tags:
+      - Project
+      summary: Gets the list of projects the user has access to.
+      operationId: Project_GetListAsync
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+            text/json:
+              schema:
+                type: object
+      security:
+      - oauth2: []
+  /project/{projectId}:
+    get:
+      tags:
+      - Project
+      summary: Gets information about a specific project.
+      operationId: Project_GetProjectAsync
+      parameters:
+      - name: projectId
+        in: path
+        description: The Id of the project.
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+            text/json:
+              schema:
+                type: object
+      security:
+      - oauth2: []
+    delete:
+      tags:
+      - Project
+      summary: Deletes a project.
+      operationId: Project_DeleteAsync
+      parameters:
+      - name: projectId
+        in: path
+        description: The project Id.
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+            text/json:
+              schema:
+                type: object
+      security:
+      - oauth2: []
+  /project/{projectId}/build:
+    post:
+      tags:
+      - Project
+      summary: Starts the build process for a project.
+      operationId: Project_BuildAsync
+      parameters:
+      - name: projectId
+        in: path
+        description: The project Id.
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+            text/json:
+              schema:
+                type: object
+      security:
+      - oauth2: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ProjectInfo'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/ProjectInfo'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/ProjectInfo'
+        description: The project settings.
+        required: true
+  /project/{projectId}/checkpoint/{scenarioId}:
+    get:
+      tags:
+      - Project
+      summary: Gets the list of checkpoints for a scenario.
+      operationId: Project_GetCheckpointsAsync
+      parameters:
+      - name: projectId
+        in: path
+        description: The project Id in which the scenario belongs to.
+        required: true
+        schema:
+          type: string
+      - name: scenarioId
+        in: path
+        description: The Id of the scenario.
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+            text/json:
+              schema:
+                type: object
+      security:
+      - oauth2: []
+  /project/{projectId}/contributor/{role}:
+    put:
+      tags:
+      - Project
+      summary: Adds contributors to a project.
+      operationId: Project_UpsertContributorsAsync
+      parameters:
+      - name: projectId
+        in: path
+        description: The project Id
+        required: true
+        schema:
+          type: string
+      - name: role
+        in: path
+        description: "The contributor role. \nInactive = 0,\nAdmin = 1,\nEditor = 2,\nObserver = 3"
+        required: true
+        schema:
+          type: integer
+          format: int32
+          enum:
+          - 0
+          - 1
+          - 2
+          - 3
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+            text/json:
+              schema:
+                type: object
+      security:
+      - oauth2: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/Contributor'
+          text/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/Contributor'
+          application/x-www-form-urlencoded:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/Contributor'
+        required: true
+  /project/{projectId}/geos:
+    get:
+      tags:
+      - Project
+      summary: Gets the list of geographies for a project.
+      operationId: Project_GeoListAsync
+      parameters:
+      - name: projectId
+        in: path
+        description: ''
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+            text/json:
+              schema:
+                type: object
+      security:
+      - oauth2: []
+  /project/{projectId}/scenario:
+    get:
+      tags:
+      - Project
+      summary: Gets the scenarios within a project.
+      operationId: Project_GetScenariosAsync
+      parameters:
+      - name: projectId
+        in: path
+        description: The Id of the project.
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+            text/json:
+              schema:
+                type: object
+      security:
+      - oauth2: []
+  /project/{projectId}/scenario/alias/{alias}:
+    delete:
+      tags:
+      - Project
+      summary: Removes a scenario from a project.
+      operationId: Project_RemoveScenarioAsync
+      parameters:
+      - name: projectId
+        in: path
+        description: The project Id.
+        required: true
+        schema:
+          type: string
+      - name: alias
+        in: path
+        description: The scenario alias.
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+            text/json:
+              schema:
+                type: object
+      security:
+      - oauth2: []
+  /project/{projectId}/scenario/clone:
+    post:
+      tags:
+      - Project
+      summary: Creates a copy of a scenario and adds it to a project.
+      operationId: Project_CloneScenarioAsync
+      parameters:
+      - name: projectId
+        in: path
+        description: The Id of the project.
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+            text/json:
+              schema:
+                type: object
+      security:
+      - oauth2: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AliasedScenario'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/AliasedScenario'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/AliasedScenario'
+        description: The scenario to be cloned.
+        required: true
+  /project/{projectId}/scenario/copy:
+    post:
+      tags:
+      - Project
+      summary: Adds an existing scenario to a project
+      operationId: Project_CopyScenarioAsync
+      parameters:
+      - name: projectId
+        in: path
+        description: The project Id in which the scenario will be added to.
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+            text/json:
+              schema:
+                type: object
+      security:
+      - oauth2: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AliasedScenario'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/AliasedScenario'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/AliasedScenario'
+        description: The scenario to be added.
+        required: true
+  /project/{projectId}/series:
+    get:
+      tags:
+      - Project
+      summary: Gets the list of all series within a project.
+      operationId: Project_GetSeriesAsync
+      parameters:
+      - name: projectId
+        in: path
+        description: The Id of the project.
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+            text/json:
+              schema:
+                type: object
+      security:
+      - oauth2: []
+  /project/{projectId}/series/checked-out:
+    get:
+      tags:
+      - Project
+      summary: Gets the list of series checked out by the current user.
+      operationId: Project_GetCheckedOutSeriesAsync
+      parameters:
+      - name: projectId
+        in: path
+        description: ''
+        required: true
+        schema:
+          type: string
+      - name: access
+        in: query
+        description: ''
+        required: false
+        schema:
+          type: integer
+          format: int32
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+            text/json:
+              schema:
+                type: object
+      security:
+      - oauth2: []
+  /project/{projectId}/series/exogenized:
+    get:
+      tags:
+      - Project
+      summary: Gets the list of the exogenized series in a project.
+      operationId: Project_GetExogenizedSeriesAsync
+      parameters:
+      - name: projectId
+        in: path
+        description: The Id of the project.
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+            text/json:
+              schema:
+                type: object
+      security:
+      - oauth2: []
+  /project/{projectId}/settings:
+    put:
+      tags:
+      - Project
+      summary: Updates the project settings.
+      operationId: Project_SaveSettingsAsync
+      parameters:
+      - name: projectId
+        in: path
+        description: The project Id.
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+            text/json:
+              schema:
+                type: object
+      security:
+      - oauth2: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ProjectInfo'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/ProjectInfo'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/ProjectInfo'
+        description: The project settings.
+        required: true
+  /project/create:
+    post:
+      tags:
+      - Project
+      summary: Creates a new project.
+      operationId: Project_CreateAsync
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+            text/json:
+              schema:
+                type: object
+      security:
+      - oauth2: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ProjectInfo'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/ProjectInfo'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/ProjectInfo'
+        description: The project settings.
+        required: true
+  /project/search:
+    get:
+      tags:
+      - Project
+      summary: Gets the search records when searching for projects.
+      operationId: Project_SearchProjectsAsync
+      parameters:
+      - name: skip
+        in: query
+        description: Number of records to skip.
+        required: false
+        schema:
+          type: integer
+          format: int32
+      - name: take
+        in: query
+        description: Number of records to return.
+        required: false
+        schema:
+          type: integer
+          format: int32
+      - name: options.terms
+        in: query
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: array
+          items:
+            type: string
+      - name: options.tags
+        in: query
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: array
+          items:
+            type: string
+      - name: options.roles
+        in: query
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: array
+          items:
+            type: integer
+            format: int32
+            enum:
+            - 0
+            - 1
+            - 2
+            - 3
+      - name: options.sortBy
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: options.matchAllTerms
+        in: query
+        required: false
+        schema:
+          type: boolean
+      - name: options.starred
+        in: query
+        required: false
+        schema:
+          type: boolean
+      - name: options.active
+        in: query
+        required: false
+        schema:
+          type: boolean
+      - name: options.archived
+        in: query
+        required: false
+        schema:
+          type: boolean
+      - name: options.assistant
+        in: query
+        required: false
+        schema:
+          type: boolean
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+            text/json:
+              schema:
+                type: object
+      security:
+      - oauth2: []
+  /project/search/count:
+    get:
+      tags:
+      - Project
+      summary: Gets the search count when searching for projects.
+      operationId: Project_SearchCountAsync
+      parameters:
+      - name: options.terms
+        in: query
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: array
+          items:
+            type: string
+      - name: options.tags
+        in: query
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: array
+          items:
+            type: string
+      - name: options.roles
+        in: query
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: array
+          items:
+            type: integer
+            format: int32
+            enum:
+            - 0
+            - 1
+            - 2
+            - 3
+      - name: options.sortBy
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: options.matchAllTerms
+        in: query
+        required: false
+        schema:
+          type: boolean
+      - name: options.starred
+        in: query
+        required: false
+        schema:
+          type: boolean
+      - name: options.active
+        in: query
+        required: false
+        schema:
+          type: boolean
+      - name: options.archived
+        in: query
+        required: false
+        schema:
+          type: boolean
+      - name: options.assistant
+        in: query
+        required: false
+        schema:
+          type: boolean
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+            text/json:
+              schema:
+                type: object
+      security:
+      - oauth2: []
+components:
+  schemas:
+    ProjectDate:
+      type: object
+      properties:
+        date:
+          type: string
+        label:
+          type: string
+    AliasedScenario:
+      type: object
+      properties:
+        alias:
+          pattern: ^[a-zA-Z][\w]{1,15}$
+          type: string
+        permissions:
+          type: array
+          items:
+            $ref: '#/components/schemas/ScenarioPermission'
+        truncate:
+          type: boolean
+        id:
+          pattern: ^[\w\-]{20,50}$
+          type: string
+        baseScenarioId:
+          pattern: ^[\w\-]{20,50}$
+          type: string
+        sharedownId:
+          pattern: ^[\w\-]{20,50}$
+          type: string
+        title:
+          type: string
+        titleUpper:
+          type: string
+        modelType:
+          type: string
+        vintage:
+          format: int32
+          maximum: 2147483647
+          minimum: 0
+          type: integer
+        utcDateModified:
+          format: date-time
+          type: string
+        utcDateCreated:
+          format: date-time
+          type: string
+        unix:
+          format: int64
+          type: integer
+          readOnly: true
+        description:
+          type: string
+        freq:
+          format: int32
+          type: integer
+        forecastStart:
+          format: int32
+          maximum: 2147483647
+          minimum: 0
+          type: integer
+        forecastEnd:
+          format: int32
+          maximum: 2147483647
+          minimum: 0
+          type: integer
+        historyStart:
+          format: int32
+          maximum: 2147483647
+          minimum: 0
+          type: integer
+        displayStart:
+          format: int32
+          maximum: 2147483647
+          minimum: 0
+          type: integer
+        displayEnd:
+          format: int32
+          maximum: 2147483647
+          minimum: 0
+          type: integer
+        editStart:
+          format: int32
+          maximum: 2147483647
+          minimum: 0
+          type: integer
+        maxIters:
+          format: int32
+          maximum: 2147483647
+          minimum: 0
+          type: integer
+        solving:
+          type: boolean
+        convergence:
+          format: double
+          minimum: 0
+          type: number
+        projectOwner:
+          pattern: ^[\w\-]{20,50}$
+          type: string
+        utcDateAccessed:
+          format: date-time
+          type: string
+        archiving:
+          type: boolean
+        archived:
+          type: boolean
+        restoring:
+          type: boolean
+    ProjectOrder:
+      type: object
+      properties:
+        clientId:
+          pattern: ^[\w\-]{20,50}$
+          type: string
+        description:
+          type: string
+        orderType:
+          format: int32
+          enum:
+          - 0
+          - 1
+          - 2
+          - 3
+          - 4
+          type: integer
+        orderId:
+          type: string
+        brokerId:
+          format: int32
+          type: integer
+        webId:
+          type: string
+        parameter:
+          type: string
+        output:
+          type: string
+        dateOrdered:
+          format: date-time
+          type: string
+        dateStarted:
+          format: date-time
+          type: string
+        dateFinished:
+          format: date-time
+          type: string
+        failure:
+          format: int32
+          type: integer
+        priority:
+          format: int32
+          type: integer
+        brokerServerPickUp:
+          type: string
+        sqlServerPickUp:
+          type: string
+        sqlServerLocation:
+          format: int32
+          type: integer
+        processing:
+          format: int32
+          type: integer
+        lastRunStatus:
+          format: int32
+          type: integer
+        ubiId:
+          type: string
+        email:
+          type: string
+        maxRetryCount:
+          format: int32
+          type: integer
+    ScenarioPermission:
+      type: object
+      properties:
+        sid:
+          pattern: ^[\w\-]{20,50}$
+          type: string
+        permission:
+          format: int32
+          maximum: 1
+          minimum: 0
+          type: integer
+        utcDateCreated:
+          format: date-time
+          type: string
+        utcDateUpdated:
+          format: date-time
+          type: string
+    Contributor:
+      type: object
+      properties:
+        role:
+          format: int32
+          enum:
+          - 0
+          - 1
+          - 2
+          - 3
+          type: integer
+        utcDateCreated:
+          format: date-time
+          type: string
+        utcDateUpdated:
+          format: date-time
+          type: string
+        starred:
+          type: boolean
+        timeStamp:
+          format: date-time
+          type: string
+        sid:
+          pattern: ^[\w\-]{20,50}$
+          type: string
+        firstName:
+          type: string
+        lastName:
+          type: string
+        email:
+          type: string
+        self:
+          type: boolean
+        gid:
+          pattern: ^[\w\-]{20,50}$
+          type: string
+    ProjectInfo:
+      type: object
+      properties:
+        id:
+          pattern: ^[\w\-]{20,50}$
+          type: string
+        title:
+          type: string
+        utcDateCreatedTicks:
+          format: int64
+          type: integer
+        modified:
+          type: string
+        unix:
+          format: int64
+          type: integer
+        tags:
+          type: array
+          items:
+            type: string
+        geos:
+          type: array
+          items:
+            type: string
+        description:
+          type: string
+        isAdmin:
+          type: boolean
+        scenarios:
+          type: array
+          items:
+            $ref: '#/components/schemas/ProjectScenarioInfo'
+        contributors:
+          type: array
+          items:
+            $ref: '#/components/schemas/Contributor'
+        orders:
+          type: array
+          items:
+            $ref: '#/components/schemas/ProjectOrder'
+        dates:
+          type: array
+          items:
+            $ref: '#/components/schemas/ProjectDate'
+        alias:
+          pattern: ^[a-zA-Z][\w]{1,15}$
+          type: string
+        varTypesLockStatus:
+          type: object
+          additionalProperties:
+            type: boolean
+        allowEquationEditing:
+          type: boolean
+        commentRequired:
+          type: boolean
+        allowCustomSeries:
+          type: boolean
+        allowHistoryEditing:
+          type: boolean
+        allowLastHistoryChange:
+          type: boolean
+    ProjectScenarioInfo:
+      type: object
+      properties:
+        projectId:
+          pattern: ^[\w\-]{20,50}$
+          type: string
+        scenarioId:
+          pattern: ^[\w\-]{20,50}$
+          type: string
+        title:
+          type: string
+        alias:
+          pattern: ^[a-zA-Z][\w]{1,15}$
+          type: string
+        permission:
+          format: int32
+          type: integer
+        projectOwner:
+          pattern: ^[\w\-]{20,50}$
+          type: string
+        unix:
+          format: int64
+          type: integer
+          readOnly: true
+        archiving:
+          type: boolean
+        archived:
+          type: boolean
+        restoring:
+          type: boolean
+        vintage:
+          format: int32
+          type: integer
+        modelType:
+          type: string
+        hasEmbeddings:
+          type: boolean
+  securitySchemes:
+    oauth2:
+      type: oauth2
+      flows:
+        clientCredentials:
+          scopes: {}
+          tokenUrl: https://api.economy.com/scenario-studio/v2/oauth2/token
+      description: OAuth2 Client Credentials

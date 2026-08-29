@@ -1,0 +1,134 @@
+openapi: 3.2.0
+info:
+  version: v2
+  title: Scenario Studio Interpolation API
+  description: API access to Moody's Analytics Scenario Studio.
+servers:
+- url: https://api.economy.com/scenario-studio/v2
+tags:
+- name: Interpolation
+paths:
+  /project/{projectId}/scenario/{scenarioId}/data-series/interpolation:
+    post:
+      tags:
+      - Interpolation
+      summary: Runs an interpolation calculation (annual to quarterly)
+      operationId: Interpolation_GetInterpolationAsync
+      parameters:
+      - name: scenarioId
+        in: path
+        description: The Id of the scenario.
+        required: true
+        schema:
+          type: string
+      - name: projectId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+            text/json:
+              schema:
+                type: object
+      security:
+      - oauth2: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/InterpolationPayload'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/InterpolationPayload'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/InterpolationPayload'
+        description: The interpolation options.
+        required: true
+components:
+  schemas:
+    InterpolationPayload:
+      description: Options for creating a new interpolation.
+      type: object
+      properties:
+        editStart:
+          format: int32
+          description: Start date in which to calculate the interpolation.
+          type: integer
+        data:
+          $ref: '#/components/schemas/SeriesSave'
+          description: The source data for the interpolation calculation.
+        conversionMethod:
+          format: int32
+          description: Conversion method used during interpolation calculation.
+          enum:
+          - 0
+          - 1
+          - 2
+          - 3
+          - 4
+          - 5
+          - 6
+          type: integer
+        forcePositive:
+          description: Force positive values within the interpolation result.
+          type: boolean
+        continuity:
+          description: Preserve data continuity at the start of the interpolation range.
+          type: boolean
+        interpolationType:
+          format: int32
+          description: Interpolation calculation to be used.
+          enum:
+          - 0
+          - 1
+          - 2
+          type: integer
+    SeriesSave:
+      type: object
+      properties:
+        mnemonic:
+          pattern: ^[A-Za-z][\w$]{0,64}$
+          type: string
+        transformation:
+          format: int32
+          type: integer
+        customSeries:
+          type: boolean
+        isHistoryEditable:
+          type: boolean
+        historyModified:
+          type: boolean
+        freq:
+          format: int32
+          type: integer
+        isModified:
+          type: boolean
+        startDate:
+          format: int32
+          type: integer
+        endDate:
+          format: int32
+          type: integer
+        lastHistorical:
+          format: int32
+          type: integer
+        data:
+          type: array
+          items:
+            format: double
+            type: number
+  securitySchemes:
+    oauth2:
+      type: oauth2
+      flows:
+        clientCredentials:
+          scopes: {}
+          tokenUrl: https://api.economy.com/scenario-studio/v2/oauth2/token
+      description: OAuth2 Client Credentials

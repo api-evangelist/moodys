@@ -1,0 +1,449 @@
+openapi: 3.2.0
+info:
+  version: v2
+  title: Studio Scenario API
+  description: API access to Moody's Analytics Scenario Studio.
+servers:
+- url: https://api.economy.com/scenario-studio/v2
+tags:
+- name: Scenario
+paths:
+  /project/{projectId}/scenario/{scenarioId}:
+    get:
+      tags:
+      - Scenario
+      summary: Gets information about a specific scenario.
+      operationId: Scenario_GetAsync
+      parameters:
+      - name: projectId
+        in: path
+        description: The Id of the project.
+        required: true
+        schema:
+          type: string
+      - name: scenarioId
+        in: path
+        description: The Id of the scenario.
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+            text/json:
+              schema:
+                type: object
+      security:
+      - oauth2: []
+    put:
+      tags:
+      - Scenario
+      summary: Update the scenario options.
+      operationId: Scenario_EditOptionsAsync
+      parameters:
+      - name: projectId
+        in: path
+        description: The project Id of the scenario.
+        required: true
+        schema:
+          type: string
+      - name: scenarioId
+        in: path
+        description: The scenario to update.
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+            text/json:
+              schema:
+                type: object
+      security:
+      - oauth2: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ScenarioInfo'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/ScenarioInfo'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/ScenarioInfo'
+        description: The scenario options.
+        required: true
+  /project/{projectId}/scenario/{scenarioId}/checkpoint:
+    post:
+      tags:
+      - Scenario
+      summary: Creates new checkpoint
+      operationId: Series_CreateCheckpointAsync
+      parameters:
+      - name: scenarioId
+        in: path
+        description: The Scenario Id.
+        required: true
+        schema:
+          type: string
+      - name: projectId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+            text/json:
+              schema:
+                type: object
+      security:
+      - oauth2: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CheckpointPayload'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/CheckpointPayload'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/CheckpointPayload'
+        required: true
+  /project/{projectId}/scenario/{scenarioId}/checkpoint/{checkpointId}:
+    put:
+      tags:
+      - Scenario
+      summary: Restore checkpoint's series to a scenario
+      operationId: Scenario_RestoreCheckpoint
+      parameters:
+      - name: scenarioId
+        in: path
+        description: The Scenario Id.
+        required: true
+        schema:
+          type: string
+      - name: checkpointId
+        in: path
+        description: The checkpoint Id.
+        required: true
+        schema:
+          type: string
+      - name: projectId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+            text/json:
+              schema:
+                type: object
+      security:
+      - oauth2: []
+  /project/{projectId}/scenario/{scenarioId}/solve/central:
+    post:
+      tags:
+      - Scenario
+      summary: Performs a central solve on a scenario.
+      operationId: Scenario_SolveCentralAsync
+      parameters:
+      - name: scenarioId
+        in: path
+        description: The Id of the scenario to solve.
+        required: true
+        schema:
+          type: string
+      - name: projectId
+        in: path
+        description: The Id of the project which contains the scenario being solved.
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+            text/json:
+              schema:
+                type: object
+      security:
+      - oauth2: []
+  /project/{projectId}/scenario/{scenarioId}/solve/local:
+    post:
+      tags:
+      - Scenario
+      summary: Performs a local solve on a scenario.
+      operationId: Scenario_SolveLocalAsync
+      parameters:
+      - name: scenarioId
+        in: path
+        description: The Id of the scenario to solve.
+        required: true
+        schema:
+          type: string
+      - name: projectId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+            text/json:
+              schema:
+                type: object
+      security:
+      - oauth2: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SolvePayload'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/SolvePayload'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/SolvePayload'
+        description: The solve options.
+        required: true
+  /project/{projectId}/scenario/{scenarioId}/transfer-series/order:
+    post:
+      tags:
+      - Scenario
+      summary: Imports data from another scenario.
+      operationId: Scenario_CreateTransferOrderAsync
+      parameters:
+      - name: projectId
+        in: path
+        description: The project Id to to be written to.
+        required: true
+        schema:
+          type: string
+      - name: scenarioId
+        in: path
+        description: The scenario Id to be written to.
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+            text/json:
+              schema:
+                type: object
+      security:
+      - oauth2: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ScenarioTransferOptions'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/ScenarioTransferOptions'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/ScenarioTransferOptions'
+        description: The scenario Id to read from, and if the series should be claimed.
+        required: true
+  /project/{projectId}/scenario/reendogenize:
+    post:
+      tags:
+      - Scenario
+      summary: Performs an add-factor solve.
+      operationId: Scenario_ReendogenizeAsync
+      parameters:
+      - name: projectId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+            text/json:
+              schema:
+                type: object
+      security:
+      - oauth2: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              additionalProperties:
+                type: array
+                items:
+                  type: string
+          text/json:
+            schema:
+              type: object
+              additionalProperties:
+                type: array
+                items:
+                  type: string
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              additionalProperties:
+                type: array
+                items:
+                  type: string
+        description: The scenario (key) and series (value) pairs.
+        required: true
+components:
+  schemas:
+    ScenarioTransferOptions:
+      type: object
+      properties:
+        sourceScenarioId:
+          type: string
+        claim:
+          type: boolean
+    SolvePayload:
+      description: Options for running a solve
+      type: object
+      properties:
+        partial:
+          description: The partial solve regex.
+          type: string
+    CheckpointPayload:
+      type: object
+      properties:
+        note:
+          type: string
+    ScenarioInfo:
+      type: object
+      properties:
+        id:
+          pattern: ^[\w\-]{20,50}$
+          type: string
+        baseScenarioId:
+          pattern: ^[\w\-]{20,50}$
+          type: string
+        sharedownId:
+          pattern: ^[\w\-]{20,50}$
+          type: string
+        title:
+          type: string
+        titleUpper:
+          type: string
+        modelType:
+          type: string
+        vintage:
+          format: int32
+          maximum: 2147483647
+          minimum: 0
+          type: integer
+        utcDateModified:
+          format: date-time
+          type: string
+        utcDateCreated:
+          format: date-time
+          type: string
+        unix:
+          format: int64
+          type: integer
+          readOnly: true
+        description:
+          type: string
+        freq:
+          format: int32
+          type: integer
+        forecastStart:
+          format: int32
+          maximum: 2147483647
+          minimum: 0
+          type: integer
+        forecastEnd:
+          format: int32
+          maximum: 2147483647
+          minimum: 0
+          type: integer
+        historyStart:
+          format: int32
+          maximum: 2147483647
+          minimum: 0
+          type: integer
+        displayStart:
+          format: int32
+          maximum: 2147483647
+          minimum: 0
+          type: integer
+        displayEnd:
+          format: int32
+          maximum: 2147483647
+          minimum: 0
+          type: integer
+        editStart:
+          format: int32
+          maximum: 2147483647
+          minimum: 0
+          type: integer
+        maxIters:
+          format: int32
+          maximum: 2147483647
+          minimum: 0
+          type: integer
+        solving:
+          type: boolean
+        convergence:
+          format: double
+          minimum: 0
+          type: number
+        projectOwner:
+          pattern: ^[\w\-]{20,50}$
+          type: string
+        utcDateAccessed:
+          format: date-time
+          type: string
+        archiving:
+          type: boolean
+        archived:
+          type: boolean
+        restoring:
+          type: boolean
+  securitySchemes:
+    oauth2:
+      type: oauth2
+      flows:
+        clientCredentials:
+          scopes: {}
+          tokenUrl: https://api.economy.com/scenario-studio/v2/oauth2/token
+      description: OAuth2 Client Credentials

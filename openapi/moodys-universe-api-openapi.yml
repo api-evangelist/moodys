@@ -1,0 +1,280 @@
+openapi: 3.2.0
+info:
+  version: v2
+  title: Scenario Studio Universe API
+  description: API access to Moody's Analytics Scenario Studio.
+servers:
+- url: https://api.economy.com/scenario-studio/v2
+tags:
+- name: Universe
+paths:
+  /base-scenario:
+    get:
+      tags:
+      - Universe
+      summary: Get the list of base/moody's scenarios.
+      operationId: Universe_ScenariosListAsync
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+            text/json:
+              schema:
+                type: object
+      security:
+      - oauth2: []
+  /base-scenario/{scenarioId}:
+    get:
+      tags:
+      - Universe
+      summary: Gets base/moody's scenario detail.
+      operationId: Universe_GetScenarioAsync
+      parameters:
+      - name: scenarioId
+        in: path
+        description: The base scenario Id.
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+            text/json:
+              schema:
+                type: object
+      security:
+      - oauth2: []
+  /base-scenario/{scenarioId}/details:
+    get:
+      tags:
+      - Universe
+      summary: Gets the full details on a base scenario.
+      operationId: Universe_ScenarioDetailsAsync
+      parameters:
+      - name: scenarioId
+        in: path
+        description: The Id of the base scenario.
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+            text/json:
+              schema:
+                type: object
+      security:
+      - oauth2: []
+  /base-scenario/search:
+    post:
+      tags:
+      - Universe
+      summary: Search base scenarios.
+      operationId: Universe_SearchBaseScenariosListAsync
+      parameters:
+      - name: skip
+        in: query
+        description: Number of records to skip.
+        required: false
+        schema:
+          type: integer
+          format: int32
+      - name: take
+        in: query
+        description: Number of records to return.
+        required: false
+        schema:
+          type: integer
+          format: int32
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+            text/json:
+              schema:
+                type: object
+      security:
+      - oauth2: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ScenarioSearchOptions'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/ScenarioSearchOptions'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/ScenarioSearchOptions'
+        description: The search options.
+        required: true
+  /base-scenario/search/count:
+    post:
+      tags:
+      - Universe
+      summary: Search base scenarios.
+      operationId: Universe_SearchBaseScenariosListCountAsync
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+            text/json:
+              schema:
+                type: object
+      security:
+      - oauth2: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ScenarioSearchOptions'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/ScenarioSearchOptions'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/ScenarioSearchOptions'
+        description: The search options.
+        required: true
+  /group/client:
+    get:
+      tags:
+      - Universe
+      summary: Gets the list of permissionable clients (in the context of the person making the request).
+      operationId: Universe_ClientsListAsync
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+            text/json:
+              schema:
+                type: object
+      security:
+      - oauth2: []
+  /project/scenario/search:
+    post:
+      tags:
+      - Universe
+      summary: Search client scenarios.
+      operationId: Universe_SearchProjectScenariosListAsync
+      parameters:
+      - name: skip
+        in: query
+        description: Number of records to skip.
+        required: false
+        schema:
+          type: integer
+          format: int32
+      - name: take
+        in: query
+        description: Number of records to return.
+        required: false
+        schema:
+          type: integer
+          format: int32
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+            text/json:
+              schema:
+                type: object
+      security:
+      - oauth2: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ScenarioSearchOptions'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/ScenarioSearchOptions'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/ScenarioSearchOptions'
+        description: The search options.
+        required: true
+  /project/scenario/search/count:
+    post:
+      tags:
+      - Universe
+      summary: Search client scenarios.
+      operationId: Universe_SearchProjectScenariosListCountAsync
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+            text/json:
+              schema:
+                type: object
+      security:
+      - oauth2: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ScenarioSearchOptions'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/ScenarioSearchOptions'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/ScenarioSearchOptions'
+        description: The search options.
+        required: true
+components:
+  schemas:
+    ScenarioSearchOptions:
+      type: object
+      properties:
+        terms:
+          type: array
+          items:
+            type: string
+        sortBy:
+          type: string
+        modelTypes:
+          type: array
+          items:
+            type: string
+        vintages:
+          maximum: 2147483647
+          minimum: 0
+          type: array
+          items:
+            format: int32
+            type: integer
+  securitySchemes:
+    oauth2:
+      type: oauth2
+      flows:
+        clientCredentials:
+          scopes: {}
+          tokenUrl: https://api.economy.com/scenario-studio/v2/oauth2/token
+      description: OAuth2 Client Credentials

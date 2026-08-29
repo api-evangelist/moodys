@@ -1,0 +1,86 @@
+openapi: 3.2.0
+info:
+  version: v2
+  title: Scenario Studio Order API
+  description: API access to Moody's Analytics Scenario Studio.
+servers:
+- url: https://api.economy.com/scenario-studio/v2
+tags:
+- name: Order
+paths:
+  /project/{projectId}/order/{orderId}:
+    get:
+      tags:
+      - Order
+      summary: Gets information on any single order.
+      operationId: Order_GetOrderAsync
+      parameters:
+      - name: orderId
+        in: path
+        description: The order id
+        required: true
+        schema:
+          type: string
+      - name: parentOnly
+        in: query
+        description: when false to checks child orders; else only checks the passed in order.
+        required: false
+        schema:
+          type: boolean
+      - name: projectId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+            text/json:
+              schema:
+                type: object
+      security:
+      - oauth2: []
+  /project/{projectId}/order/{orderId}/build:
+    get:
+      tags:
+      - Order
+      summary: Checks the project build status.
+      operationId: Order_GetProjectBuildOrderAsync
+      parameters:
+      - name: orderId
+        in: path
+        description: The build order Id.
+        required: true
+        schema:
+          type: string
+      - name: projectId
+        in: path
+        description: The project Id.
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+            text/json:
+              schema:
+                type: object
+      security:
+      - oauth2: []
+components:
+  securitySchemes:
+    oauth2:
+      type: oauth2
+      flows:
+        clientCredentials:
+          scopes: {}
+          tokenUrl: https://api.economy.com/scenario-studio/v2/oauth2/token
+      description: OAuth2 Client Credentials

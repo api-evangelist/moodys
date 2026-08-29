@@ -1,0 +1,61 @@
+openapi: 3.2.0
+info:
+  version: v1
+  title: Moody's Analytics Data Buffet File Types API
+  description: API access to Moody's Analytics repository of international and subnational economic and demographic time series data.
+  license:
+    name: More Info
+    url: https://github.com/moodysanalytics/databuffet-api-codesamples
+servers:
+- url: https://api.economy.com/data/v1
+tags:
+- name: FileTypes
+paths:
+  /filetypes:
+    get:
+      tags:
+      - FileTypes
+      summary: Returns a JSON list of available file types for a given object type.
+      operationId: FileTypes_Get
+      parameters:
+      - name: type
+        in: query
+        description: 'Supported object types: baskets'
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/FileType'
+      security:
+      - oauth2: []
+components:
+  schemas:
+    FileType:
+      description: File type information for a given file type id
+      type: object
+      properties:
+        fileTypeId:
+          format: int32
+          description: File type id
+          type: integer
+        extension:
+          description: File type extension
+          type: string
+        app:
+          description: Application to use to read the file
+          type: string
+  securitySchemes:
+    oauth2:
+      type: oauth2
+      flows:
+        clientCredentials:
+          scopes: {}
+          tokenUrl: https://api.economy.com/data/v1/oauth2/token
+      description: OAuth2 Client Credentials

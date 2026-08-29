@@ -1,0 +1,493 @@
+openapi: 3.2.0
+info:
+  version: v2
+  title: Scenario Studio Data Series API
+  description: API access to Moody's Analytics Scenario Studio.
+servers:
+- url: https://api.economy.com/scenario-studio/v2
+tags:
+- name: DataSeries
+paths:
+  /project/{projectId}/data-series:
+    get:
+      tags:
+      - DataSeries
+      summary: Gets multiple series and/or expressions.
+      operationId: DataSeries_GetBulkSeriesDataAsync
+      parameters:
+      - name: projectId
+        in: path
+        description: The Id of the project.
+        required: true
+        schema:
+          type: string
+      - name: expressions
+        in: query
+        description: 'A semicolon delimited list of series and/or expression.
+
+          Series should be formatted as [location].[scenario-alias].[variable id].
+
+          Examples:
+
+          l.bl.fet_us --&gt; local data for the bl scenario
+
+          c.bl.fet_us --&gt; central data for the bl scenario
+
+          bl.fet_us --&gt; central data for the bl scenario
+
+          l.bl.fet_us;c.bl.fet_us;l.bl.fet_us-c.bl.fet_us --&gt; local bl data, central bl data, expression containing both central and local data'
+        required: true
+        schema:
+          type: string
+      - name: frequency
+        in: query
+        description: The frequency of the data (defaults to quarterly).
+        required: false
+        schema:
+          type: integer
+          format: int32
+          enum:
+          - 0
+          - 16
+          - 49
+          - 50
+          - 50
+          - 65
+          - 65
+          - 66
+          - 66
+          - 67
+          - 67
+          - 68
+          - 68
+          - 69
+          - 69
+          - 70
+          - 70
+          - 71
+          - 71
+          - 80
+          - 97
+          - 98
+          - 99
+          - 100
+          - 101
+          - 102
+          - 103
+          - 104
+          - 105
+          - 106
+          - 107
+          - 108
+          - 109
+          - 110
+          - 112
+          - 128
+          - 128
+          - 155
+          - 156
+          - 170
+          - 171
+          - 172
+          - 172
+          - 183
+          - 184
+          - 185
+          - 186
+          - 187
+          - 188
+          - 188
+          - 193
+          - 194
+          - 195
+          - 196
+          - 197
+          - 198
+          - 199
+          - 200
+          - 201
+          - 202
+          - 203
+          - 204
+          - 204
+      - name: transformation
+        in: query
+        description: "Optional enumeration for transforming the series data. \n0 = None,\n1 = Year Over Year %\n2 = Simple Difference\n3 = Annualized Growth\n4 = % Change\n8 = Year Over Year Difference"
+        required: false
+        schema:
+          type: integer
+          format: int32
+          enum:
+          - 0
+          - 1
+          - 2
+          - 3
+          - 4
+          - 8
+          - -1
+      - name: conversionMethod
+        in: query
+        description: Overrides the conversion method being used during the frequency conversion.
+        required: false
+        schema:
+          type: integer
+          format: int32
+          enum:
+          - 0
+          - 1
+          - 2
+          - 3
+          - 4
+          - 5
+          - 6
+      - name: start
+        in: query
+        description: The integer start date.
+        required: false
+        schema:
+          type: integer
+          format: int32
+      - name: end
+        in: query
+        description: The integer end date.
+        required: false
+        schema:
+          type: integer
+          format: int32
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+            text/json:
+              schema:
+                type: object
+      deprecated: true
+      security:
+      - oauth2: []
+    post:
+      tags:
+      - DataSeries
+      summary: Gets multiple series and/or expressions.
+      operationId: DataSeries_GetBulkSeriesDataPostAsync
+      parameters:
+      - name: projectId
+        in: path
+        description: The Id of the project.
+        required: true
+        schema:
+          type: string
+      - name: frequency
+        in: query
+        description: The frequency of the data (defaults to quarterly).
+        required: false
+        schema:
+          type: integer
+          format: int32
+          enum:
+          - 0
+          - 16
+          - 49
+          - 50
+          - 50
+          - 65
+          - 65
+          - 66
+          - 66
+          - 67
+          - 67
+          - 68
+          - 68
+          - 69
+          - 69
+          - 70
+          - 70
+          - 71
+          - 71
+          - 80
+          - 97
+          - 98
+          - 99
+          - 100
+          - 101
+          - 102
+          - 103
+          - 104
+          - 105
+          - 106
+          - 107
+          - 108
+          - 109
+          - 110
+          - 112
+          - 128
+          - 128
+          - 155
+          - 156
+          - 170
+          - 171
+          - 172
+          - 172
+          - 183
+          - 184
+          - 185
+          - 186
+          - 187
+          - 188
+          - 188
+          - 193
+          - 194
+          - 195
+          - 196
+          - 197
+          - 198
+          - 199
+          - 200
+          - 201
+          - 202
+          - 203
+          - 204
+          - 204
+      - name: transformation
+        in: query
+        description: "Optional enumeration for transforming the series data. \n0 = None,\n1 = Year Over Year %\n2 = Simple Difference\n3 = Annualized Growth\n4 = % Change\n8 = Year Over Year Difference"
+        required: false
+        schema:
+          type: integer
+          format: int32
+          enum:
+          - 0
+          - 1
+          - 2
+          - 3
+          - 4
+          - 8
+          - -1
+      - name: conversionMethod
+        in: query
+        description: Overrides the conversion method being used during the frequency conversion.
+        required: false
+        schema:
+          type: integer
+          format: int32
+          enum:
+          - 0
+          - 1
+          - 2
+          - 3
+          - 4
+          - 5
+          - 6
+      - name: conversionTechnique
+        in: query
+        required: false
+        schema:
+          type: integer
+          format: int32
+          enum:
+          - 0
+          - 1
+          - 2
+          - 3
+      - name: start
+        in: query
+        description: The integer start date.
+        required: false
+        schema:
+          type: integer
+          format: int32
+      - name: end
+        in: query
+        description: The integer end date.
+        required: false
+        schema:
+          type: integer
+          format: int32
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+            text/json:
+              schema:
+                type: object
+      security:
+      - oauth2: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                type: string
+          text/json:
+            schema:
+              type: array
+              items:
+                type: string
+          application/x-www-form-urlencoded:
+            schema:
+              type: array
+              items:
+                type: string
+        description: 'An array of series and/or expression.
+
+          Series should be formatted as [location].[scenario-alias].[variable id].
+
+          Examples:
+
+          l.bl.fet_us --&gt; local data for the bl scenario
+
+          c.bl.fet_us --&gt; central data for the bl scenario
+
+          bl.fet_us --&gt; central data for the bl scenario
+
+          ["l.bl.fet_us, "c.bl.fet_us", "l.bl.fet_us-c.bl.fet_us"] --&gt; local bl data, central bl data, expression containing both central and local data'
+        required: true
+  /project/{projectId}/scenario/{scenarioId}/data-series/{variableId}/data/local:
+    put:
+      tags:
+      - DataSeries
+      summary: Saves local series data.
+      operationId: DataSeries_SaveLocalSeriesDataAsync
+      parameters:
+      - name: scenarioId
+        in: path
+        description: The scenario Id.
+        required: true
+        schema:
+          type: string
+      - name: variableId
+        in: path
+        description: The variable Id.
+        required: true
+        schema:
+          type: string
+      - name: projectId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+            text/json:
+              schema:
+                type: object
+      security:
+      - oauth2: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SeriesSave'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/SeriesSave'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/SeriesSave'
+        description: The series save payload (can be entire series, or just deltas)
+        required: true
+  /project/{projectId}/scenario/{scenarioId}/data-series/add-factor/local:
+    put:
+      tags:
+      - DataSeries
+      summary: Clears add factors on series in which you have claimed.
+      operationId: DataSeries_ClearLocalAddFactorsAsync
+      parameters:
+      - name: projectId
+        in: path
+        description: The project Id.
+        required: true
+        schema:
+          type: string
+      - name: scenarioId
+        in: path
+        description: The scenario Id.
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+            text/json:
+              schema:
+                type: object
+      security:
+      - oauth2: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                type: string
+          text/json:
+            schema:
+              type: array
+              items:
+                type: string
+          application/x-www-form-urlencoded:
+            schema:
+              type: array
+              items:
+                type: string
+        description: The list of series.
+        required: true
+components:
+  schemas:
+    SeriesSave:
+      type: object
+      properties:
+        mnemonic:
+          pattern: ^[A-Za-z][\w$]{0,64}$
+          type: string
+        transformation:
+          format: int32
+          type: integer
+        customSeries:
+          type: boolean
+        isHistoryEditable:
+          type: boolean
+        historyModified:
+          type: boolean
+        freq:
+          format: int32
+          type: integer
+        isModified:
+          type: boolean
+        startDate:
+          format: int32
+          type: integer
+        endDate:
+          format: int32
+          type: integer
+        lastHistorical:
+          format: int32
+          type: integer
+        data:
+          type: array
+          items:
+            format: double
+            type: number
+  securitySchemes:
+    oauth2:
+      type: oauth2
+      flows:
+        clientCredentials:
+          scopes: {}
+          tokenUrl: https://api.economy.com/scenario-studio/v2/oauth2/token
+      description: OAuth2 Client Credentials

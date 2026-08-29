@@ -1,19 +1,11 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: Moody's Data Buffet Baskets Search API
-  version: 1.0.0
-  description: The Moody's Analytics Data Buffet API provides programmatic access to international and subnational economic, demographic, and financial time series data and forecasts. It enables retrieval of individual series or baskets of data, supports frequency conversion, mathematical transformations, date range filtering, and vintage/versioning selection. Code samples are available in C#, Java, Python, and R.
-  contact:
-    name: Moody's Analytics
-    url: https://www.economy.com/products/tools/data-buffet
-  license:
-    name: Moody's Analytics Terms of Use
-    url: https://www.moodys.com/web/en/us/about/legal/terms-of-use.html
+  title: Moodys Search API
+  version: '1.0'
+  description: 'Operations tagged Search across 2 of this provider''s published API definitions: moodys-data-buffet-api-openapi.yml, moodys-data-buffet-api-swagger.json. Each path carries the servers of the definition it was published in.'
 servers:
 - url: https://api.economy.com/data/v1
   description: Moody's Analytics Data Buffet production server
-security:
-- oauth2: []
 tags:
 - name: Search
   description: Operations for searching available datasets and series
@@ -85,6 +77,11 @@ paths:
       x-microcks-operation:
         delay: 0
         dispatcher: FALLBACK
+      security:
+      - oauth2: []
+    servers:
+    - url: https://api.economy.com/data/v1
+      description: Moody's Analytics Data Buffet production server
 components:
   schemas:
     SearchResults:
@@ -187,3 +184,6 @@ components:
 externalDocs:
   description: Moody's Data Buffet API Documentation
   url: https://api.economy.com/data/v1/swagger
+x-refined-from:
+- moodys-data-buffet-api-openapi.yml
+- moodys-data-buffet-api-swagger.json

@@ -1,0 +1,157 @@
+openapi: 3.2.0
+info:
+  version: v2
+  title: Scenario Studio Series Search API
+  description: API access to Moody's Analytics Scenario Studio.
+servers:
+- url: https://api.economy.com/scenario-studio/v2
+tags:
+- name: SeriesSearch
+paths:
+  /project/{projectId}/search/count:
+    post:
+      tags:
+      - SeriesSearch
+      summary: Gets the record count for a search query.
+      operationId: SeriesSearch_GetCountAsync
+      parameters:
+      - name: projectId
+        in: path
+        description: The Id of the project.
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+            text/json:
+              schema:
+                type: object
+      security:
+      - oauth2: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SeriesSearchOptions'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/SeriesSearchOptions'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/SeriesSearchOptions'
+        description: The search options.
+        required: true
+  /project/{projectId}/search/results:
+    post:
+      tags:
+      - SeriesSearch
+      summary: Gets the records for a search query.
+      operationId: SeriesSearch_GetResultsAsync
+      parameters:
+      - name: projectId
+        in: path
+        description: The Id of the project.
+        required: true
+        schema:
+          type: string
+      - name: skip
+        in: query
+        description: The record count to skip.
+        required: false
+        schema:
+          type: integer
+          format: int32
+      - name: take
+        in: query
+        description: The record cound to return.
+        required: false
+        schema:
+          type: integer
+          format: int32
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+            text/json:
+              schema:
+                type: object
+      security:
+      - oauth2: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SeriesSearchOptions'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/SeriesSearchOptions'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/SeriesSearchOptions'
+        description: The search options.
+        required: true
+components:
+  schemas:
+    SeriesSearchOptions:
+      type: object
+      properties:
+        query:
+          type: string
+        scenarioId:
+          type: array
+          items:
+            type: string
+        checkedOut:
+          format: int32
+          type: integer
+        state:
+          format: int32
+          type: integer
+        localState:
+          format: int32
+          type: integer
+        variableType:
+          type: array
+          items:
+            format: int32
+            type: integer
+        geographies:
+          type: array
+          items:
+            type: string
+        variableIds:
+          type: array
+          items:
+            type: string
+        sortBy:
+          type: object
+          additionalProperties:
+            format: int32
+            type: integer
+        equationEdits:
+          type: boolean
+        historyEdits:
+          type: boolean
+        sharedown:
+          type: boolean
+        customSeries:
+          type: boolean
+        utcDateCreated:
+          format: date-time
+          type: string
+  securitySchemes:
+    oauth2:
+      type: oauth2
+      flows:
+        clientCredentials:
+          scopes: {}
+          tokenUrl: https://api.economy.com/scenario-studio/v2/oauth2/token
+      description: OAuth2 Client Credentials

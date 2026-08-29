@@ -1,0 +1,51 @@
+openapi: 3.2.0
+info:
+  version: v1
+  title: Moody's Analytics Data Buffet Frequency API
+  description: API access to Moody's Analytics repository of international and subnational economic and demographic time series data.
+  license:
+    name: More Info
+    url: https://github.com/moodysanalytics/databuffet-api-codesamples
+servers:
+- url: https://api.economy.com/data/v1
+tags:
+- name: Frequency
+paths:
+  /frequencies:
+    get:
+      tags:
+      - Frequency
+      summary: Returns a JSON list of frequencies
+      operationId: Frequency_Index
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/FrequencyInfo'
+      security:
+      - oauth2: []
+components:
+  schemas:
+    FrequencyInfo:
+      description: Frequency Info
+      type: object
+      properties:
+        frequencyId:
+          format: int32
+          description: Frequency Id
+          type: integer
+        frequencyName:
+          description: Frequency Name
+          type: string
+  securitySchemes:
+    oauth2:
+      type: oauth2
+      flows:
+        clientCredentials:
+          scopes: {}
+          tokenUrl: https://api.economy.com/data/v1/oauth2/token
+      description: OAuth2 Client Credentials

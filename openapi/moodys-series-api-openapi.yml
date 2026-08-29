@@ -1,19 +1,12 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: Moody's Data Buffet Baskets Series API
-  version: 1.0.0
-  description: The Moody's Analytics Data Buffet API provides programmatic access to international and subnational economic, demographic, and financial time series data and forecasts. It enables retrieval of individual series or baskets of data, supports frequency conversion, mathematical transformations, date range filtering, and vintage/versioning selection. Code samples are available in C#, Java, Python, and R.
-  contact:
-    name: Moody's Analytics
-    url: https://www.economy.com/products/tools/data-buffet
-  license:
-    name: Moody's Analytics Terms of Use
-    url: https://www.moodys.com/web/en/us/about/legal/terms-of-use.html
+  title: Moodys Series API
+  version: '1.0'
+  description: 'Operations tagged Series across 3 of this provider''s published API definitions: moodys-data-buffet-api-openapi.yml, moodys-data-buffet-api-swagger.json, moodys-scenario-studio-api-swagger.json. Each path carries the servers of the definition it was published in.'
 servers:
 - url: https://api.economy.com/data/v1
   description: Moody's Analytics Data Buffet production server
-security:
-- oauth2: []
+- url: https://api.economy.com/scenario-studio/v2
 tags:
 - name: Series
   description: Operations for retrieving individual and multi-series time series data
@@ -58,6 +51,11 @@ paths:
       x-microcks-operation:
         delay: 0
         dispatcher: FALLBACK
+      security:
+      - oauth2: []
+    servers:
+    - url: https://api.economy.com/data/v1
+      description: Moody's Analytics Data Buffet production server
   /multi-series:
     post:
       operationId: getMultiSeries
@@ -89,78 +87,892 @@ paths:
       x-microcks-operation:
         delay: 0
         dispatcher: FALLBACK
+      security:
+      - oauth2: []
+    servers:
+    - url: https://api.economy.com/data/v1
+      description: Moody's Analytics Data Buffet production server
+  /project/{projectId}/scenario/{scenarioId}/{variableId}:
+    get:
+      tags:
+      - Series
+      summary: Gets information about a specific series.
+      operationId: Series_GetSeriesAsync
+      parameters:
+      - name: projectId
+        in: path
+        description: The Id of the project.
+        required: true
+        schema:
+          type: string
+      - name: scenarioId
+        in: path
+        description: The Id of the scenario.
+        required: true
+        schema:
+          type: string
+      - name: variableId
+        in: path
+        description: The Id of the variable.
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+            text/json:
+              schema:
+                type: object
+      security:
+      - oauth2: []
+    servers:
+    - url: https://api.economy.com/scenario-studio/v2
+  /project/{projectId}/scenario/{scenarioId}/series/{variableId}/equation:
+    put:
+      tags:
+      - Series
+      summary: Edits the equation of a series.
+      operationId: Series_EditEquation
+      parameters:
+      - name: projectId
+        in: path
+        description: The Id of the project.
+        required: true
+        schema:
+          type: string
+      - name: scenarioId
+        in: path
+        description: The Id of the scenario.
+        required: true
+        schema:
+          type: string
+      - name: variableId
+        in: path
+        description: The Id of the variable.
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+            text/json:
+              schema:
+                type: object
+      security:
+      - oauth2: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: string
+          text/json:
+            schema:
+              type: string
+          application/x-www-form-urlencoded:
+            schema:
+              type: string
+        description: The new equation.
+        required: true
+    servers:
+    - url: https://api.economy.com/scenario-studio/v2
+  /project/{projectId}/scenario/{scenarioId}/series/{variableId}/historical/{lastHistorical}:
+    put:
+      tags:
+      - Series
+      summary: Changes the last historical end point for a series.
+      operationId: Series_ChangeLastHistorical
+      parameters:
+      - name: projectId
+        in: path
+        description: The Id of the project.
+        required: true
+        schema:
+          type: string
+      - name: scenarioId
+        in: path
+        description: The Id of the scenario.
+        required: true
+        schema:
+          type: string
+      - name: variableId
+        in: path
+        description: The Id of the variable.
+        required: true
+        schema:
+          type: string
+      - name: lastHistorical
+        in: path
+        description: The new last historical point.
+        required: true
+        schema:
+          type: integer
+          format: int32
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+            text/json:
+              schema:
+                type: object
+      security:
+      - oauth2: []
+    servers:
+    - url: https://api.economy.com/scenario-studio/v2
+  /project/{projectId}/scenario/{scenarioId}/series/{variableId}/sharedown:
+    get:
+      tags:
+      - Series
+      summary: Gets sharedown information for a series.
+      operationId: Series_GetSharedownInfoAsync
+      parameters:
+      - name: scenarioId
+        in: path
+        description: The Id of the scenario.
+        required: true
+        schema:
+          type: string
+      - name: variableId
+        in: path
+        description: The Id of the series.
+        required: true
+        schema:
+          type: string
+      - name: projectId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+            text/json:
+              schema:
+                type: object
+      security:
+      - oauth2: []
+    post:
+      tags:
+      - Series
+      summary: Checks out all variables within a sharedown chain, and starts the sharedown calculation.
+      operationId: Series_CheckoutSharedownAsync
+      parameters:
+      - name: projectId
+        in: path
+        description: The project Id.
+        required: true
+        schema:
+          type: string
+      - name: scenarioId
+        in: path
+        description: The scenario Id.
+        required: true
+        schema:
+          type: string
+      - name: variableId
+        in: path
+        description: The variable to sharedown.
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+            text/json:
+              schema:
+                type: object
+      security:
+      - oauth2: []
+    servers:
+    - url: https://api.economy.com/scenario-studio/v2
+  /project/{projectId}/scenario/{scenarioId}/series/checkin:
+    post:
+      tags:
+      - Series
+      summary: 'Releases a series/unlocks a series without writing data to central.
+
+        If releasing a custom series that has never been pushed to central,
+
+        the custom series is deleted.'
+      operationId: Series_CheckIn
+      parameters:
+      - name: projectId
+        in: path
+        description: The Id of the project.
+        required: true
+        schema:
+          type: string
+      - name: scenarioId
+        in: path
+        description: The Id of the scenario.
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+            text/json:
+              schema:
+                type: object
+      security:
+      - oauth2: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                type: string
+          text/json:
+            schema:
+              type: array
+              items:
+                type: string
+          application/x-www-form-urlencoded:
+            schema:
+              type: array
+              items:
+                type: string
+        description: The list of variables to push.
+        required: true
+    servers:
+    - url: https://api.economy.com/scenario-studio/v2
+  /project/{projectId}/scenario/{scenarioId}/series/checkout:
+    post:
+      tags:
+      - Series
+      summary: Claim/check out series.
+      operationId: Series_CheckOut
+      parameters:
+      - name: projectId
+        in: path
+        description: The Id of the project.
+        required: true
+        schema:
+          type: string
+      - name: scenarioId
+        in: path
+        description: The Id of the scenario.
+        required: true
+        schema:
+          type: string
+      - name: exogenize
+        in: query
+        description: When true, sets series to be exogenous; else series default to the current central state.
+        required: false
+        schema:
+          type: boolean
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+            text/json:
+              schema:
+                type: object
+      security:
+      - oauth2: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                type: string
+          text/json:
+            schema:
+              type: array
+              items:
+                type: string
+          application/x-www-form-urlencoded:
+            schema:
+              type: array
+              items:
+                type: string
+        description: The list of variables to claim.
+        required: true
+    servers:
+    - url: https://api.economy.com/scenario-studio/v2
+  /project/{projectId}/scenario/{scenarioId}/series/commit:
+    post:
+      tags:
+      - Series
+      summary: Push to central/commit a series- writes local data to central.
+      operationId: Series_Commit
+      parameters:
+      - name: projectId
+        in: path
+        description: The Id of the project.
+        required: true
+        schema:
+          type: string
+      - name: scenarioId
+        in: path
+        description: The Id of the scenario.
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+            text/json:
+              schema:
+                type: object
+      security:
+      - oauth2: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CommitPayload'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/CommitPayload'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/CommitPayload'
+        description: The list of series to push, and a note describing the changes.
+        required: true
+    servers:
+    - url: https://api.economy.com/scenario-studio/v2
+  /project/{projectId}/scenario/{scenarioId}/series/custom:
+    put:
+      tags:
+      - Series
+      summary: Edits a custom series.
+      operationId: Series_EditCustomSeries
+      parameters:
+      - name: projectId
+        in: path
+        description: The Id of the project.
+        required: true
+        schema:
+          type: string
+      - name: scenarioId
+        in: path
+        description: The Id of the scenario.
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+            text/json:
+              schema:
+                type: object
+      security:
+      - oauth2: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CustomSeries'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/CustomSeries'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/CustomSeries'
+        description: The series meta to change.
+        required: true
+    post:
+      tags:
+      - Series
+      summary: Creates new custom series.
+      operationId: Series_CreateCustomSeries
+      parameters:
+      - name: projectId
+        in: path
+        description: The Id of the project.
+        required: true
+        schema:
+          type: string
+      - name: scenarioId
+        in: path
+        description: The Id of the scenario.
+        required: true
+        schema:
+          type: string
+      - name: skipDependencyCheck
+        in: query
+        description: ''
+        required: false
+        schema:
+          type: boolean
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+            text/json:
+              schema:
+                type: object
+      security:
+      - oauth2: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/CustomSeries'
+          text/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/CustomSeries'
+          application/x-www-form-urlencoded:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/CustomSeries'
+        description: The list of series to create.
+        required: true
+    delete:
+      tags:
+      - Series
+      summary: Deletes custom series.
+      operationId: Series_DeleteCustomSeries
+      parameters:
+      - name: projectId
+        in: path
+        description: The Id of the project.
+        required: true
+        schema:
+          type: string
+      - name: scenarioId
+        in: path
+        description: The Id of the scenario.
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+            text/json:
+              schema:
+                type: object
+      security:
+      - oauth2: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                type: string
+          text/json:
+            schema:
+              type: array
+              items:
+                type: string
+          application/x-www-form-urlencoded:
+            schema:
+              type: array
+              items:
+                type: string
+        description: The list of series to delete.
+        required: true
+    servers:
+    - url: https://api.economy.com/scenario-studio/v2
+  /project/{projectId}/scenario/{scenarioId}/series/endogenizeBulk:
+    put:
+      tags:
+      - Series
+      summary: Sets series' state to endogenous.
+      operationId: Series_EndogenizeBulk
+      parameters:
+      - name: projectId
+        in: path
+        description: The Id of the project.
+        required: true
+        schema:
+          type: string
+      - name: scenarioId
+        in: path
+        description: The Id of the scenario.
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+            text/json:
+              schema:
+                type: object
+      security:
+      - oauth2: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                type: string
+          text/json:
+            schema:
+              type: array
+              items:
+                type: string
+          application/x-www-form-urlencoded:
+            schema:
+              type: array
+              items:
+                type: string
+        description: The list of variables to set to endogenous.
+        required: true
+    servers:
+    - url: https://api.economy.com/scenario-studio/v2
+  /project/{projectId}/scenario/{scenarioId}/series/exogenize:
+    put:
+      tags:
+      - Series
+      summary: Sets series' state to exogenous.
+      operationId: Series_ExogenizeBulk
+      parameters:
+      - name: projectId
+        in: path
+        description: The Id of the project.
+        required: true
+        schema:
+          type: string
+      - name: scenarioId
+        in: path
+        description: The Id of the scenario.
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+            text/json:
+              schema:
+                type: object
+      security:
+      - oauth2: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                type: string
+          text/json:
+            schema:
+              type: array
+              items:
+                type: string
+          application/x-www-form-urlencoded:
+            schema:
+              type: array
+              items:
+                type: string
+        description: The list of variables to set to exogenous.
+        required: true
+    servers:
+    - url: https://api.economy.com/scenario-studio/v2
+  /project/{projectId}/scenario/{scenarioId}/series/exogenize-through:
+    put:
+      tags:
+      - Series
+      summary: Sets series to be partially exogenized.
+      operationId: Series_ExogenizeThroughBulk
+      parameters:
+      - name: projectId
+        in: path
+        description: The Id of the project.
+        required: true
+        schema:
+          type: string
+      - name: scenarioId
+        in: path
+        description: The Id of the scenario.
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+            text/json:
+              schema:
+                type: object
+      security:
+      - oauth2: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ExogenizeThroughBulkRequest'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/ExogenizeThroughBulkRequest'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/ExogenizeThroughBulkRequest'
+        description: The list of series along with the exogenize through value.
+        required: true
+    servers:
+    - url: https://api.economy.com/scenario-studio/v2
+  /project/{projectId}/scenario/{scenarioId}/series/info:
+    post:
+      tags:
+      - Series
+      summary: Gets series info for a list of series/expressions.
+      operationId: Series_GetSeriesAsync
+      parameters:
+      - name: projectId
+        in: path
+        description: The Id of the project.
+        required: true
+        schema:
+          type: string
+      - name: scenarioId
+        in: path
+        description: The Id of the scenario.
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+            text/json:
+              schema:
+                type: object
+      security:
+      - oauth2: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                type: string
+          text/json:
+            schema:
+              type: array
+              items:
+                type: string
+          application/x-www-form-urlencoded:
+            schema:
+              type: array
+              items:
+                type: string
+        description: The list of variables/expressions.
+        required: true
+    servers:
+    - url: https://api.economy.com/scenario-studio/v2
+  /project/{projectId}/scenario/{scenarioId}/series/reendogenize:
+    post:
+      tags:
+      - Series
+      summary: Starts an add factor solve for one or more series.
+      operationId: Series_Reendogenize
+      parameters:
+      - name: scenarioId
+        in: path
+        description: The Id of the scenario.
+        required: true
+        schema:
+          type: string
+      - name: projectId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+            text/json:
+              schema:
+                type: object
+      security:
+      - oauth2: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                type: string
+          text/json:
+            schema:
+              type: array
+              items:
+                type: string
+          application/x-www-form-urlencoded:
+            schema:
+              type: array
+              items:
+                type: string
+        description: The list of series to perform the add factor solve on.
+        required: true
+    servers:
+    - url: https://api.economy.com/scenario-studio/v2
+  /project/{projectId}/scenario/{scenarioId}/variable/{variableId}:
+    get:
+      tags:
+      - Series
+      summary: Gets all meta information for a series.
+      operationId: Series_GetSpecVariableAsync
+      parameters:
+      - name: projectId
+        in: path
+        description: The Id of the project.
+        required: true
+        schema:
+          type: string
+      - name: scenarioId
+        in: path
+        description: The Id of the scenario.
+        required: true
+        schema:
+          type: string
+      - name: variableId
+        in: path
+        description: The Id of the series.
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+            text/json:
+              schema:
+                type: object
+      security:
+      - oauth2: []
+    servers:
+    - url: https://api.economy.com/scenario-studio/v2
 components:
+  parameters:
+    startDate:
+      name: startDate
+      in: query
+      description: The start date for the data range in YYYY-MM-DD format. If omitted, returns data from the beginning of the series.
+      required: false
+      schema:
+        type: string
+        format: date
+    vintage:
+      name: vintage
+      in: query
+      description: The vintage date for accessing historical data revisions in YYYY-MM-DD format. If omitted, returns the latest vintage.
+      required: false
+      schema:
+        type: string
+        format: date
+    mnemonic:
+      name: mnemonic
+      in: query
+      description: The unique series mnemonic identifier. Mnemonics follow the Data Buffet naming convention, e.g., FGDP_US for US GDP or EMPLPAY.IUSA for US total nonfarm payrolls.
+      required: true
+      schema:
+        type: string
+      examples:
+        usGdp:
+          summary: US Gross Domestic Product
+          value: FGDP_US
+        usPayrolls:
+          summary: US Total Nonfarm Payrolls
+          value: EMPLPAY.IUSA
+    freq:
+      name: freq
+      in: query
+      description: The desired output frequency for the series. When specified, frequency conversion is applied. For example, converting quarterly GDP to annual.
+      required: false
+      schema:
+        type: string
+        enum:
+        - A
+        - Q
+        - M
+        - W
+        - D
+    endDate:
+      name: endDate
+      in: query
+      description: The end date for the data range in YYYY-MM-DD format. If omitted, returns data through the latest available observation or forecast.
+      required: false
+      schema:
+        type: string
+        format: date
+    trans:
+      name: trans
+      in: query
+      description: The mathematical transformation to apply to the series values. Supports common economic transformations.
+      required: false
+      schema:
+        type: string
+        enum:
+        - Level
+        - SimpleDifference
+        - PercentChange
+        - AnnualizedGrowth
+        - YearOverYearPercentChange
+        - CompoundAnnualGrowthRate
   schemas:
-    Error:
-      type: object
-      description: Standard error response.
-      required:
-      - code
-      - message
-      properties:
-        code:
-          type: string
-          description: Machine-readable error code.
-          example: example_value
-        message:
-          type: string
-          description: Human-readable error message.
-          example: example_value
-        details:
-          type: string
-          description: Additional details about the error.
-          example: example_value
-    Observation:
-      type: object
-      description: A single time series observation or forecast data point.
-      required:
-      - date
-      - value
-      properties:
-        date:
-          type: string
-          format: date
-          description: The observation date in YYYY-MM-DD format. For frequencies coarser than daily, represents the period start date.
-          example: '2026-01-15'
-        value:
-          type:
-          - number
-          - 'null'
-          description: The observation value. Null indicates missing or unavailable data for this period.
-          example: example_value
-        status:
-          type: string
-          description: Status indicator for the data point.
-          enum:
-          - History
-          - Forecast
-          - Preliminary
-          example: History
-    MultiSeriesResponse:
-      type: object
-      description: Response containing multiple time series.
-      required:
-      - series
-      properties:
-        series:
-          type: array
-          description: Array of time series responses.
-          items:
-            $ref: '#/components/schemas/SeriesResponse'
-          example: []
-    MultiSeriesRequest:
-      type: object
-      description: Request body for retrieving multiple series simultaneously.
-      required:
-      - series
-      properties:
-        series:
-          type: array
-          description: Array of series requests. Maximum 25 series per request.
-          maxItems: 25
-          items:
-            $ref: '#/components/schemas/SeriesRequest'
-          example: []
     SeriesResponse:
       type: object
       description: Response containing a single time series with metadata and observations.
@@ -234,6 +1046,57 @@ components:
           items:
             $ref: '#/components/schemas/Observation'
           example: []
+    Observation:
+      type: object
+      description: A single time series observation or forecast data point.
+      required:
+      - date
+      - value
+      properties:
+        date:
+          type: string
+          format: date
+          description: The observation date in YYYY-MM-DD format. For frequencies coarser than daily, represents the period start date.
+          example: '2026-01-15'
+        value:
+          type:
+          - number
+          - 'null'
+          description: The observation value. Null indicates missing or unavailable data for this period.
+          example: example_value
+        status:
+          type: string
+          description: Status indicator for the data point.
+          enum:
+          - History
+          - Forecast
+          - Preliminary
+          example: History
+    MultiSeriesRequest:
+      type: object
+      description: Request body for retrieving multiple series simultaneously.
+      required:
+      - series
+      properties:
+        series:
+          type: array
+          description: Array of series requests. Maximum 25 series per request.
+          maxItems: 25
+          items:
+            $ref: '#/components/schemas/SeriesRequest'
+          example: []
+    MultiSeriesResponse:
+      type: object
+      description: Response containing multiple time series.
+      required:
+      - series
+      properties:
+        series:
+          type: array
+          description: Array of time series responses.
+          items:
+            $ref: '#/components/schemas/SeriesResponse'
+          example: []
     SeriesRequest:
       type: object
       description: A single series request within a multi-series call.
@@ -280,72 +1143,218 @@ components:
           format: date
           description: Vintage date for historical data revisions.
           example: '2026-01-15'
-  parameters:
-    mnemonic:
-      name: mnemonic
-      in: query
-      description: The unique series mnemonic identifier. Mnemonics follow the Data Buffet naming convention, e.g., FGDP_US for US GDP or EMPLPAY.IUSA for US total nonfarm payrolls.
-      required: true
-      schema:
-        type: string
-      examples:
-        usGdp:
-          summary: US Gross Domestic Product
-          value: FGDP_US
-        usPayrolls:
-          summary: US Total Nonfarm Payrolls
-          value: EMPLPAY.IUSA
-    vintage:
-      name: vintage
-      in: query
-      description: The vintage date for accessing historical data revisions in YYYY-MM-DD format. If omitted, returns the latest vintage.
-      required: false
-      schema:
-        type: string
-        format: date
-    endDate:
-      name: endDate
-      in: query
-      description: The end date for the data range in YYYY-MM-DD format. If omitted, returns data through the latest available observation or forecast.
-      required: false
-      schema:
-        type: string
-        format: date
-    freq:
-      name: freq
-      in: query
-      description: The desired output frequency for the series. When specified, frequency conversion is applied. For example, converting quarterly GDP to annual.
-      required: false
-      schema:
-        type: string
-        enum:
-        - A
-        - Q
-        - M
-        - W
-        - D
-    trans:
-      name: trans
-      in: query
-      description: The mathematical transformation to apply to the series values. Supports common economic transformations.
-      required: false
-      schema:
-        type: string
-        enum:
-        - Level
-        - SimpleDifference
-        - PercentChange
-        - AnnualizedGrowth
-        - YearOverYearPercentChange
-        - CompoundAnnualGrowthRate
-    startDate:
-      name: startDate
-      in: query
-      description: The start date for the data range in YYYY-MM-DD format. If omitted, returns data from the beginning of the series.
-      required: false
-      schema:
-        type: string
-        format: date
+    Error:
+      type: object
+      description: Standard error response.
+      required:
+      - code
+      - message
+      properties:
+        code:
+          type: string
+          description: Machine-readable error code.
+          example: example_value
+        message:
+          type: string
+          description: Human-readable error message.
+          example: example_value
+        details:
+          type: string
+          description: Additional details about the error.
+          example: example_value
+    DataSeries:
+      type: object
+      properties:
+        freq:
+          type: string
+        startDate:
+          type: string
+        freqCode:
+          format: int32
+          type: integer
+        start:
+          format: int32
+          type: integer
+        periods:
+          format: int32
+          type: integer
+        data:
+          type: array
+          items:
+            format: double
+            type: number
+    DataSeriesResult:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/DataSeries'
+        mnemonic:
+          type: string
+        concept:
+          type: string
+        geoCode:
+          type: string
+        geoTitle:
+          type: string
+        fipCode:
+          type: string
+        description:
+          type: string
+        source:
+          type: string
+        databank:
+          type: string
+        freqCode:
+          type: string
+        observedAttribute:
+          type: string
+        startDate:
+          type: string
+        endDate:
+          type: string
+        lastHistory:
+          type: string
+        dateCreated:
+          type: string
+        dateUpdated:
+          type: string
+        dateExecuted:
+          type: string
+        error:
+          type: string
+        status:
+          type: string
+    ExogenizeThroughBulkRequest:
+      type: object
+      properties:
+        variables:
+          type: array
+          items:
+            type: string
+        exogenizeThrough:
+          format: int32
+          type: integer
+    CustomSeries:
+      type: object
+      properties:
+        source:
+          type: string
+        units:
+          type: string
+        startDate:
+          format: int32
+          type: integer
+        endDate:
+          format: int32
+          type: integer
+        lastHistorical:
+          format: int32
+          type: integer
+        observedAttribute:
+          type: string
+        dependencies:
+          type: array
+          items:
+            type: string
+        data:
+          type: array
+          items:
+            format: double
+            type: number
+        scenarioId:
+          type: string
+        alias:
+          type: string
+        variable:
+          type: string
+        isModified:
+          type: boolean
+        isHistoryEditable:
+          type: boolean
+        historyModified:
+          type: boolean
+        modified:
+          type: string
+        ticks:
+          format: int64
+          type: integer
+        status:
+          format: int32
+          enum:
+          - 0
+          - 1
+          - 2
+          type: integer
+        openById:
+          type: string
+        openByEmail:
+          type: string
+        variableType:
+          format: int32
+          enum:
+          - 0
+          - 1
+          - 2
+          - 3
+          type: integer
+        title:
+          type: string
+        centralState:
+          format: int32
+          enum:
+          - 0
+          - 1
+          type: integer
+        localState:
+          format: int32
+          enum:
+          - 0
+          - 1
+          type: integer
+        centralExogenizeThrough:
+          format: int32
+          type: integer
+        localExogenizeThrough:
+          format: int32
+          type: integer
+        addFactorType:
+          format: int32
+          enum:
+          - 0
+          - 1
+          - 2
+          type: integer
+        equation:
+          type: string
+        customEquation:
+          type: string
+        localEquation:
+          type: string
+        sharedownSeries:
+          type: array
+          items:
+            type: string
+        customSeries:
+          type: boolean
+        histDateRange:
+          type: object
+          additionalProperties:
+            format: int32
+            type: integer
+        localHistDateRange:
+          type: object
+          additionalProperties:
+            format: int32
+            type: integer
+    CommitPayload:
+      type: object
+      properties:
+        note:
+          type: string
+        variables:
+          type: array
+          items:
+            type: string
   securitySchemes:
     oauth2:
       type: oauth2
@@ -357,3 +1366,7 @@ components:
 externalDocs:
   description: Moody's Data Buffet API Documentation
   url: https://api.economy.com/data/v1/swagger
+x-refined-from:
+- moodys-data-buffet-api-openapi.yml
+- moodys-data-buffet-api-swagger.json
+- moodys-scenario-studio-api-swagger.json

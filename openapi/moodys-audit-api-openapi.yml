@@ -1,0 +1,257 @@
+openapi: 3.2.0
+info:
+  version: v2
+  title: Scenario Studio Audit API
+  description: API access to Moody's Analytics Scenario Studio.
+servers:
+- url: https://api.economy.com/scenario-studio/v2
+tags:
+- name: Audit
+paths:
+  /audit/project/{projectId}:
+    get:
+      tags:
+      - Audit
+      summary: Gets the records for a search query.
+      operationId: Audit_AuditProjectAsync
+      parameters:
+      - name: projectId
+        in: path
+        description: The project ID.
+        required: true
+        schema:
+          type: string
+      - name: skip
+        in: query
+        description: The record count to skip.
+        required: false
+        schema:
+          type: integer
+          format: int32
+      - name: take
+        in: query
+        description: The record count to return.
+        required: false
+        schema:
+          type: integer
+          format: int32
+      - name: options.fromDate
+        in: query
+        required: false
+        schema:
+          type: string
+          format: date-time
+      - name: options.toDate
+        in: query
+        required: false
+        schema:
+          type: string
+          format: date-time
+      - name: options.search
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: options.actions
+        in: query
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: array
+          items:
+            type: integer
+            format: int32
+      - name: options.solveType
+        in: query
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: array
+          items:
+            type: integer
+            format: int32
+      - name: options.sort
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: options.scenarios
+        in: query
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: array
+          items:
+            type: string
+      - name: options.variableIds
+        in: query
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: array
+          items:
+            type: string
+      - name: options.solveLog
+        in: query
+        required: false
+        schema:
+          type: boolean
+      - name: options.mine
+        in: query
+        required: false
+        schema:
+          type: boolean
+      - name: options.offset
+        in: query
+        required: false
+        schema:
+          type: integer
+          format: int32
+      - name: options.offsetType
+        in: query
+        required: false
+        schema:
+          type: integer
+          format: int32
+          enum:
+          - 0
+          - 1
+          - 2
+          - 3
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+            text/json:
+              schema:
+                type: object
+      security:
+      - oauth2: []
+  /audit/project/{projectId}/count:
+    get:
+      tags:
+      - Audit
+      summary: Gets the record count for a search query.
+      operationId: Audit_AuditSizeAsync
+      parameters:
+      - name: projectId
+        in: path
+        description: The Project ID.
+        required: true
+        schema:
+          type: string
+      - name: options.fromDate
+        in: query
+        required: false
+        schema:
+          type: string
+          format: date-time
+      - name: options.toDate
+        in: query
+        required: false
+        schema:
+          type: string
+          format: date-time
+      - name: options.search
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: options.actions
+        in: query
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: array
+          items:
+            type: integer
+            format: int32
+      - name: options.solveType
+        in: query
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: array
+          items:
+            type: integer
+            format: int32
+      - name: options.sort
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: options.scenarios
+        in: query
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: array
+          items:
+            type: string
+      - name: options.variableIds
+        in: query
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: array
+          items:
+            type: string
+      - name: options.solveLog
+        in: query
+        required: false
+        schema:
+          type: boolean
+      - name: options.mine
+        in: query
+        required: false
+        schema:
+          type: boolean
+      - name: options.offset
+        in: query
+        required: false
+        schema:
+          type: integer
+          format: int32
+      - name: options.offsetType
+        in: query
+        required: false
+        schema:
+          type: integer
+          format: int32
+          enum:
+          - 0
+          - 1
+          - 2
+          - 3
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+            text/json:
+              schema:
+                type: object
+      security:
+      - oauth2: []
+components:
+  securitySchemes:
+    oauth2:
+      type: oauth2
+      flows:
+        clientCredentials:
+          scopes: {}
+          tokenUrl: https://api.economy.com/scenario-studio/v2/oauth2/token
+      description: OAuth2 Client Credentials

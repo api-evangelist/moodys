@@ -376,6 +376,46 @@ apis:
   properties:
   - type: OpenAPI
     url: openapi/moodys-vin-api-openapi.yml
+- aid: moodys:moodys-filetypes-api
+  name: Moody's File Types API
+  description: The FileTypes API from Moody's — 1 operation(s) for filetypes.
+  humanURL: https://www.economy.com/products/tools/data-buffet
+  baseURL: https://api.economy.com
+  tags:
+  - FileTypes
+  properties:
+  - type: OpenAPI
+    url: openapi/moodys-filetypes-api-openapi.yml
+- aid: moodys:moodys-frequency-api
+  name: Moody's Frequency API
+  description: The Frequency API from Moody's — 1 operation(s) for frequency.
+  humanURL: https://www.economy.com/products/tools/data-buffet
+  baseURL: https://api.economy.com
+  tags:
+  - Frequency
+  properties:
+  - type: OpenAPI
+    url: openapi/moodys-frequency-api-openapi.yml
+- aid: moodys:moodys-multiseries-api
+  name: Moody's Multi Series API
+  description: The MultiSeries API from Moody's — 1 operation(s) for multiseries.
+  humanURL: https://www.economy.com/products/tools/data-buffet
+  baseURL: https://api.economy.com
+  tags:
+  - MultiSeries
+  properties:
+  - type: OpenAPI
+    url: openapi/moodys-multiseries-api-openapi.yml
+- aid: moodys:moodys-vintage-api
+  name: Moody's Vintage API
+  description: The Vintage API from Moody's — 1 operation(s) for vintage.
+  humanURL: https://www.economy.com/products/tools/data-buffet
+  baseURL: https://api.economy.com
+  tags:
+  - Vintage
+  properties:
+  - type: OpenAPI
+    url: openapi/moodys-vintage-api-openapi.yml
 name: Moody's
 tags:
   - Climate Risk

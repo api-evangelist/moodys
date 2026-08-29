@@ -1,0 +1,66 @@
+openapi: 3.2.0
+info:
+  version: v1
+  title: Moody's Analytics AutoCycle Vin API
+  description: API access to Moody's Analytics AutoCycle Forecast
+servers:
+- url: https://api.economy.com/autocycle/v1
+tags:
+- name: Vin
+paths:
+  /vins:
+    get:
+      tags:
+      - Vin
+      summary: The vins endpoint takes in make, model, model year and model version of vehicle and performs a vin look up
+      operationId: Vin_VinLookup
+      parameters:
+      - name: vehicleMake
+        in: query
+        description: Make of the vehicle
+        required: false
+        schema:
+          type: string
+      - name: vehicleModel
+        in: query
+        description: "Model of the vehicle\n           Vehicle model is a partial match with the model of vehicle \n           \tE.g.input(vehicleMake = 'BMW', vehicleModel = 'X3')\n           \t\t ouput(vehicleMake= 'BMW', vehicleModel = 'X3 series')"
+        required: false
+        schema:
+          type: string
+      - name: vehicleModelYear
+        in: query
+        description: Model Year of the vehicle
+        required: false
+        schema:
+          type: integer
+          format: int32
+      - name: modelVersion
+        in: query
+        description: "Model Version is the version of the statistical/economic model, which is published every month\n              The monthly model version using vYYYYMM format"
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+            text/json:
+              schema:
+                type: object
+            text/xml:
+              schema:
+                type: object
+      security:
+      - oauth2: []
+components:
+  securitySchemes:
+    oauth2:
+      type: oauth2
+      flows:
+        clientCredentials:
+          scopes: {}
+          tokenUrl: https://api.economy.com/autocycle/v1/oauth2/token
+      description: OAuth2 Client Credentials

@@ -1,19 +1,11 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: Moody's Data Buffet Baskets Orders API
-  version: 1.0.0
-  description: The Moody's Analytics Data Buffet API provides programmatic access to international and subnational economic, demographic, and financial time series data and forecasts. It enables retrieval of individual series or baskets of data, supports frequency conversion, mathematical transformations, date range filtering, and vintage/versioning selection. Code samples are available in C#, Java, Python, and R.
-  contact:
-    name: Moody's Analytics
-    url: https://www.economy.com/products/tools/data-buffet
-  license:
-    name: Moody's Analytics Terms of Use
-    url: https://www.moodys.com/web/en/us/about/legal/terms-of-use.html
+  title: Moodys Orders API
+  version: '1.0'
+  description: 'Operations tagged Orders across 2 of this provider''s published API definitions: moodys-data-buffet-api-openapi.yml, moodys-data-buffet-api-swagger.json. Each path carries the servers of the definition it was published in.'
 servers:
 - url: https://api.economy.com/data/v1
   description: Moody's Analytics Data Buffet production server
-security:
-- oauth2: []
 tags:
 - name: Orders
   description: Operations for managing data generation orders from baskets
@@ -39,6 +31,8 @@ paths:
       x-microcks-operation:
         delay: 0
         dispatcher: FALLBACK
+      security:
+      - oauth2: []
     post:
       operationId: createOrder
       summary: Moody's Create a New Order
@@ -69,6 +63,11 @@ paths:
       x-microcks-operation:
         delay: 0
         dispatcher: FALLBACK
+      security:
+      - oauth2: []
+    servers:
+    - url: https://api.economy.com/data/v1
+      description: Moody's Analytics Data Buffet production server
   /orders/{orderId}:
     get:
       operationId: getOrder
@@ -92,6 +91,32 @@ paths:
       x-microcks-operation:
         delay: 0
         dispatcher: FALLBACK
+      security:
+      - oauth2: []
+    delete:
+      tags:
+      - Orders
+      summary: Deletes an order that is in the queue. Once an order starts it can no longer be deleted.
+      operationId: Orders_DeleteOrder
+      parameters:
+      - name: orderId
+        in: path
+        description: Order to delete
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Order_2'
+      security:
+      - oauth2: []
+    servers:
+    - url: https://api.economy.com/data/v1
+      description: Moody's Analytics Data Buffet production server
   /orders/{orderId}/download:
     get:
       operationId: downloadOrder
@@ -116,15 +141,12 @@ paths:
       x-microcks-operation:
         delay: 0
         dispatcher: FALLBACK
+      security:
+      - oauth2: []
+    servers:
+    - url: https://api.economy.com/data/v1
+      description: Moody's Analytics Data Buffet production server
 components:
-  parameters:
-    orderId:
-      name: orderId
-      in: path
-      description: The unique identifier of the order.
-      required: true
-      schema:
-        type: string
   schemas:
     Order:
       type: object
@@ -174,6 +196,21 @@ components:
           type: string
           description: Error description if the order failed. Present only when status is Failed.
           example: example_value
+    OrderCreate:
+      type: object
+      description: Request body for creating a new order.
+      required:
+      - basketId
+      - fileType
+      properties:
+        basketId:
+          type: string
+          description: The basket to generate the order from.
+          example: '500123'
+        fileType:
+          type: string
+          description: The desired output file format. Use the /filetypes endpoint to retrieve supported formats.
+          example: example_value
     Error:
       type: object
       description: Standard error response.
@@ -193,21 +230,67 @@ components:
           type: string
           description: Additional details about the error.
           example: example_value
-    OrderCreate:
-      type: object
-      description: Request body for creating a new order.
+    Order_2:
+      description: Order status information
       required:
-      - basketId
-      - fileType
+      - dateOrdered
+      type: object
       properties:
+        orderId:
+          description: Order id
+          type: string
+        dateOrdered:
+          format: date-time
+          description: Date ordered
+          type: string
+        dateStarted:
+          format: date-time
+          description: Date started, null if not started
+          type: string
+        dateFinished:
+          format: date-time
+          description: Date finished, null if unfinished
+          type: string
+        failedAttempts:
+          format: int32
+          description: Number of attempts to read a basket
+          maximum: 3
+          minimum: 0
+          type: integer
+        processing:
+          description: Is the order currently being processed?
+          type: boolean
+        queueStatus:
+          format: int32
+          description: 'Status of the the prder in the Queue.
+
+            order is waiting in queue = 0, order is currently running = 1, order is complete = 2'
+          maximum: 2
+          minimum: 0
+          type: integer
         basketId:
+          description: Basket being run
           type: string
-          description: The basket to generate the order from.
-          example: '500123'
-        fileType:
+        orderType:
+          format: int32
+          description: The type of order that is running. baskets = 1
+          type: integer
+        enteredQueue:
+          format: date-time
+          description: Date the order entered the queue
           type: string
-          description: The desired output file format. Use the /filetypes endpoint to retrieve supported formats.
-          example: example_value
+        updatedQueue:
+          format: date-time
+          description: Date the order was completed in the queue
+          type: string
+  parameters:
+    orderId:
+      name: orderId
+      in: path
+      description: The unique identifier of the order.
+      required: true
+      schema:
+        type: string
   securitySchemes:
     oauth2:
       type: oauth2
@@ -219,3 +302,6 @@ components:
 externalDocs:
   description: Moody's Data Buffet API Documentation
   url: https://api.economy.com/data/v1/swagger
+x-refined-from:
+- moodys-data-buffet-api-openapi.yml
+- moodys-data-buffet-api-swagger.json

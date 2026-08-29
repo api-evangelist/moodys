@@ -1,19 +1,11 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: Moody's Data Buffet Baskets API
-  version: 1.0.0
-  description: The Moody's Analytics Data Buffet API provides programmatic access to international and subnational economic, demographic, and financial time series data and forecasts. It enables retrieval of individual series or baskets of data, supports frequency conversion, mathematical transformations, date range filtering, and vintage/versioning selection. Code samples are available in C#, Java, Python, and R.
-  contact:
-    name: Moody's Analytics
-    url: https://www.economy.com/products/tools/data-buffet
-  license:
-    name: Moody's Analytics Terms of Use
-    url: https://www.moodys.com/web/en/us/about/legal/terms-of-use.html
+  title: Moodys Baskets API
+  version: '1.0'
+  description: 'Operations tagged Baskets across 2 of this provider''s published API definitions: moodys-data-buffet-api-openapi.yml, moodys-data-buffet-api-swagger.json. Each path carries the servers of the definition it was published in.'
 servers:
 - url: https://api.economy.com/data/v1
   description: Moody's Analytics Data Buffet production server
-security:
-- oauth2: []
 tags:
 - name: Baskets
   description: Operations for creating and managing collections of series requests
@@ -39,6 +31,8 @@ paths:
       x-microcks-operation:
         delay: 0
         dispatcher: FALLBACK
+      security:
+      - oauth2: []
     post:
       operationId: createBasket
       summary: Moody's Create a New Basket
@@ -69,6 +63,38 @@ paths:
       x-microcks-operation:
         delay: 0
         dispatcher: FALLBACK
+      security:
+      - oauth2: []
+    delete:
+      tags:
+      - Baskets
+      summary: Delete a list of baskets identified by basketid
+      operationId: Baskets_Delete
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+      security:
+      - oauth2: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                type: string
+          application/x-www-form-urlencoded:
+            schema:
+              type: array
+              items:
+                type: string
+        required: true
+    servers:
+    - url: https://api.economy.com/data/v1
+      description: Moody's Analytics Data Buffet production server
   /baskets/{basketId}:
     get:
       operationId: getBasket
@@ -92,6 +118,8 @@ paths:
       x-microcks-operation:
         delay: 0
         dispatcher: FALLBACK
+      security:
+      - oauth2: []
     put:
       operationId: updateBasket
       summary: Moody's Update an Existing Basket
@@ -126,6 +154,8 @@ paths:
       x-microcks-operation:
         delay: 0
         dispatcher: FALLBACK
+      security:
+      - oauth2: []
     delete:
       operationId: deleteBasket
       summary: Moody's Delete a Basket
@@ -144,29 +174,162 @@ paths:
       x-microcks-operation:
         delay: 0
         dispatcher: FALLBACK
+      security:
+      - oauth2: []
+    servers:
+    - url: https://api.economy.com/data/v1
+      description: Moody's Analytics Data Buffet production server
+  /baskets/{id}:
+    get:
+      tags:
+      - Baskets
+      summary: Returns a single basket by id.
+      operationId: Baskets_Get
+      parameters:
+      - name: id
+        in: path
+        description: BasketId guid
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Basket_2'
+      security:
+      - oauth2: []
+    post:
+      tags:
+      - Baskets
+      summary: Update existing basket settings and series
+      operationId: Baskets_Edit
+      parameters:
+      - name: id
+        in: path
+        description: BasketId
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+      security:
+      - oauth2: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+        required: true
+    servers:
+    - url: https://api.economy.com/data/v1
+  /baskets/{id}/contents:
+    get:
+      tags:
+      - Baskets
+      summary: Returns the contents of the requested basket by id.
+      operationId: Baskets_GetContents
+      parameters:
+      - name: id
+        in: path
+        description: BasketId guid
+        required: true
+        schema:
+          type: string
+      - name: page
+        in: query
+        description: Optional pagination page number
+        required: false
+        schema:
+          type: integer
+          format: int32
+      - name: size
+        in: query
+        description: Optional pagination page size
+        required: false
+        schema:
+          type: integer
+          format: int32
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BasketContents'
+      security:
+      - oauth2: []
+    servers:
+    - url: https://api.economy.com/data/v1
+  /baskets/{id}/output-file:
+    get:
+      tags:
+      - Baskets
+      summary: Returns the streamed file content that was generated the last time a basket was executed.
+      operationId: Baskets_Download
+      parameters:
+      - name: id
+        in: path
+        description: Basket id
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+      security:
+      - oauth2: []
+    servers:
+    - url: https://api.economy.com/data/v1
+  /baskets/{id}/Series:
+    post:
+      tags:
+      - Baskets
+      summary: Add a list of series to existing basket
+      operationId: Baskets_AddSeries
+      parameters:
+      - name: id
+        in: path
+        description: BasketId
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+      security:
+      - oauth2: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+        required: true
+    servers:
+    - url: https://api.economy.com/data/v1
 components:
   schemas:
-    BasketCreate:
-      type: object
-      description: Request body for creating or updating a basket.
-      required:
-      - name
-      - series
-      properties:
-        name:
-          type: string
-          description: User-defined name for the basket.
-          example: Example Title
-        description:
-          type: string
-          description: Optional description of the basket.
-          example: A sample description.
-        series:
-          type: array
-          description: The series requests to include in the basket.
-          items:
-            $ref: '#/components/schemas/SeriesRequest'
-          example: []
     Basket:
       type: object
       description: A saved collection of series requests that can be executed as an order for bulk data retrieval.
@@ -203,25 +366,27 @@ components:
           format: date-time
           description: When the basket was last modified.
           example: '2026-01-15T10:30:00Z'
-    Error:
+    BasketCreate:
       type: object
-      description: Standard error response.
+      description: Request body for creating or updating a basket.
       required:
-      - code
-      - message
+      - name
+      - series
       properties:
-        code:
+        name:
           type: string
-          description: Machine-readable error code.
-          example: example_value
-        message:
+          description: User-defined name for the basket.
+          example: Example Title
+        description:
           type: string
-          description: Human-readable error message.
-          example: example_value
-        details:
-          type: string
-          description: Additional details about the error.
-          example: example_value
+          description: Optional description of the basket.
+          example: A sample description.
+        series:
+          type: array
+          description: The series requests to include in the basket.
+          items:
+            $ref: '#/components/schemas/SeriesRequest'
+          example: []
     SeriesRequest:
       type: object
       description: A single series request within a multi-series call.
@@ -268,6 +433,375 @@ components:
           format: date
           description: Vintage date for historical data revisions.
           example: '2026-01-15'
+    Error:
+      type: object
+      description: Standard error response.
+      required:
+      - code
+      - message
+      properties:
+        code:
+          type: string
+          description: Machine-readable error code.
+          example: example_value
+        message:
+          type: string
+          description: Human-readable error message.
+          example: example_value
+        details:
+          type: string
+          description: Additional details about the error.
+          example: example_value
+    Basket_2:
+      description: A single basket's information
+      type: object
+      properties:
+        basketId:
+          description: Basket id guid
+          type: string
+        name:
+          description: Basket name
+          type: string
+        dateCreated:
+          format: date-time
+          description: Date the basket was created
+          type: string
+        dateStart:
+          format: date-time
+          description: Date basket starts
+          type: string
+        dateEnd:
+          format: date-time
+          description: Date basket ends
+          type: string
+        dateExecuted:
+          format: date-time
+          description: Date the basket ran, null if not yet run
+          type: string
+        dateUpdated:
+          format: date-time
+          description: Date the basket was last updated, null if never updated
+          type: string
+        dateFormat:
+          format: int32
+          description: Date format of output basket
+          enum:
+          - 0
+          - 1
+          - 2
+          - 3
+          - 4
+          - 5
+          - 6
+          - 7
+          - 10
+          - 11
+          - 12
+          - 13
+          - 13
+          type: integer
+        datePeriod:
+          format: int32
+          description: Date period of output basket
+          type: integer
+        fileName:
+          description: Down loadable file name
+          type: string
+        fileTypeId:
+          format: int32
+          description: Output file's type id
+          type: integer
+        title:
+          description: Basket title
+          type: string
+        options:
+          $ref: '#/components/schemas/BasketOptions'
+          description: Basket delivery options
+        frequency:
+          format: int32
+          description: Basket level frequency, null if not set at the basket level
+          enum:
+          - 0
+          - 16
+          - 49
+          - 50
+          - 50
+          - 65
+          - 65
+          - 66
+          - 66
+          - 67
+          - 67
+          - 68
+          - 68
+          - 69
+          - 69
+          - 70
+          - 70
+          - 71
+          - 71
+          - 80
+          - 97
+          - 98
+          - 99
+          - 100
+          - 101
+          - 102
+          - 103
+          - 104
+          - 105
+          - 106
+          - 107
+          - 108
+          - 109
+          - 110
+          - 112
+          - 128
+          - 128
+          - 155
+          - 156
+          - 170
+          - 171
+          - 172
+          - 172
+          - 183
+          - 184
+          - 185
+          - 186
+          - 187
+          - 188
+          - 188
+          - 193
+          - 194
+          - 195
+          - 196
+          - 197
+          - 198
+          - 199
+          - 200
+          - 201
+          - 202
+          - 203
+          - 204
+          - 204
+          type: integer
+        transformation:
+          format: int32
+          description: Basket level transformation, null if not set at the basket level
+          enum:
+          - 0
+          - 1
+          - 2
+          - 3
+          - 4
+          - 8
+          - -1
+          type: integer
+        decimal:
+          format: int32
+          description: Basket level decimal precision, null if not set at the basket level
+          type: integer
+    BasketOptions:
+      description: ''
+      type: object
+      properties:
+        dateOption:
+          format: int32
+          description: ''
+          enum:
+          - 0
+          - 1
+          - 2
+          - 3
+          type: integer
+        ignoreMissing:
+          description: ''
+          type: boolean
+        layoutAcross:
+          description: ''
+          type: boolean
+        offset:
+          description: ''
+          type: boolean
+        showXls:
+          description: ''
+          type: boolean
+        showMnemonic:
+          description: ''
+          type: boolean
+        showConcept:
+          description: ''
+          type: boolean
+        showDescription:
+          description: ''
+          type: boolean
+        showSource:
+          description: ''
+          type: boolean
+        showDatabankName:
+          description: ''
+          type: boolean
+        showFrequency:
+          description: ''
+          type: boolean
+        showConversion:
+          description: ''
+          type: boolean
+        showTransformation:
+          description: ''
+          type: boolean
+        showGeoTitle:
+          description: ''
+          type: boolean
+        showGeoFip:
+          description: ''
+          type: boolean
+        showMaGeocode:
+          description: ''
+          type: boolean
+        sortDescription:
+          description: ''
+          type: boolean
+        showDateColumn:
+          description: ''
+          type: boolean
+        showStartDate:
+          description: ''
+          type: boolean
+        showEndDate:
+          description: ''
+          type: boolean
+        showUpdateDate:
+          description: ''
+          type: boolean
+        showDownloadDate:
+          description: ''
+          type: boolean
+        showSeriesDates:
+          description: ''
+          type: boolean
+        showLastHistory:
+          description: ''
+          type: boolean
+        conversionType:
+          format: int32
+          description: ''
+          enum:
+          - 0
+          - 1
+          - 2
+          - 3
+          type: integer
+    BasketContents:
+      description: ''
+      type: object
+      properties:
+        id:
+          description: BasketId guid
+          type: string
+        line:
+          format: int32
+          description: Line
+          type: integer
+        concept:
+          description: Concept Code
+          type: string
+        geo:
+          description: Geo Code
+          type: string
+        description:
+          description: Description
+          type: string
+        geoTitle:
+          description: Geo Description
+          type: string
+        freq:
+          format: int32
+          description: Frequency Code
+          enum:
+          - 0
+          - 16
+          - 49
+          - 50
+          - 50
+          - 65
+          - 65
+          - 66
+          - 66
+          - 67
+          - 67
+          - 68
+          - 68
+          - 69
+          - 69
+          - 70
+          - 70
+          - 71
+          - 71
+          - 80
+          - 97
+          - 98
+          - 99
+          - 100
+          - 101
+          - 102
+          - 103
+          - 104
+          - 105
+          - 106
+          - 107
+          - 108
+          - 109
+          - 110
+          - 112
+          - 128
+          - 128
+          - 155
+          - 156
+          - 170
+          - 171
+          - 172
+          - 172
+          - 183
+          - 184
+          - 185
+          - 186
+          - 187
+          - 188
+          - 188
+          - 193
+          - 194
+          - 195
+          - 196
+          - 197
+          - 198
+          - 199
+          - 200
+          - 201
+          - 202
+          - 203
+          - 204
+          - 204
+          type: integer
+        trans:
+          format: int32
+          description: Transformation
+          enum:
+          - 0
+          - 1
+          - 2
+          - 3
+          - 4
+          - 8
+          - -1
+          type: integer
+        userDefined:
+          description: User defined transformation
+          type: string
+        decimalFormat:
+          format: int32
+          description: Number of decimal places to show
+          type: integer
   parameters:
     basketId:
       name: basketId
@@ -287,3 +821,6 @@ components:
 externalDocs:
   description: Moody's Data Buffet API Documentation
   url: https://api.economy.com/data/v1/swagger
+x-refined-from:
+- moodys-data-buffet-api-openapi.yml
+- moodys-data-buffet-api-swagger.json

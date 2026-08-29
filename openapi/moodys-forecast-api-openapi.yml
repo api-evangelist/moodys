@@ -1,0 +1,255 @@
+openapi: 3.2.0
+info:
+  title: Moodys Forecast API
+  version: v1
+  description: 'Operations tagged Forecast across 2 of this provider''s published API definitions: moodys-autocycle-api-swagger.json, moodys-municipal-api-swagger.json. Each path carries the servers of the definition it was published in.'
+servers:
+- url: https://api.economy.com/autocycle/v1
+- url: https://api.economy.com/muni/v1
+tags:
+- name: Forecast
+paths:
+  /forecast:
+    post:
+      tags:
+      - Forecast
+      summary: The forecast endpoint that takes in an array of model inputs and returns the forecast
+      operationId: Forecast_ForecastBatch
+      parameters:
+      - name: modelVersion
+        in: query
+        description: The monthly model version using vYYYYMM format
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+            text/json:
+              schema:
+                type: object
+            text/xml:
+              schema:
+                type: object
+      security:
+      - oauth2: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+          text/json:
+            schema:
+              type: object
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+        description: See User Guide
+        required: true
+    servers:
+    - url: https://api.economy.com/autocycle/v1
+  /loss-forecast/{scenario}:
+    post:
+      tags:
+      - Forecast
+      summary: To Lookup forecast based on input list
+      operationId: Forecast_LookUpForecast
+      parameters:
+      - name: scenario
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: lgd
+        in: query
+        required: false
+        schema:
+          type: number
+          format: double
+      - name: vintage
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: revision
+        in: query
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+            text/json:
+              schema:
+                type: object
+            text/xml:
+              schema:
+                type: object
+      security:
+      - oauth2: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/MuniInfo'
+          text/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/MuniInfo'
+          text/xml:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/MuniInfo'
+          application/x-www-form-urlencoded:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/MuniInfo'
+        description: List of input objects to lookup forecast
+        required: true
+    servers:
+    - url: https://api.economy.com/muni/v1
+components:
+  schemas:
+    MuniInfo:
+      type: object
+      properties:
+        cusip:
+          description: '9 character alphanumeric code that identifies a North American financial security
+
+            for the purposes of facilitating clearing and settlement of trades'
+          type: string
+        rating:
+          description: Moody's rating
+          type: string
+        vintage:
+          description: requested vintage, defaults to current vintage
+          type: string
+        pd:
+          format: double
+          description: Probability of default
+          type: number
+        orgIds:
+          description: Organization Ids
+          type: array
+          items:
+            type: string
+        state:
+          description: State Abbrev (USPS 2-letter codes ?)
+          type: string
+        sector:
+          type: string
+        lgd:
+          format: double
+          type: number
+        sectors:
+          description: Only few OrgIds belong in multiple sectors
+          type: array
+          items:
+            type: string
+        maturityDate:
+          format: date-time
+          description: Maturity date
+          type: string
+        output:
+          description: Forecast information by sector and state
+          type: array
+          items:
+            $ref: '#/components/schemas/SectorForecast'
+        error:
+          type: string
+    SectorForecast:
+      type: object
+      properties:
+        sector:
+          type: string
+          readOnly: true
+        vintage:
+          type: string
+          readOnly: true
+        overlay:
+          format: int32
+          type: integer
+          readOnly: true
+        yq:
+          type: array
+          items:
+            type: string
+          readOnly: true
+        pd:
+          type: array
+          items:
+            format: double
+            type: number
+          readOnly: true
+        lr:
+          type: array
+          items:
+            format: double
+            type: number
+          readOnly: true
+        clr:
+          type: array
+          items:
+            format: double
+            type: number
+          readOnly: true
+        c_pd:
+          type: array
+          items:
+            format: double
+            type: number
+          readOnly: true
+        c_pd_lag1q:
+          type: array
+          items:
+            format: double
+            type: number
+          readOnly: true
+        c_pd_lag2q:
+          type: array
+          items:
+            format: double
+            type: number
+          readOnly: true
+        c_pd_lag3q:
+          type: array
+          items:
+            format: double
+            type: number
+          readOnly: true
+        c_pd_lag4q:
+          type: array
+          items:
+            format: double
+            type: number
+          readOnly: true
+        c_pd_lag5q:
+          type: array
+          items:
+            format: double
+            type: number
+          readOnly: true
+  securitySchemes:
+    oauth2:
+      type: oauth2
+      flows:
+        clientCredentials:
+          scopes: {}
+          tokenUrl: https://api.economy.com/autocycle/v1/oauth2/token
+      description: OAuth2 Client Credentials
+x-refined-from:
+- moodys-autocycle-api-swagger.json
+- moodys-municipal-api-swagger.json

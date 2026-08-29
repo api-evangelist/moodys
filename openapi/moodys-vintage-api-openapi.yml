@@ -1,0 +1,60 @@
+openapi: 3.2.0
+info:
+  version: v1
+  title: Moody's Analytics Data Buffet Vintage API
+  description: API access to Moody's Analytics repository of international and subnational economic and demographic time series data.
+  license:
+    name: More Info
+    url: https://github.com/moodysanalytics/databuffet-api-codesamples
+servers:
+- url: https://api.economy.com/data/v1
+tags:
+- name: Vintage
+paths:
+  /vintages:
+    get:
+      tags:
+      - Vintage
+      summary: Returns vintages/versions (and other vintage metadata) available for a series
+      operationId: Vintage_Get
+      parameters:
+      - name: m
+        in: query
+        description: The data series code (mnemonic) that is being requested.
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SeriesVintage'
+      security:
+      - oauth2: []
+components:
+  schemas:
+    SeriesVintage:
+      type: object
+      properties:
+        vintage:
+          type: string
+        version:
+          format: int32
+          type: integer
+        dbName:
+          type: string
+        datePublishedUtc:
+          format: date-time
+          type: string
+        note:
+          type: string
+  securitySchemes:
+    oauth2:
+      type: oauth2
+      flows:
+        clientCredentials:
+          scopes: {}
+          tokenUrl: https://api.economy.com/data/v1/oauth2/token
+      description: OAuth2 Client Credentials
