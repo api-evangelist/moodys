@@ -1,5 +1,7 @@
 aid: moodys
 url: https://github.com/api-search/moodys/apis.yml
+x-api-posture: partner-gated
+x-api-posture-basis: observed
 apis:
 - aid: moodys:data-buffet-api
   name: Moody's Data Buffet API
