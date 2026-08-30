@@ -304,6 +304,8 @@ apis:
   humanURL: https://www.economy.com/products/tools/data-buffet
   baseURL: https://api.economy.com
   tags:
+  - Health Check
+  tags_raw:
   - HealthCheck
   properties:
   - type: OpenAPI
@@ -374,6 +376,8 @@ apis:
   humanURL: https://www.economy.com/products/tools/data-buffet
   baseURL: https://api.economy.com
   tags:
+  - VIN
+  tags_raw:
   - Vin
   properties:
   - type: OpenAPI
@@ -384,6 +388,8 @@ apis:
   humanURL: https://www.economy.com/products/tools/data-buffet
   baseURL: https://api.economy.com
   tags:
+  - File Types
+  tags_raw:
   - FileTypes
   properties:
   - type: OpenAPI
