@@ -298,18 +298,6 @@ apis:
   properties:
   - type: OpenAPI
     url: openapi/moodys-forecast-api-openapi.yml
-- aid: moodys:moodys-healthcheck-api
-  name: Moody's Health Check API
-  description: The HealthCheck API from Moody's — 1 operation(s) for healthcheck.
-  humanURL: https://www.economy.com/products/tools/data-buffet
-  baseURL: https://api.economy.com
-  tags:
-  - Health Check
-  tags_raw:
-  - HealthCheck
-  properties:
-  - type: OpenAPI
-    url: openapi/moodys-healthcheck-api-openapi.yml
 - aid: moodys:moodys-interpolation-api
   name: Moody's Interpolation API
   description: The Interpolation API from Moody's — 1 operation(s) for interpolation.
@@ -382,18 +370,6 @@ apis:
   properties:
   - type: OpenAPI
     url: openapi/moodys-vin-api-openapi.yml
-- aid: moodys:moodys-filetypes-api
-  name: Moody's File Types API
-  description: The FileTypes API from Moody's — 1 operation(s) for filetypes.
-  humanURL: https://www.economy.com/products/tools/data-buffet
-  baseURL: https://api.economy.com
-  tags:
-  - File Types
-  tags_raw:
-  - FileTypes
-  properties:
-  - type: OpenAPI
-    url: openapi/moodys-filetypes-api-openapi.yml
 - aid: moodys:moodys-frequency-api
   name: Moody's Frequency API
   description: The Frequency API from Moody's — 1 operation(s) for frequency.
@@ -424,6 +400,26 @@ apis:
   properties:
   - type: OpenAPI
     url: openapi/moodys-vintage-api-openapi.yml
+- aid: moodys:moodys-file-types-api
+  name: Moody's File Types API
+  description: The File Types API from Moody's — 1 operation(s) for file types.
+  humanURL: https://www.economy.com/products/tools/data-buffet
+  baseURL: https://api.economy.com
+  tags:
+  - File Types
+  properties:
+  - type: OpenAPI
+    url: openapi/moodys-file-types-api-openapi.yml
+- aid: moodys:moodys-health-check-api
+  name: Moody's Health Check API
+  description: The Health Check API from Moody's — 1 operation(s) for health check.
+  humanURL: https://www.economy.com/products/tools/data-buffet
+  baseURL: https://api.economy.com
+  tags:
+  - Health Check
+  properties:
+  - type: OpenAPI
+    url: openapi/moodys-health-check-api-openapi.yml
 name: Moody's
 tags:
   - Climate Risk
