@@ -12,7 +12,7 @@ paths:
     get:
       tags:
       - Order
-      summary: Gets information on any single order.
+      summary: Gets information on any single order
       operationId: Order_GetOrderAsync
       parameters:
       - name: orderId
@@ -48,7 +48,7 @@ paths:
     get:
       tags:
       - Order
-      summary: Checks the project build status.
+      summary: Checks the project build status
       operationId: Order_GetProjectBuildOrderAsync
       parameters:
       - name: orderId

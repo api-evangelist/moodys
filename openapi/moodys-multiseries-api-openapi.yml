@@ -15,8 +15,10 @@ paths:
     get:
       tags:
       - MultiSeries
-      summary: Return array of series data formatted in JSON.
-      description: "Maximum of 25 series per request can be retrived using multi-series endpoint. \nIf dates are specified then a date range is required."
+      summary: Return array of series data formatted in JSON
+      description: 'Maximum of 25 series per request can be retrived using multi-series endpoint.
+
+        If dates are specified then a date range is required.'
       operationId: MultiSeries_Get
       parameters:
       - name: m

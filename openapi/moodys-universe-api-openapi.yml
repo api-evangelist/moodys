@@ -12,7 +12,7 @@ paths:
     get:
       tags:
       - Universe
-      summary: Get the list of base/moody's scenarios.
+      summary: Get the list of base/moody's scenarios
       operationId: Universe_ScenariosListAsync
       responses:
         '200':
@@ -30,7 +30,7 @@ paths:
     get:
       tags:
       - Universe
-      summary: Gets base/moody's scenario detail.
+      summary: Gets base/moody's scenario detail
       operationId: Universe_GetScenarioAsync
       parameters:
       - name: scenarioId
@@ -55,7 +55,7 @@ paths:
     get:
       tags:
       - Universe
-      summary: Gets the full details on a base scenario.
+      summary: Gets the full details on a base scenario
       operationId: Universe_ScenarioDetailsAsync
       parameters:
       - name: scenarioId
@@ -80,7 +80,7 @@ paths:
     post:
       tags:
       - Universe
-      summary: Search base scenarios.
+      summary: Search base scenarios
       operationId: Universe_SearchBaseScenariosListAsync
       parameters:
       - name: skip
@@ -126,7 +126,7 @@ paths:
     post:
       tags:
       - Universe
-      summary: Search base scenarios.
+      summary: Search base scenarios
       operationId: Universe_SearchBaseScenariosListCountAsync
       responses:
         '200':
@@ -157,7 +157,7 @@ paths:
     get:
       tags:
       - Universe
-      summary: Gets the list of permissionable clients (in the context of the person making the request).
+      summary: Gets the list of permissionable clients (in the context of the person making…
       operationId: Universe_ClientsListAsync
       responses:
         '200':
@@ -175,7 +175,7 @@ paths:
     post:
       tags:
       - Universe
-      summary: Search client scenarios.
+      summary: Search client scenarios
       operationId: Universe_SearchProjectScenariosListAsync
       parameters:
       - name: skip
@@ -221,7 +221,7 @@ paths:
     post:
       tags:
       - Universe
-      summary: Search client scenarios.
+      summary: Search client scenarios
       operationId: Universe_SearchProjectScenariosListCountAsync
       responses:
         '200':

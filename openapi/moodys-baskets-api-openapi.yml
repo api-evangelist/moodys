@@ -183,7 +183,7 @@ paths:
     get:
       tags:
       - Baskets
-      summary: Returns a single basket by id.
+      summary: Returns a single basket by id
       operationId: Baskets_Get
       parameters:
       - name: id
@@ -237,7 +237,7 @@ paths:
     get:
       tags:
       - Baskets
-      summary: Returns the contents of the requested basket by id.
+      summary: Returns the contents of the requested basket by id
       operationId: Baskets_GetContents
       parameters:
       - name: id
@@ -275,7 +275,7 @@ paths:
     get:
       tags:
       - Baskets
-      summary: Returns the streamed file content that was generated the last time a basket was executed.
+      summary: Returns the streamed file content that was generated the last time a basket was…
       operationId: Baskets_Download
       parameters:
       - name: id
@@ -366,27 +366,6 @@ components:
           format: date-time
           description: When the basket was last modified.
           example: '2026-01-15T10:30:00Z'
-    BasketCreate:
-      type: object
-      description: Request body for creating or updating a basket.
-      required:
-      - name
-      - series
-      properties:
-        name:
-          type: string
-          description: User-defined name for the basket.
-          example: Example Title
-        description:
-          type: string
-          description: Optional description of the basket.
-          example: A sample description.
-        series:
-          type: array
-          description: The series requests to include in the basket.
-          items:
-            $ref: '#/components/schemas/SeriesRequest'
-          example: []
     SeriesRequest:
       type: object
       description: A single series request within a multi-series call.
@@ -452,6 +431,27 @@ components:
           type: string
           description: Additional details about the error.
           example: example_value
+    BasketCreate:
+      type: object
+      description: Request body for creating or updating a basket.
+      required:
+      - name
+      - series
+      properties:
+        name:
+          type: string
+          description: User-defined name for the basket.
+          example: Example Title
+        description:
+          type: string
+          description: Optional description of the basket.
+          example: A sample description.
+        series:
+          type: array
+          description: The series requests to include in the basket.
+          items:
+            $ref: '#/components/schemas/SeriesRequest'
+          example: []
     Basket_2:
       description: A single basket's information
       type: object
@@ -601,97 +601,6 @@ components:
           format: int32
           description: Basket level decimal precision, null if not set at the basket level
           type: integer
-    BasketOptions:
-      description: ''
-      type: object
-      properties:
-        dateOption:
-          format: int32
-          description: ''
-          enum:
-          - 0
-          - 1
-          - 2
-          - 3
-          type: integer
-        ignoreMissing:
-          description: ''
-          type: boolean
-        layoutAcross:
-          description: ''
-          type: boolean
-        offset:
-          description: ''
-          type: boolean
-        showXls:
-          description: ''
-          type: boolean
-        showMnemonic:
-          description: ''
-          type: boolean
-        showConcept:
-          description: ''
-          type: boolean
-        showDescription:
-          description: ''
-          type: boolean
-        showSource:
-          description: ''
-          type: boolean
-        showDatabankName:
-          description: ''
-          type: boolean
-        showFrequency:
-          description: ''
-          type: boolean
-        showConversion:
-          description: ''
-          type: boolean
-        showTransformation:
-          description: ''
-          type: boolean
-        showGeoTitle:
-          description: ''
-          type: boolean
-        showGeoFip:
-          description: ''
-          type: boolean
-        showMaGeocode:
-          description: ''
-          type: boolean
-        sortDescription:
-          description: ''
-          type: boolean
-        showDateColumn:
-          description: ''
-          type: boolean
-        showStartDate:
-          description: ''
-          type: boolean
-        showEndDate:
-          description: ''
-          type: boolean
-        showUpdateDate:
-          description: ''
-          type: boolean
-        showDownloadDate:
-          description: ''
-          type: boolean
-        showSeriesDates:
-          description: ''
-          type: boolean
-        showLastHistory:
-          description: ''
-          type: boolean
-        conversionType:
-          format: int32
-          description: ''
-          enum:
-          - 0
-          - 1
-          - 2
-          - 3
-          type: integer
     BasketContents:
       description: ''
       type: object
@@ -801,6 +710,97 @@ components:
         decimalFormat:
           format: int32
           description: Number of decimal places to show
+          type: integer
+    BasketOptions:
+      description: ''
+      type: object
+      properties:
+        dateOption:
+          format: int32
+          description: ''
+          enum:
+          - 0
+          - 1
+          - 2
+          - 3
+          type: integer
+        ignoreMissing:
+          description: ''
+          type: boolean
+        layoutAcross:
+          description: ''
+          type: boolean
+        offset:
+          description: ''
+          type: boolean
+        showXls:
+          description: ''
+          type: boolean
+        showMnemonic:
+          description: ''
+          type: boolean
+        showConcept:
+          description: ''
+          type: boolean
+        showDescription:
+          description: ''
+          type: boolean
+        showSource:
+          description: ''
+          type: boolean
+        showDatabankName:
+          description: ''
+          type: boolean
+        showFrequency:
+          description: ''
+          type: boolean
+        showConversion:
+          description: ''
+          type: boolean
+        showTransformation:
+          description: ''
+          type: boolean
+        showGeoTitle:
+          description: ''
+          type: boolean
+        showGeoFip:
+          description: ''
+          type: boolean
+        showMaGeocode:
+          description: ''
+          type: boolean
+        sortDescription:
+          description: ''
+          type: boolean
+        showDateColumn:
+          description: ''
+          type: boolean
+        showStartDate:
+          description: ''
+          type: boolean
+        showEndDate:
+          description: ''
+          type: boolean
+        showUpdateDate:
+          description: ''
+          type: boolean
+        showDownloadDate:
+          description: ''
+          type: boolean
+        showSeriesDates:
+          description: ''
+          type: boolean
+        showLastHistory:
+          description: ''
+          type: boolean
+        conversionType:
+          format: int32
+          description: ''
+          enum:
+          - 0
+          - 1
+          - 2
+          - 3
           type: integer
   parameters:
     basketId:

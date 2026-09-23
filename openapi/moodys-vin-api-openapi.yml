@@ -12,7 +12,7 @@ paths:
     get:
       tags:
       - Vin
-      summary: The vins endpoint takes in make, model, model year and model version of vehicle and performs a vin look up
+      summary: The vins endpoint takes in make, model, model year and model version of vehicle…
       operationId: Vin_VinLookup
       parameters:
       - name: vehicleMake

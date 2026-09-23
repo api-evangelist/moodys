@@ -12,7 +12,7 @@ paths:
     get:
       tags:
       - Scenario
-      summary: Gets information about a specific scenario.
+      summary: Gets information about a specific scenario
       operationId: Scenario_GetAsync
       parameters:
       - name: projectId
@@ -42,7 +42,7 @@ paths:
     put:
       tags:
       - Scenario
-      summary: Update the scenario options.
+      summary: Update the scenario options
       operationId: Scenario_EditOptionsAsync
       parameters:
       - name: projectId
@@ -164,7 +164,7 @@ paths:
     post:
       tags:
       - Scenario
-      summary: Performs a central solve on a scenario.
+      summary: Performs a central solve on a scenario
       operationId: Scenario_SolveCentralAsync
       parameters:
       - name: scenarioId
@@ -195,7 +195,7 @@ paths:
     post:
       tags:
       - Scenario
-      summary: Performs a local solve on a scenario.
+      summary: Performs a local solve on a scenario
       operationId: Scenario_SolveLocalAsync
       parameters:
       - name: scenarioId
@@ -238,7 +238,7 @@ paths:
     post:
       tags:
       - Scenario
-      summary: Imports data from another scenario.
+      summary: Imports data from another scenario
       operationId: Scenario_CreateTransferOrderAsync
       parameters:
       - name: projectId
@@ -282,7 +282,7 @@ paths:
     post:
       tags:
       - Scenario
-      summary: Performs an add-factor solve.
+      summary: Performs an add-factor solve
       operationId: Scenario_ReendogenizeAsync
       parameters:
       - name: projectId
@@ -329,13 +329,6 @@ paths:
         required: true
 components:
   schemas:
-    ScenarioTransferOptions:
-      type: object
-      properties:
-        sourceScenarioId:
-          type: string
-        claim:
-          type: boolean
     SolvePayload:
       description: Options for running a solve
       type: object
@@ -343,6 +336,13 @@ components:
         partial:
           description: The partial solve regex.
           type: string
+    ScenarioTransferOptions:
+      type: object
+      properties:
+        sourceScenarioId:
+          type: string
+        claim:
+          type: boolean
     CheckpointPayload:
       type: object
       properties:

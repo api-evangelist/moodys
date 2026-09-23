@@ -30,7 +30,9 @@
     "moodys-seriessearch-api-openapi.yml",
     "moodys-universe-api-openapi.yml"
   ],
-  "archived": [],
+  "archived": [
+    "deleted 2 superseded output(s) from the previous generation"
+  ],
   "errors": [],
   "warnings": [],
   "notes": [
@@ -70,16 +72,21 @@
     "tag 'Health' spans 2 source specs (moodys-data-buffet-api-openapi.yml, moodys-scenario-studio-api-swagger.json): per-path servers applied",
     "tag 'Orders' spans 2 source specs (moodys-data-buffet-api-openapi.yml, moodys-data-buffet-api-swagger.json): per-path servers applied",
     "tag 'Search' spans 2 source specs (moodys-data-buffet-api-openapi.yml, moodys-data-buffet-api-swagger.json): per-path servers applied",
-    "tag 'Series' spans 3 source specs (moodys-data-buffet-api-openapi.yml, moodys-data-buffet-api-swagger.json, moodys-scenario-studio-api-swagger.json): per-path servers applied"
+    "tag 'Series' spans 3 source specs (moodys-data-buffet-api-openapi.yml, moodys-data-buffet-api-swagger.json, moodys-scenario-studio-api-swagger.json): per-path servers applied",
+    "superseded outputs removed: moodys-file-types-api-openapi.yml, moodys-health-check-api-openapi.yml",
+    "apis.yml register: written (+2 apis, 26 total)"
   ],
   "skipped": [
     "moodys-audit-api-openapi.yml: previously refined output, superseded by openapi/_original/",
     "moodys-baskets-api-openapi.yml: previously refined output, superseded by openapi/_original/",
     "moodys-dataseries-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "moodys-file-types-api-openapi.yml: previously refined output, superseded by openapi/_original/",
     "moodys-forecast-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "moodys-frequency-api-openapi.yml: previously refined output, superseded by openapi/_original/",
     "moodys-health-api-openapi.yml: previously refined output, superseded by openapi/_original/",
-    "moodys-healthcheck-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "moodys-health-check-api-openapi.yml: previously refined output, superseded by openapi/_original/",
     "moodys-interpolation-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "moodys-multiseries-api-openapi.yml: previously refined output, superseded by openapi/_original/",
     "moodys-order-api-openapi.yml: previously refined output, superseded by openapi/_original/",
     "moodys-orders-api-openapi.yml: previously refined output, superseded by openapi/_original/",
     "moodys-project-api-openapi.yml: previously refined output, superseded by openapi/_original/",
@@ -89,6 +96,7 @@
     "moodys-series-api-openapi.yml: previously refined output, superseded by openapi/_original/",
     "moodys-seriessearch-api-openapi.yml: previously refined output, superseded by openapi/_original/",
     "moodys-universe-api-openapi.yml: previously refined output, superseded by openapi/_original/",
-    "moodys-vin-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+    "moodys-vin-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "moodys-vintage-api-openapi.yml: previously refined output, superseded by openapi/_original/"
   ]
 }

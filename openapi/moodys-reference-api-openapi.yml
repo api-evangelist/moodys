@@ -178,21 +178,6 @@ components:
           type: integer
           description: The number of seconds until the access token expires.
           example: 10
-    Vintage:
-      type: object
-      description: Metadata about a data vintage representing a historical revision of a series.
-      required:
-      - vintageDate
-      properties:
-        vintageDate:
-          type: string
-          format: date
-          description: The date this vintage was published.
-          example: '2026-01-15'
-        description:
-          type: string
-          description: Description of the vintage release context.
-          example: A sample description.
     FrequencyInfo:
       type: object
       description: Metadata about a supported data frequency.
@@ -223,6 +208,21 @@ components:
         description:
           type: string
           description: Description of the frequency and its typical use cases.
+          example: A sample description.
+    Vintage:
+      type: object
+      description: Metadata about a data vintage representing a historical revision of a series.
+      required:
+      - vintageDate
+      properties:
+        vintageDate:
+          type: string
+          format: date
+          description: The date this vintage was published.
+          example: '2026-01-15'
+        description:
+          type: string
+          description: Description of the vintage release context.
           example: A sample description.
   parameters:
     mnemonic:

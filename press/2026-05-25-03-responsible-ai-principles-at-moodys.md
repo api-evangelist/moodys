@@ -1,7 +1,9 @@
 ---
 title: Responsible AI Principles at Moody's
 url: https://www.moodys.com/web/en/us/innovation/ai-principles.html
-date: '2026-05-25'
+published: ''
+date_basis: harvested
+harvested: '2026-05-25'
 query: '"Moody''s" press release artificial intelligence'
 position: 3
 source: serpapi-google

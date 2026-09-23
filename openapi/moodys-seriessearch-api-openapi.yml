@@ -12,7 +12,7 @@ paths:
     post:
       tags:
       - SeriesSearch
-      summary: Gets the record count for a search query.
+      summary: Gets the record count for a search query
       operationId: SeriesSearch_GetCountAsync
       parameters:
       - name: projectId
@@ -50,7 +50,7 @@ paths:
     post:
       tags:
       - SeriesSearch
-      summary: Gets the records for a search query.
+      summary: Gets the records for a search query
       operationId: SeriesSearch_GetResultsAsync
       parameters:
       - name: projectId

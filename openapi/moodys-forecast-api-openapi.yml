@@ -13,7 +13,7 @@ paths:
     post:
       tags:
       - Forecast
-      summary: The forecast endpoint that takes in an array of model inputs and returns the forecast
+      summary: The forecast endpoint that takes in an array of model inputs and returns the…
       operationId: Forecast_ForecastBatch
       parameters:
       - name: modelVersion

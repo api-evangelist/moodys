@@ -9,13 +9,13 @@ info:
 servers:
 - url: https://api.economy.com/data/v1
 tags:
-- name: FileTypes
+- name: File Types
 paths:
   /filetypes:
     get:
       tags:
-      - FileTypes
-      summary: Returns a JSON list of available file types for a given object type.
+      - File Types
+      summary: Returns a JSON list of available file types for a given object type
       operationId: FileTypes_Get
       parameters:
       - name: type

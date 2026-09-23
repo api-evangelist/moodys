@@ -12,7 +12,7 @@ paths:
     get:
       tags:
       - Audit
-      summary: Gets the records for a search query.
+      summary: Gets the records for a search query
       operationId: Audit_AuditProjectAsync
       parameters:
       - name: projectId
@@ -138,7 +138,7 @@ paths:
     get:
       tags:
       - Audit
-      summary: Gets the record count for a search query.
+      summary: Gets the record count for a search query
       operationId: Audit_AuditSizeAsync
       parameters:
       - name: projectId

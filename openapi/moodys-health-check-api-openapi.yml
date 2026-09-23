@@ -8,12 +8,12 @@ servers:
 - url: https://api.economy.com/data/v1
 - url: https://api.economy.com/muni/v1
 tags:
-- name: HealthCheck
+- name: Health Check
 paths:
   /health:
     get:
       tags:
-      - HealthCheck
+      - Health Check
       operationId: HealthCheck_HealthCheck
       responses:
         '200':
@@ -30,6 +30,8 @@ paths:
                 type: object
       security:
       - oauth2: []
+      summary: Health check health check
+      x-summary-source: derived
     servers:
     - url: https://api.economy.com/autocycle/v1
 components:

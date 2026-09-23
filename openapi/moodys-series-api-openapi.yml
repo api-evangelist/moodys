@@ -96,7 +96,7 @@ paths:
     get:
       tags:
       - Series
-      summary: Gets information about a specific series.
+      summary: Gets information about a specific series
       operationId: Series_GetSeriesAsync
       parameters:
       - name: projectId
@@ -135,7 +135,7 @@ paths:
     put:
       tags:
       - Series
-      summary: Edits the equation of a series.
+      summary: Edits the equation of a series
       operationId: Series_EditEquation
       parameters:
       - name: projectId
@@ -187,7 +187,7 @@ paths:
     put:
       tags:
       - Series
-      summary: Changes the last historical end point for a series.
+      summary: Changes the last historical end point for a series
       operationId: Series_ChangeLastHistorical
       parameters:
       - name: projectId
@@ -233,7 +233,7 @@ paths:
     get:
       tags:
       - Series
-      summary: Gets sharedown information for a series.
+      summary: Gets sharedown information for a series
       operationId: Series_GetSharedownInfoAsync
       parameters:
       - name: scenarioId
@@ -268,7 +268,7 @@ paths:
     post:
       tags:
       - Series
-      summary: Checks out all variables within a sharedown chain, and starts the sharedown calculation.
+      summary: Checks out all variables within a sharedown chain, and starts the sharedown…
       operationId: Series_CheckoutSharedownAsync
       parameters:
       - name: projectId
@@ -307,11 +307,7 @@ paths:
     post:
       tags:
       - Series
-      summary: 'Releases a series/unlocks a series without writing data to central.
-
-        If releasing a custom series that has never been pushed to central,
-
-        the custom series is deleted.'
+      summary: Releases a series/unlocks a series without writing data to central.
       operationId: Series_CheckIn
       parameters:
       - name: projectId
@@ -363,7 +359,7 @@ paths:
     post:
       tags:
       - Series
-      summary: Claim/check out series.
+      summary: Claim/check out series
       operationId: Series_CheckOut
       parameters:
       - name: projectId
@@ -421,7 +417,7 @@ paths:
     post:
       tags:
       - Series
-      summary: Push to central/commit a series- writes local data to central.
+      summary: Push to central/commit a series- writes local data to central
       operationId: Series_Commit
       parameters:
       - name: projectId
@@ -467,7 +463,7 @@ paths:
     put:
       tags:
       - Series
-      summary: Edits a custom series.
+      summary: Edits a custom series
       operationId: Series_EditCustomSeries
       parameters:
       - name: projectId
@@ -510,7 +506,7 @@ paths:
     post:
       tags:
       - Series
-      summary: Creates new custom series.
+      summary: Creates new custom series
       operationId: Series_CreateCustomSeries
       parameters:
       - name: projectId
@@ -565,7 +561,7 @@ paths:
     delete:
       tags:
       - Series
-      summary: Deletes custom series.
+      summary: Deletes custom series
       operationId: Series_DeleteCustomSeries
       parameters:
       - name: projectId
@@ -617,7 +613,7 @@ paths:
     put:
       tags:
       - Series
-      summary: Sets series' state to endogenous.
+      summary: Sets series' state to endogenous
       operationId: Series_EndogenizeBulk
       parameters:
       - name: projectId
@@ -669,7 +665,7 @@ paths:
     put:
       tags:
       - Series
-      summary: Sets series' state to exogenous.
+      summary: Sets series' state to exogenous
       operationId: Series_ExogenizeBulk
       parameters:
       - name: projectId
@@ -721,7 +717,7 @@ paths:
     put:
       tags:
       - Series
-      summary: Sets series to be partially exogenized.
+      summary: Sets series to be partially exogenized
       operationId: Series_ExogenizeThroughBulk
       parameters:
       - name: projectId
@@ -767,7 +763,7 @@ paths:
     post:
       tags:
       - Series
-      summary: Gets series info for a list of series/expressions.
+      summary: Gets series info for a list of series/expressions
       operationId: Series_GetSeriesAsync
       parameters:
       - name: projectId
@@ -819,7 +815,7 @@ paths:
     post:
       tags:
       - Series
-      summary: Starts an add factor solve for one or more series.
+      summary: Starts an add factor solve for one or more series
       operationId: Series_Reendogenize
       parameters:
       - name: scenarioId
@@ -870,7 +866,7 @@ paths:
     get:
       tags:
       - Series
-      summary: Gets all meta information for a series.
+      summary: Gets all meta information for a series
       operationId: Series_GetSpecVariableAsync
       parameters:
       - name: projectId
@@ -923,20 +919,6 @@ components:
       schema:
         type: string
         format: date
-    mnemonic:
-      name: mnemonic
-      in: query
-      description: The unique series mnemonic identifier. Mnemonics follow the Data Buffet naming convention, e.g., FGDP_US for US GDP or EMPLPAY.IUSA for US total nonfarm payrolls.
-      required: true
-      schema:
-        type: string
-      examples:
-        usGdp:
-          summary: US Gross Domestic Product
-          value: FGDP_US
-        usPayrolls:
-          summary: US Total Nonfarm Payrolls
-          value: EMPLPAY.IUSA
     freq:
       name: freq
       in: query
@@ -950,14 +932,6 @@ components:
         - M
         - W
         - D
-    endDate:
-      name: endDate
-      in: query
-      description: The end date for the data range in YYYY-MM-DD format. If omitted, returns data through the latest available observation or forecast.
-      required: false
-      schema:
-        type: string
-        format: date
     trans:
       name: trans
       in: query
@@ -972,7 +946,119 @@ components:
         - AnnualizedGrowth
         - YearOverYearPercentChange
         - CompoundAnnualGrowthRate
+    endDate:
+      name: endDate
+      in: query
+      description: The end date for the data range in YYYY-MM-DD format. If omitted, returns data through the latest available observation or forecast.
+      required: false
+      schema:
+        type: string
+        format: date
+    mnemonic:
+      name: mnemonic
+      in: query
+      description: The unique series mnemonic identifier. Mnemonics follow the Data Buffet naming convention, e.g., FGDP_US for US GDP or EMPLPAY.IUSA for US total nonfarm payrolls.
+      required: true
+      schema:
+        type: string
+      examples:
+        usGdp:
+          summary: US Gross Domestic Product
+          value: FGDP_US
+        usPayrolls:
+          summary: US Total Nonfarm Payrolls
+          value: EMPLPAY.IUSA
   schemas:
+    SeriesRequest:
+      type: object
+      description: A single series request within a multi-series call.
+      required:
+      - mnemonic
+      properties:
+        mnemonic:
+          type: string
+          description: The unique series mnemonic identifier.
+          example: example_value
+        freq:
+          type: string
+          description: Desired output frequency.
+          enum:
+          - A
+          - Q
+          - M
+          - W
+          - D
+          example: A
+        trans:
+          type: string
+          description: Mathematical transformation to apply.
+          enum:
+          - Level
+          - SimpleDifference
+          - PercentChange
+          - AnnualizedGrowth
+          - YearOverYearPercentChange
+          - CompoundAnnualGrowthRate
+          example: Level
+        startDate:
+          type: string
+          format: date
+          description: Start date for the data range.
+          example: '2026-01-15'
+        endDate:
+          type: string
+          format: date
+          description: End date for the data range.
+          example: '2026-01-15'
+        vintage:
+          type: string
+          format: date
+          description: Vintage date for historical data revisions.
+          example: '2026-01-15'
+    MultiSeriesRequest:
+      type: object
+      description: Request body for retrieving multiple series simultaneously.
+      required:
+      - series
+      properties:
+        series:
+          type: array
+          description: Array of series requests. Maximum 25 series per request.
+          maxItems: 25
+          items:
+            $ref: '#/components/schemas/SeriesRequest'
+          example: []
+    Error:
+      type: object
+      description: Standard error response.
+      required:
+      - code
+      - message
+      properties:
+        code:
+          type: string
+          description: Machine-readable error code.
+          example: example_value
+        message:
+          type: string
+          description: Human-readable error message.
+          example: example_value
+        details:
+          type: string
+          description: Additional details about the error.
+          example: example_value
+    MultiSeriesResponse:
+      type: object
+      description: Response containing multiple time series.
+      required:
+      - series
+      properties:
+        series:
+          type: array
+          description: Array of time series responses.
+          items:
+            $ref: '#/components/schemas/SeriesResponse'
+          example: []
     SeriesResponse:
       type: object
       description: Response containing a single time series with metadata and observations.
@@ -1072,96 +1158,6 @@ components:
           - Forecast
           - Preliminary
           example: History
-    MultiSeriesRequest:
-      type: object
-      description: Request body for retrieving multiple series simultaneously.
-      required:
-      - series
-      properties:
-        series:
-          type: array
-          description: Array of series requests. Maximum 25 series per request.
-          maxItems: 25
-          items:
-            $ref: '#/components/schemas/SeriesRequest'
-          example: []
-    MultiSeriesResponse:
-      type: object
-      description: Response containing multiple time series.
-      required:
-      - series
-      properties:
-        series:
-          type: array
-          description: Array of time series responses.
-          items:
-            $ref: '#/components/schemas/SeriesResponse'
-          example: []
-    SeriesRequest:
-      type: object
-      description: A single series request within a multi-series call.
-      required:
-      - mnemonic
-      properties:
-        mnemonic:
-          type: string
-          description: The unique series mnemonic identifier.
-          example: example_value
-        freq:
-          type: string
-          description: Desired output frequency.
-          enum:
-          - A
-          - Q
-          - M
-          - W
-          - D
-          example: A
-        trans:
-          type: string
-          description: Mathematical transformation to apply.
-          enum:
-          - Level
-          - SimpleDifference
-          - PercentChange
-          - AnnualizedGrowth
-          - YearOverYearPercentChange
-          - CompoundAnnualGrowthRate
-          example: Level
-        startDate:
-          type: string
-          format: date
-          description: Start date for the data range.
-          example: '2026-01-15'
-        endDate:
-          type: string
-          format: date
-          description: End date for the data range.
-          example: '2026-01-15'
-        vintage:
-          type: string
-          format: date
-          description: Vintage date for historical data revisions.
-          example: '2026-01-15'
-    Error:
-      type: object
-      description: Standard error response.
-      required:
-      - code
-      - message
-      properties:
-        code:
-          type: string
-          description: Machine-readable error code.
-          example: example_value
-        message:
-          type: string
-          description: Human-readable error message.
-          example: example_value
-        details:
-          type: string
-          description: Additional details about the error.
-          example: example_value
     DataSeries:
       type: object
       properties:
@@ -1224,6 +1220,15 @@ components:
           type: string
         status:
           type: string
+    CommitPayload:
+      type: object
+      properties:
+        note:
+          type: string
+        variables:
+          type: array
+          items:
+            type: string
     ExogenizeThroughBulkRequest:
       type: object
       properties:
@@ -1346,15 +1351,6 @@ components:
           additionalProperties:
             format: int32
             type: integer
-    CommitPayload:
-      type: object
-      properties:
-        note:
-          type: string
-        variables:
-          type: array
-          items:
-            type: string
   securitySchemes:
     oauth2:
       type: oauth2

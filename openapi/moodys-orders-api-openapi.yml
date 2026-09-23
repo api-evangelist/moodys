@@ -96,7 +96,7 @@ paths:
     delete:
       tags:
       - Orders
-      summary: Deletes an order that is in the queue. Once an order starts it can no longer be deleted.
+      summary: Deletes an order that is in the queue.
       operationId: Orders_DeleteOrder
       parameters:
       - name: orderId
@@ -148,6 +148,25 @@ paths:
       description: Moody's Analytics Data Buffet production server
 components:
   schemas:
+    Error:
+      type: object
+      description: Standard error response.
+      required:
+      - code
+      - message
+      properties:
+        code:
+          type: string
+          description: Machine-readable error code.
+          example: example_value
+        message:
+          type: string
+          description: Human-readable error message.
+          example: example_value
+        details:
+          type: string
+          description: Additional details about the error.
+          example: example_value
     Order:
       type: object
       description: A data generation order created from a basket. Orders are processed asynchronously and produce downloadable output files.
@@ -210,25 +229,6 @@ components:
         fileType:
           type: string
           description: The desired output file format. Use the /filetypes endpoint to retrieve supported formats.
-          example: example_value
-    Error:
-      type: object
-      description: Standard error response.
-      required:
-      - code
-      - message
-      properties:
-        code:
-          type: string
-          description: Machine-readable error code.
-          example: example_value
-        message:
-          type: string
-          description: Human-readable error message.
-          example: example_value
-        details:
-          type: string
-          description: Additional details about the error.
           example: example_value
     Order_2:
       description: Order status information

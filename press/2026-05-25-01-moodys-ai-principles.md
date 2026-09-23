@@ -1,7 +1,9 @@
 ---
 title: Moody's AI Principles
 url: https://www.moodys.com/web/en/us/about-us/trust-center/ai-principles.html
-date: '2026-05-25'
+published: ''
+date_basis: harvested
+harvested: '2026-05-25'
 query: '"Moody''s" press release artificial intelligence'
 position: 1
 source: serpapi-google

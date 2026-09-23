@@ -109,6 +109,25 @@ components:
           items:
             $ref: '#/components/schemas/SeriesSummary'
           example: []
+    Error:
+      type: object
+      description: Standard error response.
+      required:
+      - code
+      - message
+      properties:
+        code:
+          type: string
+          description: Machine-readable error code.
+          example: example_value
+        message:
+          type: string
+          description: Human-readable error message.
+          example: example_value
+        details:
+          type: string
+          description: Additional details about the error.
+          example: example_value
     SeriesSummary:
       type: object
       description: Summary metadata for a series returned in search results.
@@ -154,25 +173,6 @@ components:
           type: boolean
           description: Whether the series includes forecast data from Moody's Analytics models.
           example: true
-    Error:
-      type: object
-      description: Standard error response.
-      required:
-      - code
-      - message
-      properties:
-        code:
-          type: string
-          description: Machine-readable error code.
-          example: example_value
-        message:
-          type: string
-          description: Human-readable error message.
-          example: example_value
-        details:
-          type: string
-          description: Additional details about the error.
-          example: example_value
   securitySchemes:
     oauth2:
       type: oauth2

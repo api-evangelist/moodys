@@ -1,7 +1,9 @@
 ---
 title: Artificial intelligence on trial
 url: https://www.moodys.com/web/en/us/insights/insurance/artificial-intelligence-on-trial.html
-date: '2026-05-25'
+published: ''
+date_basis: harvested
+harvested: '2026-05-25'
 query: '"Moody''s" press release artificial intelligence'
 position: 2
 source: serpapi-google

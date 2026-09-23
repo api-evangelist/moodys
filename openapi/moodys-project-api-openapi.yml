@@ -12,7 +12,7 @@ paths:
     get:
       tags:
       - Project
-      summary: Gets the list of projects the user has access to.
+      summary: Gets the list of projects the user has access to
       operationId: Project_GetListAsync
       responses:
         '200':
@@ -30,7 +30,7 @@ paths:
     get:
       tags:
       - Project
-      summary: Gets information about a specific project.
+      summary: Gets information about a specific project
       operationId: Project_GetProjectAsync
       parameters:
       - name: projectId
@@ -54,7 +54,7 @@ paths:
     delete:
       tags:
       - Project
-      summary: Deletes a project.
+      summary: Deletes a project
       operationId: Project_DeleteAsync
       parameters:
       - name: projectId
@@ -79,7 +79,7 @@ paths:
     post:
       tags:
       - Project
-      summary: Starts the build process for a project.
+      summary: Starts the build process for a project
       operationId: Project_BuildAsync
       parameters:
       - name: projectId
@@ -117,7 +117,7 @@ paths:
     get:
       tags:
       - Project
-      summary: Gets the list of checkpoints for a scenario.
+      summary: Gets the list of checkpoints for a scenario
       operationId: Project_GetCheckpointsAsync
       parameters:
       - name: projectId
@@ -148,7 +148,7 @@ paths:
     put:
       tags:
       - Project
-      summary: Adds contributors to a project.
+      summary: Adds contributors to a project
       operationId: Project_UpsertContributorsAsync
       parameters:
       - name: projectId
@@ -203,7 +203,7 @@ paths:
     get:
       tags:
       - Project
-      summary: Gets the list of geographies for a project.
+      summary: Gets the list of geographies for a project
       operationId: Project_GeoListAsync
       parameters:
       - name: projectId
@@ -228,7 +228,7 @@ paths:
     get:
       tags:
       - Project
-      summary: Gets the scenarios within a project.
+      summary: Gets the scenarios within a project
       operationId: Project_GetScenariosAsync
       parameters:
       - name: projectId
@@ -253,7 +253,7 @@ paths:
     delete:
       tags:
       - Project
-      summary: Removes a scenario from a project.
+      summary: Removes a scenario from a project
       operationId: Project_RemoveScenarioAsync
       parameters:
       - name: projectId
@@ -284,7 +284,7 @@ paths:
     post:
       tags:
       - Project
-      summary: Creates a copy of a scenario and adds it to a project.
+      summary: Creates a copy of a scenario and adds it to a project
       operationId: Project_CloneScenarioAsync
       parameters:
       - name: projectId
@@ -360,7 +360,7 @@ paths:
     get:
       tags:
       - Project
-      summary: Gets the list of all series within a project.
+      summary: Gets the list of all series within a project
       operationId: Project_GetSeriesAsync
       parameters:
       - name: projectId
@@ -385,7 +385,7 @@ paths:
     get:
       tags:
       - Project
-      summary: Gets the list of series checked out by the current user.
+      summary: Gets the list of series checked out by the current user
       operationId: Project_GetCheckedOutSeriesAsync
       parameters:
       - name: projectId
@@ -417,7 +417,7 @@ paths:
     get:
       tags:
       - Project
-      summary: Gets the list of the exogenized series in a project.
+      summary: Gets the list of the exogenized series in a project
       operationId: Project_GetExogenizedSeriesAsync
       parameters:
       - name: projectId
@@ -442,7 +442,7 @@ paths:
     put:
       tags:
       - Project
-      summary: Updates the project settings.
+      summary: Updates the project settings
       operationId: Project_SaveSettingsAsync
       parameters:
       - name: projectId
@@ -480,7 +480,7 @@ paths:
     post:
       tags:
       - Project
-      summary: Creates a new project.
+      summary: Creates a new project
       operationId: Project_CreateAsync
       responses:
         '200':
@@ -511,7 +511,7 @@ paths:
     get:
       tags:
       - Project
-      summary: Gets the search records when searching for projects.
+      summary: Gets the search records when searching for projects
       operationId: Project_SearchProjectsAsync
       parameters:
       - name: skip
@@ -607,7 +607,7 @@ paths:
     get:
       tags:
       - Project
-      summary: Gets the search count when searching for projects.
+      summary: Gets the search count when searching for projects
       operationId: Project_SearchCountAsync
       parameters:
       - name: options.terms
@@ -794,6 +794,84 @@ components:
           type: boolean
         restoring:
           type: boolean
+    ScenarioPermission:
+      type: object
+      properties:
+        sid:
+          pattern: ^[\w\-]{20,50}$
+          type: string
+        permission:
+          format: int32
+          maximum: 1
+          minimum: 0
+          type: integer
+        utcDateCreated:
+          format: date-time
+          type: string
+        utcDateUpdated:
+          format: date-time
+          type: string
+    ProjectInfo:
+      type: object
+      properties:
+        id:
+          pattern: ^[\w\-]{20,50}$
+          type: string
+        title:
+          type: string
+        utcDateCreatedTicks:
+          format: int64
+          type: integer
+        modified:
+          type: string
+        unix:
+          format: int64
+          type: integer
+        tags:
+          type: array
+          items:
+            type: string
+        geos:
+          type: array
+          items:
+            type: string
+        description:
+          type: string
+        isAdmin:
+          type: boolean
+        scenarios:
+          type: array
+          items:
+            $ref: '#/components/schemas/ProjectScenarioInfo'
+        contributors:
+          type: array
+          items:
+            $ref: '#/components/schemas/Contributor'
+        orders:
+          type: array
+          items:
+            $ref: '#/components/schemas/ProjectOrder'
+        dates:
+          type: array
+          items:
+            $ref: '#/components/schemas/ProjectDate'
+        alias:
+          pattern: ^[a-zA-Z][\w]{1,15}$
+          type: string
+        varTypesLockStatus:
+          type: object
+          additionalProperties:
+            type: boolean
+        allowEquationEditing:
+          type: boolean
+        commentRequired:
+          type: boolean
+        allowCustomSeries:
+          type: boolean
+        allowHistoryEditing:
+          type: boolean
+        allowLastHistoryChange:
+          type: boolean
     ProjectOrder:
       type: object
       properties:
@@ -857,23 +935,6 @@ components:
         maxRetryCount:
           format: int32
           type: integer
-    ScenarioPermission:
-      type: object
-      properties:
-        sid:
-          pattern: ^[\w\-]{20,50}$
-          type: string
-        permission:
-          format: int32
-          maximum: 1
-          minimum: 0
-          type: integer
-        utcDateCreated:
-          format: date-time
-          type: string
-        utcDateUpdated:
-          format: date-time
-          type: string
     Contributor:
       type: object
       properties:
@@ -910,67 +971,6 @@ components:
         gid:
           pattern: ^[\w\-]{20,50}$
           type: string
-    ProjectInfo:
-      type: object
-      properties:
-        id:
-          pattern: ^[\w\-]{20,50}$
-          type: string
-        title:
-          type: string
-        utcDateCreatedTicks:
-          format: int64
-          type: integer
-        modified:
-          type: string
-        unix:
-          format: int64
-          type: integer
-        tags:
-          type: array
-          items:
-            type: string
-        geos:
-          type: array
-          items:
-            type: string
-        description:
-          type: string
-        isAdmin:
-          type: boolean
-        scenarios:
-          type: array
-          items:
-            $ref: '#/components/schemas/ProjectScenarioInfo'
-        contributors:
-          type: array
-          items:
-            $ref: '#/components/schemas/Contributor'
-        orders:
-          type: array
-          items:
-            $ref: '#/components/schemas/ProjectOrder'
-        dates:
-          type: array
-          items:
-            $ref: '#/components/schemas/ProjectDate'
-        alias:
-          pattern: ^[a-zA-Z][\w]{1,15}$
-          type: string
-        varTypesLockStatus:
-          type: object
-          additionalProperties:
-            type: boolean
-        allowEquationEditing:
-          type: boolean
-        commentRequired:
-          type: boolean
-        allowCustomSeries:
-          type: boolean
-        allowHistoryEditing:
-          type: boolean
-        allowLastHistoryChange:
-          type: boolean
     ProjectScenarioInfo:
       type: object
       properties:
