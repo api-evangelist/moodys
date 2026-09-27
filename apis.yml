@@ -66,7 +66,7 @@ apis:
   - Consumer Credit
   - Credit Loss
   - Forecast
-  - Risk
+  - Risk Management
   tags_raw:
   - Consumer Credit
   - Credit Loss
@@ -130,6 +130,11 @@ apis:
   tags:
   - Banking
   - Capital Planning
+  - Risk Management
+  - Stress Testing
+  tags_raw:
+  - Banking
+  - Capital Planning
   - Risk
   - Stress Testing
   image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
@@ -187,6 +192,11 @@ apis:
 - aid: moodys:risk-modeler-api
   name: Moody's Risk Modeler API
   tags:
+  - Catastrophe Modeling
+  - Insurance
+  - Risk Management
+  - Underwriting
+  tags_raw:
   - Catastrophe Modeling
   - Insurance
   - Risk
@@ -249,12 +259,13 @@ apis:
   - Media
   - News
   - Real-Time Data
-  - Social-Media
+  - Social Media
   tags_raw:
   - Media
   - News
   - Real-Time Data
   - Social Media
+  - Social-Media
   image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
   baseURL: https://hub.moodysanalytics.com
   contact:
@@ -422,6 +433,17 @@ apis:
     url: openapi/moodys-health-check-api-openapi.yml
 name: Moody's
 tags:
+  - Climate Risk
+  - Compliance
+  - Credit Risk
+  - Economic Data
+  - Entity Verification
+  - Financial Analytics
+  - Insurance
+  - KYC
+  - Risk Management
+  - Screening
+tags_raw:
   - Climate Risk
   - Compliance
   - Credit Risk

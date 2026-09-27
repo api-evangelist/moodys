@@ -167,6 +167,21 @@ components:
           type: string
           description: Additional details about the error.
           example: example_value
+    OrderCreate:
+      type: object
+      description: Request body for creating a new order.
+      required:
+      - basketId
+      - fileType
+      properties:
+        basketId:
+          type: string
+          description: The basket to generate the order from.
+          example: '500123'
+        fileType:
+          type: string
+          description: The desired output file format. Use the /filetypes endpoint to retrieve supported formats.
+          example: example_value
     Order:
       type: object
       description: A data generation order created from a basket. Orders are processed asynchronously and produce downloadable output files.
@@ -214,21 +229,6 @@ components:
         errorMessage:
           type: string
           description: Error description if the order failed. Present only when status is Failed.
-          example: example_value
-    OrderCreate:
-      type: object
-      description: Request body for creating a new order.
-      required:
-      - basketId
-      - fileType
-      properties:
-        basketId:
-          type: string
-          description: The basket to generate the order from.
-          example: '500123'
-        fileType:
-          type: string
-          description: The desired output file format. Use the /filetypes endpoint to retrieve supported formats.
           example: example_value
     Order_2:
       description: Order status information

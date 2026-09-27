@@ -133,51 +133,6 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
-    FileType:
-      type: object
-      description: Metadata about a supported output file type.
-      required:
-      - code
-      - name
-      properties:
-        code:
-          type: string
-          description: File type code used in order creation.
-          example: example_value
-        name:
-          type: string
-          description: Human-readable file type name.
-          example: Example Title
-        extension:
-          type: string
-          description: File extension (e.g., csv, xlsx, json, xml).
-          example: example_value
-        description:
-          type: string
-          description: Description of the file format.
-          example: A sample description.
-    AccessToken:
-      type: object
-      description: OAuth2 access token response.
-      required:
-      - access_token
-      - token_type
-      - expires_in
-      properties:
-        access_token:
-          type: string
-          description: The bearer access token for authenticating API requests.
-          example: example_value
-        token_type:
-          type: string
-          description: The type of token issued. Always "Bearer".
-          enum:
-          - Bearer
-          example: Bearer
-        expires_in:
-          type: integer
-          description: The number of seconds until the access token expires.
-          example: 10
     FrequencyInfo:
       type: object
       description: Metadata about a supported data frequency.
@@ -209,6 +164,28 @@ components:
           type: string
           description: Description of the frequency and its typical use cases.
           example: A sample description.
+    AccessToken:
+      type: object
+      description: OAuth2 access token response.
+      required:
+      - access_token
+      - token_type
+      - expires_in
+      properties:
+        access_token:
+          type: string
+          description: The bearer access token for authenticating API requests.
+          example: example_value
+        token_type:
+          type: string
+          description: The type of token issued. Always "Bearer".
+          enum:
+          - Bearer
+          example: Bearer
+        expires_in:
+          type: integer
+          description: The number of seconds until the access token expires.
+          example: 10
     Vintage:
       type: object
       description: Metadata about a data vintage representing a historical revision of a series.
@@ -223,6 +200,29 @@ components:
         description:
           type: string
           description: Description of the vintage release context.
+          example: A sample description.
+    FileType:
+      type: object
+      description: Metadata about a supported output file type.
+      required:
+      - code
+      - name
+      properties:
+        code:
+          type: string
+          description: File type code used in order creation.
+          example: example_value
+        name:
+          type: string
+          description: Human-readable file type name.
+          example: Example Title
+        extension:
+          type: string
+          description: File extension (e.g., csv, xlsx, json, xml).
+          example: example_value
+        description:
+          type: string
+          description: Description of the file format.
           example: A sample description.
   parameters:
     mnemonic:

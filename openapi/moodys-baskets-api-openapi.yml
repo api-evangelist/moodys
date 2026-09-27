@@ -330,42 +330,6 @@ paths:
     - url: https://api.economy.com/data/v1
 components:
   schemas:
-    Basket:
-      type: object
-      description: A saved collection of series requests that can be executed as an order for bulk data retrieval.
-      required:
-      - basketId
-      - name
-      - series
-      properties:
-        basketId:
-          type: string
-          description: Unique identifier for the basket.
-          example: '500123'
-        name:
-          type: string
-          description: User-defined name for the basket.
-          example: Example Title
-        description:
-          type: string
-          description: Optional description of the basket contents and purpose.
-          example: A sample description.
-        series:
-          type: array
-          description: The series requests contained in the basket.
-          items:
-            $ref: '#/components/schemas/SeriesRequest'
-          example: []
-        createdAt:
-          type: string
-          format: date-time
-          description: When the basket was created.
-          example: '2026-01-15T10:30:00Z'
-        updatedAt:
-          type: string
-          format: date-time
-          description: When the basket was last modified.
-          example: '2026-01-15T10:30:00Z'
     SeriesRequest:
       type: object
       description: A single series request within a multi-series call.
@@ -431,6 +395,42 @@ components:
           type: string
           description: Additional details about the error.
           example: example_value
+    Basket:
+      type: object
+      description: A saved collection of series requests that can be executed as an order for bulk data retrieval.
+      required:
+      - basketId
+      - name
+      - series
+      properties:
+        basketId:
+          type: string
+          description: Unique identifier for the basket.
+          example: '500123'
+        name:
+          type: string
+          description: User-defined name for the basket.
+          example: Example Title
+        description:
+          type: string
+          description: Optional description of the basket contents and purpose.
+          example: A sample description.
+        series:
+          type: array
+          description: The series requests contained in the basket.
+          items:
+            $ref: '#/components/schemas/SeriesRequest'
+          example: []
+        createdAt:
+          type: string
+          format: date-time
+          description: When the basket was created.
+          example: '2026-01-15T10:30:00Z'
+        updatedAt:
+          type: string
+          format: date-time
+          description: When the basket was last modified.
+          example: '2026-01-15T10:30:00Z'
     BasketCreate:
       type: object
       description: Request body for creating or updating a basket.

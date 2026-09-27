@@ -764,7 +764,7 @@ paths:
       tags:
       - Series
       summary: Gets series info for a list of series/expressions
-      operationId: Series_GetSeriesAsync
+      operationId: postProjectByProjectIdScenarioByScenarioIdSeriesInfo
       parameters:
       - name: projectId
         in: path
@@ -809,6 +809,8 @@ paths:
                 type: string
         description: The list of variables/expressions.
         required: true
+      x-operation-id-source: normalized
+      x-operation-id-original: Series_GetSeriesAsync
     servers:
     - url: https://api.economy.com/scenario-studio/v2
   /project/{projectId}/scenario/{scenarioId}/series/reendogenize:
@@ -902,72 +904,6 @@ paths:
     servers:
     - url: https://api.economy.com/scenario-studio/v2
 components:
-  parameters:
-    startDate:
-      name: startDate
-      in: query
-      description: The start date for the data range in YYYY-MM-DD format. If omitted, returns data from the beginning of the series.
-      required: false
-      schema:
-        type: string
-        format: date
-    vintage:
-      name: vintage
-      in: query
-      description: The vintage date for accessing historical data revisions in YYYY-MM-DD format. If omitted, returns the latest vintage.
-      required: false
-      schema:
-        type: string
-        format: date
-    freq:
-      name: freq
-      in: query
-      description: The desired output frequency for the series. When specified, frequency conversion is applied. For example, converting quarterly GDP to annual.
-      required: false
-      schema:
-        type: string
-        enum:
-        - A
-        - Q
-        - M
-        - W
-        - D
-    trans:
-      name: trans
-      in: query
-      description: The mathematical transformation to apply to the series values. Supports common economic transformations.
-      required: false
-      schema:
-        type: string
-        enum:
-        - Level
-        - SimpleDifference
-        - PercentChange
-        - AnnualizedGrowth
-        - YearOverYearPercentChange
-        - CompoundAnnualGrowthRate
-    endDate:
-      name: endDate
-      in: query
-      description: The end date for the data range in YYYY-MM-DD format. If omitted, returns data through the latest available observation or forecast.
-      required: false
-      schema:
-        type: string
-        format: date
-    mnemonic:
-      name: mnemonic
-      in: query
-      description: The unique series mnemonic identifier. Mnemonics follow the Data Buffet naming convention, e.g., FGDP_US for US GDP or EMPLPAY.IUSA for US total nonfarm payrolls.
-      required: true
-      schema:
-        type: string
-      examples:
-        usGdp:
-          summary: US Gross Domestic Product
-          value: FGDP_US
-        usPayrolls:
-          summary: US Total Nonfarm Payrolls
-          value: EMPLPAY.IUSA
   schemas:
     SeriesRequest:
       type: object
@@ -1015,19 +951,6 @@ components:
           format: date
           description: Vintage date for historical data revisions.
           example: '2026-01-15'
-    MultiSeriesRequest:
-      type: object
-      description: Request body for retrieving multiple series simultaneously.
-      required:
-      - series
-      properties:
-        series:
-          type: array
-          description: Array of series requests. Maximum 25 series per request.
-          maxItems: 25
-          items:
-            $ref: '#/components/schemas/SeriesRequest'
-          example: []
     Error:
       type: object
       description: Standard error response.
@@ -1047,18 +970,6 @@ components:
           type: string
           description: Additional details about the error.
           example: example_value
-    MultiSeriesResponse:
-      type: object
-      description: Response containing multiple time series.
-      required:
-      - series
-      properties:
-        series:
-          type: array
-          description: Array of time series responses.
-          items:
-            $ref: '#/components/schemas/SeriesResponse'
-          example: []
     SeriesResponse:
       type: object
       description: Response containing a single time series with metadata and observations.
@@ -1158,27 +1069,31 @@ components:
           - Forecast
           - Preliminary
           example: History
-    DataSeries:
+    MultiSeriesRequest:
       type: object
+      description: Request body for retrieving multiple series simultaneously.
+      required:
+      - series
       properties:
-        freq:
-          type: string
-        startDate:
-          type: string
-        freqCode:
-          format: int32
-          type: integer
-        start:
-          format: int32
-          type: integer
-        periods:
-          format: int32
-          type: integer
-        data:
+        series:
           type: array
+          description: Array of series requests. Maximum 25 series per request.
+          maxItems: 25
           items:
-            format: double
-            type: number
+            $ref: '#/components/schemas/SeriesRequest'
+          example: []
+    MultiSeriesResponse:
+      type: object
+      description: Response containing multiple time series.
+      required:
+      - series
+      properties:
+        series:
+          type: array
+          description: Array of time series responses.
+          items:
+            $ref: '#/components/schemas/SeriesResponse'
+          example: []
     DataSeriesResult:
       type: object
       properties:
@@ -1220,25 +1135,27 @@ components:
           type: string
         status:
           type: string
-    CommitPayload:
+    DataSeries:
       type: object
       properties:
-        note:
+        freq:
           type: string
-        variables:
-          type: array
-          items:
-            type: string
-    ExogenizeThroughBulkRequest:
-      type: object
-      properties:
-        variables:
-          type: array
-          items:
-            type: string
-        exogenizeThrough:
+        startDate:
+          type: string
+        freqCode:
           format: int32
           type: integer
+        start:
+          format: int32
+          type: integer
+        periods:
+          format: int32
+          type: integer
+        data:
+          type: array
+          items:
+            format: double
+            type: number
     CustomSeries:
       type: object
       properties:
@@ -1351,6 +1268,91 @@ components:
           additionalProperties:
             format: int32
             type: integer
+    CommitPayload:
+      type: object
+      properties:
+        note:
+          type: string
+        variables:
+          type: array
+          items:
+            type: string
+    ExogenizeThroughBulkRequest:
+      type: object
+      properties:
+        variables:
+          type: array
+          items:
+            type: string
+        exogenizeThrough:
+          format: int32
+          type: integer
+  parameters:
+    trans:
+      name: trans
+      in: query
+      description: The mathematical transformation to apply to the series values. Supports common economic transformations.
+      required: false
+      schema:
+        type: string
+        enum:
+        - Level
+        - SimpleDifference
+        - PercentChange
+        - AnnualizedGrowth
+        - YearOverYearPercentChange
+        - CompoundAnnualGrowthRate
+    mnemonic:
+      name: mnemonic
+      in: query
+      description: The unique series mnemonic identifier. Mnemonics follow the Data Buffet naming convention, e.g., FGDP_US for US GDP or EMPLPAY.IUSA for US total nonfarm payrolls.
+      required: true
+      schema:
+        type: string
+      examples:
+        usGdp:
+          summary: US Gross Domestic Product
+          value: FGDP_US
+        usPayrolls:
+          summary: US Total Nonfarm Payrolls
+          value: EMPLPAY.IUSA
+    vintage:
+      name: vintage
+      in: query
+      description: The vintage date for accessing historical data revisions in YYYY-MM-DD format. If omitted, returns the latest vintage.
+      required: false
+      schema:
+        type: string
+        format: date
+    freq:
+      name: freq
+      in: query
+      description: The desired output frequency for the series. When specified, frequency conversion is applied. For example, converting quarterly GDP to annual.
+      required: false
+      schema:
+        type: string
+        enum:
+        - A
+        - Q
+        - M
+        - W
+        - D
+    startDate:
+      name: startDate
+      in: query
+      description: The start date for the data range in YYYY-MM-DD format. If omitted, returns data from the beginning of the series.
+      required: false
+      schema:
+        type: string
+        format: date
+    endDate:
+      name: endDate
+      in: query
+      description: The end date for the data range in YYYY-MM-DD format. If omitted, returns data through the latest available observation or forecast.
+      required: false
+      schema:
+        type: string
+        format: date
   securitySchemes:
     oauth2:
       type: oauth2

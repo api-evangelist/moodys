@@ -123,53 +123,6 @@ paths:
     - url: https://api.economy.com/muni/v1
 components:
   schemas:
-    MuniInfo:
-      type: object
-      properties:
-        cusip:
-          description: '9 character alphanumeric code that identifies a North American financial security
-
-            for the purposes of facilitating clearing and settlement of trades'
-          type: string
-        rating:
-          description: Moody's rating
-          type: string
-        vintage:
-          description: requested vintage, defaults to current vintage
-          type: string
-        pd:
-          format: double
-          description: Probability of default
-          type: number
-        orgIds:
-          description: Organization Ids
-          type: array
-          items:
-            type: string
-        state:
-          description: State Abbrev (USPS 2-letter codes ?)
-          type: string
-        sector:
-          type: string
-        lgd:
-          format: double
-          type: number
-        sectors:
-          description: Only few OrgIds belong in multiple sectors
-          type: array
-          items:
-            type: string
-        maturityDate:
-          format: date-time
-          description: Maturity date
-          type: string
-        output:
-          description: Forecast information by sector and state
-          type: array
-          items:
-            $ref: '#/components/schemas/SectorForecast'
-        error:
-          type: string
     SectorForecast:
       type: object
       properties:
@@ -242,6 +195,53 @@ components:
             format: double
             type: number
           readOnly: true
+    MuniInfo:
+      type: object
+      properties:
+        cusip:
+          description: '9 character alphanumeric code that identifies a North American financial security
+
+            for the purposes of facilitating clearing and settlement of trades'
+          type: string
+        rating:
+          description: Moody's rating
+          type: string
+        vintage:
+          description: requested vintage, defaults to current vintage
+          type: string
+        pd:
+          format: double
+          description: Probability of default
+          type: number
+        orgIds:
+          description: Organization Ids
+          type: array
+          items:
+            type: string
+        state:
+          description: State Abbrev (USPS 2-letter codes ?)
+          type: string
+        sector:
+          type: string
+        lgd:
+          format: double
+          type: number
+        sectors:
+          description: Only few OrgIds belong in multiple sectors
+          type: array
+          items:
+            type: string
+        maturityDate:
+          format: date-time
+          description: Maturity date
+          type: string
+        output:
+          description: Forecast information by sector and state
+          type: array
+          items:
+            $ref: '#/components/schemas/SectorForecast'
+        error:
+          type: string
   securitySchemes:
     oauth2:
       type: oauth2

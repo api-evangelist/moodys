@@ -329,12 +329,10 @@ paths:
         required: true
 components:
   schemas:
-    SolvePayload:
-      description: Options for running a solve
+    CheckpointPayload:
       type: object
       properties:
-        partial:
-          description: The partial solve regex.
+        note:
           type: string
     ScenarioTransferOptions:
       type: object
@@ -343,10 +341,12 @@ components:
           type: string
         claim:
           type: boolean
-    CheckpointPayload:
+    SolvePayload:
+      description: Options for running a solve
       type: object
       properties:
-        note:
+        partial:
+          description: The partial solve regex.
           type: string
     ScenarioInfo:
       type: object
