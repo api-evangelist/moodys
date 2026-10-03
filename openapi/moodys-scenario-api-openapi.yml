@@ -329,6 +329,13 @@ paths:
         required: true
 components:
   schemas:
+    SolvePayload:
+      description: Options for running a solve
+      type: object
+      properties:
+        partial:
+          description: The partial solve regex.
+          type: string
     CheckpointPayload:
       type: object
       properties:
@@ -341,13 +348,6 @@ components:
           type: string
         claim:
           type: boolean
-    SolvePayload:
-      description: Options for running a solve
-      type: object
-      properties:
-        partial:
-          description: The partial solve regex.
-          type: string
     ScenarioInfo:
       type: object
       properties:

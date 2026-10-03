@@ -133,37 +133,6 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
-    FrequencyInfo:
-      type: object
-      description: Metadata about a supported data frequency.
-      required:
-      - code
-      - name
-      properties:
-        code:
-          type: string
-          description: Single-character frequency code used in API parameters.
-          enum:
-          - A
-          - Q
-          - M
-          - W
-          - D
-          example: A
-        name:
-          type: string
-          description: Human-readable frequency name.
-          enum:
-          - Annual
-          - Quarterly
-          - Monthly
-          - Weekly
-          - Daily
-          example: Annual
-        description:
-          type: string
-          description: Description of the frequency and its typical use cases.
-          example: A sample description.
     AccessToken:
       type: object
       description: OAuth2 access token response.
@@ -223,6 +192,37 @@ components:
         description:
           type: string
           description: Description of the file format.
+          example: A sample description.
+    FrequencyInfo:
+      type: object
+      description: Metadata about a supported data frequency.
+      required:
+      - code
+      - name
+      properties:
+        code:
+          type: string
+          description: Single-character frequency code used in API parameters.
+          enum:
+          - A
+          - Q
+          - M
+          - W
+          - D
+          example: A
+        name:
+          type: string
+          description: Human-readable frequency name.
+          enum:
+          - Annual
+          - Quarterly
+          - Monthly
+          - Weekly
+          - Daily
+          example: Annual
+        description:
+          type: string
+          description: Description of the frequency and its typical use cases.
           example: A sample description.
   parameters:
     mnemonic:

@@ -161,26 +161,6 @@ paths:
       - oauth2: []
 components:
   schemas:
-    ApiResponse_IEnumerable_Series:
-      type: object
-      properties:
-        error:
-          type: string
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/Series'
-    SeriesData:
-      description: Series Data point
-      type: object
-      properties:
-        date:
-          description: DateTime string
-          type: string
-        value:
-          format: double
-          description: Series Value
-          type: number
     Series:
       description: ''
       type: object
@@ -224,6 +204,26 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/SeriesData'
+    SeriesData:
+      description: Series Data point
+      type: object
+      properties:
+        date:
+          description: DateTime string
+          type: string
+        value:
+          format: double
+          description: Series Value
+          type: number
+    ApiResponse_IEnumerable_Series:
+      type: object
+      properties:
+        error:
+          type: string
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/Series'
   securitySchemes:
     oauth2:
       type: oauth2

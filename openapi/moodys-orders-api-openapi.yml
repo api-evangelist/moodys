@@ -148,25 +148,6 @@ paths:
       description: Moody's Analytics Data Buffet production server
 components:
   schemas:
-    Error:
-      type: object
-      description: Standard error response.
-      required:
-      - code
-      - message
-      properties:
-        code:
-          type: string
-          description: Machine-readable error code.
-          example: example_value
-        message:
-          type: string
-          description: Human-readable error message.
-          example: example_value
-        details:
-          type: string
-          description: Additional details about the error.
-          example: example_value
     OrderCreate:
       type: object
       description: Request body for creating a new order.
@@ -229,6 +210,25 @@ components:
         errorMessage:
           type: string
           description: Error description if the order failed. Present only when status is Failed.
+          example: example_value
+    Error:
+      type: object
+      description: Standard error response.
+      required:
+      - code
+      - message
+      properties:
+        code:
+          type: string
+          description: Machine-readable error code.
+          example: example_value
+        message:
+          type: string
+          description: Human-readable error message.
+          example: example_value
+        details:
+          type: string
+          description: Additional details about the error.
           example: example_value
     Order_2:
       description: Order status information

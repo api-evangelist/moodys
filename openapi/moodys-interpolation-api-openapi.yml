@@ -53,6 +53,40 @@ paths:
         required: true
 components:
   schemas:
+    SeriesSave:
+      type: object
+      properties:
+        mnemonic:
+          pattern: ^[A-Za-z][\w$]{0,64}$
+          type: string
+        transformation:
+          format: int32
+          type: integer
+        customSeries:
+          type: boolean
+        isHistoryEditable:
+          type: boolean
+        historyModified:
+          type: boolean
+        freq:
+          format: int32
+          type: integer
+        isModified:
+          type: boolean
+        startDate:
+          format: int32
+          type: integer
+        endDate:
+          format: int32
+          type: integer
+        lastHistorical:
+          format: int32
+          type: integer
+        data:
+          type: array
+          items:
+            format: double
+            type: number
     InterpolationPayload:
       description: Options for creating a new interpolation.
       type: object
@@ -90,40 +124,6 @@ components:
           - 1
           - 2
           type: integer
-    SeriesSave:
-      type: object
-      properties:
-        mnemonic:
-          pattern: ^[A-Za-z][\w$]{0,64}$
-          type: string
-        transformation:
-          format: int32
-          type: integer
-        customSeries:
-          type: boolean
-        isHistoryEditable:
-          type: boolean
-        historyModified:
-          type: boolean
-        freq:
-          format: int32
-          type: integer
-        isModified:
-          type: boolean
-        startDate:
-          format: int32
-          type: integer
-        endDate:
-          format: int32
-          type: integer
-        lastHistorical:
-          format: int32
-          type: integer
-        data:
-          type: array
-          items:
-            format: double
-            type: number
   securitySchemes:
     oauth2:
       type: oauth2
