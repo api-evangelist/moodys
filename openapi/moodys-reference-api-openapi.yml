@@ -132,6 +132,21 @@ paths:
         delay: 0
         dispatcher: FALLBACK
 components:
+  parameters:
+    mnemonic:
+      name: mnemonic
+      in: query
+      description: The unique series mnemonic identifier. Mnemonics follow the Data Buffet naming convention, e.g., FGDP_US for US GDP or EMPLPAY.IUSA for US total nonfarm payrolls.
+      required: true
+      schema:
+        type: string
+      examples:
+        usGdp:
+          summary: US Gross Domestic Product
+          value: FGDP_US
+        usPayrolls:
+          summary: US Total Nonfarm Payrolls
+          value: EMPLPAY.IUSA
   schemas:
     AccessToken:
       type: object
@@ -155,6 +170,37 @@ components:
           type: integer
           description: The number of seconds until the access token expires.
           example: 10
+    FrequencyInfo:
+      type: object
+      description: Metadata about a supported data frequency.
+      required:
+      - code
+      - name
+      properties:
+        code:
+          type: string
+          description: Single-character frequency code used in API parameters.
+          enum:
+          - A
+          - Q
+          - M
+          - W
+          - D
+          example: A
+        name:
+          type: string
+          description: Human-readable frequency name.
+          enum:
+          - Annual
+          - Quarterly
+          - Monthly
+          - Weekly
+          - Daily
+          example: Annual
+        description:
+          type: string
+          description: Description of the frequency and its typical use cases.
+          example: A sample description.
     Vintage:
       type: object
       description: Metadata about a data vintage representing a historical revision of a series.
@@ -193,52 +239,6 @@ components:
           type: string
           description: Description of the file format.
           example: A sample description.
-    FrequencyInfo:
-      type: object
-      description: Metadata about a supported data frequency.
-      required:
-      - code
-      - name
-      properties:
-        code:
-          type: string
-          description: Single-character frequency code used in API parameters.
-          enum:
-          - A
-          - Q
-          - M
-          - W
-          - D
-          example: A
-        name:
-          type: string
-          description: Human-readable frequency name.
-          enum:
-          - Annual
-          - Quarterly
-          - Monthly
-          - Weekly
-          - Daily
-          example: Annual
-        description:
-          type: string
-          description: Description of the frequency and its typical use cases.
-          example: A sample description.
-  parameters:
-    mnemonic:
-      name: mnemonic
-      in: query
-      description: The unique series mnemonic identifier. Mnemonics follow the Data Buffet naming convention, e.g., FGDP_US for US GDP or EMPLPAY.IUSA for US total nonfarm payrolls.
-      required: true
-      schema:
-        type: string
-      examples:
-        usGdp:
-          summary: US Gross Domestic Product
-          value: FGDP_US
-        usPayrolls:
-          summary: US Total Nonfarm Payrolls
-          value: EMPLPAY.IUSA
   securitySchemes:
     oauth2:
       type: oauth2

@@ -905,36 +905,6 @@ paths:
     - url: https://api.economy.com/scenario-studio/v2
 components:
   parameters:
-    startDate:
-      name: startDate
-      in: query
-      description: The start date for the data range in YYYY-MM-DD format. If omitted, returns data from the beginning of the series.
-      required: false
-      schema:
-        type: string
-        format: date
-    mnemonic:
-      name: mnemonic
-      in: query
-      description: The unique series mnemonic identifier. Mnemonics follow the Data Buffet naming convention, e.g., FGDP_US for US GDP or EMPLPAY.IUSA for US total nonfarm payrolls.
-      required: true
-      schema:
-        type: string
-      examples:
-        usGdp:
-          summary: US Gross Domestic Product
-          value: FGDP_US
-        usPayrolls:
-          summary: US Total Nonfarm Payrolls
-          value: EMPLPAY.IUSA
-    vintage:
-      name: vintage
-      in: query
-      description: The vintage date for accessing historical data revisions in YYYY-MM-DD format. If omitted, returns the latest vintage.
-      required: false
-      schema:
-        type: string
-        format: date
     trans:
       name: trans
       in: query
@@ -949,6 +919,28 @@ components:
         - AnnualizedGrowth
         - YearOverYearPercentChange
         - CompoundAnnualGrowthRate
+    mnemonic:
+      name: mnemonic
+      in: query
+      description: The unique series mnemonic identifier. Mnemonics follow the Data Buffet naming convention, e.g., FGDP_US for US GDP or EMPLPAY.IUSA for US total nonfarm payrolls.
+      required: true
+      schema:
+        type: string
+      examples:
+        usGdp:
+          summary: US Gross Domestic Product
+          value: FGDP_US
+        usPayrolls:
+          summary: US Total Nonfarm Payrolls
+          value: EMPLPAY.IUSA
+    startDate:
+      name: startDate
+      in: query
+      description: The start date for the data range in YYYY-MM-DD format. If omitted, returns data from the beginning of the series.
+      required: false
+      schema:
+        type: string
+        format: date
     freq:
       name: freq
       in: query
@@ -970,78 +962,15 @@ components:
       schema:
         type: string
         format: date
+    vintage:
+      name: vintage
+      in: query
+      description: The vintage date for accessing historical data revisions in YYYY-MM-DD format. If omitted, returns the latest vintage.
+      required: false
+      schema:
+        type: string
+        format: date
   schemas:
-    MultiSeriesResponse:
-      type: object
-      description: Response containing multiple time series.
-      required:
-      - series
-      properties:
-        series:
-          type: array
-          description: Array of time series responses.
-          items:
-            $ref: '#/components/schemas/SeriesResponse'
-          example: []
-    SeriesRequest:
-      type: object
-      description: A single series request within a multi-series call.
-      required:
-      - mnemonic
-      properties:
-        mnemonic:
-          type: string
-          description: The unique series mnemonic identifier.
-          example: example_value
-        freq:
-          type: string
-          description: Desired output frequency.
-          enum:
-          - A
-          - Q
-          - M
-          - W
-          - D
-          example: A
-        trans:
-          type: string
-          description: Mathematical transformation to apply.
-          enum:
-          - Level
-          - SimpleDifference
-          - PercentChange
-          - AnnualizedGrowth
-          - YearOverYearPercentChange
-          - CompoundAnnualGrowthRate
-          example: Level
-        startDate:
-          type: string
-          format: date
-          description: Start date for the data range.
-          example: '2026-01-15'
-        endDate:
-          type: string
-          format: date
-          description: End date for the data range.
-          example: '2026-01-15'
-        vintage:
-          type: string
-          format: date
-          description: Vintage date for historical data revisions.
-          example: '2026-01-15'
-    MultiSeriesRequest:
-      type: object
-      description: Request body for retrieving multiple series simultaneously.
-      required:
-      - series
-      properties:
-        series:
-          type: array
-          description: Array of series requests. Maximum 25 series per request.
-          maxItems: 25
-          items:
-            $ref: '#/components/schemas/SeriesRequest'
-          example: []
     SeriesResponse:
       type: object
       description: Response containing a single time series with metadata and observations.
@@ -1115,6 +1044,96 @@ components:
           items:
             $ref: '#/components/schemas/Observation'
           example: []
+    MultiSeriesResponse:
+      type: object
+      description: Response containing multiple time series.
+      required:
+      - series
+      properties:
+        series:
+          type: array
+          description: Array of time series responses.
+          items:
+            $ref: '#/components/schemas/SeriesResponse'
+          example: []
+    SeriesRequest:
+      type: object
+      description: A single series request within a multi-series call.
+      required:
+      - mnemonic
+      properties:
+        mnemonic:
+          type: string
+          description: The unique series mnemonic identifier.
+          example: example_value
+        freq:
+          type: string
+          description: Desired output frequency.
+          enum:
+          - A
+          - Q
+          - M
+          - W
+          - D
+          example: A
+        trans:
+          type: string
+          description: Mathematical transformation to apply.
+          enum:
+          - Level
+          - SimpleDifference
+          - PercentChange
+          - AnnualizedGrowth
+          - YearOverYearPercentChange
+          - CompoundAnnualGrowthRate
+          example: Level
+        startDate:
+          type: string
+          format: date
+          description: Start date for the data range.
+          example: '2026-01-15'
+        endDate:
+          type: string
+          format: date
+          description: End date for the data range.
+          example: '2026-01-15'
+        vintage:
+          type: string
+          format: date
+          description: Vintage date for historical data revisions.
+          example: '2026-01-15'
+    MultiSeriesRequest:
+      type: object
+      description: Request body for retrieving multiple series simultaneously.
+      required:
+      - series
+      properties:
+        series:
+          type: array
+          description: Array of series requests. Maximum 25 series per request.
+          maxItems: 25
+          items:
+            $ref: '#/components/schemas/SeriesRequest'
+          example: []
+    Error:
+      type: object
+      description: Standard error response.
+      required:
+      - code
+      - message
+      properties:
+        code:
+          type: string
+          description: Machine-readable error code.
+          example: example_value
+        message:
+          type: string
+          description: Human-readable error message.
+          example: example_value
+        details:
+          type: string
+          description: Additional details about the error.
+          example: example_value
     Observation:
       type: object
       description: A single time series observation or forecast data point.
@@ -1141,25 +1160,27 @@ components:
           - Forecast
           - Preliminary
           example: History
-    Error:
+    DataSeries:
       type: object
-      description: Standard error response.
-      required:
-      - code
-      - message
       properties:
-        code:
+        freq:
           type: string
-          description: Machine-readable error code.
-          example: example_value
-        message:
+        startDate:
           type: string
-          description: Human-readable error message.
-          example: example_value
-        details:
-          type: string
-          description: Additional details about the error.
-          example: example_value
+        freqCode:
+          format: int32
+          type: integer
+        start:
+          format: int32
+          type: integer
+        periods:
+          format: int32
+          type: integer
+        data:
+          type: array
+          items:
+            format: double
+            type: number
     DataSeriesResult:
       type: object
       properties:
@@ -1201,27 +1222,15 @@ components:
           type: string
         status:
           type: string
-    DataSeries:
+    CommitPayload:
       type: object
       properties:
-        freq:
+        note:
           type: string
-        startDate:
-          type: string
-        freqCode:
-          format: int32
-          type: integer
-        start:
-          format: int32
-          type: integer
-        periods:
-          format: int32
-          type: integer
-        data:
+        variables:
           type: array
           items:
-            format: double
-            type: number
+            type: string
     CustomSeries:
       type: object
       properties:
@@ -1334,15 +1343,6 @@ components:
           additionalProperties:
             format: int32
             type: integer
-    CommitPayload:
-      type: object
-      properties:
-        note:
-          type: string
-        variables:
-          type: array
-          items:
-            type: string
     ExogenizeThroughBulkRequest:
       type: object
       properties:

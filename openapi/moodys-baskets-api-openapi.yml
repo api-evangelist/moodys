@@ -330,6 +330,27 @@ paths:
     - url: https://api.economy.com/data/v1
 components:
   schemas:
+    BasketCreate:
+      type: object
+      description: Request body for creating or updating a basket.
+      required:
+      - name
+      - series
+      properties:
+        name:
+          type: string
+          description: User-defined name for the basket.
+          example: Example Title
+        description:
+          type: string
+          description: Optional description of the basket.
+          example: A sample description.
+        series:
+          type: array
+          description: The series requests to include in the basket.
+          items:
+            $ref: '#/components/schemas/SeriesRequest'
+          example: []
     Basket:
       type: object
       description: A saved collection of series requests that can be executed as an order for bulk data retrieval.
@@ -431,27 +452,116 @@ components:
           type: string
           description: Additional details about the error.
           example: example_value
-    BasketCreate:
+    BasketContents:
+      description: ''
       type: object
-      description: Request body for creating or updating a basket.
-      required:
-      - name
-      - series
       properties:
-        name:
+        id:
+          description: BasketId guid
           type: string
-          description: User-defined name for the basket.
-          example: Example Title
+        line:
+          format: int32
+          description: Line
+          type: integer
+        concept:
+          description: Concept Code
+          type: string
+        geo:
+          description: Geo Code
+          type: string
         description:
+          description: Description
           type: string
-          description: Optional description of the basket.
-          example: A sample description.
-        series:
-          type: array
-          description: The series requests to include in the basket.
-          items:
-            $ref: '#/components/schemas/SeriesRequest'
-          example: []
+        geoTitle:
+          description: Geo Description
+          type: string
+        freq:
+          format: int32
+          description: Frequency Code
+          enum:
+          - 0
+          - 16
+          - 49
+          - 50
+          - 50
+          - 65
+          - 65
+          - 66
+          - 66
+          - 67
+          - 67
+          - 68
+          - 68
+          - 69
+          - 69
+          - 70
+          - 70
+          - 71
+          - 71
+          - 80
+          - 97
+          - 98
+          - 99
+          - 100
+          - 101
+          - 102
+          - 103
+          - 104
+          - 105
+          - 106
+          - 107
+          - 108
+          - 109
+          - 110
+          - 112
+          - 128
+          - 128
+          - 155
+          - 156
+          - 170
+          - 171
+          - 172
+          - 172
+          - 183
+          - 184
+          - 185
+          - 186
+          - 187
+          - 188
+          - 188
+          - 193
+          - 194
+          - 195
+          - 196
+          - 197
+          - 198
+          - 199
+          - 200
+          - 201
+          - 202
+          - 203
+          - 204
+          - 204
+          type: integer
+        trans:
+          format: int32
+          description: Transformation
+          enum:
+          - 0
+          - 1
+          - 2
+          - 3
+          - 4
+          - 8
+          - -1
+          type: integer
+        userDefined:
+          description: User defined transformation
+          type: string
+        decimalFormat:
+          format: int32
+          description: Number of decimal places to show
+          type: integer
     BasketOptions:
       description: ''
       type: object
@@ -691,116 +801,6 @@ components:
         decimal:
           format: int32
           description: Basket level decimal precision, null if not set at the basket level
-          type: integer
-    BasketContents:
-      description: ''
-      type: object
-      properties:
-        id:
-          description: BasketId guid
-          type: string
-        line:
-          format: int32
-          description: Line
-          type: integer
-        concept:
-          description: Concept Code
-          type: string
-        geo:
-          description: Geo Code
-          type: string
-        description:
-          description: Description
-          type: string
-        geoTitle:
-          description: Geo Description
-          type: string
-        freq:
-          format: int32
-          description: Frequency Code
-          enum:
-          - 0
-          - 16
-          - 49
-          - 50
-          - 50
-          - 65
-          - 65
-          - 66
-          - 66
-          - 67
-          - 67
-          - 68
-          - 68
-          - 69
-          - 69
-          - 70
-          - 70
-          - 71
-          - 71
-          - 80
-          - 97
-          - 98
-          - 99
-          - 100
-          - 101
-          - 102
-          - 103
-          - 104
-          - 105
-          - 106
-          - 107
-          - 108
-          - 109
-          - 110
-          - 112
-          - 128
-          - 128
-          - 155
-          - 156
-          - 170
-          - 171
-          - 172
-          - 172
-          - 183
-          - 184
-          - 185
-          - 186
-          - 187
-          - 188
-          - 188
-          - 193
-          - 194
-          - 195
-          - 196
-          - 197
-          - 198
-          - 199
-          - 200
-          - 201
-          - 202
-          - 203
-          - 204
-          - 204
-          type: integer
-        trans:
-          format: int32
-          description: Transformation
-          enum:
-          - 0
-          - 1
-          - 2
-          - 3
-          - 4
-          - 8
-          - -1
-          type: integer
-        userDefined:
-          description: User defined transformation
-          type: string
-        decimalFormat:
-          format: int32
-          description: Number of decimal places to show
           type: integer
   parameters:
     basketId:

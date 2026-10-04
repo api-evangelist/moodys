@@ -687,6 +687,220 @@ paths:
       - oauth2: []
 components:
   schemas:
+    ProjectScenarioInfo:
+      type: object
+      properties:
+        projectId:
+          pattern: ^[\w\-]{20,50}$
+          type: string
+        scenarioId:
+          pattern: ^[\w\-]{20,50}$
+          type: string
+        title:
+          type: string
+        alias:
+          pattern: ^[a-zA-Z][\w]{1,15}$
+          type: string
+        permission:
+          format: int32
+          type: integer
+        projectOwner:
+          pattern: ^[\w\-]{20,50}$
+          type: string
+        unix:
+          format: int64
+          type: integer
+          readOnly: true
+        archiving:
+          type: boolean
+        archived:
+          type: boolean
+        restoring:
+          type: boolean
+        vintage:
+          format: int32
+          type: integer
+        modelType:
+          type: string
+        hasEmbeddings:
+          type: boolean
+    ProjectInfo:
+      type: object
+      properties:
+        id:
+          pattern: ^[\w\-]{20,50}$
+          type: string
+        title:
+          type: string
+        utcDateCreatedTicks:
+          format: int64
+          type: integer
+        modified:
+          type: string
+        unix:
+          format: int64
+          type: integer
+        tags:
+          type: array
+          items:
+            type: string
+        geos:
+          type: array
+          items:
+            type: string
+        description:
+          type: string
+        isAdmin:
+          type: boolean
+        scenarios:
+          type: array
+          items:
+            $ref: '#/components/schemas/ProjectScenarioInfo'
+        contributors:
+          type: array
+          items:
+            $ref: '#/components/schemas/Contributor'
+        orders:
+          type: array
+          items:
+            $ref: '#/components/schemas/ProjectOrder'
+        dates:
+          type: array
+          items:
+            $ref: '#/components/schemas/ProjectDate'
+        alias:
+          pattern: ^[a-zA-Z][\w]{1,15}$
+          type: string
+        varTypesLockStatus:
+          type: object
+          additionalProperties:
+            type: boolean
+        allowEquationEditing:
+          type: boolean
+        commentRequired:
+          type: boolean
+        allowCustomSeries:
+          type: boolean
+        allowHistoryEditing:
+          type: boolean
+        allowLastHistoryChange:
+          type: boolean
+    ProjectOrder:
+      type: object
+      properties:
+        clientId:
+          pattern: ^[\w\-]{20,50}$
+          type: string
+        description:
+          type: string
+        orderType:
+          format: int32
+          enum:
+          - 0
+          - 1
+          - 2
+          - 3
+          - 4
+          type: integer
+        orderId:
+          type: string
+        brokerId:
+          format: int32
+          type: integer
+        webId:
+          type: string
+        parameter:
+          type: string
+        output:
+          type: string
+        dateOrdered:
+          format: date-time
+          type: string
+        dateStarted:
+          format: date-time
+          type: string
+        dateFinished:
+          format: date-time
+          type: string
+        failure:
+          format: int32
+          type: integer
+        priority:
+          format: int32
+          type: integer
+        brokerServerPickUp:
+          type: string
+        sqlServerPickUp:
+          type: string
+        sqlServerLocation:
+          format: int32
+          type: integer
+        processing:
+          format: int32
+          type: integer
+        lastRunStatus:
+          format: int32
+          type: integer
+        ubiId:
+          type: string
+        email:
+          type: string
+        maxRetryCount:
+          format: int32
+          type: integer
+    ScenarioPermission:
+      type: object
+      properties:
+        sid:
+          pattern: ^[\w\-]{20,50}$
+          type: string
+        permission:
+          format: int32
+          maximum: 1
+          minimum: 0
+          type: integer
+        utcDateCreated:
+          format: date-time
+          type: string
+        utcDateUpdated:
+          format: date-time
+          type: string
+    Contributor:
+      type: object
+      properties:
+        role:
+          format: int32
+          enum:
+          - 0
+          - 1
+          - 2
+          - 3
+          type: integer
+        utcDateCreated:
+          format: date-time
+          type: string
+        utcDateUpdated:
+          format: date-time
+          type: string
+        starred:
+          type: boolean
+        timeStamp:
+          format: date-time
+          type: string
+        sid:
+          pattern: ^[\w\-]{20,50}$
+          type: string
+        firstName:
+          type: string
+        lastName:
+          type: string
+        email:
+          type: string
+        self:
+          type: boolean
+        gid:
+          pattern: ^[\w\-]{20,50}$
+          type: string
     AliasedScenario:
       type: object
       properties:
@@ -787,220 +1001,6 @@ components:
           type: boolean
         restoring:
           type: boolean
-    ProjectOrder:
-      type: object
-      properties:
-        clientId:
-          pattern: ^[\w\-]{20,50}$
-          type: string
-        description:
-          type: string
-        orderType:
-          format: int32
-          enum:
-          - 0
-          - 1
-          - 2
-          - 3
-          - 4
-          type: integer
-        orderId:
-          type: string
-        brokerId:
-          format: int32
-          type: integer
-        webId:
-          type: string
-        parameter:
-          type: string
-        output:
-          type: string
-        dateOrdered:
-          format: date-time
-          type: string
-        dateStarted:
-          format: date-time
-          type: string
-        dateFinished:
-          format: date-time
-          type: string
-        failure:
-          format: int32
-          type: integer
-        priority:
-          format: int32
-          type: integer
-        brokerServerPickUp:
-          type: string
-        sqlServerPickUp:
-          type: string
-        sqlServerLocation:
-          format: int32
-          type: integer
-        processing:
-          format: int32
-          type: integer
-        lastRunStatus:
-          format: int32
-          type: integer
-        ubiId:
-          type: string
-        email:
-          type: string
-        maxRetryCount:
-          format: int32
-          type: integer
-    ProjectScenarioInfo:
-      type: object
-      properties:
-        projectId:
-          pattern: ^[\w\-]{20,50}$
-          type: string
-        scenarioId:
-          pattern: ^[\w\-]{20,50}$
-          type: string
-        title:
-          type: string
-        alias:
-          pattern: ^[a-zA-Z][\w]{1,15}$
-          type: string
-        permission:
-          format: int32
-          type: integer
-        projectOwner:
-          pattern: ^[\w\-]{20,50}$
-          type: string
-        unix:
-          format: int64
-          type: integer
-          readOnly: true
-        archiving:
-          type: boolean
-        archived:
-          type: boolean
-        restoring:
-          type: boolean
-        vintage:
-          format: int32
-          type: integer
-        modelType:
-          type: string
-        hasEmbeddings:
-          type: boolean
-    Contributor:
-      type: object
-      properties:
-        role:
-          format: int32
-          enum:
-          - 0
-          - 1
-          - 2
-          - 3
-          type: integer
-        utcDateCreated:
-          format: date-time
-          type: string
-        utcDateUpdated:
-          format: date-time
-          type: string
-        starred:
-          type: boolean
-        timeStamp:
-          format: date-time
-          type: string
-        sid:
-          pattern: ^[\w\-]{20,50}$
-          type: string
-        firstName:
-          type: string
-        lastName:
-          type: string
-        email:
-          type: string
-        self:
-          type: boolean
-        gid:
-          pattern: ^[\w\-]{20,50}$
-          type: string
-    ProjectInfo:
-      type: object
-      properties:
-        id:
-          pattern: ^[\w\-]{20,50}$
-          type: string
-        title:
-          type: string
-        utcDateCreatedTicks:
-          format: int64
-          type: integer
-        modified:
-          type: string
-        unix:
-          format: int64
-          type: integer
-        tags:
-          type: array
-          items:
-            type: string
-        geos:
-          type: array
-          items:
-            type: string
-        description:
-          type: string
-        isAdmin:
-          type: boolean
-        scenarios:
-          type: array
-          items:
-            $ref: '#/components/schemas/ProjectScenarioInfo'
-        contributors:
-          type: array
-          items:
-            $ref: '#/components/schemas/Contributor'
-        orders:
-          type: array
-          items:
-            $ref: '#/components/schemas/ProjectOrder'
-        dates:
-          type: array
-          items:
-            $ref: '#/components/schemas/ProjectDate'
-        alias:
-          pattern: ^[a-zA-Z][\w]{1,15}$
-          type: string
-        varTypesLockStatus:
-          type: object
-          additionalProperties:
-            type: boolean
-        allowEquationEditing:
-          type: boolean
-        commentRequired:
-          type: boolean
-        allowCustomSeries:
-          type: boolean
-        allowHistoryEditing:
-          type: boolean
-        allowLastHistoryChange:
-          type: boolean
-    ScenarioPermission:
-      type: object
-      properties:
-        sid:
-          pattern: ^[\w\-]{20,50}$
-          type: string
-        permission:
-          format: int32
-          maximum: 1
-          minimum: 0
-          type: integer
-        utcDateCreated:
-          format: date-time
-          type: string
-        utcDateUpdated:
-          format: date-time
-          type: string
     ProjectDate:
       type: object
       properties:
