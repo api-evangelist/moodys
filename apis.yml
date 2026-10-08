@@ -483,6 +483,10 @@ accessModel:
 image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/moodys.png
 access: 3rd-Party
 common:
+  - type: RateLimits
+    url: rate-limits/moodys-rate-limits.yml
+  - type: FinOps
+    url: finops/moodys-finops.yml
   - type: PostmanWorkspace
     url: https://www.postman.com/kinlaneapi/moodys/overview
   - type: AgenticAccess
