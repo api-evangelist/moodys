@@ -1,4 +1,4 @@
-generated: '2026-09-16'
+generated: '2026-09-23'
 method: generated
 source: openapi/moodys-audit-api-openapi.yml, openapi/moodys-baskets-api-openapi.yml, openapi/moodys-dataseries-api-openapi.yml,
   openapi/moodys-file-types-api-openapi.yml, openapi/moodys-forecast-api-openapi.yml, openapi/moodys-frequency-api-openapi.yml,
@@ -13,11 +13,11 @@ description: Recommended x-agentic-access execution contracts, classified heuris
 summary:
   operations: 94
   by_action_class:
-    connected: 43
-    acting: 51
+    connected: 48
+    acting: 46
   by_consequence:
-    read: 43
-    write: 46
+    read: 48
+    write: 41
     physical: 5
   human_in_the_loop_required: 0
 operations:
@@ -851,18 +851,12 @@ operations:
   method: post
   operationId: getMultiSeries
   x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
+    action-class: connected
+    consequence: read
+    subject: optional
     token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
+      max-ttl: 3600
+    audit: none
 - path: /project/{projectId}/scenario/{scenarioId}/{variableId}
   method: get
   operationId: Series_GetSeriesAsync
@@ -1187,34 +1181,22 @@ operations:
   method: post
   operationId: Universe_SearchBaseScenariosListAsync
   x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
+    action-class: connected
+    consequence: read
+    subject: optional
     token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
+      max-ttl: 3600
+    audit: none
 - path: /base-scenario/search/count
   method: post
   operationId: Universe_SearchBaseScenariosListCountAsync
   x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
+    action-class: connected
+    consequence: read
+    subject: optional
     token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
+      max-ttl: 3600
+    audit: none
 - path: /group/client
   method: get
   operationId: Universe_ClientsListAsync
@@ -1229,34 +1211,22 @@ operations:
   method: post
   operationId: Universe_SearchProjectScenariosListAsync
   x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
+    action-class: connected
+    consequence: read
+    subject: optional
     token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
+      max-ttl: 3600
+    audit: none
 - path: /project/scenario/search/count
   method: post
   operationId: Universe_SearchProjectScenariosListCountAsync
   x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
+    action-class: connected
+    consequence: read
+    subject: optional
     token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
+      max-ttl: 3600
+    audit: none
 - path: /vins
   method: get
   operationId: Vin_VinLookup
