@@ -204,6 +204,15 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/SeriesData'
+    ApiResponse_IEnumerable_Series:
+      type: object
+      properties:
+        error:
+          type: string
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/Series'
     SeriesData:
       description: Series Data point
       type: object
@@ -215,15 +224,6 @@ components:
           format: double
           description: Series Value
           type: number
-    ApiResponse_IEnumerable_Series:
-      type: object
-      properties:
-        error:
-          type: string
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/Series'
   securitySchemes:
     oauth2:
       type: oauth2

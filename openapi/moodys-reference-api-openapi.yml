@@ -132,44 +132,7 @@ paths:
         delay: 0
         dispatcher: FALLBACK
 components:
-  parameters:
-    mnemonic:
-      name: mnemonic
-      in: query
-      description: The unique series mnemonic identifier. Mnemonics follow the Data Buffet naming convention, e.g., FGDP_US for US GDP or EMPLPAY.IUSA for US total nonfarm payrolls.
-      required: true
-      schema:
-        type: string
-      examples:
-        usGdp:
-          summary: US Gross Domestic Product
-          value: FGDP_US
-        usPayrolls:
-          summary: US Total Nonfarm Payrolls
-          value: EMPLPAY.IUSA
   schemas:
-    AccessToken:
-      type: object
-      description: OAuth2 access token response.
-      required:
-      - access_token
-      - token_type
-      - expires_in
-      properties:
-        access_token:
-          type: string
-          description: The bearer access token for authenticating API requests.
-          example: example_value
-        token_type:
-          type: string
-          description: The type of token issued. Always "Bearer".
-          enum:
-          - Bearer
-          example: Bearer
-        expires_in:
-          type: integer
-          description: The number of seconds until the access token expires.
-          example: 10
     FrequencyInfo:
       type: object
       description: Metadata about a supported data frequency.
@@ -201,21 +164,28 @@ components:
           type: string
           description: Description of the frequency and its typical use cases.
           example: A sample description.
-    Vintage:
+    AccessToken:
       type: object
-      description: Metadata about a data vintage representing a historical revision of a series.
+      description: OAuth2 access token response.
       required:
-      - vintageDate
+      - access_token
+      - token_type
+      - expires_in
       properties:
-        vintageDate:
+        access_token:
           type: string
-          format: date
-          description: The date this vintage was published.
-          example: '2026-01-15'
-        description:
+          description: The bearer access token for authenticating API requests.
+          example: example_value
+        token_type:
           type: string
-          description: Description of the vintage release context.
-          example: A sample description.
+          description: The type of token issued. Always "Bearer".
+          enum:
+          - Bearer
+          example: Bearer
+        expires_in:
+          type: integer
+          description: The number of seconds until the access token expires.
+          example: 10
     FileType:
       type: object
       description: Metadata about a supported output file type.
@@ -239,6 +209,36 @@ components:
           type: string
           description: Description of the file format.
           example: A sample description.
+    Vintage:
+      type: object
+      description: Metadata about a data vintage representing a historical revision of a series.
+      required:
+      - vintageDate
+      properties:
+        vintageDate:
+          type: string
+          format: date
+          description: The date this vintage was published.
+          example: '2026-01-15'
+        description:
+          type: string
+          description: Description of the vintage release context.
+          example: A sample description.
+  parameters:
+    mnemonic:
+      name: mnemonic
+      in: query
+      description: The unique series mnemonic identifier. Mnemonics follow the Data Buffet naming convention, e.g., FGDP_US for US GDP or EMPLPAY.IUSA for US total nonfarm payrolls.
+      required: true
+      schema:
+        type: string
+      examples:
+        usGdp:
+          summary: US Gross Domestic Product
+          value: FGDP_US
+        usPayrolls:
+          summary: US Total Nonfarm Payrolls
+          value: EMPLPAY.IUSA
   securitySchemes:
     oauth2:
       type: oauth2
