@@ -1,4 +1,4 @@
-# Moody's (moodys)
+# Moody's
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -66,359 +66,236 @@
 
 Moody's provides a comprehensive suite of APIs spanning KYC compliance, economic data and forecasting, credit risk analytics, insurance and catastrophe modeling, climate risk, commercial real estate, and news aggregation. With evolving regulatory pressures and increasingly complex risk landscapes, Moody's technology, data, and analytical capabilities power industry-leading solutions across financial services, insurance, and risk management.
 
-**APIs.json:** [https://github.com/api-search/moodys/apis.yml](https://github.com/api-search/moodys/apis.yml)
+**Areas:** Climate Risk · Compliance · Credit Risk · Economic Data · Entity Verification · Financial Analytics · Insurance · KYC · Risk Management · Screening
 
-## Scope
+## Moody's on APIs.io
 
-- **Position:** Consuming
-- **Access:** 3rd-Party
+Everything profiled for Moody's is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/moodys/](https://apis.io/providers/moodys/)** — or go straight to one of the APIs or properties below.
 
-## Tags
+### APIs (26)
 
-- Climate Risk
-- Compliance
-- Credit Risk
-- Economic Data
-- Entity Verification
-- Financial Analytics
-- Insurance
-- KYC
-- Risk
-- Screening
+- [Moody's Data Buffet API](https://apis.io/apis/moodys/data-buffet-api/) — Moody's Analytics Data Buffet application program interface enables you to retrieve economic, demographic and financial time series directly from the Data…
+- [Moody's Consumer Credit Loss Forecasts API](https://apis.io/apis/moodys/eccl-api/) — Retrieves expected consumer credit loss forecasts under baseline and stress scenarios. The ECCL API combines customer data, economic data from Moody's…
+- [Moody's EDF-X API](https://apis.io/apis/moodys/edf-x-api/) — The EDF-X API provides easy access to probability of default calculations for approximately 400 million companies globally via the Orbis database. It…
+- [Moody's QUIQSpread API](https://apis.io/apis/moodys/quiqspread-api/) — Moody's Analytics QUIQspread is an intelligent, financial spreading software that will accelerate a company's spreading process. The API enables integration…
+- [Moody's Capital Risk Analyzer API](https://apis.io/apis/moodys/capital-risk-analyzer-api/) — Moody's Analytics Capital Risk Analyzer solution is a tool that projects key capital ratios and credit metrics based on various strategic and economic…
+- [Moody's Climate on Demand API](https://apis.io/apis/moodys/climate-on-demand-api/) — The Climate On Demand API enables financial services organizations to build physical climate risk applications that leverage the power of the Intelligent…
+- [Moody's Location Intelligence API](https://apis.io/apis/moodys/location-intelligence-api/) — Location Intelligence API delivers more than 100 data layers across multiple kinds of data including hazard, location, risk score, model, and exposure data…
+- [Moody's Risk Modeler API](https://apis.io/apis/moodys/risk-modeler-api/) — The Risk Modeler API enables you to manage end-to-end catastrophe modeling workflows using Moody's RMS models for portfolios, accounts, and locations on the…
+- [Moody's Intelligent Risk Platform API](https://apis.io/apis/moodys/intelligent-risk-platform-api/) — Moody's RMS Platform APIs are a collection of REST APIs that enable Intelligent Risk Platform tenants to work more efficiently. Risk Modeler, UnderwriteIQ,…
+- [Moody's Commercial Real Estate API](https://apis.io/apis/moodys/commercial-real-estate-api/) — API solutions to empower commercial real estate developers to build systems and platforms faster. Brings efficiency and automation into your organization,…
+- [Moody's NewsEdge API](https://apis.io/apis/moodys/newsedge-api/) — Bring together real-time news sources, and the best of the business web and social media to empower decision makers. The NewsEdge API provides access to…
+- [Moody's Audit API](https://apis.io/apis/moodys/moodys-audit-api/) — The Audit API from Moody's — 2 operation(s) for audit.
+- [Moody's Data Series API](https://apis.io/apis/moodys/moodys-dataseries-api/) — The DataSeries API from Moody's — 3 operation(s) for dataseries.
+- [Moody's Forecast API](https://apis.io/apis/moodys/moodys-forecast-api/) — The Forecast API from Moody's — 2 operation(s) for forecast.
+- [Moody's Interpolation API](https://apis.io/apis/moodys/moodys-interpolation-api/) — The Interpolation API from Moody's — 1 operation(s) for interpolation.
+- [Moody's Order API](https://apis.io/apis/moodys/moodys-order-api/) — The Order API from Moody's — 2 operation(s) for order.
+- [Moody's Project API](https://apis.io/apis/moodys/moodys-project-api/) — The Project API from Moody's — 17 operation(s) for project.
+- [Moody's Scenario API](https://apis.io/apis/moodys/moodys-scenario-api/) — The Scenario API from Moody's — 7 operation(s) for scenario.
+- [Moody's Series Search API](https://apis.io/apis/moodys/moodys-seriessearch-api/) — The SeriesSearch API from Moody's — 2 operation(s) for seriessearch.
+- [Moody's Universe API](https://apis.io/apis/moodys/moodys-universe-api/) — The Universe API from Moody's — 8 operation(s) for universe.
+- [Moody's Vin API](https://apis.io/apis/moodys/moodys-vin-api/) — The Vin API from Moody's — 1 operation(s) for vin.
+- [Moody's Frequency API](https://apis.io/apis/moodys/moodys-frequency-api/) — The Frequency API from Moody's — 1 operation(s) for frequency.
+- [Moody's Multi Series API](https://apis.io/apis/moodys/moodys-multiseries-api/) — The MultiSeries API from Moody's — 1 operation(s) for multiseries.
+- [Moody's Vintage API](https://apis.io/apis/moodys/moodys-vintage-api/) — The Vintage API from Moody's — 1 operation(s) for vintage.
+- [Moody's File Types API](https://apis.io/apis/moodys/moodys-file-types-api/) — The File Types API from Moody's — 1 operation(s) for file types.
+- [Moody's Health Check API](https://apis.io/apis/moodys/moodys-health-check-api/) — The Health Check API from Moody's — 1 operation(s) for health check.
 
-## Timestamps
+### Published properties
 
-- **Created:** 2024-09-25T00:00:00.000Z
-- **Modified:** 2026-05-19
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-## APIs
+#### MCP servers (1)
 
-### Moody's KYC API
+Model Context Protocol servers that expose the API to agents.
 
-With evolving regulatory pressures and bad actors becoming increasingly adept at concealing themselves, the need for deep understanding of business partners, customers, and other third parties is more critical than ever to mitigate reputational damage and risk exposure. Moody s KYC technology, data, and analytical capabilities provide industry-leading customer solutions for Know Your Customer, anti-money laundering, compliance, and counter-party risk.
+- [moodys](https://apis.io/servers/moodys/moodys/)
 
-- **Human URL:** [https://www.kompany.com/kycapi/discover](https://www.kompany.com/kycapi/discover)
+#### Agentic access (1)
 
-#### Tags
+Which operations an agent can call, which act, and which need a human in the loop.
 
-- Anti-Money Laundering
-- Compliance
-- Entity Verification
-- KYC
-- Risk
-- Screening
+- [Moodys Agentic Access](https://apis.io/agentic-access/moodys/moodys-agentic-access/)
 
-#### Properties
+#### JSON Schema (18)
 
-- [Documentation](https://www.kompany.com/kycapi/console-v2)
-- [OpenAPI](
-https://www.kompany.com/kycapi/docs/resources/resources/customer-facing-documents/generate-a-client-from-openapi-definition) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
+The data models the API reads and writes.
 
-### Moody's Data Buffet API
+- [AccessToken](https://apis.io/schemas/moodys/moodys-data-buffet-access-token/)
+- [Basket](https://apis.io/schemas/moodys/moodys-data-buffet-basket/)
+- [BasketCreate](https://apis.io/schemas/moodys/moodys-data-buffet-basket-create/)
+- [Error](https://apis.io/schemas/moodys/moodys-data-buffet-error/)
+- [FileType](https://apis.io/schemas/moodys/moodys-data-buffet-file-type/)
+- [FrequencyInfo](https://apis.io/schemas/moodys/moodys-data-buffet-frequency-info/)
+- [HealthStatus](https://apis.io/schemas/moodys/moodys-data-buffet-health-status/)
+- [MultiSeriesRequest](https://apis.io/schemas/moodys/moodys-data-buffet-multi-series-request/)
+- [MultiSeriesResponse](https://apis.io/schemas/moodys/moodys-data-buffet-multi-series-response/)
+- [Observation](https://apis.io/schemas/moodys/moodys-data-buffet-observation/)
+- [Order](https://apis.io/schemas/moodys/moodys-data-buffet-order/)
+- [OrderCreate](https://apis.io/schemas/moodys/moodys-data-buffet-order-create/)
+- [SearchResults](https://apis.io/schemas/moodys/moodys-data-buffet-search-results/)
+- [SeriesRequest](https://apis.io/schemas/moodys/moodys-data-buffet-series-request/)
+- [SeriesResponse](https://apis.io/schemas/moodys/moodys-data-buffet-series-response/)
+- [SeriesSummary](https://apis.io/schemas/moodys/moodys-data-buffet-series-summary/)
+- [Vintage](https://apis.io/schemas/moodys/moodys-data-buffet-vintage/)
+- [Moody's Analytics Time Series](https://apis.io/schemas/moodys/moodys-time-series/)
 
-Moody's Analytics Data Buffet application program interface enables you to retrieve economic, demographic and financial time series directly from the Data Buffet repository, including international and subnational economic and demographic time series data and forecasts.
+#### JSON Structure (17)
 
-- **Human URL:** [https://www.economy.com/products/tools/data-buffet](https://www.economy.com/products/tools/data-buffet)
-- **Base URL:** `https://api.economy.com`
+Data models expressed in JSON Structure.
 
-#### Tags
+- [Moodys Data Buffet Access Token Structure](https://apis.io/json-structure/moodys/moodys-data-buffet-access-token-structure/)
+- [Moodys Data Buffet Basket Create Structure](https://apis.io/json-structure/moodys/moodys-data-buffet-basket-create-structure/)
+- [Moodys Data Buffet Basket Structure](https://apis.io/json-structure/moodys/moodys-data-buffet-basket-structure/)
+- [Moodys Data Buffet Error Structure](https://apis.io/json-structure/moodys/moodys-data-buffet-error-structure/)
+- [Moodys Data Buffet File Type Structure](https://apis.io/json-structure/moodys/moodys-data-buffet-file-type-structure/)
+- [Moodys Data Buffet Frequency Info Structure](https://apis.io/json-structure/moodys/moodys-data-buffet-frequency-info-structure/)
+- [Moodys Data Buffet Health Status Structure](https://apis.io/json-structure/moodys/moodys-data-buffet-health-status-structure/)
+- [Moodys Data Buffet Multi Series Request Structure](https://apis.io/json-structure/moodys/moodys-data-buffet-multi-series-request-structure/)
+- [Moodys Data Buffet Multi Series Response Structure](https://apis.io/json-structure/moodys/moodys-data-buffet-multi-series-response-structure/)
+- [Moodys Data Buffet Observation Structure](https://apis.io/json-structure/moodys/moodys-data-buffet-observation-structure/)
+- [Moodys Data Buffet Order Create Structure](https://apis.io/json-structure/moodys/moodys-data-buffet-order-create-structure/)
+- [Moodys Data Buffet Order Structure](https://apis.io/json-structure/moodys/moodys-data-buffet-order-structure/)
+- [Moodys Data Buffet Search Results Structure](https://apis.io/json-structure/moodys/moodys-data-buffet-search-results-structure/)
+- [Moodys Data Buffet Series Request Structure](https://apis.io/json-structure/moodys/moodys-data-buffet-series-request-structure/)
+- [Moodys Data Buffet Series Response Structure](https://apis.io/json-structure/moodys/moodys-data-buffet-series-response-structure/)
+- [Moodys Data Buffet Series Summary Structure](https://apis.io/json-structure/moodys/moodys-data-buffet-series-summary-structure/)
+- [Moodys Data Buffet Vintage Structure](https://apis.io/json-structure/moodys/moodys-data-buffet-vintage-structure/)
 
-- Demographics
-- Economic Data
-- Forecasts
-- Time Series
+#### JSON-LD (2)
 
-#### Properties
+Linked-data contexts for the provider's vocabulary.
 
-- [Documentation](https://api.economy.com/data/v1/swagger)
-- [GitHub Organization](https://github.com/moodysanalytics/databuffet-api-codesamples)
-- [OpenAPI](openapi/moodys-data-buffet-api-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/moodys-data-buffet-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/moodys-data-buffet-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [JSON Schema](json-schema/moodys-time-series-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON-LD](json-ld/moodys-context.jsonld) — [JSON-LD](https://www.w3.org/TR/json-ld11/)
+- [Moodys Context](https://apis.io/jsonld/moodys/moodys-context/)
+- [Moodys Data Buffet Context](https://apis.io/jsonld/moodys/moodys-data-buffet-context/)
 
-### Moody's Scenario Studio API
+#### Vocabulary (1)
 
-Scenario Studio delivers Moody's Analytics Global Macroeconomic Model that emphasizes stability, forecast accuracy and consistency. The API retrieves custom scenarios generated in the Scenario Studio platform.
+The provider's domain terms, defined.
 
-- **Human URL:** [https://hub.moodysanalytics.com/products](https://hub.moodysanalytics.com/products)
-- **Base URL:** `https://api.economy.com`
+- [moodys API Vocabulary](https://apis.io/vocabularies/moodys/moodys-vocabulary/)
 
-#### Tags
+#### Examples (17)
 
-- Economic Models
-- Forecasting
-- Macroeconomic
-- Scenarios
+Example requests and responses.
 
-#### Properties
+- [Moodys Data Buffet Access Token Example](https://apis.io/examples/moodys/moodys-data-buffet-access-token-example/)
+- [Moodys Data Buffet Basket Create Example](https://apis.io/examples/moodys/moodys-data-buffet-basket-create-example/)
+- [Moodys Data Buffet Basket Example](https://apis.io/examples/moodys/moodys-data-buffet-basket-example/)
+- [Moodys Data Buffet Error Example](https://apis.io/examples/moodys/moodys-data-buffet-error-example/)
+- [Moodys Data Buffet File Type Example](https://apis.io/examples/moodys/moodys-data-buffet-file-type-example/)
+- [Moodys Data Buffet Frequency Info Example](https://apis.io/examples/moodys/moodys-data-buffet-frequency-info-example/)
+- [Moodys Data Buffet Health Status Example](https://apis.io/examples/moodys/moodys-data-buffet-health-status-example/)
+- [Moodys Data Buffet Multi Series Request Example](https://apis.io/examples/moodys/moodys-data-buffet-multi-series-request-example/)
+- [Moodys Data Buffet Multi Series Response Example](https://apis.io/examples/moodys/moodys-data-buffet-multi-series-response-example/)
+- [Moodys Data Buffet Observation Example](https://apis.io/examples/moodys/moodys-data-buffet-observation-example/)
+- [Moodys Data Buffet Order Create Example](https://apis.io/examples/moodys/moodys-data-buffet-order-create-example/)
+- [Moodys Data Buffet Order Example](https://apis.io/examples/moodys/moodys-data-buffet-order-example/)
+- [Moodys Data Buffet Search Results Example](https://apis.io/examples/moodys/moodys-data-buffet-search-results-example/)
+- [Moodys Data Buffet Series Request Example](https://apis.io/examples/moodys/moodys-data-buffet-series-request-example/)
+- [Moodys Data Buffet Series Response Example](https://apis.io/examples/moodys/moodys-data-buffet-series-response-example/)
+- [Moodys Data Buffet Series Summary Example](https://apis.io/examples/moodys/moodys-data-buffet-series-summary-example/)
+- [Moodys Data Buffet Vintage Example](https://apis.io/examples/moodys/moodys-data-buffet-vintage-example/)
 
-- [Documentation](https://api.economy.com/scenario-studio/v2/swagger)
-- [GitHub Organization](https://github.com/moodysanalytics/scenario-studio-api-codesamples)
-- [Postman Collection](collections/moodys-data-buffet-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/moodys-data-buffet-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+#### Collections (16)
 
-### Moody's AutoCycle API
+Postman and Open Collection request collections.
 
-Retrieves forecasts of vehicle prices from AutoCycle models. AutoCycle is a software solution to forecast car prices, incorporating economic data and scenarios from Moody's Analytics.
+- [Moody's Analytics AutoCycle API](https://apis.io/collections/moodys/open-moodys-autocycle-api-swagger/)
+- [Moody's Data Buffet Baskets API](https://apis.io/collections/moodys/open-moodys-baskets-api/)
+- [Moody's Data Buffet API](https://apis.io/collections/moodys/open-moodys-data-buffet-api/)
+- [Moody's Data Buffet Baskets Health API](https://apis.io/collections/moodys/open-moodys-health-api/)
+- [Moody's Analytics Muni Loss Forecast API](https://apis.io/collections/moodys/open-moodys-municipal-api-swagger/)
+- [Moody's Data Buffet Baskets Orders API](https://apis.io/collections/moodys/open-moodys-orders-api/)
+- [Moody's Data Buffet Baskets Reference API](https://apis.io/collections/moodys/open-moodys-reference-api/)
+- [Scenario Studio Api](https://apis.io/collections/moodys/open-moodys-scenario-studio-api-swagger/)
+- [Moody's Data Buffet Baskets Search API](https://apis.io/collections/moodys/open-moodys-search-api/)
+- [Moody's Data Buffet Baskets Series API](https://apis.io/collections/moodys/open-moodys-series-api/)
+- [Moody's Data Buffet Baskets API](https://apis.io/collections/moodys/postman-moodys-baskets-api/)
+- [Moody's Data Buffet Baskets Health API](https://apis.io/collections/moodys/postman-moodys-health-api/)
+- [Moody's Data Buffet Baskets Orders API](https://apis.io/collections/moodys/postman-moodys-orders-api/)
+- [Moody's Data Buffet Baskets Reference API](https://apis.io/collections/moodys/postman-moodys-reference-api/)
+- [Moody's Data Buffet Baskets Search API](https://apis.io/collections/moodys/postman-moodys-search-api/)
+- [Moody's Data Buffet Baskets Series API](https://apis.io/collections/moodys/postman-moodys-series-api/)
 
-- **Human URL:** [https://hub.moodysanalytics.com/products](https://hub.moodysanalytics.com/products)
-- **Base URL:** `https://api.economy.com`
+#### Overlays (9)
 
-#### Tags
+OpenAPI overlays, including conversational phrasing for each operation.
 
-- Automotive
-- Forecasts
-- Residual Value
-- Vehicle Pricing
+- [Moodys Autocycle Api Overlay](https://apis.io/overlays/moodys/moodys-autocycle-api-overlay/)
+- [Moodys Baskets Api Overlay](https://apis.io/overlays/moodys/moodys-baskets-api-overlay/)
+- [Moodys Health Api Overlay](https://apis.io/overlays/moodys/moodys-health-api-overlay/)
+- [Moodys Municipal Api Overlay](https://apis.io/overlays/moodys/moodys-municipal-api-overlay/)
+- [Moodys Orders Api Overlay](https://apis.io/overlays/moodys/moodys-orders-api-overlay/)
+- [Moodys Reference Api Overlay](https://apis.io/overlays/moodys/moodys-reference-api-overlay/)
+- [Moodys Scenario Studio Api Overlay](https://apis.io/overlays/moodys/moodys-scenario-studio-api-overlay/)
+- [Moodys Search Api Overlay](https://apis.io/overlays/moodys/moodys-search-api-overlay/)
+- [Moodys Series Api Overlay](https://apis.io/overlays/moodys/moodys-series-api-overlay/)
 
-#### Properties
+#### Governance rules (2)
 
-- [Documentation](https://api.economy.com/autocycle/v1/swagger)
-- [Postman Collection](collections/moodys-data-buffet-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/moodys-data-buffet-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+Spectral rulesets for the provider's contracts.
 
-### Moody's Consumer Credit Loss Forecasts API
+- [Moody's — jsonschema rules](https://apis.io/rules/moodys/moodys-jsonschema-spectral-rules/)
+- [Moody's API Rules](https://apis.io/rules/moodys/moodys-spectral-rules/)
 
-Retrieves expected consumer credit loss forecasts under baseline and stress scenarios. The ECCL API combines customer data, economic data from Moody's Analytics, and consumer credit data for credit risk modeling.
+#### Security (2)
 
-- **Human URL:** [https://hub.moodysanalytics.com/products](https://hub.moodysanalytics.com/products)
-- **Base URL:** `https://api.economy.com`
+Authentication, trust centre, and vulnerability disclosure.
 
-#### Tags
+- [Moodys Authentication](https://apis.io/security/moodys/moodys-authentication/)
+- [Moodys Domain Security](https://apis.io/security/moodys/moodys-domain-security/)
 
-- Consumer Credit
-- Credit Loss
-- Forecasts
-- Risk
+#### OAuth scopes (1)
 
-#### Properties
+The permissions the API asks for.
 
-- [Documentation](https://api.economy.com/eccl/v1/swagger)
-- [Postman Collection](collections/moodys-data-buffet-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/moodys-data-buffet-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+- [Moodys Scopes](https://apis.io/scopes/moodys/moodys-scopes/)
 
-### Moody's Municipal Probability of Default API
+#### Plans and pricing (1)
 
-Retrieves probability of default and loss rates for the municipal market under baseline and stress scenarios. Enables scoring of municipal credit risk using Moody's Analytics models.
+Published plans, tiers and prices.
 
-- **Human URL:** [https://hub.moodysanalytics.com/products](https://hub.moodysanalytics.com/products)
-- **Base URL:** `https://api.economy.com`
+- [Moodys Plans Pricing](https://apis.io/plans/moodys/moodys-plans-pricing/)
 
-#### Tags
+#### Rate limits (1)
 
-- Credit Risk
-- Forecasts
-- Municipal
-- Probability of Default
+Published request limits.
 
-#### Properties
+- [Moodys Rate Limits](https://apis.io/rate-limits/moodys/moodys-rate-limits/)
 
-- [Documentation](https://api.economy.com/muni/v1/swagger)
-- [Postman Collection](collections/moodys-data-buffet-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/moodys-data-buffet-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+#### FinOps (1)
 
-### Moody's EDF-X API
+What the API costs to run, by operation.
 
-The EDF-X API provides easy access to probability of default calculations for approximately 400 million companies globally via the Orbis database. It provides a PD term structure with annualized, cumulative, and forward PD values, implied ratings, and confidence indicators.
+- [Moodys Finops](https://apis.io/finops/moodys/moodys-finops/)
 
-- **Human URL:** [https://hub.moodysanalytics.com/products](https://hub.moodysanalytics.com/products)
-- **Base URL:** `https://hub.moodysanalytics.com`
+## Where to find this API
 
-#### Tags
-
-- Credit Risk
-- Expected Default Frequency
-- Probability of Default
-- Risk Assessment
-
-#### Properties
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
 
 - [Documentation](https://hub.moodysanalytics.com/products)
-- [Postman Collection](collections/moodys-data-buffet-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/moodys-data-buffet-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-
-#### Tags
-
-- Media
-- News
-- Real-Time Data
-- Social Media
-
-#### Properties
-
-- [Documentation](https://hub.moodysanalytics.com/products)
-- [Postman Collection](collections/moodys-data-buffet-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/moodys-data-buffet-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### Moody's QUIQSpread API
-
-Moody's Analytics QUIQspread is an intelligent, financial spreading software that will accelerate a company's spreading process. The API enables integration of automated financial statement processing into banking workflows.
-
-- **Human URL:** [https://hub.moodysanalytics.com/products](https://hub.moodysanalytics.com/products)
-- **Base URL:** `https://hub.moodysanalytics.com`
-
-#### Tags
-
-- Automation
-- Banking
-- Financial Spreading
-- Financial Statements
-
-#### Properties
-
-- [Documentation](https://hub.moodysanalytics.com/products)
-- [Postman Collection](collections/moodys-data-buffet-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/moodys-data-buffet-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### Moody's Capital Risk Analyzer API
-
-Moody's Analytics Capital Risk Analyzer solution is a tool that projects key capital ratios and credit metrics based on various strategic and economic scenarios for capital planning and stress testing such as DFAST and EBA.
-
-- **Human URL:** [https://hub.moodysanalytics.com/products](https://hub.moodysanalytics.com/products)
-- **Base URL:** `https://hub.moodysanalytics.com`
-
-#### Tags
-
-- Banking
-- Capital Planning
-- Risk
-- Stress Testing
-
-#### Properties
-
-- [Documentation](https://hub.moodysanalytics.com/products)
-- [Postman Collection](collections/moodys-data-buffet-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/moodys-data-buffet-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### Moody's Climate on Demand API
-
-The Climate On Demand API enables financial services organizations to build physical climate risk applications that leverage the power of the Intelligent Risk Platform.
-
-- **Human URL:** [https://developer.rms.com/climate-on-demand](https://developer.rms.com/climate-on-demand)
-- **Base URL:** `https://developer.rms.com`
-
-#### Tags
-
-- Climate Risk
-- Environmental
-- Insurance
-- Physical Risk
-
-#### Properties
-
-- [Documentation](https://developer.rms.com/climate-on-demand)
-- [Postman Collection](collections/moodys-data-buffet-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/moodys-data-buffet-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### Moody's Location Intelligence API
-
-Location Intelligence API delivers more than 100 data layers across multiple kinds of data including hazard, location, risk score, model, and exposure data to help improve business decisions and better manage risk.
-
-- **Human URL:** [https://hub.moodysanalytics.com/products](https://hub.moodysanalytics.com/products)
-- **Base URL:** `https://developer.rms.com`
-
-#### Tags
-
-- Geospatial
-- Insurance
-- Location
-- Risk Data
-
-#### Properties
-
-- [Documentation](https://hub.moodysanalytics.com/products)
-- [Postman Collection](collections/moodys-data-buffet-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/moodys-data-buffet-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### Moody's Risk Modeler API
-
-The Risk Modeler API enables you to manage end-to-end catastrophe modeling workflows using Moody's RMS models for portfolios, accounts, and locations on the Intelligent Risk Platform.
-
-- **Human URL:** [https://developer.rms.com/risk-modeler](https://developer.rms.com/risk-modeler)
-- **Base URL:** `https://developer.rms.com`
-
-#### Tags
-
-- Catastrophe Modeling
-- Insurance
-- Risk
-- Underwriting
-
-#### Properties
-
-- [Documentation](https://developer.rms.com/risk-modeler)
-- [Postman Collection](collections/moodys-data-buffet-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/moodys-data-buffet-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### Moody's Intelligent Risk Platform API
-
-Moody's RMS Platform APIs are a collection of REST APIs that enable Intelligent Risk Platform tenants to work more efficiently. Risk Modeler, UnderwriteIQ, TreatyIQ, and ExposureIQ tenants can use them to manage bulk data transfers, automate catastrophe modeling workflows, and generate reports.
-
-- **Human URL:** [https://developer.rms.com/platform/docs/introduction](https://developer.rms.com/platform/docs/introduction)
-- **Base URL:** `https://developer.rms.com`
-
-#### Tags
-
-- Insurance
-- Platform
-- Reinsurance
-- Risk Management
-
-#### Properties
-
-- [Documentation](https://developer.rms.com/platform/docs/introduction)
-- [Postman Collection](collections/moodys-data-buffet-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/moodys-data-buffet-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### Moody's Commercial Real Estate API
-
-API solutions to empower commercial real estate developers to build systems and platforms faster. Brings efficiency and automation into your organization, including the Commercial Location Score API and MA CRE API.
-
-- **Human URL:** [https://hub.moodysanalytics.com/products](https://hub.moodysanalytics.com/products)
-- **Base URL:** `https://hub.moodysanalytics.com`
-
-#### Tags
-
-- Commercial Real Estate
-- CRE
-- Location Score
-- Property
-
-#### Properties
-
-- [Documentation](https://hub.moodysanalytics.com/products)
-- [Postman Collection](collections/moodys-data-buffet-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/moodys-data-buffet-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-## Common Properties
-
-- [Portal](https://www.kompany.com/)
-- [Plans](https://www.kompany.com/kycapi/dashboard/plans)
-- [Getting Started](https://www.kompany.com/kycapi/docs/quick-start)
-- [Console](https://www.kompany.com/kycapi/console)
+- [Getting started](https://www.kompany.com/kycapi/docs/quick-start)
 - [Blog](https://www.kompany.com/kycapi/community/developer-news)
-- [Getting Started](https://www.kompany.com/kycapi/docs/guides/guides/get-started)
-- [Sandbox](https://www.kompany.com/kycapi/docs/guides/guides/get-started/sandbox-overview)
-- [Use Cases](https://www.kompany.com/kycapi/docs/guides/guides/use-cases)
-- [Resources](https://www.kompany.com/kycapi/docs/resources)
-- [Features](undefined)
-- [Use Cases](undefined)
-- [Integrations](undefined)
-- [Integrations](https://www.kompany.com/kycapi/connections)
-- [Status Page](https://kycapi-status.kompany.com/)
-- [Portal](https://hub.moodysanalytics.com/)
-- [Documentation](https://hub.moodysanalytics.com/products)
-- [Getting Started](https://hub.moodysanalytics.com/gettingstarted)
-- [Contact](https://hub.moodysanalytics.com/contact)
-- [Portal](https://developer.rms.com/)
-- [Documentation](https://www.economy.com/products/tools/api)
-- [GitHub Organization](https://github.com/moodysanalytics)
-- [Resources](https://www.rms.com/developer-resources)
+- [Terms of service](https://www.moodys.com/termsofuseinfo.aspx)
+- [Privacy policy](https://www.moodys.com/privatepolicy.aspx)
+- [GitHub](https://github.com/moodysanalytics)
+- [Status](https://kycapi-status.kompany.com/)
 
-## Maintainers
+## API Evangelist rating
 
-**FN:** Kin Lane
-**Email:** kin@apievangelist.com
+**Unrated** — no public website could be reached for this company, so there was almost nothing to measure and nothing a reader could check.
+
+This is not a score of zero. No rating is published for this company. If that is wrong because something public exists that we missed, say so on this repository or email [info@apievangelist.com](mailto:info@apievangelist.com) and it will be re-run — free, and no justification needed.
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Moody's: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/moodys/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
