@@ -1,0 +1,114 @@
+# Pricing transcribed from the provider's own page — see provenance. Numbers are quoted, not derived.
+generated: '2026-10-28'
+method: searched
+source: https://github.com/pricing
+sources:
+- https://github.com/pricing
+provenance:
+  tool: engine/economics/harvest_pricing.py
+  run: 20261028T161713
+  grounding: every price_text was found verbatim in the fetched page text
+audience: business-product
+pricing_basis: per-seat
+delivery:
+  delivery: managed+licensed
+  method: page
+  read: '2026-10-28'
+  evidence: Self-hosted deployment Self-hosted GitHub for on-prem appliances or self-managed cloud tenants.
+  managed_tier: Team
+published: true
+note: GitHub plans & pricing page (provider label 'moodys' appears mismatched). Self-hosted deployment
+  offered via Enterprise Server under paid Enterprise plan.
+plan_count: 5
+currency: USD
+plans:
+- name: Free
+  price_text: $ 0 USD
+  price: 0
+  currency: USD
+  period: month
+  unit: account
+  included_quota: Unlimited public/private repositories, 2,000 CI/CD minutes/month, 500MB of Packages
+    storage, Community support
+- name: Team
+  price_text: $ 4 USD per user / month
+  price: 4
+  currency: USD
+  period: month
+  unit: per user
+  included_quota: Everything from Free, plus 3,000 CI/CD minutes/month, 2GB of Packages storage, Web-based
+    support
+- name: Enterprise
+  price_text: $ 21 USD per user / month
+  price: 21
+  currency: USD
+  period: month
+  unit: per user
+  included_quota: Everything from Team, plus GitHub Copilot access, 50,000 CI/CD minutes/month, 50GB of
+    Packages storage
+- name: GitHub Codespaces
+  price_text: Starting at $0.18 per hour of compute and $0.07 per GB of storage.
+  currency: USD
+  period: per-use
+  unit: compute hour / GB storage
+- name: Git Large File Storage
+  price_text: $5 per month for 50 GB bandwidth and 50 GB of storage.
+  currency: USD
+  period: month
+  unit: 50 GB bandwidth and 50 GB storage
+rate_limit_statements:
+- Get started for free with up to 2,000 completions per month.
+- 2,000 minutes/month
+- 3,000 minutes/month
+- 50,000 minutes/month
+x-canonical:
+  generated: '2026-11-01'
+  vocabulary: engine/economics/plans-canonical.yml
+  models:
+  - metered
+  - seat
+  units:
+  - data
+  - object
+  - seat
+  plans:
+  - name: Free
+    access: other
+    model: metered
+    model_how: derived
+    units:
+    - object
+    periods:
+    - month
+  - name: Team
+    access: other
+    model: seat
+    model_how: derived
+    units:
+    - seat
+    periods:
+    - month
+  - name: Enterprise
+    access: other
+    model: seat
+    model_how: derived
+    units:
+    - seat
+    periods:
+    - month
+  - name: GitHub Codespaces
+    access: other
+    model: metered
+    model_how: derived
+    units:
+    - data
+    periods:
+    - other
+  - name: Git Large File Storage
+    access: other
+    model: metered
+    model_how: derived
+    units:
+    - data
+    periods:
+    - month
