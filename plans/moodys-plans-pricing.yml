@@ -62,7 +62,7 @@ rate_limit_statements:
 - 3,000 minutes/month
 - 50,000 minutes/month
 x-canonical:
-  generated: '2026-11-02'
+  generated: '2026-11-06'
   vocabulary: engine/economics/plans-canonical.yml
   models:
   - metered
